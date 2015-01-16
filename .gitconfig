@@ -1,3 +1,9 @@
 [user]
 	email = antonio.macias.ojeda@gmail.com
 	name = Antonio M. Macías Ojeda
+[core]
+	editor = vim
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
