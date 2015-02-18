@@ -9,9 +9,14 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
 " Sane defaults
 Plugin 'tpope/vim-sensible'
+" Indentation autodetection
+Plugin 'tpope/vim-sleuth'
+" Comment/uncomment plugin
+Plugin 'tpope/vim-commentary'
+" Useful extra mappings
+Plugin 'tpope/vim-unimpaired'
 " i3 config syntax highlighting
 Plugin 'PotatoesMaster/i3-vim-syntax'
 " tmux config syntax highlighting
@@ -26,6 +31,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 " ctrlp fuzzy finder
 Plugin 'kien/ctrlp.vim'
+" Markdown and pandoc stuff
+Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -51,3 +59,18 @@ set cursorline
 set colorcolumn=80
 " Toggle dark/light bg
 call togglebg#map("<f3>")
+
+" Trailing whitespace stripper
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
+" See trailing whitespaces, tabs...
+runtime! plugin/sensible.vim
+set list
+let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
