@@ -75,4 +75,4 @@ URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode
 URxvt.perl-ext-common: default,matcher,osc-xterm-clipboard
 URxvt.urlLauncher: /usr/bin/firefox
-URxvt.matcher.button: 1 
+URxvt.matcher.button: 1
