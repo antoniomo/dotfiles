@@ -177,7 +177,33 @@ client.focused_inactive #333333 #555555 #bbbbbb #484e50
 client.unfocused #333333 #333333 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
 
-# Set wallpapers path
-set $wallpaper /home/antonio/Data/Wallpapers
+
+# Set low/high res wallpepers
+set $wallpaperl /home/antonio/Data/Wallpapers/a_man-wallpaper-1366x768.png
+set $wallpaperh /home/antonio/Data/Wallpapers/a_man-wallpaper-1920x1080.png
 # Set dual-monitor backgrounds
-exec --no-startup-id feh --bg-scale $wallpaper/a_man-wallpaper-1366x768.jpg --bg-scale $wallpaper/a_man-wallpaper-1920x1080.jpg
+exec --no-startup-id feh --bg-scale $wallpaperl --bg-scale $wallpaperh
+
+# Set locker
+exec --no-startup-id xss-lock -- i3lock -i $wallpaperl &
+
+# Set shutdown screen on mod+pause
+# Add a small delay to prevent suspend races
+# https://bugs.launchpad.net/ubuntu/+source/unity-2d/+bug/830348
+set $Locker xset s activate && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Pause mode "$mode_system"
