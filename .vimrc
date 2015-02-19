@@ -55,10 +55,19 @@ set mouse=a
 
 " Solarized colroscheme
 colorscheme solarized
-set cursorline
-set colorcolumn=80
 " Toggle dark/light bg
 call togglebg#map("<f3>")
+
+" Highlight current cursor line
+set cursorline
+" Text width options
+set textwidth=80
+set colorcolumn=+1
+
+" See trailing whitespaces, tabs...
+runtime! plugin/sensible.vim
+set list
+let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
 
 " Trailing whitespace stripper
 fun! <SID>StripTrailingWhitespaces()
@@ -67,10 +76,23 @@ fun! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
-
 autocmd FileType c,cpp,java,php,ruby,python autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
-" See trailing whitespaces, tabs...
-runtime! plugin/sensible.vim
-set list
-let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+" Spellchecking as default on some filetypes
+autocmd FileType txt,tex,markdown,rst,gitcommit,python setlocal spell
+
+" Files with 4 spaces as tabs
+autocmd FileType python setlocal ts=4 sts=4 sw=4 et
+
+" Don't expand tabs on makefiles
+autocmd FileType make setlocal noexpandtab
+
+" Autoreload .vimrc on write
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
+" Syntastic options
+" Check on open as well as save (default)
+let g:syntastic_check_on_open=1
