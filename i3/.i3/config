@@ -187,7 +187,7 @@ set $wallpaperh /home/antonio/Data/Wallpapers/a_man-wallpaper-1920x1080.png
 exec --no-startup-id feh --bg-scale $wallpaperl --bg-scale $wallpaperh
 
 # Set locker
-exec --no-startup-id xss-lock -- i3lock -i $wallpaperl &
+exec --no-startup-id xss-lock -- i3lock -i $wallpaperl
 
 # Set shutdown screen on mod+pause
 # Add a small delay to prevent suspend races
