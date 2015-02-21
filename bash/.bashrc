@@ -20,7 +20,19 @@ unset fasd_cache
 alias v='f -e vim' # quick opening files with vim
 alias o='a -e xdg-open' # quick opening files with xdg-open
 
-alias ls='ls --color=auto'
+alias g=git
+alias ls='ls -F --color=auto'
+alias ll='ls -lhA'
+alias ..='cd ..'
+alias fhere='find . -iname '
+alias ps='ps auxf'
+alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
+alias free='free -mt'
+alias df='df -Th --total'
+alias du='ncdu'
+alias mkdir='mkdir -pv'
+alias histg='history | grep'
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 PS1='[\u@\h \W]\$ '
