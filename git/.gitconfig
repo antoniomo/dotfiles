@@ -20,3 +20,4 @@
 	visual = !gitk &
 	u = add -u
 	aa = add -A
+	a = add
