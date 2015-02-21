@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Set PATH with my user bin commands
+PATH=$PATH:~/bin
+
 # Envoy keychain
 envoy
 source <(envoy -p)
