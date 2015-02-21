@@ -9,3 +9,14 @@
 	tool = vimdiff
 [push]
 	default = simple
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	cob = checkout -b
+	last = log -1 HEAD
+	unstage = reset HEAD --
+	visual = !gitk &
+	u = add -u
+	aa = add -A
