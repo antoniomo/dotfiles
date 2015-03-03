@@ -55,6 +55,8 @@ set mouse=a
 
 " Solarized colroscheme
 colorscheme solarized
+"Default to the dark bg
+set background=dark
 " Toggle dark/light bg
 call togglebg#map("<f3>")
 
