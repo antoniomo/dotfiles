@@ -187,6 +187,11 @@ client.urgent #2f343a #900000 #ffffff #900000
 # Swap caps and escape
 exec --no-startup-id ~/bin/swapescape
 
+# Pulse audio volume control
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+
 # Set low/high res wallpepers
 set $wallpaperl /home/antonio/Data/Wallpapers/a_man-wallpaper-1366x768.png
 set $wallpaperh /home/antonio/Data/Wallpapers/a_man-wallpaper-1920x1080.png
