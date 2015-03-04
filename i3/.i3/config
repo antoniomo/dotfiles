@@ -127,6 +127,10 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# Scratchpad
+bindsym $mod+m move scratchpad
+bindsym $mod+o scratchpad show
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -181,13 +185,16 @@ client.unfocused #333333 #333333 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
 
 # Swap caps and escape
-exec --no-startup-id setxkbmap -option "caps:swapescape"
+exec --no-startup-id ~/bin/swapscape
 
 # Set low/high res wallpepers
 set $wallpaperl /home/antonio/Data/Wallpapers/a_man-wallpaper-1366x768.png
 set $wallpaperh /home/antonio/Data/Wallpapers/a_man-wallpaper-1920x1080.png
 # Set dual-monitor backgrounds
 exec --no-startup-id feh --bg-scale $wallpaperl --bg-scale $wallpaperh
+
+# Dunst notification daemon
+exec --no-startup-id dunst -config ~/.i3/dunstrc
 
 # Set locker
 exec --no-startup-id xss-lock -- i3lock -i $wallpaperl
