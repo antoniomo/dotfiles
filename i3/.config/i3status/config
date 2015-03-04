@@ -16,6 +16,7 @@ order += "wireless wlp3s0"
 order += "disk /home/"
 order += "load"
 order += "battery 1"
+order += "volume master"
 order += "tztime local"
 
 wireless wlp3s0 {
@@ -51,4 +52,11 @@ load {
 
 disk "/home/" {
         format = " %avail"
+}
+
+volume master {
+  format = "♪: %volume"
+  device = "default"
+  mixer = "Master"
+  mixer_idx = 0
 }
