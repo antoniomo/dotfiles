@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Swaps caps-lock and escape
+setxkbmap -option "caps:swapescape"
