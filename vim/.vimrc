@@ -53,6 +53,10 @@ filetype plugin indent on    " required
 " Mouse support
 set mouse=a
 
+" Smartcase searching
+set ignorecase
+set smartcase
+
 " Solarized colroscheme
 colorscheme solarized
 "Default to the dark bg
