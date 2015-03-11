@@ -9,7 +9,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-" Sane defaults
+" Sane defaults (Remember to make .vim/backup, .vim/undo and .vim/swap folders!)
 Plugin 'tpope/vim-sensible'
 " Indentation autodetection
 Plugin 'tpope/vim-sleuth'
@@ -29,7 +29,7 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'altercation/vim-colors-solarized'
 " ctrl + hjkl to move windows in tmux and vim effortlessly
 Plugin 'christoomey/vim-tmux-navigator'
-" YouCompleteMe autocompletion
+" YouCompleteMe autocompletion (Remember to run install.sh after upgrade!)
 Plugin 'Valloric/YouCompleteMe'
 " syntastic multi-language syntax checker and linter
 Plugin 'scrooloose/syntastic'
