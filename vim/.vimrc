@@ -17,6 +17,10 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-commentary'
 " Useful extra mappings
 Plugin 'tpope/vim-unimpaired'
+" Git plugin
+Plugin 'tpope/vim-fugitive'
+" Git changes as signs
+Plugin 'airblade/vim-gitgutter'
 " i3 config syntax highlighting
 Plugin 'PotatoesMaster/i3-vim-syntax'
 " tmux config syntax highlighting
