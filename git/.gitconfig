@@ -21,3 +21,6 @@
 	u = add -u
 	aa = add -A
 	a = add
+	ctags = !.git/hooks/ctags
+[init]
+	templatedir = ~/.git_template
