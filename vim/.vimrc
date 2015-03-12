@@ -41,6 +41,9 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 " Riv rst notetaking and instant html preview
 Plugin 'Rykka/riv.vim'
 Plugin 'Rykka/InstantRst'  " Has a python component, instant-rst (pip/repositories)
+" Snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -110,5 +113,10 @@ augroup END " }
 " Check on open as well as save (default)
 let g:syntastic_check_on_open=1
 
-"InstantRst options
+" InstantRst options
 let g:instant_rst_localhost_only=1
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
