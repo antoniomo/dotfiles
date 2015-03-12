@@ -15,6 +15,15 @@ source <(envoy -p)
 # Disable XON/XOFF (To enable CTRL-s for forward search)
 stty -ixon
 
+# History control, ignore duplicates and whitespace
+export HISTCONTROL=ignoreboth
+
+# Autocd on path
+shopt -s autocd
+
+# Line wrap on window resize
+shopt -s checkwinsize
+
 # Fasd initialization, with cache (faster)
 fasd_cache="$HOME/.fasd-init-bash"
 if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
