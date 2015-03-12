@@ -38,6 +38,9 @@ Plugin 'kien/ctrlp.vim'
 " Markdown and pandoc stuff
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
+" Riv rst notetaking and instant html preview
+Plugin 'Rykka/riv.vim'
+Plugin 'Rykka/InstantRst'  " Has a python component, instant-rst (pip/repositories)
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -106,3 +109,6 @@ augroup END " }
 " Syntastic options
 " Check on open as well as save (default)
 let g:syntastic_check_on_open=1
+
+"InstantRst options
+let g:instant_rst_localhost_only=1
