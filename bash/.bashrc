@@ -12,6 +12,9 @@ PATH=$PATH:~/bin
 envoy
 source <(envoy -p)
 
+# Disable XON/XOFF (To enable CTRL-s for forward search)
+stty -ixon
+
 # Fasd initialization, with cache (faster)
 fasd_cache="$HOME/.fasd-init-bash"
 if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
