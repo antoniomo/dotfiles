@@ -82,6 +82,9 @@ set cursorline
 set textwidth=80
 set colorcolumn=+1
 
+" Minimum context lines above/below when scrolling
+set scrolloff=5
+
 " See trailing whitespaces, tabs...
 runtime! plugin/sensible.vim
 set list
