@@ -35,6 +35,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 " ctrlp fuzzy finder
 Plugin 'kien/ctrlp.vim'
+" Rainbow parenthesis and other symbols
+Plugin 'kien/rainbow_parentheses.vim'
 " Markdown and pandoc stuff
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
@@ -120,3 +122,10 @@ let g:instant_rst_localhost_only=1
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" Rainbow parentheses always on
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound  " ()
+au Syntax * RainbowParenthesesLoadSquare  " []
+au Syntax * RainbowParenthesesLoadBraces  " {}
+au Syntax * RainbowParenthesesLoadChevrons  " <>
