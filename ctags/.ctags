@@ -1,2 +1,1 @@
-# Don't generate tags for import lines
---python-knds=-i
+--python-kinds=-i
