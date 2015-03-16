@@ -123,6 +123,10 @@ augroup END " }
 " Check on open as well as save (default)
 let g:syntastic_check_on_open=1
 
+" ctrlp options
+" Search in files, buffers, and MRU at the same time
+let g:ctrlp_cmd='CtrlPMixed'
+
 " InstantRst options
 let g:instant_rst_localhost_only=1
 
