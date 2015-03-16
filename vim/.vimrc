@@ -69,7 +69,12 @@ set mouse=a
 set ignorecase
 set smartcase
 
-" Solarized colroscheme
+" Swap, undo and backup directories
+set directory=~/.vim/swap
+set undodir=~/.vim/undo
+set backupdir=~/.vim/backup
+
+" Solarized colorscheme
 colorscheme solarized
 "Default to the dark bg
 set background=dark
