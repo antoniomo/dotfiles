@@ -71,7 +71,12 @@ set mouse=a
 set ignorecase
 set smartcase
 
-" Solarized colroscheme
+" Swap, undo and backup directories
+set directory=~/.vim/swap
+set undodir=~/.vim/undo
+set backupdir=~/.vim/backup
+
+" Solarized colorscheme
 colorscheme solarized
 "Default to the dark bg
 set background=dark
@@ -120,6 +125,10 @@ augroup END " }
 " Check on open as well as save (default)
 let g:syntastic_check_on_open=1
 
+" ctrlp options
+" Search in files, buffers, and MRU at the same time
+let g:ctrlp_cmd='CtrlPMixed'
+
 " InstantRst options
 let g:instant_rst_localhost_only=1
 
@@ -138,3 +147,6 @@ au Syntax * RainbowParenthesesLoadChevrons  " <>
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 " http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 cmap w!! w !sudo tee > /dev/null %
+
+" Enter the explorer if no file was passed
+autocmd VimEnter * if !argc() | Explore | endif
