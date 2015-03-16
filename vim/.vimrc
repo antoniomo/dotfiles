@@ -132,3 +132,6 @@ au Syntax * RainbowParenthesesLoadRound  " ()
 au Syntax * RainbowParenthesesLoadSquare  " []
 au Syntax * RainbowParenthesesLoadBraces  " {}
 au Syntax * RainbowParenthesesLoadChevrons  " <>
+
+" Enter the explorer if no file was passed
+autocmd VimEnter * if !argc() | Explore | endif
