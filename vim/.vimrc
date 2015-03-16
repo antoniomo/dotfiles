@@ -46,6 +46,8 @@ Plugin 'Rykka/InstantRst'  " Has a python component, instant-rst (pip/repositori
 " Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+" Hex mode with binary files (open with vim -b file or use :Hexmode)
+Plugin 'fidian/hexmode'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -132,3 +134,7 @@ au Syntax * RainbowParenthesesLoadRound  " ()
 au Syntax * RainbowParenthesesLoadSquare  " []
 au Syntax * RainbowParenthesesLoadBraces  " {}
 au Syntax * RainbowParenthesesLoadChevrons  " <>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+" http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
+cmap w!! w !sudo tee > /dev/null %
