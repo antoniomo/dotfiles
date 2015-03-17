@@ -19,6 +19,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-unimpaired'
 " Git plugin
 Plugin 'tpope/vim-fugitive'
+" Surrounds plugin
+Plugin 'tpope/vim-surround'
 " Git changes as signs
 Plugin 'airblade/vim-gitgutter'
 " i3 config syntax highlighting
