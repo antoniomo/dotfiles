@@ -37,8 +37,18 @@ alias vv='f -i -e vim'  # opening files with vim and fasd interactive
 alias o='a -e xdg-open'  # quick opening files/directories with xdg-open
 alias oo='a -i -e xdg-open'  # opening files/directories with fasd interactive
 
-# General aliases
+# Git stuff
+source /usr/share/git/completion/git-prompt.sh
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWUPSTREAM="auto"
 alias g=git
+source /usr/share/bash-completion/completions/git
+complete -o default -o nospace -F _git g
+
+# General aliases
 alias ls='ls -F --color=auto'
 alias ll='ls -lhA'
 alias ..='cd ..'
@@ -53,4 +63,4 @@ alias histg='history | grep'
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
-PS1='[\u@\h \W]\$ '
+PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
