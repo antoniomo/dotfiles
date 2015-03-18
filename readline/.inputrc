@@ -1,5 +1,16 @@
 $include /etc/inputrc
 set editing-mode vi
+# See insert/command mode
+set show-mode-in-prompt on
+# Avoid delay when hitting esc
+set keyseq-timeout 100
+# Show all completions as soon as I press tab, even if there's more than one
+set show-all-if-ambiguous on
+# Ignore case
+set completion-ignore-case on
+# on menu-complete, first display the common prefix, then cycle through the
+# options when hitting TAB
+set menu-complete-display-prefix on
 $if mode=vi
   set keymap vi-command
   # these are for vi-command mode
@@ -11,6 +22,11 @@ $if mode=vi
   # these are for vi-insert mode
   "\e[A": history-search-backward
   "\e[B": history-search-forward
+  # Pressing tab will list all completions & select the first one. Pressing it
+  # again will cycle through available completions.
+  TAB: menu-complete
+  # Shift-TAB cycles completions backward
+  "\e[Z": menu-complete-backward
 $endif
 # Don't echo control characters like ctrl-c
 # set echo-control-characters off
