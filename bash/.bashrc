@@ -17,6 +17,8 @@ stty -ixon
 
 # History control, ignore duplicates and whitespace
 export HISTCONTROL=ignoreboth
+# When a shell exists, append to the history file, don't overwrite it
+shopt -s histappend
 
 # Autocd on path
 shopt -s autocd
