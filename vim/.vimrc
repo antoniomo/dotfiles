@@ -19,6 +19,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-unimpaired'
 " Git plugin
 Plugin 'tpope/vim-fugitive'
+" Netrw file manager plugin extension
+Plugin 'tpope/vim-vinegar'
 " Surrounds plugin
 Plugin 'tpope/vim-surround'
 " Git changes as signs
@@ -116,6 +118,9 @@ autocmd FileType python setlocal ts=4 sts=4 sw=4 et
 
 " Don't expand tabs on makefiles
 autocmd FileType make setlocal noexpandtab
+
+" Netrw options
+let g:netrw_liststyle=3  " 3=Tree style
 
 " Autoreload .vimrc on write
 augroup reload_vimrc " {
