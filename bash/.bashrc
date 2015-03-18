@@ -32,9 +32,12 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 # Fasd extra alias
-alias v='f -e vim' # quick opening files with vim
-alias o='a -e xdg-open' # quick opening files with xdg-open
+alias v='f -e vim'  # quick opening files with vim
+alias vv='f -i -e vim'  # opening files with vim and fasd interactive
+alias o='a -e xdg-open'  # quick opening files/directories with xdg-open
+alias oo='a -i -e xdg-open'  # opening files/directories with fasd interactive
 
+# General aliases
 alias g=git
 alias ls='ls -F --color=auto'
 alias ll='ls -lhA'
