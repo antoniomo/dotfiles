@@ -63,4 +63,5 @@ alias histg='history | grep'
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export PROMPT_DIRTRIM=2
 PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
