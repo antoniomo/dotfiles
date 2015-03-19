@@ -52,6 +52,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 " Hex mode with binary files (open with vim -b file or use :Hexmode)
 Plugin 'fidian/hexmode'
+" Jinja2 support
+Plugin 'mitsuhiko/vim-jinja'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
