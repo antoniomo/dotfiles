@@ -115,7 +115,7 @@ set statusline+=%=       " left/right separator, things after this go to the rig
 set statusline+=[%{&ff}\| " file format (endline type, etc)
 set statusline+=%{strlen(&fenc)?&fenc:'none'}\|  " file encoding
 set statusline+=%Y]\     " filetype
-set statusline+=%c\|     " cursor column
+set statusline+=%c:     " cursor column
 set statusline+=%l/%L    " cursor line/total lines
 set statusline+=\ %P     " percent through file
 
