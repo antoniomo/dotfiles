@@ -53,6 +53,7 @@ complete -o default -o nospace -F _git g
 # General aliases
 alias ls='ls -F --color=auto'
 alias ll='ls -lhA'
+alias tree='tree -C'
 alias ..='cd ..'
 alias fhere='find . -iname '
 alias ps='ps auxf'
