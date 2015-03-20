@@ -98,6 +98,27 @@ set colorcolumn=+1
 " Minimum context lines above/below when scrolling
 set scrolloff=5
 
+" Statusline options
+" See `:help statusline` for more built-in flags
+" See also:
+" http://got-ravings.blogspot.fi/2008/08/vim-pr0n-making-statuslines-that-own.html
+" http://got-ravings.blogspot.fi/search/label/statuslines
+set statusline=          " Clear the statusline when vimrc is loaded
+set statusline+=[%n]\    " buffer number
+set statusline+=%<%.40f\   " file name
+set statusline+=%h       " help file flag
+set statusline+=%m       " modified flag
+set statusline+=%r       " read only flag
+set statusline+=%w       " preview window flag
+set statusline+=%{fugitive#statusline()} " Git branch
+set statusline+=%=       " left/right separator, things after this go to the right
+set statusline+=[%{&ff}\| " file format (endline type, etc)
+set statusline+=%{strlen(&fenc)?&fenc:'none'}\|  " file encoding
+set statusline+=%Y]\     " filetype
+set statusline+=%c\|     " cursor column
+set statusline+=%l/%L    " cursor line/total lines
+set statusline+=\ %P     " percent through file
+
 " See trailing whitespaces, tabs...
 runtime! plugin/sensible.vim
 set list
