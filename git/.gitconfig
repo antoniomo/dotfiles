@@ -25,3 +25,5 @@
 	ctags = !.git/hooks/ctags
 [init]
 	templatedir = ~/.git_template
+[difftool]
+	prompt = false
