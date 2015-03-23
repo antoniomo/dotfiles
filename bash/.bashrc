@@ -26,19 +26,6 @@ shopt -s autocd
 # Line wrap on window resize
 shopt -s checkwinsize
 
-# Fasd initialization, with cache (faster)
-fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
-# Fasd extra alias
-alias v='f -e vim'  # quick opening files with vim
-alias vv='f -i -e vim'  # opening files with vim and fasd interactive
-alias o='a -e xdg-open'  # quick opening files/directories with xdg-open
-alias oo='a -i -e xdg-open'  # opening files/directories with fasd interactive
-
 # Git stuff
 source /usr/share/git/completion/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=1
@@ -68,3 +55,18 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export PROMPT_DIRTRIM=2
 PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
+
+# Fasd initialization, with cache (faster)
+# Must be run after above PROMPT_COMMAND definition
+fasd_cache="$HOME/.fasd-init-bash"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+fi
+source "$fasd_cache"
+unset fasd_cache
+# Fasd extra alias
+alias v='f -e vim'  # quick opening files with vim
+alias vv='f -i -e vim'  # opening files with vim and fasd interactive
+alias o='a -e xdg-open'  # quick opening files/directories with xdg-open
+alias oo='a -i -e xdg-open'  # opening files/directories with fasd interactive
+
