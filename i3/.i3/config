@@ -198,11 +198,10 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
-# Set low/high res wallpepers
-set $wallpaperl /home/antonio/Data/Wallpapers/a_man-wallpaper-1366x768.png
-set $wallpaperh /home/antonio/Data/Wallpapers/a_man-wallpaper-1920x1080.png
-# Set dual-monitor backgrounds
-exec --no-startup-id feh --bg-scale $wallpaperl --bg-scale $wallpaperh
+# Set wallpepers path
+set $wallpaperp /home/antonio/Data/Wallpapers/*
+# Set backgrounds
+exec --no-startup-id feh --bg-scale --randomize $wallpaperp
 
 # Dunst notification daemon
 exec --no-startup-id dunst -config ~/.i3/dunstrc
