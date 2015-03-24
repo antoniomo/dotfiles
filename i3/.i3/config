@@ -199,7 +199,7 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # Set wallpepers path
-set $wallpaperp /home/antonio/Data/Wallpapers/*
+set $wallpaperp ~/.wallpapers/*
 # Set backgrounds
 exec --no-startup-id feh --bg-scale --randomize $wallpaperp
 
