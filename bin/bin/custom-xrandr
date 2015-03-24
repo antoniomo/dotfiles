@@ -9,5 +9,15 @@ if [ $? -eq 0 ]; then
         # Something went wrong. Autoconfigure the internal monitor and disable the external one
         xrandr --output LVDS1 --mode auto --output VGA1 --off
     fi
+else
+    xrandr | grep DisplayPort-1 | grep " connected "
+    if [ $? -eq 0 ]; then
+        # External monitor is connected
+        xrandr --output DisplayPort-1 --primary --auto --right-of LVDS-0
+        if [ $? -ne 0 ]; then
+            # Something went wrong. Autoconfigure the internal monitor and disable the external one
+            xrandr --output LVDS-0 --mode auto --output DisplayPort-1 --off
+        fi
+    fi
 fi
 
