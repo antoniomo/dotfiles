@@ -1,4 +1,4 @@
 #!/bin/sh
 # Swap background wallpapers
 
-feh --bg-fill --randomize ~/.wallpapers/*
+feh --bg-scale --randomize ~/.wallpapers/*
