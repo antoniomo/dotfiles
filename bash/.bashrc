@@ -17,11 +17,17 @@ stty -ixon
 
 # History control, ignore duplicates and whitespace
 export HISTCONTROL=ignoreboth
-# When a shell exists, append to the history file, don't overwrite it
+# When a shell exits, append to the history file, don't overwrite it
 shopt -s histappend
 
 # Autocd on path
 shopt -s autocd
+
+# Fix minor cd typos
+shopt -s cdspell
+
+# Fix minor directory name typos
+shopt -s dirspell
 
 # Line wrap on window resize
 shopt -s checkwinsize
