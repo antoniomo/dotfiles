@@ -170,7 +170,7 @@ bindsym $mod+r mode "resize"
 bar {
   mode hide  # Hidden by default
   modifier $mod  # Show the bar on mod keypress
-  position top
+  position bottom
   status_command i3status
   font pango: Source Sans Pro, Icons 10
   colors {
