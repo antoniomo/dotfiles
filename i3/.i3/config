@@ -170,6 +170,7 @@ bindsym $mod+r mode "resize"
 bar {
   mode hide  # Hidden by default
   modifier $mod  # Show the bar on mod keypress
+  position top
   status_command i3status
   font pango: Inconsolata 10, Icons 8
   colors {
