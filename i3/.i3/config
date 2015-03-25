@@ -18,7 +18,7 @@ set $mod Mod4
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono 8
-font pango:Inconsolata 10
+font pango:Source Sans Pro 10
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -172,7 +172,7 @@ bar {
   modifier $mod  # Show the bar on mod keypress
   position top
   status_command i3status
-  font pango: Inconsolata 10, Icons 8
+  font pango: Source Sans Pro, Icons 10
   colors {
     separator #666666
     background #333333
