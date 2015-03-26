@@ -17,7 +17,8 @@ order += "disk /home/"
 order += "load"
 order += "battery 0"
 order += "volume master"
-order += "tztime local"
+order += "tztime date"
+order += "tztime time"
 
 wireless _first_ {
         format_up = " (%quality at %essid) %ip"
@@ -42,8 +43,12 @@ run_watch VPN {
         pidfile = "/var/run/vpnc/pid"
 }
 
-tztime local {
-        format = " %Y-%m-%d %a  %H:%M:%S"
+tztime date {
+        format = " %a %d-%b-%Y"
+}
+
+tztime time {
+        format = " %H:%M:%S"
 }
 
 load {
