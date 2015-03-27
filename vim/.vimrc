@@ -27,6 +27,8 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-surround'
 " Git changes as signs
 Plugin 'airblade/vim-gitgutter'
+" Autoclosing of parenthesis, brackets...
+Plugin 'Raimondi/delimitMate'
 " i3 config syntax highlighting
 Plugin 'PotatoesMaster/i3-vim-syntax'
 " tmux config syntax highlighting
