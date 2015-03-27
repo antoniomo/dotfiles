@@ -3,7 +3,7 @@
 	name = Antonio M. Macías Ojeda
 [core]
 	editor = vim
-	excludesfile = /Users/antonio/.gitignore
+	excludesfile = ~/.gitignore
 [diff]
 	tool = vimdiff
 [merge]
