@@ -13,6 +13,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 " Indentation autodetection
 Plugin 'tpope/vim-sleuth'
+" Dot (.) repeat for plugin commands
+Plugin 'tpope/vim-repeat'
 " Comment/uncomment plugin
 Plugin 'tpope/vim-commentary'
 " Useful extra mappings
