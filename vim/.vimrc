@@ -122,7 +122,10 @@ set statusline+=\ %P     " percent through file
 " See trailing whitespaces, tabs...
 runtime! plugin/sensible.vim
 set list
-let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+  let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+endif
 
 " Trailing whitespace stripper
 fun! <SID>StripTrailingWhitespaces()
