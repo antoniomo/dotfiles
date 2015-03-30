@@ -88,12 +88,12 @@ set directory=~/.vim/swap
 set undodir=~/.vim/undo
 set backupdir=~/.vim/backup
 
+" Toggle dark/light bg
+call togglebg#map("<f3>")
 " Solarized colorscheme
 colorscheme solarized
 "Default to the dark bg
 set background=dark
-" Toggle dark/light bg
-call togglebg#map("<f3>")
 
 " Highlight current cursor line
 set cursorline
@@ -223,3 +223,8 @@ cmap w!! w !sudo tee > /dev/null %
 
 " Enter the explorer if no file was passed
 autocmd VimEnter * if !argc() | Explore | endif
+
+" Git gutter column color = number color column (LineNr)
+highlight clear SignColumn
+" vim-gitgutter will use Sign Column to set its color, reload it.
+call gitgutter#highlight#define_highlights()
