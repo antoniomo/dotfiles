@@ -163,6 +163,8 @@ augroup END " }
 " Syntastic options
 " Check on open as well as save (default)
 let g:syntastic_check_on_open=1
+let g:syntastic_python_python_exec='/bin/env python2'  " Use py2 as default
+let g:syntastic_python_flake8_exec='/bin/env python2'  " Use py2 as default
 
 " ctrlp options
 " Search in files, buffers, and MRU at the same time
