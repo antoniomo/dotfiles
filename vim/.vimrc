@@ -45,6 +45,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 " Rainbow parenthesis and other symbols
 Plugin 'kien/rainbow_parentheses.vim'
+" Vim show marks and more
+Plugin 'kshenoy/vim-signature'
 " Markdown and pandoc stuff
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
@@ -165,6 +167,33 @@ let g:syntastic_check_on_open=1
 " ctrlp options
 " Search in files, buffers, and MRU at the same time
 let g:ctrlp_cmd='CtrlPMixed'
+
+" Interop between git gutter and signature
+" Taken from: https://gist.github.com/kshenoy/14f2c4ce7af28b54882b
+" This function returns the highlight group used by git-gutter depending on how the line was edited (added/modified/deleted)
+" It must be placed in the vimrc (or in any file that is sourced by vim)
+function! SignatureGitGutter(lnum)
+  let gg_line_state = filter(copy(gitgutter#diff#process_hunks(gitgutter#hunk#hunks())), 'v:val[0] == a:lnum')
+  "echo gg_line_state
+
+  if len(gg_line_state) == 0
+    return 'Exception'
+  endif
+
+  if gg_line_state[0][1] =~ 'added'
+    return 'GitGutterAdd'
+  elseif gg_line_state[0][1] =~ 'modified'
+    return 'GitGutterChange'
+  elseif gg_line_state[0][1] =~ 'removed'
+    return 'GitGutterDelete'
+  endif
+endfunction
+
+" Next, assign it to g:SignatureMarkTextHL
+let g:SignatureMarkTextHL = 'SignatureGitGutter(a:lnum)'
+
+" Now everytime Signature wants to place a sign, it calls this function and thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL
+" The advantage of doing it this way is that this decouples Signature from git-gutter. Both can remain unaware of the other.
 
 " InstantRst options
 let g:instant_rst_localhost_only=1
