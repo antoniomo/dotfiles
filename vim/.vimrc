@@ -117,6 +117,10 @@ set statusline+=%m       " modified flag
 set statusline+=%r       " read only flag
 set statusline+=%w       " preview window flag
 set statusline+=%{fugitive#statusline()} " Git branch
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 set statusline+=%=       " left/right separator, things after this go to the right
 set statusline+=[%{&ff}\| " file format (endline type, etc)
 set statusline+=%{strlen(&fenc)?&fenc:'none'}\|  " file encoding
@@ -163,8 +167,9 @@ augroup END " }
 " Syntastic options
 " Check on open as well as save (default)
 let g:syntastic_check_on_open=1
-let g:syntastic_python_python_exec='/bin/env python2'  " Use py2 as default
-let g:syntastic_python_flake8_exec='/bin/env python2'  " Use py2 as default
+let g:syntastic_aggregate_errors=1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_python_python_exec='python2'  " Use py2 as default
 
 " ctrlp options
 " Search in files, buffers, and MRU at the same time
