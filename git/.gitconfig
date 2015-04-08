@@ -11,6 +11,7 @@
 [push]
 	default = simple
 [alias]
+# Absolutely awesome post: http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 	co = checkout
 	br = branch
 	ci = commit
@@ -22,6 +23,15 @@
 	u = add -u
 	aa = add -A
 	a = add
+	filelog = log -u
+	fl = log -u
+	ls = log --pretty=format:'%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]'
+	lsd= log --pretty=format:'%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]' --date=short
+	lsnc = log --pretty=format:'%h%d %s [%cn]'
+	ll = log --pretty=format:'%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]' --numstat
+	lld = log --pretty=format:'%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]' --numstat --date=short
+	llnc = log --pretty=format:'%h%d %s [%cn]' --numstat
+	la = "!git config -l | grep alias | cut -c 7-"
 	ctags = !.git/hooks/ctags
 [init]
 	templatedir = ~/.git_template
