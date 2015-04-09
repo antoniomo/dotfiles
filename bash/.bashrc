@@ -111,9 +111,10 @@ set_last_st (){
 last_st () {
   # Outputs last command status
   if [[ $last_st == 0 ]]; then
-    ret="$blue[$green:)$blue]$reset"
+    # ret="$blue[$green:)$blue]$reset"
+    ret=""
   else
-    ret="$blue[$bold$white$last_st $red:_$blue]$reset"
+    ret="$bold$white$last_st $red:_$reset\n"
   fi
   echo $ret
 }
@@ -133,4 +134,4 @@ end_prompt () {
   echo $ret
 }
 
-PROMPT_COMMAND='set_last_st;__git_ps1 "`venv`$blue\u@\h:$yellow\w$reset" "`last_st``end_prompt` ";_fasd_prompt_func'
+PROMPT_COMMAND='set_last_st;__git_ps1 "`last_st``venv`$blue\u@\h:$yellow\w$reset" "`end_prompt` ";_fasd_prompt_func'
