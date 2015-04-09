@@ -95,9 +95,12 @@ alias oo='a -i -e xdg-open'  # opening files/directories with fasd interactive
 # Prompt stuff
 # http://mywiki.wooledge.org/BashFAQ/037
 reset="\[`tput sgr0`\]"          # Text Reset
+bold="\[`tput bold`\]"           # Bold
 red="\[`tput setaf 1`\]"         # Red
 green="\[`tput setaf 2`\]"       # Green
 yellow="\[`tput setaf 3`\]"      # Yellow
+blue="\[`tput setaf 4`\]"        # Blue
+white="\[`tput setaf 7`\]"       # White
 export PROMPT_DIRTRIM=2
 
 set_last_st (){
@@ -108,9 +111,9 @@ set_last_st (){
 last_st () {
   # Outputs last command status
   if [[ $last_st == 0 ]]; then
-    ret="[$green:)$reset]"
+    ret="$blue[$green:)$blue]$reset"
   else
-    ret="[$last_st $red:_$reset]"
+    ret="$blue[$bold$white$last_st $red:_$blue]$reset"
   fi
   echo $ret
 }
@@ -120,4 +123,14 @@ venv () {
   echo ${VIRTUAL_ENV:+($green`basename $VIRTUAL_ENV`$reset)}
 }
 
-PROMPT_COMMAND='set_last_st;__git_ps1 "`venv`\u@\h:$yellow\w$reset `last_st`" "\\\$ ";_fasd_prompt_func'
+end_prompt () {
+  # Red # or green $ for root/normal user prompt
+  if [[ $EUID == 0 ]]; then
+    ret="$bold$red#$reset"
+  else
+    ret="$green\$$reset"
+  fi
+  echo $ret
+}
+
+PROMPT_COMMAND='set_last_st;__git_ps1 "`venv`$blue\u@\h:$yellow\w$reset" "`last_st``end_prompt` ";_fasd_prompt_func'
