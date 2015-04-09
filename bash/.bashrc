@@ -65,9 +65,9 @@ alias mkdir='mkdir -pv'
 alias histg='history | grep'
 
 # Systemctl aliases
-alias slist='sudo systemctl list-units'
-alias sgrep='sudo systemctl list-units|grep -i'
-alias sstatus='sudo systemctl status'
+alias sls='sudo systemctl list-units'
+alias sg='sudo systemctl list-units|grep -i'
+alias sst='sudo systemctl status'
 alias sstart='sudo systemctl start'
 alias sstop='sudo systemctl stop'
 alias srestart='sudo systemctl restart'
