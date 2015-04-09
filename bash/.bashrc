@@ -78,20 +78,13 @@ alias sdisable='sudo systemctl disable'
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-# Prompt stuff
-# http://mywiki.wooledge.org/BashFAQ/037
-reset=$(tput sgr0)          # Text Reset
-green=$(tput setaf 2)       # Green
-export PROMPT_DIRTRIM=2
-PROMPT_COMMAND='__git_ps1 "${VIRTUAL_ENV:+(\[$green\]`basename $VIRTUAL_ENV`\[$reset\]) }\u@\h:\w" "\\\$ "'
-
 # Fasd initialization, with cache (faster)
-# Must be run after above PROMPT_COMMAND definition
 fasd_cache="$HOME/.fasd-init-bash"
 if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
   fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
 fi
 source "$fasd_cache"
+# Sets _fasd_prompt_func in PROMPT_COMMAND, re-add it if redefined
 unset fasd_cache
 # Fasd extra alias
 alias v='f -e vim'  # quick opening files with vim
@@ -99,3 +92,32 @@ alias vv='f -i -e vim'  # opening files with vim and fasd interactive
 alias o='a -e xdg-open'  # quick opening files/directories with xdg-open
 alias oo='a -i -e xdg-open'  # opening files/directories with fasd interactive
 
+# Prompt stuff
+# http://mywiki.wooledge.org/BashFAQ/037
+reset="\[`tput sgr0`\]"          # Text Reset
+red="\[`tput setaf 1`\]"         # Red
+green="\[`tput setaf 2`\]"       # Green
+yellow="\[`tput setaf 3`\]"      # Yellow
+export PROMPT_DIRTRIM=2
+
+set_last_st (){
+  # This must be set first in PROMPT_COMMAND
+  last_st=$?
+}
+
+last_st () {
+  # Outputs last command status
+  if [[ $last_st == 0 ]]; then
+    ret="[$green:)$reset]"
+  else
+    ret="[$last_st $red:_$reset]"
+  fi
+  echo $ret
+}
+
+venv () {
+  # Outputs active virtualenv, if any
+  echo ${VIRTUAL_ENV:+($green`basename $VIRTUAL_ENV`$reset)}
+}
+
+PROMPT_COMMAND='set_last_st;__git_ps1 "`venv`\u@\h:$yellow\w$reset `last_st`" "\\\$ ";_fasd_prompt_func'
