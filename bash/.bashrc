@@ -34,6 +34,8 @@ shopt -s checkwinsize
 
 # Virtualenvwrapper stuff
 export WORKON_HOME=~/.virtualenvs
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+# We set the venv prompt PROMPT_COMMAND directly
 source /usr/bin/virtualenvwrapper.sh
 
 # Git stuff
@@ -64,8 +66,13 @@ alias histg='history | grep'
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+# Prompt stuff
+# https://wiki.archlinux.org/index.php/Color_Bash_Prompt#List_of_colors_for_prompt_and_Bash
+Color_Off='\e[0m'       # Text Reset
+Green='\e[0;32m'        # Green
 export PROMPT_DIRTRIM=2
-PROMPT_COMMAND='__git_ps1 "\u@\h:\w" "\\\$ "'
+PROMPT_COMMAND='__git_ps1 "${VIRTUAL_ENV:+(${Green}`basename $VIRTUAL_ENV`$Color_Off) }\u@\h:\w" "\\\$ "'
 
 # Fasd initialization, with cache (faster)
 # Must be run after above PROMPT_COMMAND definition
