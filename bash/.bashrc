@@ -68,11 +68,10 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # Prompt stuff
-# https://wiki.archlinux.org/index.php/Color_Bash_Prompt#List_of_colors_for_prompt_and_Bash
-Color_Off='\e[0m'       # Text Reset
-Green='\e[0;32m'        # Green
+reset=$(tput sgr0)          # Text Reset
+green=$(tput setaf 2)       # Green
 export PROMPT_DIRTRIM=2
-PROMPT_COMMAND='__git_ps1 "${VIRTUAL_ENV:+(${Green}`basename $VIRTUAL_ENV`$Color_Off) }\u@\h:\w" "\\\$ "'
+PROMPT_COMMAND='__git_ps1 "${VIRTUAL_ENV:+(${green}`basename $VIRTUAL_ENV`$reset) }\u@\h:\w" "\\\$ "'
 
 # Fasd initialization, with cache (faster)
 # Must be run after above PROMPT_COMMAND definition
