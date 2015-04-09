@@ -68,10 +68,11 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 
 # Prompt stuff
+# http://mywiki.wooledge.org/BashFAQ/037
 reset=$(tput sgr0)          # Text Reset
 green=$(tput setaf 2)       # Green
 export PROMPT_DIRTRIM=2
-PROMPT_COMMAND='__git_ps1 "${VIRTUAL_ENV:+(${green}`basename $VIRTUAL_ENV`$reset) }\u@\h:\w" "\\\$ "'
+PROMPT_COMMAND='__git_ps1 "${VIRTUAL_ENV:+(\[$green\]`basename $VIRTUAL_ENV`\[$reset\]) }\u@\h:\w" "\\\$ "'
 
 # Fasd initialization, with cache (faster)
 # Must be run after above PROMPT_COMMAND definition
