@@ -32,6 +32,10 @@ shopt -s dirspell
 # Line wrap on window resize
 shopt -s checkwinsize
 
+# Virtualenvwrapper stuff
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+
 # Git stuff
 source /usr/share/git/completion/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=1
