@@ -64,6 +64,17 @@ alias du='ncdu'
 alias mkdir='mkdir -pv'
 alias histg='history | grep'
 
+# Systemctl aliases
+alias slist='sudo systemctl list-units'
+alias sgrep='sudo systemctl list-units|grep -i'
+alias sstatus='sudo systemctl status'
+alias sstart='sudo systemctl start'
+alias sstop='sudo systemctl stop'
+alias srestart='sudo systemctl restart'
+alias sreload='sudo systemctl reload'
+alias senable='sudo systemctl enable'
+alias sdisable='sudo systemctl disable'
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
