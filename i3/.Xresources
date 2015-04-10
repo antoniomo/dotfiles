@@ -84,6 +84,7 @@ URxvt*loginShell: true
 Urxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
 URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode
-URxvt.perl-ext-common: default,matcher,osc-xterm-clipboard
+URxvt.perl-ext-common: default,matcher,osc-xterm-clipboard,fork-here
 URxvt.urlLauncher: /usr/bin/firefox
 URxvt.matcher.button: 1
+URxvt.keysym.Mod4-Shift-Return: perl:fork-here:fork-at-cwd
