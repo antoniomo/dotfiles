@@ -81,10 +81,17 @@ URxvt*depth: 32
 URxvt*borderless: 1
 URxvt*scrollBar: false
 URxvt*loginShell: true
-Urxvt*secondaryScroll: true # Enable Shift-PageUp/Down in screen
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+URxvt.secondaryScreen: true
+URxvt.secondaryScroll: false
 URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode
 URxvt.perl-ext-common: default,matcher,osc-xterm-clipboard,fork-here
-URxvt.urlLauncher: /usr/bin/firefox
+URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 1
 URxvt.keysym.Mod4-Shift-Return: perl:fork-here:fork-at-cwd
