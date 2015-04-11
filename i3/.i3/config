@@ -172,6 +172,7 @@ bar {
   modifier $mod  # Show the bar on mod keypress
   position bottom
   status_command i3status
+  tray_output primary
   font pango: Source Sans Pro Ultra-Light, Icons 10
   colors {
     separator #666666
@@ -201,6 +202,11 @@ exec --no-startup-id parcellite
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+# Playerctl (goes to vlc, spotify, and a bunch of others) controls
+bindsym XF86AudioPlay exec playerctl play-pause
+# bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrevious exec playerctl previous
 
 # Set wallpepers path
 set $wallpaperp ~/.wallpapers/*
