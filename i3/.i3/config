@@ -194,8 +194,8 @@ exec --no-startup-id ~/bin/mylayout
 # Urxvt daemon
 exec --no-startup-id urxvtd -q -f -o
 
-# Parcellite clipboard daemon
-exec --no-startup-id parcellite -d
+# Parcellite clipboard
+exec --no-startup-id parcellite
 
 # Pulse audio volume control
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
