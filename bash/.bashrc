@@ -110,13 +110,9 @@ set_last_st (){
 
 last_st () {
   # Outputs last command status
-  if [[ $last_st == 0 ]]; then
-    # ret="$blue[$green:)$blue]$reset"
-    ret=""
-  else
-    ret="$bold$white$last_st $red:_$reset\n"
+  if [[ $last_st != 0 ]]; then
+    echo "$bold$white$last_st $red:_$reset\n"
   fi
-  echo $ret
 }
 
 venv () {
@@ -127,18 +123,17 @@ venv () {
 ssh_host () {
   # Hostname only on ssh connections
   if [[ -n $SSH_CLIENT ]]; then
-    echo "$blue\u@\h"
+    echo "$blue\u@\h:"
   fi
 }
 
 root_prompt () {
   # Red # or green $ for root/normal user prompt
   if [[ $EUID == 0 ]]; then
-    ret="$bold$red#$reset"
+    echo "$bold$red#$reset"
   else
-    ret="$green\$$reset"
+    echo "$green\$$reset"
   fi
-  echo $ret
 }
 
-PROMPT_COMMAND='set_last_st;__git_ps1 "`last_st``venv``ssh_host`:$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func'
+PROMPT_COMMAND='set_last_st;__git_ps1 "`last_st``venv``ssh_host`$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func'
