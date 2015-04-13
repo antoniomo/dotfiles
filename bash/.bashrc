@@ -111,7 +111,7 @@ set_last_st (){
 last_st () {
   # Outputs last command status
   if [[ $last_st != 0 ]]; then
-    echo "$bold$white$last_st $red:_$reset\n"
+    echo "$bold$blue[$white$last_st $red:_$blue]$reset\n"
   fi
 }
 
