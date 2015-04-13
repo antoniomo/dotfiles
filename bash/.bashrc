@@ -124,7 +124,14 @@ venv () {
   echo ${VIRTUAL_ENV:+($green`basename $VIRTUAL_ENV`$reset)}
 }
 
-end_prompt () {
+ssh_host () {
+  # Hostname only on ssh connections
+  if [[ -n $SSH_CLIENT ]]; then
+    echo "@\h"
+  fi
+}
+
+root_prompt () {
   # Red # or green $ for root/normal user prompt
   if [[ $EUID == 0 ]]; then
     ret="$bold$red#$reset"
@@ -134,4 +141,4 @@ end_prompt () {
   echo $ret
 }
 
-PROMPT_COMMAND='set_last_st;__git_ps1 "`last_st``venv`$blue\u@\h:$yellow\w$reset" "`end_prompt` ";_fasd_prompt_func'
+PROMPT_COMMAND='set_last_st;__git_ps1 "`last_st``venv`$blue\u`ssh_host`:$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func'
