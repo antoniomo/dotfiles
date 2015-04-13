@@ -103,15 +103,15 @@ blue="\[`tput setaf 4`\]"        # Blue
 white="\[`tput setaf 7`\]"       # White
 export PROMPT_DIRTRIM=2
 
-set_last_st (){
+set_last_err (){
   # This must be set first in PROMPT_COMMAND
   last_st=$?
 }
 
-last_st () {
-  # Outputs last command status
+last_err () {
+  # Outputs last command error code
   if [[ $last_st != 0 ]]; then
-    echo "$bold$blue[$white$last_st $red:_$blue]$reset\n"
+    echo "$red$last_st :($reset"
   fi
 }
 
@@ -139,21 +139,28 @@ root_prompt () {
 # From
 # http://stackoverflow.com/questions/1862510/how-can-the-last-commands-wall-time-be-put-in-the-bash-prompt/2732282
 
-function timer_start {
+timer_start () {
   timer=${timer:-$SECONDS}
 }
 
-function timer_stop {
+timer_stop () {
   elapsed_time=$(($SECONDS - $timer))
   unset timer
 }
 
-function timer_show {
+timer_show () {
   # Show time elapsed on last command, for slow commands
   if [[ $elapsed_time -ge 10 ]]; then
-    echo "$bold$blue[$red$elapsed_time$white seconds$blue]$reset\n"
+    echo "$yellow$elapsed_time$white seconds$reset"
+  fi
+}
+
+last_cmd_status () {
+  ret="`last_err``timer_show`"
+  if [[ -n $ret ]]; then
+    echo "$bold$blue[$ret$blue]$reset\n"
   fi
 }
 
 trap 'timer_start' DEBUG
-PROMPT_COMMAND='set_last_st;timer_stop;__git_ps1 "`last_st``timer_show``venv``ssh_host`$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func;timer_stop'
+PROMPT_COMMAND='set_last_err;timer_stop;__git_ps1 "`last_cmd_status``venv``ssh_host`$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func;timer_stop'
