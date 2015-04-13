@@ -127,7 +127,7 @@ venv () {
 ssh_host () {
   # Hostname only on ssh connections
   if [[ -n $SSH_CLIENT ]]; then
-    echo "@\h"
+    echo "$blue\u@\h"
   fi
 }
 
@@ -141,4 +141,4 @@ root_prompt () {
   echo $ret
 }
 
-PROMPT_COMMAND='set_last_st;__git_ps1 "`last_st``venv`$blue\u`ssh_host`:$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func'
+PROMPT_COMMAND='set_last_st;__git_ps1 "`last_st``venv``ssh_host`:$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func'
