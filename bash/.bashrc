@@ -136,4 +136,24 @@ root_prompt () {
   fi
 }
 
-PROMPT_COMMAND='set_last_st;__git_ps1 "`last_st``venv``ssh_host`$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func'
+# From
+# http://stackoverflow.com/questions/1862510/how-can-the-last-commands-wall-time-be-put-in-the-bash-prompt/2732282
+
+function timer_start {
+  timer=${timer:-$SECONDS}
+}
+
+function timer_stop {
+  elapsed_time=$(($SECONDS - $timer))
+  unset timer
+}
+
+function timer_show {
+  # Show time elapsed on last command, for slow commands
+  if [[ $elapsed_time -ge 10 ]]; then
+    echo "$bold$blue[$red$elapsed_time$white seconds$blue]$reset\n"
+  fi
+}
+
+trap 'timer_start' DEBUG
+PROMPT_COMMAND='set_last_st;timer_stop;__git_ps1 "`last_st``timer_show``venv``ssh_host`$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func;timer_stop'
