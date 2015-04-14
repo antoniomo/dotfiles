@@ -117,7 +117,7 @@ set_last_err (){
 last_err () {
   # Outputs last command error code
   if [[ $last_st != 0 ]]; then
-    echo "$white$last_st $red:("
+    echo "${white}Error:$red $last_st"
   fi
 }
 
@@ -157,7 +157,7 @@ timer_stop () {
 timer_show () {
   # Show time elapsed on last command, for slow commands
   if [[ $elapsed_time -ge 10 ]]; then
-    echo "$red$elapsed_time$white seconds"
+    printf "${white}Time: $red%02d$white:$red%02d$white:$red%02d" $(( $elapsed_time/3600 )) $(( $elapsed_time/60%60 )) $(( $elapsed_time % 60 ))
   fi
 }
 
