@@ -111,7 +111,7 @@ set_last_err (){
 last_err () {
   # Outputs last command error code
   if [[ $last_st != 0 ]]; then
-    echo "$red$last_st :("
+    echo "$white$last_st $red:("
   fi
 }
 
@@ -167,7 +167,7 @@ last_cmd_status () {
   fi
   if [[ -n $ret2 ]]; then
     if $prnt; then
-      ret+="$blue|"
+      ret+="$blue | "
     fi
     ret+=$ret2
     prnt=true
