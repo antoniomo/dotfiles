@@ -32,11 +32,16 @@ shopt -s dirspell
 # Line wrap on window resize
 shopt -s checkwinsize
 
-# Virtualenvwrapper stuff
+# Virtualenvwrapper and other python stuff
 export WORKON_HOME=~/.virtualenvs
 # We set the venv prompt PROMPT_COMMAND directly
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 source /usr/bin/virtualenvwrapper_lazy.sh
+
+pyclean () {
+  find . -type f -name "*.py[co]" -delete
+  find . -type d -name "__pycache__" -delete
+}
 
 # Git stuff
 source /usr/share/git/completion/git-prompt.sh
