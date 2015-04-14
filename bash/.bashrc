@@ -111,7 +111,7 @@ set_last_err (){
 last_err () {
   # Outputs last command error code
   if [[ $last_st != 0 ]]; then
-    echo "$red$last_st :($reset"
+    echo "$red$last_st :("
   fi
 }
 
@@ -151,14 +151,29 @@ timer_stop () {
 timer_show () {
   # Show time elapsed on last command, for slow commands
   if [[ $elapsed_time -ge 10 ]]; then
-    echo "$yellow$elapsed_time$white seconds$reset"
+    echo "$red$elapsed_time$white seconds"
   fi
 }
 
 last_cmd_status () {
-  ret="`last_err``timer_show`"
-  if [[ -n $ret ]]; then
-    echo "$bold$blue[$ret$blue]$reset\n"
+  # Print last command status
+  ret1=`last_err`
+  ret2=`timer_show`
+  ret="$bold$blue["
+  prnt=false
+  if [[ -n $ret1 ]]; then
+    ret+=$ret1
+    prnt=true
+  fi
+  if [[ -n $ret2 ]]; then
+    if $prnt; then
+      ret+="$blue|"
+    fi
+    ret+=$ret2
+    prnt=true
+  fi
+  if $prnt; then
+    echo "$ret$blue]$reset\n"
   fi
 }
 
