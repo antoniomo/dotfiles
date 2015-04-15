@@ -208,7 +208,11 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrevious exec playerctl previous
 
-# Set wallpepers path
+# Screenshot bindings
+bindsym --release $mod+Print exec --no-startup-id import -window root "$HOME/screenshot-$(date +'%Y-%m-%d %T').png"
+bindsym --release $mod+Shift+Print exec --no-startup-id import "$HOME/screenshot-$(date +'%Y-%m-%d %T').png"
+
+# Set wallpapers path
 set $wallpaperp ~/.wallpapers/*
 # Set backgrounds
 exec --no-startup-id feh --bg-scale --randomize $wallpaperp
