@@ -132,6 +132,29 @@ set statusline+=%c:     " cursor column
 set statusline+=%l/%L    " cursor line/total lines
 set statusline+=\ %P     " percent through file
 
+" Vim starts in normal mode, put green statusline
+runtime! plugin/sensible.vim
+hi StatusLine term=reverse cterm=reverse ctermfg=2 ctermbg=0
+" Change the status line color based on mode
+if version >= 700
+  " use magenta insert mode
+  au InsertEnter * hi StatusLine term=reverse cterm=reverse ctermfg=5 ctermbg=0
+  " use green otherwise
+  au InsertLeave * hi StatusLine term=reverse cterm=reverse ctermfg=2 ctermbg=0
+endif
+
+" Change cursor color according to mode
+if &term =~ "xterm\\|rxvt"
+  " use a magenta cursor in insert mode
+  let &t_SI = "\<Esc>]12;magenta\x7"
+  " use a green cursor otherwise
+  let &t_EI = "\<Esc>]12;green\x7"
+  " do it here so it's in normal mode at the start too
+  silent !echo -ne "\033]12;green\007"
+  " reset cursor when vim exits
+  autocmd VimLeave * silent !echo -ne "\033]12;\#93a1a1\007"
+endif
+
 " See trailing whitespaces, tabs...
 runtime! plugin/sensible.vim
 set list
@@ -181,8 +204,9 @@ let g:ctrlp_cmd='CtrlPMixed'
 
 " Interop between git gutter and signature
 " Taken from: https://gist.github.com/kshenoy/14f2c4ce7af28b54882b
-" This function returns the highlight group used by git-gutter depending on how the line was edited (added/modified/deleted)
-" It must be placed in the vimrc (or in any file that is sourced by vim)
+" This function returns the highlight group used by git-gutter depending on how
+" the line was edited (added/modified/deleted) It must be placed in the vimrc
+" (or in any file that is sourced by vim)
 function! SignatureGitGutter(lnum)
   let gg_line_state = filter(copy(gitgutter#diff#process_hunks(gitgutter#hunk#hunks())), 'v:val[0] == a:lnum')
   "echo gg_line_state
@@ -202,9 +226,10 @@ endfunction
 
 " Next, assign it to g:SignatureMarkTextHL
 let g:SignatureMarkTextHL = 'SignatureGitGutter(a:lnum)'
-
-" Now everytime Signature wants to place a sign, it calls this function and thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL
-" The advantage of doing it this way is that this decouples Signature from git-gutter. Both can remain unaware of the other.
+" Now everytime Signature wants to place a sign, it calls this function and
+" thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL The
+" advantage of doing it this way is that this decouples Signature from
+" git-gutter. Both can remain unaware of the other.
 
 " InstantRst options
 let g:instant_rst_localhost_only=1
