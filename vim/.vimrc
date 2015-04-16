@@ -79,9 +79,12 @@ filetype plugin indent on    " required
 " Mouse support
 set mouse=a
 
-" Smartcase searching
+" Search options
 set ignorecase
 set smartcase
+set hlsearch
+" Press return to clear search highlighting and any message already displayed.
+nnoremap <silent> <CR> :noh<Bar>:echo<CR>
 
 " Swap, undo and backup directories
 set directory=~/.vim/swap
