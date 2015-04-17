@@ -146,11 +146,11 @@ endif
 " Change cursor color according to mode
 if &term =~ "xterm\\|rxvt"
   " use a magenta cursor in insert mode
-  let &t_SI = "\<Esc>]12;magenta\x7"
+  let &t_SI = "\<Esc>]12;5\x7"
   " use a green cursor otherwise
-  let &t_EI = "\<Esc>]12;green\x7"
+  let &t_EI = "\<Esc>]12;2\x7"
   " do it here so it's in normal mode at the start too
-  silent !echo -ne "\033]12;green\007"
+  silent !echo -ne "\033]12;2\007"
   " reset cursor when vim exits
   autocmd VimLeave * silent !echo -ne "\033]12;\#93a1a1\007"
 endif
