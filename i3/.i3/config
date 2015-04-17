@@ -221,7 +221,7 @@ exec --no-startup-id feh --bg-scale --randomize $wallpaperp
 exec --no-startup-id dunst -config ~/.i3/dunstrc
 
 # Set locker
-exec --no-startup-id xss-lock -- i3lock
+exec --no-startup-id xss-lock -- i3lock -d
 
 # Set shutdown screen on mod+pause
 # Add a small delay to prevent suspend races
