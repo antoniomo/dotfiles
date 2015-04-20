@@ -81,6 +81,9 @@ alias sreload='sudo systemctl reload'
 alias senable='sudo systemctl enable'
 alias sdisable='sudo systemctl disable'
 
+# git+github.com:amacias/Oblique-Strategies.git
+alias strat='fortune ~/opt/Oblique-Strategies'
+
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
