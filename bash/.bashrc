@@ -80,6 +80,7 @@ alias srestart='sudo systemctl restart'
 alias sreload='sudo systemctl reload'
 alias senable='sudo systemctl enable'
 alias sdisable='sudo systemctl disable'
+alias skill='sudo systemctl kill'
 
 # git+github.com:amacias/Oblique-Strategies.git
 alias strat='fortune ~/opt/Oblique-Strategies'
