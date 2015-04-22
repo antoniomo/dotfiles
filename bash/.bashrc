@@ -86,7 +86,9 @@ alias skill='sudo systemctl kill'
 # git+github.com:amacias/Oblique-Strategies.git
 alias strat='fortune ~/opt/Oblique-Strategies'
 
+# Pager and editor options
 export LESSOPEN='|/usr/bin/lesspipe.sh %s'
+export LESS=-R
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
