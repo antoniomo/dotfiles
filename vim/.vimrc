@@ -196,7 +196,8 @@ augroup END " }
 let g:syntastic_check_on_open=1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_python_python_exec='python2'  " Use py2 as default
+let g:syntastic_python_flake8_args='--max-line-length=99'
+let g:syntastic_python_flake8_exec='flake8-python2'  " Use py2 as default
 
 " ctrlp options
 " Search in files, buffers, and MRU at the same time
