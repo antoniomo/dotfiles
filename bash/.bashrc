@@ -32,6 +32,9 @@ shopt -s dirspell
 # Line wrap on window resize
 shopt -s checkwinsize
 
+# Set LS_COLORS
+eval $(dircolors -b)
+
 # Virtualenvwrapper and other python stuff
 export WORKON_HOME=~/.virtualenvs
 # We set the venv prompt PROMPT_COMMAND directly
