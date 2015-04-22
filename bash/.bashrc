@@ -89,7 +89,10 @@ alias skill='sudo systemctl kill'
 # git+github.com:amacias/Oblique-Strategies.git
 alias strat='fortune ~/opt/Oblique-Strategies'
 
-# Pager and editor options
+# Pager and editor options and helper function
+
+# http://stackoverflow.com/questions/1401002/trick-an-application-into-thinking-its-stdin-is-interactive-not-a-pipe
+function faketty { 0<&- script -qfc "$(printf "'%s' " "$@")" /dev/null; }
 export LESSOPEN='|/usr/bin/lesspipe.sh %s'
 export LESS=-R
 export VISUAL=vim
