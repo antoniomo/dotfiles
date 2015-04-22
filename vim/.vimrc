@@ -159,8 +159,10 @@ endif
 runtime! plugin/sensible.vim
 set list
 set listchars=tab:>\ ,trail:-,nbsp:+,extends:>,precedes:<
+set showbreak="+++"
 if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
   let &listchars="tab:▸\ ,trail:␣,nbsp:·,extends:⇉,precedes:⇇"
+  let &showbreak="↪"
 endif
 
 " Trailing whitespace stripper
