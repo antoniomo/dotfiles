@@ -158,9 +158,9 @@ endif
 " See trailing whitespaces, tabs...
 runtime! plugin/sensible.vim
 set list
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set listchars=tab:>\ ,trail:-,nbsp:+,extends:>,precedes:<
 if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
-  let &listchars = "tab:\u25b8 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+  let &listchars="tab:▸\ ,trail:␣,nbsp:·,extends:⇉,precedes:⇇"
 endif
 
 " Trailing whitespace stripper
