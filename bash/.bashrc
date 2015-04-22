@@ -69,6 +69,7 @@ alias df='df -Th --total'
 alias du='ncdu'
 alias mkdir='mkdir -pv'
 alias histg='history | grep'
+alias myip='curl http://ipecho.net/plain; echo'
 
 # Systemctl aliases
 alias sls='sudo systemctl list-units'
