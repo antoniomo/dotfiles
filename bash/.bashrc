@@ -74,7 +74,7 @@ alias myip='curl http://ipecho.net/plain; echo'
 # Systemctl aliases
 alias sls='sudo systemctl list-units'
 alias sg='sudo systemctl list-units|grep -iE'
-alias sst='sudo systemctl status'
+alias sst='sudo systemctl status -n0'
 alias sstart='sudo systemctl start'
 alias sstop='sudo systemctl stop'
 alias srestart='sudo systemctl restart'
