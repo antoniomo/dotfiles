@@ -32,6 +32,9 @@ shopt -s dirspell
 # Line wrap on window resize
 shopt -s checkwinsize
 
+# Set LS_COLORS
+eval $(dircolors -b)
+
 # Virtualenvwrapper and other python stuff
 export WORKON_HOME=~/.virtualenvs
 # We set the venv prompt PROMPT_COMMAND directly
@@ -86,6 +89,12 @@ alias skill='sudo systemctl kill'
 # git+github.com:amacias/Oblique-Strategies.git
 alias strat='fortune ~/opt/Oblique-Strategies'
 
+# Pager and editor options and helper function
+
+# http://stackoverflow.com/questions/1401002/trick-an-application-into-thinking-its-stdin-is-interactive-not-a-pipe
+function faketty { 0<&- script -qfc "$(printf "'%s' " "$@")" /dev/null; }
+export LESSOPEN='|/usr/bin/lesspipe.sh %s'
+export LESS=-R
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
