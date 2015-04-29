@@ -73,6 +73,7 @@ alias du='ncdu'
 alias mkdir='mkdir -pv'
 alias histg='history | grep'
 alias myip='curl http://ipecho.net/plain; echo'
+alias jsonpp='python -mjson.tool'
 
 # Systemctl aliases
 alias sls='sudo systemctl list-units'
