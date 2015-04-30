@@ -1,0 +1,4 @@
+#!/bin/sh
+# Prints the fingerprint of an AWS .pem keypair
+
+openssl pkcs8 -in $1 -nocrypt -topk8 -outform DER | openssl sha1 -c
