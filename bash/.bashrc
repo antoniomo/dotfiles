@@ -74,6 +74,8 @@ alias mkdir='mkdir -pv'
 alias histg='history | grep'
 alias myip='curl http://ipecho.net/plain; echo'
 alias jsonpp='python -mjson.tool'
+alias ptpython='ptipython --vi'
+alias ptpython2='ptipython2 --vi'
 
 # Systemctl aliases
 alias sls='sudo systemctl list-units'
