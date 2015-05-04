@@ -29,6 +29,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
 " Autoclosing of parenthesis, brackets...
 Plugin 'Raimondi/delimitMate'
+" Gundo, gundo is awesome
+Plugin 'sjl/gundo.vim'
 " i3 config syntax highlighting
 Plugin 'PotatoesMaster/i3-vim-syntax'
 " tmux config syntax highlighting
@@ -200,6 +202,10 @@ let g:syntastic_aggregate_errors=1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_python_flake8_args='--max-line-length=99'
 let g:syntastic_python_flake8_exec='flake8-python2'  " Use py2 as default
+
+" Gundo options
+nnoremap <F5> :GundoToggle<CR>
+let g:gundo_preview_bottom = 1
 
 " ctrlp options
 " Search in files, buffers, and MRU at the same time
