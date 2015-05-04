@@ -1,16 +1,17 @@
 #!/bin/bash
 # Taken from http://www.jejik.com/articles/2008/10/setting_up_dual_monitors_system-wide_with_xrandr_on_debian_lenny/
 
-xrandr | grep DisplayPort-1 | grep " connected "
+xrandr | grep DisplayPort | grep " connected "
+FIRST_DP=`xrandr | sed -n 's/DisplayPort-\([0-9]\).*/\1/p' | head -n1`
 if [ $? -eq 0 ]; then
     # External monitor is connected.
     # There's a bug or something in my MBP that I need to set a lower resolution
     # prior to using `auto` or the right resolution, for it to work (when on
     # dualhead).
-    xrandr --output LVDS-0 --mode 1400x1050 --output DisplayPort-1 --primary --auto --right-of LVDS-0
-    xrandr --output LVDS-0 --mode auto --output DisplayPort-1 --primary --auto --right-of LVDS-0
+    xrandr --output LVDS-0 --mode 1400x1050 --output DisplayPort-$FIRST_DP --primary --auto --right-of LVDS-0
+    xrandr --output LVDS-0 --auto --output DisplayPort-$FIRST_DP --primary --auto --right-of LVDS-0
     if [ $? -ne 0 ]; then
         # Something went wrong. Autoconfigure the internal monitor and disable the external one
-        xrandr --output LVDS-0 --mode auto --output DisplayPort-1 --off
+        xrandr --output LVDS-0 --mode auto --output DisplayPort-$FIRST_DP --off
     fi
 fi
