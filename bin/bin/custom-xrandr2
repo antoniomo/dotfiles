@@ -3,9 +3,12 @@
 
 xrandr | grep DisplayPort-1 | grep " connected "
 if [ $? -eq 0 ]; then
-    # External monitor is connected
-    # The #$@% MBP doesn't like auto mode in dual screen setups
-    xrandr --output LVDS-0 --mode 1680x1050 --output DisplayPort-1 --primary --auto --right-of LVDS-0
+    # External monitor is connected.
+    # There's a bug or something in my MBP that I need to set a lower resolution
+    # prior to using `auto` or the right resolution, for it to work (when on
+    # dualhead).
+    xrandr --output LVDS-0 --mode 1400x1050 --output DisplayPort-1 --primary --auto --right-of LVDS-0
+    xrandr --output LVDS-0 --mode auto --output DisplayPort-1 --primary --auto --right-of LVDS-0
     if [ $? -ne 0 ]; then
         # Something went wrong. Autoconfigure the internal monitor and disable the external one
         xrandr --output LVDS-0 --mode auto --output DisplayPort-1 --off
