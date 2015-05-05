@@ -202,11 +202,17 @@ exec --no-startup-id parcellite
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod+F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+F10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # Playerctl (goes to vlc, spotify, and a bunch of others) controls
 bindsym XF86AudioPlay exec playerctl play-pause
+bindsym $mod+F5 exec playerctl play-pause
 # bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrevious exec playerctl previous
+bindsym $mod+F8 exec playerctl next
+bindsym $mod+F7 exec playerctl previous
 
 # Screenshot bindings
 bindsym --release $mod+Print exec --no-startup-id import -window root "$HOME/screenshot-$(date +'%Y-%m-%d %T').png"
