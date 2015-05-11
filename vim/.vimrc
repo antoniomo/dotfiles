@@ -52,6 +52,7 @@ Plugin 'kshenoy/vim-signature'
 " Markdown and pandoc stuff
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'shime/vim-livedown'  " Has a nodejs component, (npm/repositories)
 " Riv rst notetaking and instant html preview
 Plugin 'Rykka/riv.vim'
 Plugin 'Rykka/InstantRst'  " Has a python component, instant-rst (pip/repositories)
@@ -250,6 +251,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " Pandoc/markdown stuff
 let g:pandoc#modules#disabled = ["folding"]
+" livedown
+let g:livedown_autorun = 1  " Open livedown automatically with markdown files
+let g:livedown_open = 1  " Open browser window upon previewing
 
 " Rainbow parentheses always on
 au VimEnter * RainbowParenthesesToggle
