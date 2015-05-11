@@ -248,6 +248,9 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
+" Pandoc/markdown stuff
+let g:pandoc#modules#disabled = ["folding"]
+
 " Rainbow parentheses always on
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound  " ()
