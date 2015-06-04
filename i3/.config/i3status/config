@@ -48,7 +48,7 @@ tztime date {
 }
 
 tztime time {
-        format = " %H:%M:%S"
+        format = " %H:%M"
 }
 
 load {
