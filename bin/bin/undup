@@ -1,11 +1,9 @@
 #!/bin/sh
 # Removes duplicate lines from a text file
 
-CMD = awk '!x[$0]++'
-
 if command -v pv >/dev/null 2>&1; then
-  pv $1 | eval $CMD
+  pv $1 | awk '!seen[$0]++'
 else
   echo "Install pv for a nice progress bar"
-  eval $CMD
+  awk '!seen[$0]++'
 fi
