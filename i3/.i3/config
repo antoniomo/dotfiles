@@ -189,8 +189,9 @@ client.focused_inactive #333333 #555555 #bbbbbb #484e50
 client.unfocused #333333 #333333 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
 
+# Now setting this in .xinitrc
 # en_US int sorting without deadkeys and swap caps<->escape
-exec --no-startup-id ~/bin/mylayout
+# exec --no-startup-id ~/bin/mylayout
 
 # Urxvt daemon
 exec --no-startup-id urxvtd -q -f -o

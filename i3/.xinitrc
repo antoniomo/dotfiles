@@ -15,4 +15,8 @@ fi
 # exec startkde
 # exec startxfce4
 # ...or the Window Manager of your choice
+
+# Set my layout before starting the WM
+# en_US int sorting without deadkeys and swap caps<->escape
+setxkbmap -layout us -variant altgr-intl -option nodeadkeys -option "caps:swapescape"
 exec i3
