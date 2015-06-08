@@ -2,7 +2,7 @@
 # Removes duplicate lines from a text file
 
 if command -v pv >/dev/null 2>&1; then
-  pv $1 | awk '!seen[$0]++'
+  pv "$1" | awk '!seen[$0]++'
 else
   echo "Install pv for a nice progress bar"
   awk '!seen[$0]++'

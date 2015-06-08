@@ -3,17 +3,17 @@
 
 if command -v pigz >/dev/null 2>&1; then
   if command -v pv >/dev/null 2>&1; then
-    unpigz -c $1 | pv | wc -l
+    unpigz -c "$1" | pv | wc -l
   else
     echo "Running without progressbar, install pv for that"
-    unpigz -c $1 | wc -l
+    unpigz -c "$1" | wc -l
   fi
 else
   if command -v pv >/dev/null 2>&1; then
     echo "Running with zcat, install pigz for a parallel and faster version"
-    zcat $1 | pv | wc -l
+    zcat "$1" | pv | wc -l
   else
     echo "Running without progressbar, install pv for that"
-    zcat $1 | wc -l
+    zcat "$1" | wc -l
   fi
 fi
