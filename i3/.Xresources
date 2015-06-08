@@ -63,7 +63,6 @@
 ! End of Solarized Colorscheme
 
 ! Font configs
-Xft.dpi: 96
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hinting: 1
