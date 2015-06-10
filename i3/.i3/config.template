@@ -205,7 +205,7 @@ bar {
   position bottom
   status_command i3status
   tray_output primary
-  font pango: Source Sans Pro Ultra-Light, Icons 10
+  font pango: Source Sans Pro Ultra-Light, Icons 14
   colors {
     separator #666666
     background #333333
