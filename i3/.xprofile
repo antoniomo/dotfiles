@@ -4,4 +4,4 @@ setxkbmap -layout us -variant altgr-intl -option nodeadkeys -option "caps:swapes
 # Set $XRANDR_[PRIMARY|SECONDARY] variables
 source ~/bin/set_xrandr_variables
 # Replace the i3 config template variables
-sed -e "s/\$XRANDR_PRIMARY/$XRANDR_PRIMARY/" -e "s/\$XRANDR_SECONDARY/$XRANDR_SECONDARY/" .i3/config.template > .i3/config
+sed -e "s/\$XRANDR_PRIMARY/$XRANDR_PRIMARY/" -e "s/\$XRANDR_SECONDARY/$XRANDR_SECONDARY/" ~/.i3/config.template > ~/.i3/config
