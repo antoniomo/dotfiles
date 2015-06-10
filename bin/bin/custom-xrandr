@@ -5,8 +5,13 @@ xrandr | grep VGA1 | grep " connected "
 if [ $? -eq 0 ]; then
     # External monitor is connected
     xrandr --output VGA1 --primary --auto --right-of LVDS1
+    export XRANDR_PRIMARY=VGA1
+    export XRANDR_SECONDARY=LVDS1
     if [ $? -ne 0 ]; then
-        # Something went wrong. Autoconfigure the internal monitor and disable the external one
+        # Something went wrong. Autoconfigure the internal monitor and disable
+        # the external one
         xrandr --output LVDS1 --mode auto --output VGA1 --off
+        export XRANDR_PRIMARY=LVDS1
+        export XRANDR_SECONDARY=LVDS1
     fi
 fi

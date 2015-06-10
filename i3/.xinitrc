@@ -11,12 +11,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
+# xprofile support
+[ -f /etc/xprofile ] && source /etc/xprofile
+[ -f ~/.xprofile ] && source ~/.xprofile
+
 # exec gnome-session
 # exec startkde
 # exec startxfce4
 # ...or the Window Manager of your choice
-
-# Set my layout before starting the WM
-# en_US int sorting without deadkeys and swap caps<->escape
-setxkbmap -layout us -variant altgr-intl -option nodeadkeys -option "caps:swapescape"
 exec i3
