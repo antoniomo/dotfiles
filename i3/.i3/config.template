@@ -113,7 +113,7 @@ set $WS6 6
 set $WS7 7
 set $WS8 8
 set $WS9 9
-set $WS10 0
+set $WS10 "10: "
 
 # Send workspaces to a particular screen
 # $XRANDR_X variables are set before calling exec i3 in .xinitrc or your DM
@@ -126,7 +126,7 @@ workspace $WS6 output $XRANDR_SECONDARY
 workspace $WS7 output $XRANDR_SECONDARY
 workspace $WS8 output $XRANDR_SECONDARY
 workspace $WS9 output $XRANDR_SECONDARY
-workspace $WS0 output $XRANDR_SECONDARY
+workspace $WS10 output $XRANDR_SECONDARY
 
 # switch to workspace
 bindsym $mod+1 workspace $WS1
@@ -159,6 +159,9 @@ bindsym $mod+Shift+7 move container to workspace $WS7
 bindsym $mod+Shift+8 move container to workspace $WS8
 bindsym $mod+Shift+9 move container to workspace $WS9
 bindsym $mod+Shift+0 move container to workspace $WS10
+
+# Specific apps to a specific workspace
+assign [class="Spotify"] $WS10
 
 # Scratchpad
 bindsym $mod+m move scratchpad
