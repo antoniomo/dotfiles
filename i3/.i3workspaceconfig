@@ -6,6 +6,7 @@
 	"vlc": "",
 	"popcorn-time": "",
         "spotify": "",
+	"mangclient": "",
         "chromium-browser": ""
     },
     "instances": {
