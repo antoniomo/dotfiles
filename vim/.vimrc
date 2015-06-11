@@ -49,6 +49,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 " Vim show marks and more
 Plugin 'kshenoy/vim-signature'
+" Python-specific stuff
+Plugin 'hynek/vim-python-pep8-indent'
 " Markdown and pandoc stuff
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
