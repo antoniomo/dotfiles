@@ -103,42 +103,33 @@ bindsym $mod+a focus parent
 new_window 1pixel
 bindsym $mod+b border toggle
 
-# Set workspace variables
-set $WS1 "1: "
-set $WS2 "2: "
-set $WS3 3
-set $WS4 4
-set $WS5 5
-set $WS6 6
-set $WS7 7
-set $WS8 8
-set $WS9 9
-set $WS10 "10: "
+# Workspace renamer
+exec --no-startup-id ~/opt/i3-renameworkspaces/i3-renameworkspaces.pl
 
 # Send workspaces to a particular screen
 # $XRANDR_X variables are set before calling exec i3 in .xinitrc or your DM
-workspace $WS1 output $XRANDR_PRIMARY
-workspace $WS2 output $XRANDR_PRIMARY
-workspace $WS3 output $XRANDR_PRIMARY
-workspace $WS4 output $XRANDR_PRIMARY
-workspace $WS5 output $XRANDR_PRIMARY
-workspace $WS6 output $XRANDR_SECONDARY
-workspace $WS7 output $XRANDR_SECONDARY
-workspace $WS8 output $XRANDR_SECONDARY
-workspace $WS9 output $XRANDR_SECONDARY
-workspace $WS10 output $XRANDR_SECONDARY
+workspace 1 output $XRANDR_PRIMARY
+workspace 2 output $XRANDR_PRIMARY
+workspace 3 output $XRANDR_PRIMARY
+workspace 4 output $XRANDR_PRIMARY
+workspace 5 output $XRANDR_PRIMARY
+workspace 6 output $XRANDR_SECONDARY
+workspace 7 output $XRANDR_SECONDARY
+workspace 8 output $XRANDR_SECONDARY
+workspace 9 output $XRANDR_SECONDARY
+workspace 10 output $XRANDR_SECONDARY
 
 # switch to workspace
-bindsym $mod+1 workspace $WS1
-bindsym $mod+2 workspace $WS2
-bindsym $mod+3 workspace $WS3
-bindsym $mod+4 workspace $WS4
-bindsym $mod+5 workspace $WS5
-bindsym $mod+6 workspace $WS6
-bindsym $mod+7 workspace $WS7
-bindsym $mod+8 workspace $WS8
-bindsym $mod+9 workspace $WS9
-bindsym $mod+0 workspace $WS10
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
 # Back and forth workspace settings
 workspace_auto_back_and_forth yes
@@ -149,20 +140,20 @@ bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_
 bindsym $mod+x [urgent=latest] focus
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $WS1
-bindsym $mod+Shift+2 move container to workspace $WS2
-bindsym $mod+Shift+3 move container to workspace $WS3
-bindsym $mod+Shift+4 move container to workspace $WS4
-bindsym $mod+Shift+5 move container to workspace $WS5
-bindsym $mod+Shift+6 move container to workspace $WS6
-bindsym $mod+Shift+7 move container to workspace $WS7
-bindsym $mod+Shift+8 move container to workspace $WS8
-bindsym $mod+Shift+9 move container to workspace $WS9
-bindsym $mod+Shift+0 move container to workspace $WS10
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
 # Specific apps to a specific workspace
-assign [class="Firefox"] $WS1
-assign [class="Spotify"] $WS10
+assign [class="Firefox"] 1
+assign [class="Spotify"] 10
 
 # Scratchpad
 bindsym $mod+m move scratchpad
@@ -289,4 +280,4 @@ bindsym $mod+Pause mode "$mode_system"
 bindsym $mod+XF86Eject mode "$mode_system"  # Useful in Macbook laptops
 
 # Auto-start firefox on workspace 1
-exec --no-startup-id i3-msg exec /usr/bin/firefox'
+exec --no-startup-id /usr/bin/firefox'
