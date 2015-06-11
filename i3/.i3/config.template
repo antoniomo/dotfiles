@@ -280,4 +280,4 @@ bindsym $mod+Pause mode "$mode_system"
 bindsym $mod+XF86Eject mode "$mode_system"  # Useful in Macbook laptops
 
 # Auto-start firefox on workspace 1
-exec --no-startup-id /usr/bin/firefox'
+exec --no-startup-id /usr/bin/firefox
