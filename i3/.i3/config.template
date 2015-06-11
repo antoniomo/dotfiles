@@ -161,6 +161,7 @@ bindsym $mod+Shift+9 move container to workspace $WS9
 bindsym $mod+Shift+0 move container to workspace $WS10
 
 # Specific apps to a specific workspace
+assign [class="Firefox"] $WS1
 assign [class="Spotify"] $WS10
 
 # Scratchpad
@@ -288,4 +289,4 @@ bindsym $mod+Pause mode "$mode_system"
 bindsym $mod+XF86Eject mode "$mode_system"  # Useful in Macbook laptops
 
 # Auto-start firefox on workspace 1
-exec --no-startup-id i3-msg 'workspace $WS1; exec /usr/bin/firefox'
+exec --no-startup-id i3-msg exec /usr/bin/firefox'
