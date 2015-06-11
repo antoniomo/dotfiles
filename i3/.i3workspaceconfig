@@ -2,8 +2,11 @@
     "classes": {
         "firefox": "",
         "urxvt": "",
-        "chromium-browser": "",
-        "spotify": ""
+	"thunar": "",
+	"vlc": "",
+	"popcorn": "",
+        "spotify": "",
+        "chromium-browser": ""
     },
     "instances": {
     }
