@@ -2,11 +2,12 @@
     "classes": {
         "firefox": "",
         "urxvt": "",
-	"thunar": "",
-	"vlc": "",
-	"popcorn-time": "",
+        "thunar": "",
+	"zathura": "",
+        "vlc": "",
+        "popcorn-time": "",
         "spotify": "",
-	"mangclient": "",
+        "mangclient": "",
         "chromium-browser": ""
     },
     "instances": {
