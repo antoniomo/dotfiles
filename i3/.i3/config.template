@@ -155,6 +155,9 @@ bindsym $mod+Shift+0 move container to workspace number 10
 assign [class="Firefox"] 1
 assign [class="Spotify"] 10
 
+# Specific window options
+for_window [title="MAngband"] floating disable border 1pixel
+
 # Scratchpad
 bindsym $mod+m move scratchpad
 bindsym $mod+o scratchpad show
