@@ -3,10 +3,17 @@
 
 # Prompt stuff
 # http://mywiki.wooledge.org/BashFAQ/037
-reset=`tput sgr0`          # Text Reset
-bold=`tput bold`           # Bold
-red=`tput setaf 1`         # Red
-white=`tput setaf 7`       # White
+if [ -t 1 ]; then  # Stdout is a tty, use colors
+  reset=`tput sgr0`          # Text Reset
+  bold=`tput bold`           # Bold
+  red=`tput setaf 1`         # Red
+  white=`tput setaf 7`       # White
+else  # are we being piped or redirected? Don't colorize output
+  reset=''
+  bold=''
+  red=''
+  white=''
+fi
 
 timer_show () {
   printf "$bold$red%02d$white:$red%02d$white:$red%02d$reset" $(( $elapsed_time/3600 )) $(( $elapsed_time/60%60 )) $(( $elapsed_time % 60 ))
