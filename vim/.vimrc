@@ -41,6 +41,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'christoomey/vim-tmux-navigator'
 " YouCompleteMe autocompletion (Remember to run install.sh after upgrade!)
 Plugin 'Valloric/YouCompleteMe'
+" Fuzzy-select stuff with pick
+Plugin 'thoughtbot/pick.vim'
 " syntastic multi-language syntax checker and linter
 Plugin 'scrooloose/syntastic'
 " ctrlp fuzzy finder
@@ -220,6 +222,13 @@ let g:gundo_preview_bottom = 1
 " ctrlp options
 " Search in files, buffers, and MRU at the same time
 let g:ctrlp_cmd='CtrlPMixed'
+" Pick options
+nnoremap <Leader>p :call PickFile()<CR>
+nnoremap <Leader>s :call PickFileSplit()<CR>
+nnoremap <Leader>v :call PickFileVerticalSplit()<CR>
+nnoremap <Leader>t :call PickFileTab()<CR>
+nnoremap <Leader>b :call PickBuffer()<CR>
+nnoremap <Leader>] :call PickTag()<CR>
 
 " Interop between git gutter and signature
 " Taken from: https://gist.github.com/kshenoy/14f2c4ce7af28b54882b
