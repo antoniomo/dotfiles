@@ -164,7 +164,13 @@ endif
 runtime! plugin/sensible.vim
 set list
 set listchars=tab:>\ ,trail:-,nbsp:+,extends:>,precedes:<
-set showbreak="+++"
+set showbreak="+++ "
+" Improve non-text visibility (includes showbreak)
+highlight NonText ctermfg=Red
+" Don't wrap midword (looks like it works with list now)
+set linebreak
+" Preserve indentation when wrapping
+set breakindent
 if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
   let &listchars="tab:▸\ ,trail:␣,nbsp:·,extends:⇉,precedes:⇇"
   let &showbreak="↪"
