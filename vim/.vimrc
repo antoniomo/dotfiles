@@ -23,6 +23,8 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-fugitive'
 " Netrw file manager plugin extension
 Plugin 'tpope/vim-vinegar'
+" Ack/Ag plugin
+Plugin 'mileszs/ack.vim'
 " Surrounds plugin
 Plugin 'tpope/vim-surround'
 " Git changes as signs
@@ -199,6 +201,11 @@ autocmd FileType make setlocal noexpandtab
 " Netrw options
 let g:netrw_liststyle=3  " 3=Tree style
 let g:netrw_keepdir=0    " Browsed dir is current pwd
+
+" Ack/Ag options, prefer ag if available
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " Autoreload .vimrc on write
 augroup reload_vimrc " {
