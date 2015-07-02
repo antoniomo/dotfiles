@@ -38,7 +38,9 @@ Plugin 'PotatoesMaster/i3-vim-syntax'
 " tmux config syntax highlighting
 Plugin 'tmux-plugins/vim-tmux'
 " Solarized colorscheme
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
+" Base16 colorscheme
+Plugin 'chriskempson/base16-vim'
 " ctrl + hjkl to move windows in tmux and vim effortlessly
 Plugin 'christoomey/vim-tmux-navigator'
 " YouCompleteMe autocompletion (Remember to run install.sh after upgrade!)
@@ -100,10 +102,14 @@ set directory=~/.vim/swap
 set undodir=~/.vim/undo
 set backupdir=~/.vim/backup
 
-" Toggle dark/light bg
-call togglebg#map("<f3>")
 " Solarized colorscheme
-colorscheme solarized
+" Toggle dark/light bg
+" call togglebg#map("<f3>")
+" colorscheme solarized
+
+" Base16 colorscheme
+colorscheme base16-default
+
 "Default to the dark bg
 set background=dark
 
