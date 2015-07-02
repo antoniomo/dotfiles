@@ -108,7 +108,7 @@ set backupdir=~/.vim/backup
 " colorscheme solarized
 
 " Base16 colorscheme
-colorscheme base16-default
+colorscheme base16-bright
 
 "Default to the dark bg
 set background=dark
