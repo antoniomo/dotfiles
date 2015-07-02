@@ -152,8 +152,8 @@ runtime! plugin/sensible.vim
 hi StatusLine term=reverse cterm=reverse ctermfg=2 ctermbg=0
 " Change the status line color based on mode
 if version >= 700
-  " use magenta insert mode
-  au InsertEnter * hi StatusLine term=reverse cterm=reverse ctermfg=5 ctermbg=0
+  " use red insert mode
+  au InsertEnter * hi StatusLine term=reverse cterm=reverse ctermfg=1 ctermbg=0
   " use green otherwise
   au InsertLeave * hi StatusLine term=reverse cterm=reverse ctermfg=2 ctermbg=0
 endif
@@ -176,7 +176,7 @@ set list
 set listchars=tab:>\ ,trail:-,nbsp:+,extends:>,precedes:<
 set showbreak="+++ "
 " Improve non-text visibility (includes showbreak)
-highlight NonText ctermfg=Red
+highlight NonText ctermfg=1
 " Don't wrap midword (looks like it works with list now)
 set linebreak
 " Preserve indentation when wrapping
