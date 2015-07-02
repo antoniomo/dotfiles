@@ -102,9 +102,9 @@ set directory=~/.vim/swap
 set undodir=~/.vim/undo
 set backupdir=~/.vim/backup
 
-" Solarized colorscheme
 " Toggle dark/light bg
-" call togglebg#map("<f3>")
+map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+" Solarized colorscheme
 " colorscheme solarized
 
 " Base16 colorscheme
