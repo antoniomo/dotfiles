@@ -93,6 +93,15 @@ alias senable='sudo systemctl enable'
 alias sdisable='sudo systemctl disable'
 alias skill='sudo systemctl kill'
 
+# Usefult to get repeatable random filebased seeds
+# Sample usage: shuf -n 100 infile --random-source=<(get_seeded_random 42) -o outfile
+get_seeded_random()
+{
+  seed="$1"
+  openssl enc -aes-256-ctr -pass pass:"$seed" -nosalt \
+    </dev/zero 2>/dev/null
+}
+
 # git+github.com:amacias/Oblique-Strategies.git
 alias strat='fortune ~/opt/Oblique-Strategies'
 
