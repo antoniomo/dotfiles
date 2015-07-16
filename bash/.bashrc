@@ -6,7 +6,8 @@
 [[ $- != *i* ]] && return
 
 # Set PATH with my user bin commands
-PATH=$PATH:~/bin
+PATH=$PATH:~/bin:~/go/bin
+export GOPATH=~/go
 
 # Envoy keychain
 envoy
