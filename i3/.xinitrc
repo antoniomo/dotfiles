@@ -11,7 +11,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-# xprofile support
+# Setup displays, no DM
+source ~/bin/setup_displays
+# Source .Xresources, no DM
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+
+# xprofile support, with or without DM
 [ -f /etc/xprofile ] && source /etc/xprofile
 [ -f ~/.xprofile ] && source ~/.xprofile
 
