@@ -102,6 +102,7 @@ get_seeded_random()
   openssl enc -aes-256-ctr -pass pass:"$seed" -nosalt \
     </dev/zero 2>/dev/null
 }
+alias shuf='shuf --random-source=<(get_seeded_random 42)'
 
 # git+github.com:amacias/Oblique-Strategies.git
 alias strat='fortune ~/opt/Oblique-Strategies'
