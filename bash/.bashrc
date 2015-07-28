@@ -64,6 +64,7 @@ alias grep='grep --color=auto'
 alias ls='ls -F --color=auto'
 alias ll='ls -lhA'
 alias tree='tree -C'
+alias time='command time'  # Use time command instead of bash builtin
 alias fhere='find . -iname '
 alias ps='ps auxf'
 alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
