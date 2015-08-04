@@ -200,6 +200,10 @@ autocmd FileType txt,tex,markdown,rst,gitcommit,python setlocal spell
 
 " Files with 4 spaces as tabs
 autocmd FileType python setlocal ts=4 sts=4 sw=4 et
+" Use gq to clean up code
+" Indent to 0 because otherwise it pushes selected lines to the given
+" indent-size, no matter the current indent level of the line.
+" au FileType python setlocal formatprg=autopep8\ -aa\ --indent-size\ 0\ --max-line-length\ 99\ -
 
 " Don't expand tabs on makefiles
 autocmd FileType make setlocal noexpandtab
