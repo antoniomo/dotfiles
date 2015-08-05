@@ -211,6 +211,7 @@ autocmd FileType make setlocal noexpandtab
 " Netrw options
 let g:netrw_liststyle=3  " 3=Tree style
 let g:netrw_keepdir=0    " Browsed dir is current pwd
+let g:netrw_list_hide= netrw_gitignore#Hide()  " Ignore what's on gitignore
 
 " Ack/Ag options, prefer ag if available
 if executable('ag')
