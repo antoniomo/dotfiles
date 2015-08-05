@@ -2,3 +2,4 @@
 
 sudo hciconfig hci0 up
 sudo hcitool cc 00:1F:20:A9:23:A7
+~/bin/mylayout
