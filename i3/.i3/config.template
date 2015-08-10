@@ -46,7 +46,7 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # j4-dmenu-desktop is an external replacement for i3-dmenu-desktop
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --term=urxvtc
 
 
 # change focus
@@ -155,12 +155,9 @@ bindsym $mod+Shift+0 move container to workspace number 10; workspace number 10
 assign [class="Firefox"] 1
 assign [class="Spotify"] 10
 
-# Specific window options
-for_window [title="MAngband"] floating disable border 1pixel
-
-# Scratchpad
-bindsym $mod+m move scratchpad
-bindsym $mod+o scratchpad show
+# Scratchpad in backtick '`'
+bindsym $mod+Shift+grave move scratchpad
+bindsym $mod+grave scratchpad show
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -241,7 +238,7 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym $mod+F5 exec playerctl play-pause
 # bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrevious exec playerctl previous
+bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+F8 exec playerctl next
 bindsym $mod+F7 exec playerctl previous
 
