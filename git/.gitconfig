@@ -13,10 +13,11 @@
 [alias]
 # Absolutely awesome post: http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 	co = checkout
+	cob = checkout -b
 	br = branch
+	brt = branch --track
 	ci = commit
 	st = status
-	cob = checkout -b
 	last = log -1 HEAD
 	unstage = reset HEAD --
 	visual = !gitk &
