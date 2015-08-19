@@ -253,14 +253,12 @@ bindsym --release $mod+Shift+Print exec --no-startup-id import "$HOME/screenshot
 set $wallpaperp ~/.wallpapers/*
 # Set backgrounds
 exec --no-startup-id feh --bg-fill --randomize $wallpaperp
-# Save backgrounds for usage in i3lock
-exec --no-startup-id scrot -m ~/lastbg.png
 
 # Dunst notification daemon
 exec --no-startup-id dunst -config ~/.i3/dunstrc
 
 # Set locker
-exec --no-startup-id xss-lock -- i3lock -d -n -i ~/.lastbg.png
+exec --no-startup-id xss-lock -- i3lock -n -d -i ~/.lastbg.png
 
 # Set shutdown screen on mod+pause
 # Add a small delay to prevent suspend races
@@ -289,4 +287,7 @@ bindsym $mod+XF86Eject mode "$mode_system"
 exec --no-startup-id /usr/bin/firefox
 
 # Auto-start a terminal on the scratchpad
-exec --no-startup-id urxvtc -name scratchpad
+exec --no-startup-id urxvtc -name 'scratchpad'
+
+# Save backgrounds for usage in i3lock
+exec --no-startup-id scrot -d 2 -m ~/.lastbg.png
