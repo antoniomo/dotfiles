@@ -15,7 +15,12 @@
 	co = checkout
 	cob = checkout -b
 	br = branch
+	brr = branch -r
+	bra = branch -a
 	brt = branch --track
+	r = remote
+	rv = remote -v show
+	ra = remote add
 	ci = commit
 	st = status
 	last = log -1 HEAD
