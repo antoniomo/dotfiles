@@ -1,0 +1,3 @@
+#!/bin/sh
+
+scrot -d 1 -m ~/.lastbg.png
