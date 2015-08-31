@@ -71,6 +71,9 @@ Plugin 'honza/vim-snippets'
 Plugin 'fidian/hexmode'
 " Jinja2 support
 Plugin 'mitsuhiko/vim-jinja'
+" Java Stuff
+" Gradle support
+Plugin 'tfnico/vim-gradle'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -279,6 +282,15 @@ let g:SignatureMarkTextHL = 'SignatureGitGutter(a:lnum)'
 
 " InstantRst options
 let g:instant_rst_localhost_only=1
+
+" YouCompleteMe
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+let g:ycm_key_list_previous_completion=['<S-TAB>', '<Up>', '<S-Enter>']
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
