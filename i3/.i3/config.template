@@ -229,13 +229,13 @@ exec --no-startup-id urxvtd -q -f -o
 # Parcellite clipboard
 exec --no-startup-id parcellite
 
-# Pulse audio volume control
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym $mod+F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym $mod+F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym $mod+F10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+# Pulse audio volume control, with forced update on i3status
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -USR1 i3status
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -USR1 i3status
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -USR1 i3status
+bindsym $mod+F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -USR1 i3status
+bindsym $mod+F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -USR1 i3status
+bindsym $mod+F10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -USR1 i3status
 # Playerctl (goes to vlc, spotify, and a bunch of others) controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym $mod+F5 exec playerctl play-pause
