@@ -71,6 +71,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'fidian/hexmode'
 " Jinja2 support
 Plugin 'mitsuhiko/vim-jinja'
+" Go stuff
+Plugin 'fatih/vim-go'
 " Java Stuff
 " Gradle support
 Plugin 'tfnico/vim-gradle'
