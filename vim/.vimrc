@@ -1,96 +1,83 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+"Vim-plug to manage my plugins
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
 " Sane defaults (Remember to make .vim/backup, .vim/undo and .vim/swap folders!)
-Plugin 'tpope/vim-sensible'
+Plug 'tpope/vim-sensible'
 " Indentation autodetection
-Plugin 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'
 " Dot (.) repeat for plugin commands
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 " Comment/uncomment plugin
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 " Useful extra mappings
-Plugin 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 " Git plugin
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " Netrw file manager plugin extension
-Plugin 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'
 " Ack/Ag plugin
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 " Surrounds plugin
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " Git changes as signs
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Autoclosing of parenthesis, brackets...
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 " Gundo, gundo is awesome
-Plugin 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim'
 " i3 config syntax highlighting
-Plugin 'PotatoesMaster/i3-vim-syntax'
+Plug 'PotatoesMaster/i3-vim-syntax', {'for': 'i3'}
 " tmux config syntax highlighting
-Plugin 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux'
 " Solarized colorscheme
-" Plugin 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 " Base16 colorscheme
-Plugin 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 " ctrl + hjkl to move windows in tmux and vim effortlessly
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 " YouCompleteMe autocompletion (Remember to run install.sh after upgrade!)
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py --clang-completer --system-libclang --system-boost --gocode-completer'}
 " Fuzzy-select stuff with pick
-Plugin 'thoughtbot/pick.vim'
+Plug 'thoughtbot/pick.vim'
 " syntastic multi-language syntax checker and linter
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 " ctrlp fuzzy finder
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 " Rainbow parenthesis and other symbols
-Plugin 'kien/rainbow_parentheses.vim'
+Plug 'kien/rainbow_parentheses.vim'
 " Vim show marks and more
-Plugin 'kshenoy/vim-signature'
+Plug 'kshenoy/vim-signature'
 " Python-specific stuff
-Plugin 'hynek/vim-python-pep8-indent'
+Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 " Markdown and pandoc stuff
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'shime/vim-livedown'  " Has a nodejs component, (npm/repositories)
+Plug 'vim-pandoc/vim-pandoc', {'for': 'markdown'}
+Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'markdown'}
+Plug 'shime/vim-livedown', {'for': 'markdown'}  " Has a nodejs component, (npm/repositories)
 " Riv rst notetaking and instant html preview
-Plugin 'Rykka/riv.vim'
-Plugin 'Rykka/InstantRst'  " Has a python component, instant-rst (pip/repositories)
+Plug 'Rykka/riv.vim', {'for': 'rst'}
+Plug 'Rykka/InstantRst', {'for': 'rst'}  " Has a python component, instant-rst
 " Snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " Hex mode with binary files (open with vim -b file or use :Hexmode)
-Plugin 'fidian/hexmode'
+Plug 'fidian/hexmode'
 " Jinja2 support
-Plugin 'mitsuhiko/vim-jinja'
+Plug 'mitsuhiko/vim-jinja', {'for': ['jinja', 'jinja2']}
 " Go stuff
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go', {'for': 'go'}
 " Java Stuff
 " Gradle support
-Plugin 'tfnico/vim-gradle'
+Plug 'tfnico/vim-gradle', {'for': 'java'}
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" Add plugins to &runtimepath
+call plug#end()
+
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 " Mouse support
 set mouse=a
