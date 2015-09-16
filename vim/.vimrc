@@ -4,7 +4,7 @@ filetype off                  " required
 "Vim-plug to manage my plugins
 call plug#begin('~/.vim/plugged')
 
-" Sane defaults (Remember to make .vim/backup, .vim/undo and .vim/swap folders!)
+" Sane defaults
 Plug 'tpope/vim-sensible'
 " Indentation autodetection
 Plug 'tpope/vim-sleuth'
@@ -91,8 +91,11 @@ nnoremap <silent> <CR> :noh<Bar>:echo<CR>
 
 " Swap, undo and backup directories
 set directory=~/.vim/swap
+:silent call system('mkdir -p ' . &directory)
 set undodir=~/.vim/undo
+:silent call system('mkdir -p ' . &undodir)
 set backupdir=~/.vim/backup
+:silent call system('mkdir -p ' . &backupdir)
 
 " Toggle dark/light bg
 map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
