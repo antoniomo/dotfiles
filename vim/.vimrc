@@ -18,6 +18,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
 " Netrw file manager plugin extension
 Plug 'tpope/vim-vinegar'
+" Tagbar
+Plug 'majutsushi/tagbar'
 " Ack/Ag plugin
 Plug 'mileszs/ack.vim'
 " Surrounds plugin
@@ -208,6 +210,9 @@ let g:netrw_liststyle=3  " 3=Tree style
 let g:netrw_keepdir=0    " Browsed dir is current pwd
 let g:netrw_list_hide= netrw_gitignore#Hide()  " Ignore what's on gitignore
 
+" Tagbar options
+nmap <F8> :TagbarToggle<CR>
+
 " Ack/Ag options, prefer ag if available
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
@@ -235,6 +240,7 @@ let g:gundo_preview_bottom = 1
 " ctrlp options
 " Search in files, buffers, and MRU at the same time
 let g:ctrlp_cmd='CtrlPMixed'
+
 " Pick options
 nnoremap <Leader>p :call PickFile()<CR>
 nnoremap <Leader>s :call PickFileSplit()<CR>
