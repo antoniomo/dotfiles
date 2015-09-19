@@ -190,7 +190,7 @@ fun! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
-autocmd FileType c,cpp,java,php,ruby,python,rst,md,gitcommit,txt,tex autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType c,cpp,java,php,ruby,python,rst,md,gitcommit,txt,tex,htm,html autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " Spellchecking as default on some filetypes
 autocmd FileType txt,tex,markdown,rst,gitcommit,python setlocal spell
