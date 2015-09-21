@@ -278,10 +278,11 @@ nnoremap <Leader>t :call PickFileTab()<CR>
 nnoremap <Leader>b :call PickBuffer()<CR>
 nnoremap <Leader>] :call PickTag()<CR>
 
-" Indent guides
+" Indent-guides
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=10
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=11
+let g:indent_guides_guide_size=1
 
 " Interop between git gutter and signature
 " Taken from: https://gist.github.com/kshenoy/14f2c4ce7af28b54882b
