@@ -1,0 +1,24 @@
+# Most taken from github.com/github/gitignore
+
+# Ignore repository directories
+.git
+.hg
+.svn
+
+# Vim stuff
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+# Python stuff
+
+# # Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
