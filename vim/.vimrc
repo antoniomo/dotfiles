@@ -269,6 +269,11 @@ let g:gundo_preview_bottom = 1
 " ctrlp options
 " Search in files, buffers, and MRU at the same time
 let g:ctrlp_cmd='CtrlPMixed'
+" http://dougblack.io/words/a-good-vimrc.html#ctrlp-section
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " Pick options
 nnoremap <Leader>p :call PickFile()<CR>
