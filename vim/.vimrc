@@ -348,6 +348,24 @@ let g:pandoc#modules#disabled = ["folding"]
 let g:livedown_autorun = 1  " Open livedown automatically with markdown files
 let g:livedown_open = 1  " Open browser window upon previewing
 
+" Rainbow parentheses color pairs (terminal/gui)
+let g:rbpt_colorpairs = [
+    \ ['red',         'RoyalBlue3'],
+    \ ['brown',       'SeaGreen3'],
+    \ ['blue',        'DarkOrchid3'],
+    \ ['gray',        'firebrick3'],
+    \ ['magenta',     'SeaGreen3'],
+    \ ['cyan',        'DarkOrchid3'],
+    \ ['darkred',     'firebrick3'],
+    \ ['brown',       'RoyalBlue3'],
+    \ ['darkblue',    'DarkOrchid3'],
+    \ ['gray',        'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkmagenta', 'SeaGreen3'],
+    \ ['darkcyan',    'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max=14
 " Rainbow parentheses always on
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound  " ()
