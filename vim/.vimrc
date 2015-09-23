@@ -85,6 +85,12 @@ filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 
+" Autoreload .vimrc on write
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
 " Mouse support
 set mouse=a
 
@@ -248,12 +254,6 @@ let g:tagbar_type_go = {
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-
-" Autoreload .vimrc on write
-augroup reload_vimrc " {
-    autocmd!
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
 
 " Syntastic options
 " Check on open as well as save (default)
