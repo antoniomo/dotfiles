@@ -43,7 +43,7 @@ Plug 'christoomey/vim-tmux-navigator'
 " YouCompleteMe autocompletion (Remember to run install.sh after upgrade!)
 Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py --clang-completer --system-libclang --system-boost --gocode-completer'}
 " Fuzzy-select stuff with pick
-Plug 'thoughtbot/pick.vim'
+" Plug 'thoughtbot/pick.vim'
 " Nesting indent levels visualizer
 Plug 'nathanaelkane/vim-indent-guides'
 " syntastic multi-language syntax checker and linter
@@ -67,11 +67,13 @@ Plug 'Rykka/InstantRst', {'for': 'rst'}  " Has a python component, instant-rst
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Hex mode with binary files (open with vim -b file or use :Hexmode)
-Plug 'fidian/hexmode'
+" Plug 'fidian/hexmode'
 " Jinja2 support
 Plug 'mitsuhiko/vim-jinja', {'for': ['jinja', 'jinja2']}
 " Go stuff
 Plug 'fatih/vim-go', {'for': 'go'}
+" Nim stuff
+Plug 'zah/nim.vim', {'for': 'nim'}
 " Java Stuff
 " Gradle support
 Plug 'tfnico/vim-gradle', {'for': 'java'}
@@ -276,12 +278,12 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " Pick options
-nnoremap <Leader>p :call PickFile()<CR>
-nnoremap <Leader>s :call PickFileSplit()<CR>
-nnoremap <Leader>v :call PickFileVerticalSplit()<CR>
-nnoremap <Leader>t :call PickFileTab()<CR>
-nnoremap <Leader>b :call PickBuffer()<CR>
-nnoremap <Leader>] :call PickTag()<CR>
+" nnoremap <Leader>p :call PickFile()<CR>
+" nnoremap <Leader>s :call PickFileSplit()<CR>
+" nnoremap <Leader>v :call PickFileVerticalSplit()<CR>
+" nnoremap <Leader>t :call PickFileTab()<CR>
+" nnoremap <Leader>b :call PickBuffer()<CR>
+" nnoremap <Leader>] :call PickTag()<CR>
 
 " Indent-guides
 let g:indent_guides_auto_colors = 0
@@ -317,6 +319,11 @@ let g:SignatureMarkTextHL = 'SignatureGitGutter(a:lnum)'
 " thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL The
 " advantage of doing it this way is that this decouples Signature from
 " git-gutter. Both can remain unaware of the other.
+
+" Git gutter column color = number color column (LineNr)
+highlight clear SignColumn
+" vim-gitgutter will use Sign Column to set its color, reload it.
+call gitgutter#highlight#define_highlights()
 
 " InstantRst options
 let g:instant_rst_localhost_only=1
@@ -355,7 +362,16 @@ cmap w!! w !sudo tee > /dev/null %
 " Enter the explorer if no file was passed
 autocmd VimEnter * if !argc() | Explore | endif
 
-" Git gutter column color = number color column (LineNr)
-highlight clear SignColumn
-" vim-gitgutter will use Sign Column to set its color, reload it.
-call gitgutter#highlight#define_highlights()
+" Vim-nim
+fun! JumpToDef()
+  if exists("*GotoDefinition_" . &filetype)
+    call GotoDefinition_{&filetype}()
+  else
+    exe "norm! \<C-]>"
+  endif
+endf
+
+" Jump to tag
+nn <M-g> :call JumpToDef()<cr>
+ino <M-g> <esc>:call JumpToDef()<cr>i
+" End vim-nim
