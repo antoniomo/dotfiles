@@ -49,9 +49,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 " syntastic multi-language syntax checker and linter
 Plug 'scrooloose/syntastic'
 " ctrlp fuzzy finder
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Rainbow parenthesis and other symbols
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'eapache/rainbow_parentheses.vim'
 " Vim show marks and more
 Plug 'kshenoy/vim-signature'
 " Python-specific stuff
