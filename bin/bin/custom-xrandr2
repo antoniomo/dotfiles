@@ -19,3 +19,6 @@ if [ -n "$CONNECTED_DP" ]; then
         export XRANDR_SECONDARY=LVDS-0
     fi
 fi
+
+# MBP ICC color profile on display 0
+/usr/bin/xcalib -d :0 ~/.colorprofiles/mbp.icc
