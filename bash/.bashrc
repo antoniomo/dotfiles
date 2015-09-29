@@ -13,6 +13,10 @@ export GOPATH=~/go
 envoy
 source <(envoy -p)
 
+# Vi keybindings (inputrc is sourced after this, so some bash stuff prefers this
+# setting)
+set -o vi
+
 # Disable XON/XOFF (To enable CTRL-s for forward search)
 stty -ixon
 
