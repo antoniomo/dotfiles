@@ -42,8 +42,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 " YouCompleteMe autocompletion (Remember to run install.sh after upgrade!)
 Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py --clang-completer --system-libclang --system-boost --gocode-completer'}
-" Fuzzy-select stuff with pick
-" Plug 'thoughtbot/pick.vim'
+" Fuzzy-select stuff with fzf
+Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
 " Nesting indent levels visualizer
 Plug 'nathanaelkane/vim-indent-guides'
 " syntastic multi-language syntax checker and linter
