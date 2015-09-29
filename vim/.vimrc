@@ -69,7 +69,7 @@ Plug 'honza/vim-snippets'
 " Hex mode with binary files (open with vim -b file or use :Hexmode)
 " Plug 'fidian/hexmode'
 " Jinja2 support
-Plug 'mitsuhiko/vim-jinja', {'for': ['jinja', 'jinja2']}
+Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
 " Go stuff
 Plug 'fatih/vim-go', {'for': 'go'}
 " Nim stuff
