@@ -79,8 +79,9 @@ alias mkdir='mkdir -pv'
 alias histg='history | grep'
 alias myip='curl http://ipecho.net/plain; echo'
 alias jsonpp='python -mjson.tool'
-alias ptpython='ptipython --vi'
-alias ptpython2='ptipython2 --vi'
+alias ipython='ptipython --vi'
+alias ipython2='ptipython2 --vi'
+alias unp='unp -U'
 # Add an "alert" alias for long running commands.  Use like so:
 # sleep 10; alert
 # Taken from: http://pastebin.com/pZ0hVDq8
