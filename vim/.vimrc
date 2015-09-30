@@ -94,6 +94,9 @@ augroup END " }
 " Mouse support
 set mouse=a
 
+" Copy to system's selection clipboard (the one midmouse pastes)
+set clipboard=unnamed
+
 " Search options
 set ignorecase
 set smartcase
