@@ -30,8 +30,8 @@ Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 " Autoclosing of parenthesis, brackets...
 Plug 'Raimondi/delimitMate'
-" Gundo, gundo is awesome
-Plug 'sjl/gundo.vim'
+" Gundo, gundo is awesome (vim-mundo is the maintaned fork)
+Plug 'simnalamburt/vim-mundo'
 " i3 config syntax highlighting
 Plug 'PotatoesMaster/i3-vim-syntax', {'for': 'i3'}
 " tmux config syntax highlighting
