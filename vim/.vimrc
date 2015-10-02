@@ -10,6 +10,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 " Dot (.) repeat for plugin commands
 Plug 'tpope/vim-repeat'
+" Automatic swap file handling
+Plug 'gioele/vim-autoswap'
 " Comment/uncomment plugin
 Plug 'tpope/vim-commentary'
 " Useful extra mappings
@@ -104,13 +106,18 @@ set hlsearch
 " Press return to clear search highlighting and any message already displayed.
 nnoremap <silent> <CR> :noh<Bar>:echo<CR>
 
-" Swap, undo and backup directories
-set directory=~/.vim/swap
+" Allow hidden unsaved buffers
+set hidden
+
+" Swap, undo and backup options
+set directory=~/.vim/swap//
 :silent call system('mkdir -p ' . &directory)
-set undodir=~/.vim/undo
+set undodir=~/.vim/undo//
+set undofile  " Persistent undo
 :silent call system('mkdir -p ' . &undodir)
-set backupdir=~/.vim/backup
-:silent call system('mkdir -p ' . &backupdir)
+set backupdir=~/.vim/backup//
+set backup
+silent call system('mkdir -p ' . &backupdir)
 
 " Toggle dark/light bg
 map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
