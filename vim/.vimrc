@@ -109,6 +109,13 @@ nnoremap <silent> <CR> :noh<Bar>:echo<CR>
 " Allow hidden unsaved buffers
 set hidden
 
+" Tab navigation
+nmap <silent> tt :tabnew<CR>
+nmap <silent> [g :tabprevious<CR>
+nmap <silent> ]g :tabnext<CR>
+nmap <silent> [G :tabrewind<CR>
+nmap <silent> ]G :tablast<CR>
+
 " Swap, undo and backup options
 set directory=~/.vim/swap//
 :silent call system('mkdir -p ' . &directory)
@@ -124,11 +131,15 @@ map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 " Solarized colorscheme
 " colorscheme solarized
 
-" Base16 colorscheme
-colorscheme base16-bright
-
 "Default to the dark bg
 set background=dark
+
+" Base16 colorscheme
+colorscheme base16-bright
+"
+" Set search highlight color
+hi IncSearch cterm=NONE ctermfg=0  ctermbg=4
+hi Search cterm=NONE ctermfg=0 ctermbg=2
 
 " Highlight current cursor line
 set cursorline
