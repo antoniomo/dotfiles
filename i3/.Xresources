@@ -48,6 +48,10 @@ Xft.hintstyle: hintfull
 Xft.antialias: 1
 Xft.rgba: rgb
 
+! Cursor config
+Xcursor.theme: Vanilla-DMZ
+Xcursor.size: 32
+
 ! urxvt
 URxvt.intensityStyles: false
 URxvt*buffered: true
