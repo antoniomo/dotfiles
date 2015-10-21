@@ -93,6 +93,17 @@ augroup reload_vimrc " {
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
+" Timeout keypress stuff, we want a responsive ESC key
+set timeout
+set timeoutlen=750
+set ttimeoutlen=100
+
+"NeoVim handles ESC keys as alt+key, set this to solve the problem
+if has("nvim")
+  set ttimeout
+  set ttimeoutlen=0
+endif
+
 " Mouse support
 set mouse=a
 
