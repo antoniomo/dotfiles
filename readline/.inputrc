@@ -3,7 +3,7 @@ set editing-mode vi
 # See insert/command mode
 set show-mode-in-prompt on
 # Avoid delay when hitting esc
-set keyseq-timeout 100
+set keyseq-timeout 10
 # Show all completions as soon as I press tab, even if there's more than one
 set show-all-if-ambiguous on
 # Ignore case
