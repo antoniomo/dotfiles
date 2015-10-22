@@ -225,6 +225,6 @@ last_cmd_status () {
 }
 
 trap 'timer_start' DEBUG
-PROMPT_COMMAND='set_last_err;timer_stop;__git_ps1 "`last_cmd_status``venv``ssh_host`$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func;timer_stop'
+PROMPT_COMMAND='set_last_err;timer_stop;__git_ps1 "`last_cmd_status``venv``ssh_host`$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func;timer_stop;echo -ne "\033]0;$PWD\007"'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
