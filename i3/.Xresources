@@ -74,14 +74,13 @@ URxvt.secondaryScreen: true
 URxvt.secondaryScroll: false
 URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,fork-here,font-size
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,font-size
 URxvt.url-select.launcher: /usr/bin/firefox
 URxvt.url-select.underline: true
 URxvt.url-select.button: 1
 Urxvt.keysym.M-u: perl:url-select:select_next
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt.keysym.Mod4-Shift-Return: perl:fork-here:fork-at-cwd
 ! Change font size on Control-Plus(or Equal)/Minus
 URxvt.keysym.C-0x2b: font-size:increase
 URxvt.keysym.C-0x3d: font-size:increase
