@@ -161,6 +161,9 @@ set colorcolumn=+1
 " Minimum context lines above/below when scrolling
 set scrolloff=5
 
+" Set titlestring to full path of the edited file
+set titlestring=%F
+
 " Statusline options
 " See `:help statusline` for more built-in flags
 " See also:

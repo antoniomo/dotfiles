@@ -17,5 +17,10 @@ else
     cwd=$(pwdx $pid | cut -d':' -f2 | cut -d' ' -f2)
 fi
 
-cwd=${cwd:-$(echo $HOME)}
-urxvtc -cd $cwd
+# Expand the ~ to $HOME, and get only dirname in case this points to a file
+cwd="${cwd/#\~/$HOME}"
+if [[ -f "$cwd" ]]  # File
+then
+    cwd=$(dirname $cwd)
+fi
+urxvtc -cd "$cwd"
