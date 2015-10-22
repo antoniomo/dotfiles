@@ -1,17 +1,20 @@
 #!/bin/bash
 
 # Based on https://gist.github.com/ctemplin/3c626af969c67e51d805
+# For Thunar remember to execute once:
+# xfconf-query --channel thunar --property /misc-full-path-in-title --create --type bool --set true
 
 id=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
 class_string=$(xprop -id $id | awk '/WM_CLASS\(STRING\)/' | cut -d'=' -f2 | cut -d',' -f1)
-if [ $class_string != '"urxvt"' ]
+if [ $class_string == '"urxvt"' ]
     then
-        pid=$(xprop -id $id | awk '/_NET_WM_PID\(CARDINAL\)/' | cut -d'=' -f2)
-        cwd=$(pwdx $pid | cut -d':' -f2 | cut -d' ' -f2)
-    else
-        name=$(xprop -id $id | awk '/_NET_WM_NAME/' | cut -d'"' -f2 | cut -d" " -f4 );
-        name=$(echo "$name" | sed "s|~|$HOME|" )
-        cwd=$name
+    cwd=$(xprop -id $id | awk '/_NET_WM_NAME/' | cut -d'"' -f2 | cut -d" " -f4 );
+elif [ $class_string == '"thunar"' ]
+    then
+    cwd=$(xprop -id $id | awk '/_NET_WM_NAME/' | cut -d'"' -f2 | cut -d" " -f1 );
+else
+    pid=$(xprop -id $id | awk '/_NET_WM_PID\(CARDINAL\)/' | cut -d'=' -f2)
+    cwd=$(pwdx $pid | cut -d':' -f2 | cut -d' ' -f2)
 fi
 
 cwd=${cwd:-$(echo $HOME)}
