@@ -13,9 +13,10 @@ general {
 
 order += "ethernet _first_"
 order += "wireless _first_"
-order += "disk /home/"
 order += "load"
 order += "battery 0"
+order += "disk /home/"
+order += "dpms"
 order += "volume master"
 order += "tztime date"
 order += "tztime time"
@@ -45,6 +46,7 @@ run_watch VPN {
 
 tztime date {
         format = " %a %d-%b-%Y"
+        on_click 1 = "exec firefox calendar.google.com"
 }
 
 tztime time {
@@ -57,6 +59,7 @@ load {
 
 disk "/home/" {
         format = " %avail"
+        on_click 1 = "exec thunar"
 }
 
 volume master {
@@ -64,4 +67,7 @@ volume master {
   device = "default"
   mixer = "Master"
   mixer_idx = 0
+  on_click 1 = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -USR1 py3status"
+  on_click 4 = "exec pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -USR1 py3status"
+  on_click 5 = "exec pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -USR1 py3status"
 }

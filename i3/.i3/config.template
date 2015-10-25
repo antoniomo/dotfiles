@@ -201,7 +201,7 @@ bar {
   mode hide  # Hidden by default
   modifier $mod  # Show the bar on mod keypress
   position bottom
-  status_command i3status
+  status_command py3status
   tray_output primary
   font pango: Source Sans Pro Ultra-Light, Icons 14
   colors {
@@ -235,13 +235,13 @@ exec --no-startup-id urxvtd -q -f -o
 # Parcellite clipboard
 exec --no-startup-id parcellite
 
-# Pulse audio volume control, with forced update on i3status
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -USR1 i3status
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -USR1 i3status
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -USR1 i3status
-bindsym $mod+F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -USR1 i3status
-bindsym $mod+F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -USR1 i3status
-bindsym $mod+F10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -USR1 i3status
+# Pulse audio volume control, with forced update on py3status
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -USR1 py3status
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -USR1 py3status
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -USR1 py3status
+bindsym $mod+F11 exec pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -USR1 py3status
+bindsym $mod+F12 exec pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -USR1 py3status
+bindsym $mod+F10 exec pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -USR1 py3status
 # Playerctl (goes to vlc, spotify, and a bunch of others) controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym $mod+F5 exec playerctl play-pause
