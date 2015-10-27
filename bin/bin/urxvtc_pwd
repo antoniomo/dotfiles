@@ -22,5 +22,8 @@ cwd="${cwd/#\~/$HOME}"
 if [[ -f "$cwd" ]]  # File
 then
     cwd=$(dirname $cwd)
+elif [[ ! -d "$cwd" ]]  # Not a valid directory, default to $HOME
+then
+    cwd=$HOME
 fi
 urxvtc -cd "$cwd"
