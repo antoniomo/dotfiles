@@ -1,25 +1,32 @@
+#!/usr/bin/env python2
 import subprocess
-from Xlib import display
 from time import sleep
+from bisect import bisect
+from Xlib import display
+
+REFRESH_PERIOD = .5  # In seconds
+BAR_HEIGHT = 40  # Bar height in pixels
+BAR_HIDDEN = True
 
 screen = display.Display().screen()
-
 widths = []
 heights = []
-
-BAR_HEIGHT = 25  # Bar height in pixels
 
 
 def get_resolutions(widths, heights):
     output = subprocess.Popen('xrandr | grep "\*" | cut -d" " -f4', shell=True,
                               stdout=subprocess.PIPE).communicate()[0]
-
     displays = output.strip().split('\n')
 
-    for d in displays:
+    for i, d in enumerate(displays):
         values = d.split('x')
-        widths.append(int(values[0]))
-        heights.append(int(values[1]))
+        # Saving each screens right border
+        if i > 0:
+            widths.append(int(values[0]) + widths[-1])
+        else:  # No screen to the left of the first one
+            widths.append(int(values[0]))
+        # Saving height minus bar
+        heights.append(int(values[1]) - BAR_HEIGHT)
 
 
 def get_mouse_pos():
@@ -28,11 +35,19 @@ def get_mouse_pos():
 
 
 def hide_bar():
-    subprocess.Popen('i3-msg bar hidden_state hide', shell=True)
+    subprocess.Popen('i3-msg -q bar hidden_state hide', shell=True)
 
 
 def show_bar():
-    subprocess.Popen('i3-msg bar hidden_state show', shell=True)
+    subprocess.Popen('i3-msg -q bar hidden_state show', shell=True)
+
+
+def cursor_in_bar(X, Y):
+    _screen = bisect(widths, X)
+
+    if Y > heights[_screen]:
+        return True
+    return False
 
 
 if __name__ == '__main__':
@@ -41,10 +56,11 @@ if __name__ == '__main__':
     while True:
         X, Y = get_mouse_pos()
 
-        if X < widths[0] and Y > heights[0] - BAR_HEIGHT:
+        if cursor_in_bar(X, Y) and BAR_HIDDEN:
+            BAR_HIDDEN = False
             show_bar()
-        elif X > widths[0] and Y > heights[1] - BAR_HEIGHT:
-            show_bar()
-        else:
+        elif not cursor_in_bar(X, Y) and not BAR_HIDDEN:
+            BAR_HIDDEN = True
             hide_bar()
-        sleep(1)
+
+        sleep(REFRESH_PERIOD)
