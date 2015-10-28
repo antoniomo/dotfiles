@@ -298,3 +298,6 @@ exec --no-startup-id sleep 5 && urxvtc -name scratch
 
 # Save backgrounds for usage in i3lock
 exec --no-startup-id scrot -d 4 -m ~/.lastbg.png
+
+# Hotbar script
+exec --no-startup-id ~/bin/hotbar.py
