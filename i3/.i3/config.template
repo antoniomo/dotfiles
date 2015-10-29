@@ -238,14 +238,8 @@ bindsym $mod+F7 exec playerctl previous
 bindsym --release $mod+Print exec --no-startup-id import -window root "$HOME/screenshot-$(date +'%Y-%m-%d %T').png"
 bindsym --release $mod+Shift+Print exec --no-startup-id import "$HOME/screenshot-$(date +'%Y-%m-%d %T').png"
 
-# Set wallpapers path
-set $wallpaperp ~/.wallpapers/*
-# Set backgrounds
-exec --no-startup-id feh --bg-fill --randomize $wallpaperp
-
-# Set locker
+# Set locker (~/.lastbg.png captured later)
 exec --no-startup-id xss-lock -- i3lock -n -d -i ~/.lastbg.png
-
 # Set shutdown screen on mod+pause
 # Add a small delay to prevent suspend races
 # https://bugs.launchpad.net/ubuntu/+source/unity-2d/+bug/830348
@@ -289,15 +283,19 @@ exec --no-startup-id parcellite
 # Xpad sticky notes
 exec --no-startup-id xpad
 
+# Set wallpapers path
+set $wallpaperp ~/.wallpapers/*
+# Set backgrounds
+exec --no-startup-id feh --bg-fill --randomize $wallpaperp
+# Save backgrounds for usage in i3lock
+exec --no-startup-id scrot -d 2 -m ~/.lastbg.png
+
 # Auto-start firefox on workspace 1
 exec --no-startup-id /usr/bin/firefox
 
 # Auto-start a terminal on the scratchpad (delay to make sure scratchpad is
 # ready)
 exec --no-startup-id sleep 5 && urxvtc -name scratch
-
-# Save backgrounds for usage in i3lock
-exec --no-startup-id scrot -d 4 -m ~/.lastbg.png
 
 # Hotbar script
 exec --no-startup-id ~/bin/hotbar.py
