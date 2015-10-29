@@ -43,7 +43,7 @@ Plug 'chriskempson/base16-vim'
 " ctrl + hjkl to move windows in tmux and vim effortlessly
 Plug 'christoomey/vim-tmux-navigator'
 " YouCompleteMe autocompletion (Remember to run install.sh after upgrade!)
-Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py --clang-completer --system-libclang --system-boost --gocode-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py --gocode-completer --system-boost --system-libclang --clang-completer'}
 " Fuzzy-finder with fzf
 Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
 " Nesting indent levels visualizer
