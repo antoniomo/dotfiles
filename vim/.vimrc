@@ -250,7 +250,11 @@ autocmd FileType python setlocal ts=4 sts=4 sw=4 et
 " Don't expand tabs on makefiles
 autocmd FileType make setlocal noexpandtab
 
+" Ignore some filetypes
+set wildignore=*.pyc,*.jpg,*.png,*.gif,*.pdf,*.zip,*.gz,*.bz2
+
 " Netrw options
+let g:netrw_preview=1    " Previews are vertical by default
 let g:netrw_liststyle=3  " 3=Tree style
 let g:netrw_keepdir=0    " Browsed dir is current pwd
 let g:netrw_list_hide= netrw_gitignore#Hide()  " Ignore what's on gitignore
