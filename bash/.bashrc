@@ -42,7 +42,7 @@ eval $(dircolors -b)
 
 # Set GCC colors (gcc >= 4.9). Those colors should be the defaults but setting
 # the variable activates the -fdiagnostics-color=auto flag
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'`
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Virtualenvwrapper and other python stuff
 export WORKON_HOME=~/.virtualenvs
