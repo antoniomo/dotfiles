@@ -235,8 +235,8 @@ bindsym $mod+F8 exec playerctl next
 bindsym $mod+F7 exec playerctl previous
 
 # Screenshot bindings
-bindsym --release $mod+Print exec --no-startup-id import -window root "$HOME/screenshot-$(date +'%Y-%m-%d %T').png"
-bindsym --release $mod+Shift+Print exec --no-startup-id import "$HOME/screenshot-$(date +'%Y-%m-%d %T').png"
+bindsym --release $mod+Shift+Print exec --no-startup-id import -window root "$HOME/screenshot-$(date +'%Y-%m-%d %T').png"
+bindsym --release $mod+Print exec --no-startup-id import "$HOME/screenshot-$(date +'%Y-%m-%d %T').png"
 
 # Set locker (~/.lastbg.png captured later)
 exec --no-startup-id xss-lock -- i3lock -n -d -i ~/.lastbg.png
