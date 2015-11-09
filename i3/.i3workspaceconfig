@@ -5,11 +5,11 @@
         "thunar": "",
 	"zathura": "",
         "vlc": "",
-        "popcorn-time": "",
         "spotify": "",
         "mangclient": "",
 	"skype": "",
-        "chromium-browser": ""
+        "chromium-browser": "",
+	"xpad": ""
     },
     "instances": {
     }
