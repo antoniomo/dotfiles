@@ -86,6 +86,8 @@ alias jsonpp='python -mjson.tool'
 alias ipython='ptipython --vi'
 alias ipython2='ptipython2 --vi'
 alias unp='unp -U'
+# Prepare nikola tab completion when first invoked
+alias nikola='source ~/opt/antoniomo.github.io/_nikola_bash;unalias nikola;nikola'
 # Add an "alert" alias for long running commands.  Use like so:
 # sleep 10; alert
 # Taken from: http://pastebin.com/pZ0hVDq8
