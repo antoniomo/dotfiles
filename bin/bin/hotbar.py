@@ -40,6 +40,7 @@ def hide_bar():
 
 def show_bar():
     subprocess.Popen('i3-msg -q bar hidden_state show', shell=True)
+    subprocess.Popen('killall -USR1 py3status')  # Trigger a refresh
 
 
 def cursor_in_bar(X, Y):
