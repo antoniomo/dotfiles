@@ -386,6 +386,8 @@ let g:pandoc#modules#disabled = ["folding"]
 " livedown
 let g:livedown_autorun = 1  " Open livedown automatically with markdown files
 let g:livedown_open = 1  " Open browser window upon previewing
+" Riv (rst)
+let g:riv_disable_folding = 1
 
 " Rainbow parentheses color pairs (terminal/gui)
 let g:rbpt_colorpairs = [
