@@ -41,11 +41,11 @@
 *.color15:      base07
 
 ! Font configs
-Xft.autohint: 0
+Xft.autohint: false
 Xft.lcdfilter: lcddefault
-Xft.hinting: 1
-Xft.hintstyle: hintfull
-Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.antialias: true
 Xft.rgba: rgb
 
 ! Cursor config
