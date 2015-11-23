@@ -18,8 +18,8 @@ order += "battery 0"
 order += "disk /home/"
 order += "dpms"
 order += "volume master"
-order += "tztime date"
-order += "tztime time"
+order += "tztime local"
+order += "time"
 
 wireless _first_ {
         format_up = " (%quality at %essid) %ip"
@@ -44,12 +44,12 @@ run_watch VPN {
         pidfile = "/var/run/vpnc/pid"
 }
 
-tztime date {
+tztime local {
         format = " %a %d-%b-%Y"
         on_click 1 = "exec firefox calendar.google.com"
 }
 
-tztime time {
+time {
         format = " %H:%M"
 }
 
