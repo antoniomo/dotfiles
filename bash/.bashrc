@@ -105,6 +105,11 @@ alias senable='sudo systemctl enable'
 alias sdisable='sudo systemctl disable'
 alias skill='sudo systemctl kill'
 
+# Alias not found here or in dotfiles (having sensitive info)
+if [ -e ~/.local_aliases ];then
+  source ~/.local_aliases
+fi
+
 # Usefult to get repeatable random filebased seeds
 # Sample usage: shuf -n 100 infile --random-source=<(get_seeded_random 42) -o outfile
 get_seeded_random()
