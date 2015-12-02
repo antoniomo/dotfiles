@@ -19,7 +19,8 @@ order += "disk /home/"
 order += "dpms"
 order += "volume master"
 order += "tztime local"
-order += "time"
+order += "tztime sf"
+order += "tztime helsinki"
 
 wireless _first_ {
         format_up = " (%quality at %essid) %ip"
@@ -49,8 +50,14 @@ tztime local {
         on_click 1 = "exec firefox calendar.google.com"
 }
 
-time {
-        format = " %H:%M"
+tztime sf {
+        format = " SF: %H:%M"
+        timezone = "US/Pacific"
+}
+
+tztime helsinki {
+        format = " HELSINKI: %H:%M"
+        timezone = "Europe/Helsinki"
 }
 
 load {
