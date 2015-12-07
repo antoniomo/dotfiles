@@ -280,6 +280,9 @@ exec --no-startup-id dunst -config ~/.i3/dunstrc
 # Parcellite clipboard
 exec --no-startup-id parcellite
 
+# Redshift red ambient
+exec --no-startup-id redshift
+
 # Xpad sticky notes
 exec --no-startup-id xpad
 
