@@ -281,7 +281,7 @@ exec --no-startup-id dunst -config ~/.i3/dunstrc
 exec --no-startup-id parcellite
 
 # Redshift red ambient
-exec --no-startup-id redshift
+exec --no-startup-id redshift-gtk
 
 # Xpad sticky notes
 exec --no-startup-id xpad
