@@ -22,6 +22,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 " Tagbar
 Plug 'majutsushi/tagbar'
+" NerdTree
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " Ack/Ag plugin
 Plug 'mileszs/ack.vim'
 " Surrounds plugin
@@ -258,6 +261,22 @@ let g:netrw_preview=1    " Previews are vertical by default
 let g:netrw_liststyle=3  " 3=Tree style
 let g:netrw_keepdir=0    " Browsed dir is current pwd
 let g:netrw_list_hide= netrw_gitignore#Hide()  " Ignore what's on gitignore
+
+" NerdTree option
+map <F2> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeShowHidden=1
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
 
 " Tagbar options
 nmap <F8> :TagbarToggle<CR>

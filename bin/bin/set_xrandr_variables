@@ -3,6 +3,6 @@
 export XRANDR_PRIMARY=`xrandr | grep "primary" | cut -d' ' -f1`
 export XRANDR_SECONDARY=`xrandr | grep " connected" | grep -v "primary" | cut -d' ' -f1`
 
-if [ -z "$XRANDR_PRIMARY" ]; then
-  XRANDR_PRIMARY="$XRANDR_SECONDARY"
+if [ -z "$XRANDR_SECONDARY" ]; then
+  XRANDR_SECONDARY="$XRANDR_PRIMARY"
 fi
