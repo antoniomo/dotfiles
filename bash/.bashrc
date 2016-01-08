@@ -147,7 +147,7 @@ alias o='a -e xdg-open'  # quick opening files/directories with xdg-open
 alias oo='a -i -e xdg-open'  # opening files/directories with fasd interactive
 
 # FZF stuff (sourced at the end for compatibility with it's install script)
-export FZF_DEFAULT_COMMAND='ag -l -g ""'
+export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Prompt stuff
