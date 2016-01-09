@@ -150,10 +150,10 @@ set background=dark
 
 " Base16 colorscheme
 colorscheme base16-bright
-"
+
 " Set search highlight color
 hi IncSearch cterm=NONE ctermfg=0  ctermbg=4
-hi Search cterm=NONE ctermfg=0 ctermbg=2
+hi Search cterm=NONE ctermfg=0 ctermbg=3
 
 " Highlight current cursor line
 set cursorline
