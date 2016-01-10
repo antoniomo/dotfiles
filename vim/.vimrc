@@ -48,13 +48,14 @@ Plug 'christoomey/vim-tmux-navigator'
 " YouCompleteMe autocompletion (Remember to run install.sh after upgrade!)
 Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py --gocode-completer --system-boost --system-libclang --clang-completer'}
 " Fuzzy-finder with fzf
-Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
+Plug 'junegunn/fzf', {'do': 'yes \| ./install --all'}
+Plug 'junegunn/fzf.vim'
 " Nesting indent levels visualizer
 Plug 'nathanaelkane/vim-indent-guides'
 " syntastic multi-language syntax checker and linter
 Plug 'scrooloose/syntastic'
 " ctrlp fuzzy finder
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 " Rainbow parenthesis and other symbols
 Plug 'eapache/rainbow_parentheses.vim'
 " Vim show marks and more
@@ -328,12 +329,19 @@ let g:gundo_preview_bottom = 1
 
 " ctrlp options
 " Search in files, buffers, and MRU at the same time
-let g:ctrlp_cmd='CtrlPMixed'
+" let g:ctrlp_cmd='CtrlPMixed'
 " http://dougblack.io/words/a-good-vimrc.html#ctrlp-section
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+" let g:ctrlp_match_window = 'bottom,order:ttb'
+" let g:ctrlp_switch_buffer = 0
+" let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+" fzf options
+" Ideas from https://github.com/junegunn/dotfiles/blob/master/vimrc
+nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ?  "\<c-w>\<c-w>" : '').":Files\<cr>"
+nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+" Use urxvtd as launcher for fzf in gvim
+let g:fzf_launcher = 'urxvtd -geometry 120x30 -e sh -c %s'
 
 " Pick options
 " nnoremap <Leader>p :call PickFile()<CR>
