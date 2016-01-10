@@ -34,7 +34,9 @@ Plug 'airblade/vim-gitgutter'
 " Autoclosing of parenthesis, brackets...
 Plug 'Raimondi/delimitMate'
 " Gundo, gundo is awesome (vim-mundo is another 'maintained' fork but currently broken)
-Plug 'dsummersl/gundo.vim'
+" Plug 'dsummersl/gundo.vim'
+" Undotree instead of gundo
+Plug 'mbbill/undotree'
 " i3 config syntax highlighting
 Plug 'PotatoesMaster/i3-vim-syntax', {'for': 'i3'}
 " tmux config syntax highlighting
@@ -319,13 +321,19 @@ endif
 let g:syntastic_check_on_open=1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--max-line-length=99'
 let g:syntastic_python_flake8_exec='flake8-python2'  " Use py2 as default
 
 " Gundo options
-nnoremap <F5> :GundoToggle<CR>
-let g:gundo_preview_bottom = 1
+" nnoremap <F5> :GundoToggle<CR>
+" let g:gundo_preview_bottom = 1
+
+" Undotree options
+nnoremap <F5> :UndotreeToggle<cr>
+nnoremap U :UndotreeToggle<CR>
+let g:undotree_WindowLayout = 2
 
 " ctrlp options
 " Search in files, buffers, and MRU at the same time
