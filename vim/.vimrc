@@ -340,6 +340,10 @@ let g:gundo_preview_bottom = 1
 " Ideas from https://github.com/junegunn/dotfiles/blob/master/vimrc
 nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ?  "\<c-w>\<c-w>" : '').":Files\<cr>"
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader><Enter> :Buffers<CR>
+imap <c-x><c-l> <plug>(fzf-complete-line)
+imap <c-x><c-f> <plug>(fzf-complete-file-ag)
+imap <c-x><c-p> <plug>(fzf-complete-path)
 " Use urxvtd as launcher for fzf in gvim
 let g:fzf_launcher = 'urxvtd -geometry 120x30 -e sh -c %s'
 
