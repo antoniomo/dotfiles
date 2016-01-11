@@ -22,7 +22,10 @@
 	rv = remote -v show
 	ra = remote add
 	ci = commit
+	civ = commit -v
 	st = status
+	stv = status -v
+	stvv = status -vv
 	last = log -1 HEAD
 	unstage = reset HEAD --
 	visual = !gitk &
