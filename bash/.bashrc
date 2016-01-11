@@ -69,6 +69,7 @@ complete -o default -o nospace -F _git g
 # General aliases
 alias sudo='sudo '  # Enables aliases with sudo
 alias grep='grep --color=auto'
+alias diff=colordiff
 alias ls='ls -F --color=auto'
 alias ll='ls -lhA'
 alias tree='tree -C'
