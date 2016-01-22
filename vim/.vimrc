@@ -345,7 +345,7 @@ let g:undotree_WindowLayout = 2
 
 " fzf options
 " Ideas from https://github.com/junegunn/dotfiles/blob/master/vimrc
-nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ?  "\<c-w>\<c-w>" : '').":Files\<cr>"
+nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ?  "\<c-w>\<c-w>" : '').":GitFiles\<cr>"
 nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
 nnoremap <silent> <Leader><Enter> :Buffers<CR>
 imap <c-x><c-l> <plug>(fzf-complete-line)
