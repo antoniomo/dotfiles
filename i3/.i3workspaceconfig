@@ -11,7 +11,8 @@
         "mangclient": "",
 	"skype": "",
         "chromium-browser": "",
-	"xpad": ""
+	"xpad": "",
+	"libreoffice-calc": ""
     },
     "instances": {
     }
