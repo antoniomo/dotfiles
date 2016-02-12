@@ -1,0 +1,17 @@
+#!/bin/sh
+# Duplicates lines in file (except the first one in case it's a header)
+
+cp "$1" "$1.dup"
+echo "Duplicating $1 $2 times"
+
+if command -v pv >/dev/null 2>&1; then
+  for ((i=1; i<$2; i++)); do
+    echo $i
+    pv "$1" | tail -n +2 >> "$1.dup"
+  done
+else
+  echo "Install pv for a nice progress bar"
+  for ((i=1; i<$2; i++)); do
+    tail -n +2 "$1" >> "$1.dup"
+  done
+fi
