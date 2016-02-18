@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 import subprocess
 import os
 from time import sleep
@@ -17,10 +17,10 @@ heights = []
 def get_resolutions(widths, heights):
     output = subprocess.Popen('xrandr | grep "\*" | cut -d" " -f4', shell=True,
                               stdout=subprocess.PIPE).communicate()[0]
-    displays = output.strip().split('\n')
+    displays = output.strip().split(b'\n')
 
     for i, d in enumerate(displays):
-        values = d.split('x')
+        values = d.split(b'x')
         # Saving each screens right border
         if i > 0:
             widths.append(int(values[0]) + widths[-1])
