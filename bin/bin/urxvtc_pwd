@@ -11,10 +11,10 @@ if [ $class_string == '"urxvt"' ]
     cwd=$(xprop -id $id | awk '/_NET_WM_NAME/' | cut -d'"' -f2);
 elif [ $class_string == '"thunar"' ]
     then
-    cwd=$(xprop -id $id | awk '/_NET_WM_NAME/' | cut -d'"' -f2);
+    cwd=$(xprop -id $id | awk '/_NET_WM_NAME/' | cut -d'"' -f2 | rev | cut -c 16- | rev);
 else
     pid=$(xprop -id $id | awk '/_NET_WM_PID\(CARDINAL\)/' | cut -d'=' -f2)
-    cwd=$(pwdx $pid | cut -d':' -f2)
+    cwd=$(pwdx $pid | cut -d':' -f2 | cut -c 2-)
 fi
 
 # Expand the ~ to $HOME, and get only dirname in case this points to a file
