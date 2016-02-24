@@ -13,9 +13,10 @@ general {
 
 order += "ethernet _first_"
 order += "wireless _first_"
-order += "load"
 order += "battery 0"
 order += "disk /home/"
+order += "sysdata c"
+order += "sysdata r"
 order += "dpms"
 order += "volume master"
 order += "tztime local"
@@ -60,8 +61,12 @@ tztime helsinki {
         timezone = "Europe/Helsinki"
 }
 
-load {
-        format = " %1min"
+sysdata c{
+        format = "C{cpu_usage}"
+}
+
+sysdata r{
+        format = "R{mem_used_percent}"
 }
 
 disk "/home/" {
