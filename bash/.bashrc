@@ -20,6 +20,8 @@ set -o vi
 # Disable XON/XOFF (To enable CTRL-s for forward search)
 stty -ixon
 
+# Big history
+export HISTSIZE=10000
 # History control, ignore duplicates and whitespace
 export HISTCONTROL=ignoreboth
 # When a shell exits, append to the history file, don't overwrite it
