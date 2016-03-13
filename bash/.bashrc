@@ -149,8 +149,9 @@ unset fasd_cache
 # FZF stuff (sourced at the end for compatibility with it's install script)
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-alias oo='xdg-open "`fzf`"'
-alias vv='vim "`fzf`"'
+export FZF_ALT_C_COMMAND='locate ~/'
+alias oo='xdg-open "$(fzf)"'
+alias vv='vim "$(fzf)"'
 
 # Prompt stuff
 # http://mywiki.wooledge.org/BashFAQ/037
