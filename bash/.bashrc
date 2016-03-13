@@ -89,6 +89,8 @@ alias jsonpp='python -mjson.tool'
 alias ipython='ptipython'
 alias ipython2='ptipython2'
 alias unp='unp -U'
+alias o='xdg-open'
+alias v='vim'
 # Prepare nikola tab completion when first invoked
 alias nikola='source ~/opt/antoniomo.github.io/_nikola_bash;unalias nikola;nikola'
 # Add an "alert" alias for long running commands.  Use like so:
@@ -143,15 +145,12 @@ fi
 # Sets _fasd_prompt_func in PROMPT_COMMAND, re-add it if redefined
 source "$fasd_cache"
 unset fasd_cache
-# Fasd extra alias
-alias v='f -e vim'  # quick opening files with vim
-alias vv='f -i -e vim'  # opening files with vim and fasd interactive
-alias o='a -e xdg-open'  # quick opening files/directories with xdg-open
-alias oo='a -i -e xdg-open'  # opening files/directories with fasd interactive
 
 # FZF stuff (sourced at the end for compatibility with it's install script)
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+alias oo='xdg-open "`fzf`"'
+alias vv='vim "`fzf`"'
 
 # Prompt stuff
 # http://mywiki.wooledge.org/BashFAQ/037
