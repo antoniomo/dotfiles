@@ -150,8 +150,8 @@ locd () {
   locate --null $@ | xargs -r0 sh -c 'for i do [ -d "$i" ] && echo "$i"; done'
 }
 
-# Database of folders for use in fzf
-alias updatelocd='locd / > .locddb'
+# Updates databases of locate and folders for use in fzf
+alias updatelocd='sudo updatedb && locd / > ~/.locddb'
 
 # FZF stuff (sourced at the end for compatibility with it's install script)
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
