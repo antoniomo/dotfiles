@@ -146,10 +146,17 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 
+locd () {
+  locate --null $@ | xargs -r0 sh -c 'for i do [ -d "$i" ] && echo "$i"; done'
+}
+
+# Database of folders for use in fzf
+alias updatelocd='locd / > .locddb'
+
 # FZF stuff (sourced at the end for compatibility with it's install script)
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND='locate ~/'
+export FZF_ALT_C_COMMAND='cat ~/.locddb'
 alias oo='xdg-open "$(fzf)"'
 alias vv='vim "$(fzf)"'
 
