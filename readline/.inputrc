@@ -2,8 +2,8 @@ $include /etc/inputrc
 set editing-mode vi
 # See insert/command mode
 set show-mode-in-prompt on
-set vi-ins-mode-string \1\e[31;1m\2(ins)\1\e]12;LightRed\007\2
-set vi-cmd-mode-string \1\e[32;1m\2(cmd)\1\e]12;LightGreen\007\2
+set vi-ins-mode-string \1\e]12;LightRed\007\2
+set vi-cmd-mode-string \1\e[1m\2\1\e]12;LightGreen\007\2
 # Avoid delay when hitting esc
 set keyseq-timeout 10
 # Show all completions as soon as I press tab, even if there's more than one
