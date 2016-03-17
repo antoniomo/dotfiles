@@ -155,7 +155,7 @@ alias updatelocd='sudo updatedb && locd / > ~/.locddb'
 
 # FZF stuff (sourced at the end for compatibility with it's install script)
 export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_COMMAND="locate ~/"
 export FZF_ALT_C_COMMAND='cat ~/.locddb'
 alias oo='xdg-open "$(fzf)"'
 alias vv='vim "$(fzf)"'
