@@ -24,18 +24,19 @@ order += "tztime sf"
 order += "tztime helsinki"
 
 wireless _first_ {
-        format_up = " (%quality at %essid) %ip"
+        format_up = " (%quality %essid)"
         format_down = " down"
 }
 
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
-        format_up = " %ip (%speed)"
-        format_down = " down"
+        format_up = " %ip"
+        format_down = ""
 }
 
 battery 0 {
-        format = " %status %percentage %remaining"
+        format = " %percentage %remaining"
+        format_down = ""  # Don't show when there's no battery
 }
 
 run_watch DHCP {
@@ -47,7 +48,7 @@ run_watch VPN {
 }
 
 tztime local {
-        format = " %a %d-%b-%Y"
+        format = " %a %d-%b"
         on_click 1 = "exec firefox calendar.google.com"
 }
 
@@ -57,16 +58,16 @@ tztime sf {
 }
 
 tztime helsinki {
-        format = " HELSINKI: %H:%M"
+        format = " HLK: %H:%M"
         timezone = "Europe/Helsinki"
 }
 
 sysdata c{
-        format = "C{cpu_usage}"
+        format = "C{cpu_usage}%"
 }
 
 sysdata r{
-        format = "R{mem_used_percent}"
+        format = "R{mem_used_percent}%"
 }
 
 disk "/home/" {
