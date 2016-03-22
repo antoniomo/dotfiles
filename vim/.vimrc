@@ -71,20 +71,22 @@ Plug 'shime/vim-livedown', {'for': 'markdown'}  " Has a nodejs component, (npm/r
 " Riv rst notetaking and instant html preview
 Plug 'Rykka/riv.vim', {'for': 'rst'}
 Plug 'Rykka/InstantRst', {'for': 'rst'}  " Has a python component, instant-rst
+" Vim extline for titles, headers, comments...
+Plug 'drmikehenry/vim-extline'
 " Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Hex mode with binary files (open with vim -b file or use :Hexmode)
 " Plug 'fidian/hexmode'
 " Jinja2 support
-Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
+" Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
 " Go stuff
 Plug 'fatih/vim-go', {'for': 'go'}
 " Nim stuff
-Plug 'zah/nim.vim', {'for': 'nim'}
+" Plug 'zah/nim.vim', {'for': 'nim'}
 " Java Stuff
 " Gradle support
-Plug 'tfnico/vim-gradle', {'for': 'java'}
+" Plug 'tfnico/vim-gradle', {'for': 'java'}
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -469,15 +471,15 @@ cmap w!! w !sudo tee > /dev/null %
 autocmd VimEnter * if !argc() | Explore | endif
 
 " Vim-nim
-fun! JumpToDef()
-  if exists("*GotoDefinition_" . &filetype)
-    call GotoDefinition_{&filetype}()
-  else
-    exe "norm! \<C-]>"
-  endif
-endf
+" fun! JumpToDef()
+"   if exists("*GotoDefinition_" . &filetype)
+"     call GotoDefinition_{&filetype}()
+"   else
+"     exe "norm! \<C-]>"
+"   endif
+" endf
 
 " Jump to tag
-nn <M-g> :call JumpToDef()<cr>
-ino <M-g> <esc>:call JumpToDef()<cr>i
+" nn <M-g> :call JumpToDef()<cr>
+" ino <M-g> <esc>:call JumpToDef()<cr>i
 " End vim-nim
