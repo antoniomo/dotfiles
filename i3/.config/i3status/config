@@ -39,14 +39,6 @@ battery 0 {
         format_down = ""  # Don't show when there's no battery
 }
 
-run_watch DHCP {
-        pidfile = "/var/run/dhclient*.pid"
-}
-
-run_watch VPN {
-        pidfile = "/var/run/vpnc/pid"
-}
-
 tztime local {
         format = " %a %d-%b"
         on_click 1 = "exec firefox calendar.google.com"
