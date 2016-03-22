@@ -32,4 +32,4 @@ if [[ ! -d "$cwd" ]]  # Still not a valid directory, default to $HOME
 then
     cwd=$HOME
 fi
-urxvtc -cd "$cwd"
+urxvtc -cd `readlink -f "$cwd"`
