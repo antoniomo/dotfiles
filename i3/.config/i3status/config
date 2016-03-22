@@ -63,11 +63,11 @@ tztime helsinki {
 }
 
 sysdata c{
-        format = "C{cpu_usage}%"
+        format = "C{cpu_usage:.2}%"
 }
 
 sysdata r{
-        format = "R{mem_used_percent}%"
+        format = "M{mem_used_percent:.2}%"
 }
 
 disk "/home/" {
