@@ -29,15 +29,14 @@ shopt -s histappend
 
 # Autocd on path
 shopt -s autocd
-
 # Fix minor cd typos
 shopt -s cdspell
-
 # Fix minor directory name typos
 shopt -s dirspell
-
 # Line wrap on window resize
 shopt -s checkwinsize
+# Recursive globbing with two **
+shopt -s globstar
 
 # Set LS_COLORS
 eval $(dircolors -b)
@@ -77,7 +76,7 @@ alias ll='ls -lhA'
 alias tree='tree -C'
 alias time='command time'  # Use time command instead of bash builtin
 alias fhere='find . -iname '
-alias ps='ps auxf'
+# alias ps='ps auxf'  # Conflicts with fzf kill
 alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
 alias free='free -mt'
 alias df='df -Th --total'
@@ -151,12 +150,14 @@ locd () {
 }
 
 # Updates databases of locate and folders for use in fzf
-alias updatelocd='sudo updatedb && locd / > ~/.locddb'
+alias updatelocd='sudo updatedb && locd / > ~/.locddb && locate ~ > ~/.homefilesdb'
 
 # FZF stuff (sourced at the end for compatibility with it's install script)
-export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
-export FZF_CTRL_T_COMMAND="locate ~/"
+# export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+export FZF_DEFAULT_COMMAND='cat ~/.homefilesdb'
+export FZF_CTRL_T_COMMAND='cat ~/.homefilesdb'
 export FZF_ALT_C_COMMAND='cat ~/.locddb'
+export FZF_COMPLETION_TRIGGER='***'
 alias oo='xdg-open "$(fzf)"'
 alias vv='vim "$(fzf)"'
 
