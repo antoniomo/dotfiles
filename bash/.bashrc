@@ -160,6 +160,10 @@ export FZF_ALT_C_COMMAND='cat ~/.locddb'
 export FZF_COMPLETION_TRIGGER='***'
 alias oo='xdg-open "$(fzf)"'
 alias vv='vim "$(fzf)"'
+# For bash completion functions
+_fzf_compgen_path() {
+  ag --hidden -g "" "$1"
+}
 
 # Prompt stuff
 # http://mywiki.wooledge.org/BashFAQ/037
