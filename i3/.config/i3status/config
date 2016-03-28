@@ -18,6 +18,7 @@ order += "disk /home/"
 order += "sysdata c"
 order += "sysdata r"
 order += "dpms"
+order += "xrandr"
 order += "volume master"
 order += "tztime local"
 order += "tztime sf"
@@ -60,6 +61,12 @@ sysdata c{
 
 sysdata r{
         format = "M{mem_used_percent:.2}%"
+}
+
+xrandr {
+  force_on_start = "eDP1+HDMI1"
+  HDMI1_pos = "right-of eDP1"
+  HDMI1_workspaces = "1,2,3,4,5"
 }
 
 disk "/home/" {
