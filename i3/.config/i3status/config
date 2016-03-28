@@ -67,6 +67,7 @@ xrandr {
   force_on_start = "eDP1+HDMI1"
   HDMI1_pos = "right-of eDP1"
   HDMI1_workspaces = "1,2,3,4,5"
+  eDP1_workspaces = "6,7,8,9,0"
 }
 
 disk "/home/" {
