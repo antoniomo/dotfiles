@@ -195,7 +195,7 @@ bar {
   modifier $mod  # Show the bar on mod keypress
   position bottom
   status_command py3status
-  tray_output HDMI1
+  tray_output primary
   font pango: Source Sans Pro Ultra-Light, Icons 14
   colors {
     separator #666666
