@@ -20,7 +20,7 @@ def get_resolutions(widths, heights):
     displays = output.strip().split(b'\n')
 
     for i, d in enumerate(displays):
-        values = d.split(b'x')
+        values = d.split(b'_')[0].split(b'x')
         # Saving each screens right border
         if i > 0:
             widths.append(int(values[0]) + widths[-1])

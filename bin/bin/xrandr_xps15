@@ -17,6 +17,8 @@ if [ $? -eq 0 ]; then
         xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
         xrandr --addmode eDP1 1920x1080_60.00
         xrandr --output eDP1 --mode 1920x1080_60.00
+        # Reattach HDMI1 after resolution change (right-of is now closer)
+        xrandr --output HDMI1 --primary --auto --right-of eDP1
         export XRANDR_PRIMARY=HDMI1
         export XRANDR_SECONDARY=eDP1
     fi
