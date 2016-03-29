@@ -108,16 +108,16 @@ exec --no-startup-id ~/opt/i3-renameworkspaces/i3-renameworkspaces.pl
 
 # Send workspaces to a particular screen
 # $XRANDR_X variables are set before calling exec i3 in .xinitrc or your DM
-# workspace 1 output $XRANDR_PRIMARY
-# workspace 2 output $XRANDR_PRIMARY
-# workspace 3 output $XRANDR_PRIMARY
-# workspace 4 output $XRANDR_PRIMARY
-# workspace 5 output $XRANDR_PRIMARY
-# workspace 6 output $XRANDR_SECONDARY
-# workspace 7 output $XRANDR_SECONDARY
-# workspace 8 output $XRANDR_SECONDARY
-# workspace 9 output $XRANDR_SECONDARY
-# workspace 10 output $XRANDR_SECONDARY
+workspace 1 output $XRANDR_PRIMARY
+workspace 2 output $XRANDR_PRIMARY
+workspace 3 output $XRANDR_PRIMARY
+workspace 4 output $XRANDR_PRIMARY
+workspace 5 output $XRANDR_PRIMARY
+workspace 6 output $XRANDR_SECONDARY
+workspace 7 output $XRANDR_SECONDARY
+workspace 8 output $XRANDR_SECONDARY
+workspace 9 output $XRANDR_SECONDARY
+workspace 10 output $XRANDR_SECONDARY
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
@@ -303,4 +303,4 @@ exec --no-startup-id /usr/bin/firefox
 exec --no-startup-id sleep 5 && urxvtc -name scratch
 
 # Hotbar script
-# exec --no-startup-id ~/bin/hotbar.py
+exec --no-startup-id ~/bin/hotbar.py
