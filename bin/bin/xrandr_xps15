@@ -5,18 +5,24 @@ xrandr | grep HDMI1 | grep " connected "
 if [ $? -eq 0 ]; then
     # External monitor is connected
     xrandr --output HDMI1 --primary --auto --right-of eDP1
-    export XRANDR_PRIMARY=HDMI1
-    export XRANDR_SECONDARY=eDP1
     if [ $? -ne 0 ]; then
         # Something went wrong. Autoconfigure the internal monitor and disable
-        # the external one
-        xrandr --output eDP1 --primary --auto --output HDMI1 --off
+        # the external one. Only internal monitor, set DPI to 288 (96*3)
+        xrandr --output eDP1 --primary --auto --dpi 288 --output HDMI1 --off
         export XRANDR_PRIMARY=eDP1
+        export XRANDR_SECONDARY=eDP1
+    else
+        # All good, setup variables and add undetected 1920x1080 resolution to
+        # internal monitor
+        xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+        xrandr --addmode eDP1 1920x1080_60.00
+        xrandr --output eDP1 --mode 1920x1080_60.00
+        export XRANDR_PRIMARY=HDMI1
         export XRANDR_SECONDARY=eDP1
     fi
 else
-    # Only internal monitor
-    xrandr --output eDP1 --primary --auto
+    # Only internal monitor, set DPI to 288 (96*3)
+    xrandr --output eDP1 --primary --auto --dpi 288
     export XRANDR_PRIMARY=eDP1
     export XRANDR_SECONDARY=eDP1
 fi

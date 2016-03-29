@@ -1,0 +1,4 @@
+! Xresources file to use HiDPI
+! `xrdb -merge .Xresources_dpi` to patch your current .Xresources with this
+! 288 = 96 * 3
+Xft.dpi: 288
