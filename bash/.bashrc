@@ -46,7 +46,7 @@ eval $(dircolors -b)
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Virtualenvwrapper and other python stuff
-export WORKON_HOME=~/.virtualenvs
+export WORKON_HOME=~/.Envs
 # We set the venv prompt PROMPT_COMMAND directly
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 source /usr/bin/virtualenvwrapper_lazy.sh
