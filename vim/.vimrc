@@ -177,10 +177,20 @@ set titlestring=%F
 " See also:
 " http://got-ravings.blogspot.fi/2008/08/vim-pr0n-making-statuslines-that-own.html
 " http://got-ravings.blogspot.fi/search/label/statuslines
+function! Showbranch()
+  let branchname=fugitive#head()
+  if branchname == ""
+    return ""
+  else
+    return '(⎇ '.branchname.')' " Git branch
+  endif
+endfunction
+
+
 set statusline=          " Clear the statusline when vimrc is loaded
 set statusline+=[%n]\    " buffer number
 set statusline+=%<%.40F\  " file name
-set statusline+=%{fugitive#statusline()} " Git branch
+set statusline+=%{Showbranch()} " Git branch
 set statusline+=%h       " help file flag
 set statusline+=%m       " modified flag
 " set statusline+=%r       " read only flag, unneeded with the modified flag
