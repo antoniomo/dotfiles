@@ -389,7 +389,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=11
 let g:indent_guides_guide_size=1
 
 " GitGutter stuff
-set updatetime=250  " in ms
+set updatetime=250  " in ms, also used by YCM and others
 
 " Interop between git gutter and signature
 " Taken from: https://gist.github.com/kshenoy/14f2c4ce7af28b54882b
@@ -429,6 +429,7 @@ call gitgutter#highlight#define_highlights()
 let g:instant_rst_localhost_only=1
 
 " YouCompleteMe
+let g:ycm_allow_changing_updatetime = 0  " We are setting it manually
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
