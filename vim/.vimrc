@@ -182,7 +182,7 @@ function! Showbranch()
   if branchname == ""
     return ""
   else
-    return '(⎇ '.branchname.')' " Git branch
+    return '⎇('.branchname.')' " Git branch
   endif
 endfunction
 
