@@ -179,23 +179,23 @@ set titlestring=%F
 " http://got-ravings.blogspot.fi/search/label/statuslines
 set statusline=          " Clear the statusline when vimrc is loaded
 set statusline+=[%n]\    " buffer number
-set statusline+=%<%.40f\   " file name
+set statusline+=%<%.40F\  " file name
 set statusline+=%{fugitive#statusline()} " Git branch
 set statusline+=%h       " help file flag
 set statusline+=%m       " modified flag
-set statusline+=%r       " read only flag
+" set statusline+=%r       " read only flag, unneeded with the modified flag
 set statusline+=%w       " preview window flag
-set statusline+=%#warningmsg#
+set statusline+=%#warningmsg# " Colortheme's warningmsg color
 set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+set statusline+=%*       " Revert color back after warningmsg color
 
 set statusline+=%=       " left/right separator, things after this go to the right
-set statusline+=[%{&ff}\| " file format (endline type, etc)
-set statusline+=%{strlen(&fenc)?&fenc:'none'}\|  " file encoding
-set statusline+=%Y]\     " filetype
+" set statusline+=[%{&ff}\| " file format (endline type, etc)
+" set statusline+=%{strlen(&fenc)?&fenc:'none'}\|  " file encoding
+" set statusline+=%Y]\     " filetype
 set statusline+=%c:     " cursor column
 set statusline+=%l/%L    " cursor line/total lines
-set statusline+=\ %P     " percent through file
+" set statusline+=\ %P     " percent through file
 
 " Vim starts in normal mode, put green statusline
 runtime! plugin/sensible.vim
@@ -377,6 +377,9 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=10
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=11
 let g:indent_guides_guide_size=1
+
+" GitGutter stuff
+set updatetime=250  " in ms
 
 " Interop between git gutter and signature
 " Taken from: https://gist.github.com/kshenoy/14f2c4ce7af28b54882b
