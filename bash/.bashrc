@@ -153,7 +153,7 @@ alias updatefzfdb='sudo updatedb; locate ~ > ~/.homefilesdb'
 export FZF_DEFAULT_COMMAND='cat ~/.homefilesdb'
 export FZF_CTRL_T_COMMAND='cat ~/.homefilesdb'
 export FZF_ALT_C_COMMAND='\tree -dnif --noreport'
-export FZF_COMPLETION_TRIGGER='***'
+export FZF_COMPLETION_TRIGGER='~~'
 alias oo='xdg-open "$(fzf)"'
 alias vv='vim "$(fzf)"'
 # For bash completion functions
