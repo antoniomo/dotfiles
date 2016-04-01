@@ -11,6 +11,7 @@ general {
         interval = 1
 }
 
+order += "dpms"
 order += "spotify"
 order += "ethernet _first_"
 order += "wireless _first_"
@@ -18,7 +19,6 @@ order += "battery 0"
 order += "disk /home/"
 order += "sysdata c"
 order += "sysdata r"
-order += "dpms"
 order += "volume master"
 order += "tztime local"
 order += "tztime sf"
