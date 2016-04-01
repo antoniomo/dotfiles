@@ -145,18 +145,14 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 
-locd () {
-  locate --null $@ | xargs -r0 sh -c 'for i do [ -d "$i" ] && echo "$i"; done'
-}
-
-# Updates databases of locate and folders for use in fzf
-alias updatelocd='sudo updatedb && locd / > ~/.locddb && locate ~ > ~/.homefilesdb'
+# Updates database of locate for use in fzf
+alias updatefzfdb='sudo updatedb; locate ~ > ~/.homefilesdb'
 
 # FZF stuff (sourced at the end for compatibility with it's install script)
 # export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
 export FZF_DEFAULT_COMMAND='cat ~/.homefilesdb'
 export FZF_CTRL_T_COMMAND='cat ~/.homefilesdb'
-export FZF_ALT_C_COMMAND='cat ~/.locddb'
+export FZF_ALT_C_COMMAND='\tree -dnif --noreport'
 export FZF_COMPLETION_TRIGGER='***'
 alias oo='xdg-open "$(fzf)"'
 alias vv='vim "$(fzf)"'
