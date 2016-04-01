@@ -11,6 +11,7 @@ general {
         interval = 1
 }
 
+order += "spotify"
 order += "ethernet _first_"
 order += "wireless _first_"
 order += "battery 0"
@@ -23,9 +24,15 @@ order += "tztime local"
 order += "tztime sf"
 order += "tztime helsinki"
 
+spotify {
+        color_paused = "FFFF00"
+        format = "{artist}:{title}"
+        format_down = ""
+}
+
 wireless _first_ {
-        format_up = " %quality %essid"
-        format_down = " down"
+        format_up = " %quality %essid"
+        format_down = ""
 }
 
 ethernet _first_ {
@@ -35,7 +42,10 @@ ethernet _first_ {
 }
 
 battery 0 {
-        format = " %percentage %remaining"
+        format = "%status %percentage %remaining"
+        status_chr = ""
+        status_bat = ""
+        status_full = ""
         format_down = ""  # Don't show when there's no battery
 }
 
@@ -45,21 +55,21 @@ tztime local {
 }
 
 tztime sf {
-        format = " SF: %H:%M"
+        format = "SF %H:%M"
         timezone = "US/Pacific"
 }
 
 tztime helsinki {
-        format = " HLK: %H:%M"
+        format = "HLK %H:%M"
         timezone = "Europe/Helsinki"
 }
 
 sysdata c{
-        format = "C{cpu_usage:.2}%"
+        format = "{cpu_usage:.2}%"
 }
 
 sysdata r{
-        format = "M{mem_used_percent:.2}%"
+        format = "{mem_used_percent:.2}%"
 }
 
 disk "/home/" {
@@ -68,7 +78,7 @@ disk "/home/" {
 }
 
 volume master {
-  format = "♪: %volume"
+  format = "♪%volume"
   device = "default"
   mixer = "Master"
   mixer_idx = 0
