@@ -188,36 +188,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-  mode hide  # Hidden by default
-  modifier $mod  # Show the bar on mod keypress
-  position bottom
-  status_command py3status
-  tray_output primary
-  font pango: Source Sans Pro Ultra-Light, Icons 14
-  colors {
-    separator #666666
-    background #333333
-    statusline #bbbbbb
-    # Type             border  background font
-    # focused_workspace #888888 #dddddd #222222
-    # active_workspace #333333 #555555 #bbbbbb
-    focused_workspace  #008fff #007fff #ffffff
-    active_workspace   #333333 #5f676a #ffffff
-
-    inactive_workspace #333333 #555555 #bbbbbb
-    urgent_workspace #2f343a #900000 #ffffff
-    # inactive_workspace #333333 #222222 #888888
-    # urgent_workspace   #aa0000 #990000 #ffffff
-  }
-}
-client.focused #888888 #dddddd #222222 #2e9ef4
-client.focused_inactive #333333 #555555 #bbbbbb #484e50
-client.unfocused #333333 #333333 #888888 #292d2e
-client.urgent #2f343a #900000 #ffffff #900000
-
 # Pulse audio volume control, with forced update on py3status
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -USR1 py3status
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -USR1 py3status
@@ -288,12 +258,8 @@ exec --no-startup-id redshift-gtk
 # Xpad sticky notes
 exec --no-startup-id xpad
 
-# Set wallpapers path
-set $wallpaperp ~/.wallpapers/*
 # Set backgrounds
-exec --no-startup-id feh --bg-fill --randomize $wallpaperp
-# Save backgrounds for usage in i3lock
-exec --no-startup-id scrot -d 2 -m ~/.lastbg.png
+exec --no-startup-id ~/bin/chbg
 
 # Auto-start firefox on workspace 1
 exec --no-startup-id /usr/bin/firefox
@@ -304,3 +270,33 @@ exec --no-startup-id sleep 5 && urxvtc -name scratch
 
 # Hotbar script
 exec --no-startup-id ~/bin/hotbar.py
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  mode hide  # Hidden by default
+  modifier $mod  # Show the bar on mod keypress
+  position bottom
+  status_command py3status
+  tray_output primary
+  font pango: Source Sans Pro Ultra-Light, Icons 14
+  colors {
+    separator #666666
+    background #333333
+    statusline #bbbbbb
+    # Type             border  background font
+    # focused_workspace #888888 #dddddd #222222
+    # active_workspace #333333 #555555 #bbbbbb
+    focused_workspace  #008fff #007fff #ffffff
+    active_workspace   #333333 #5f676a #ffffff
+
+    inactive_workspace #333333 #555555 #bbbbbb
+    urgent_workspace #2f343a #900000 #ffffff
+    # inactive_workspace #333333 #222222 #888888
+    # urgent_workspace   #aa0000 #990000 #ffffff
+  }
+}
+client.focused #888888 #dddddd #222222 #2e9ef4
+client.focused_inactive #333333 #555555 #bbbbbb #484e50
+client.unfocused #333333 #333333 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000

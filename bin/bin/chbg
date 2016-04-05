@@ -2,3 +2,4 @@
 # Swap background wallpapers
 
 feh --bg-scale --randomize ~/.wallpapers/*
+convert +append @<(cut -s -d \' -f 2,4 --output-delimiter=' ' ~/.fehbg) ~/.lastbg.png
