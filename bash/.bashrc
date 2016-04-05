@@ -31,7 +31,7 @@ shopt -s histappend
 shopt -s autocd
 # Fix minor cd typos
 shopt -s cdspell
-# Fix minor directory name typos
+# Fix minor typos when tab-completing directores
 shopt -s dirspell
 # Line wrap on window resize
 shopt -s checkwinsize
@@ -125,6 +125,28 @@ if [ -e ~/.localrc ];then
   source ~/.localrc
 fi
 
+# Lazy change into directory by partial name
+# From /, c ho an -> cd /home/antonio
+c () {
+    ls='ls -A -sh --color=auto'
+    if [[ $1 ]]; then
+        if [[ $1 == '-q' ]]; then
+            ls='true'
+            shift
+        fi
+        for dir in "$@"; do
+            if [[ -d $dir ]]; then
+                command cd "$dir"
+            else
+                command cd *"${dir}"*
+            fi
+        done
+    else
+        command cd ~
+    fi
+    $ls
+}
+
 # Go up the path by level or partial and safe match, awesome
 # .. 3 to go up 3 levels
 # .. bla to go up until `bla` partially matches directory name
@@ -155,7 +177,7 @@ fi
 }
 
 #View specified line range of a file:
-# viewlines 13 37 file.txt  #Displays lines 13-37 of file.txt
+# viewlines 13 37 file.txt  # Displays lines 13-37 of file.txt
 viewlines () { sed -n ''$1','$2'p' $3; }
 
 # Usefult to get repeatable random filebased seeds
