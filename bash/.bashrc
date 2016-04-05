@@ -35,8 +35,18 @@ shopt -s cdspell
 shopt -s dirspell
 # Line wrap on window resize
 shopt -s checkwinsize
+# Awesome extended globs
+shopt -s extglob
 # Recursive globbing with two **
 shopt -s globstar
+# Store multi-line commands in shell history as one-liners for easy editing
+shopt -s cmdhist
+# Don't try to complete on empty lines
+shopt -s no_empty_cmd_completion
+# Globs won't consider case
+shopt -s nocaseglob
+# Globs will consider hidden files, too
+shopt -s dotglob
 
 # Set LS_COLORS
 eval $(dircolors -b)
@@ -114,6 +124,39 @@ alias skill='sudo systemctl kill'
 if [ -e ~/.localrc ];then
   source ~/.localrc
 fi
+
+# Go up the path by level or partial and safe match, awesome
+# .. 3 to go up 3 levels
+# .. bla to go up until `bla` partially matches directory name
+.. () {
+    if [[ $1 =~ ^[0-9]*$ ]]; then
+        for ((n=0; n<${1:-1}; n++)); do
+            cd ..
+        done
+    else
+        if [[ ${PWD,,} =~ "${1,,}" ]]; then
+            p="$PWD/"
+            while [[ $p ]]; do
+                n=${p##*/}
+                if [[ $n && ${n,,} =~ "${1,,}" ]]; then
+                    echo "$p"
+                    cd "$p"
+                    return 0
+                else
+                    p=${p%/*}
+                fi
+            done
+            return 1
+        else
+            echo 'No matching path found.'
+            return 1
+        fi
+    fi
+}
+
+#View specified line range of a file:
+# viewlines 13 37 file.txt  #Displays lines 13-37 of file.txt
+viewlines () { sed -n ''$1','$2'p' $3; }
 
 # Usefult to get repeatable random filebased seeds
 # Sample usage: shuf -n 100 infile --random-source=<(get_seeded_random 42) -o outfile
