@@ -125,6 +125,8 @@ if [ -e ~/.localrc ];then
   source ~/.localrc
 fi
 
+# Next two from
+# https://www.reddit.com/r/linux/comments/23zibr/hey_reddit_linux_users_what_are_your_best_shell/
 # Lazy change into directory by partial name
 # From /, c ho an -> cd /home/antonio
 c () {
