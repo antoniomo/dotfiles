@@ -6,7 +6,7 @@ from bisect import bisect
 from Xlib import display
 
 REFRESH_PERIOD = .5  # In seconds
-BAR_HEIGHT = 40  # Bar height in pixels
+BAR_HEIGHT = 30  # Bar height in pixels
 BAR_HIDDEN = True
 
 screen = display.Display().screen()
@@ -37,11 +37,13 @@ def get_mouse_pos():
 
 def hide_bar():
     subprocess.Popen('i3-msg -q bar hidden_state hide', shell=True)
+    # subprocess.Popen('i3-msg -q bar mode hide', shell=True)
 
 
 def show_bar():
     subprocess.Popen('i3-msg -q bar hidden_state show', shell=True)
-    os.system('killall -USR1 py3status')  # Trigger a refresh
+    # subprocess.Popen('i3-msg -q bar mode dock', shell=True)
+    # os.system('killall -USR1 py3status')  # Trigger a refresh
 
 
 def cursor_in_bar(X, Y):
