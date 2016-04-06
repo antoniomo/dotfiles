@@ -209,6 +209,11 @@
 # NOTE: It might be helpful to run dunst -print in a terminal in order
 # to find fitting options for rules.
 
+[critical]
+    summary = "*"
+    script = ~/bin/dunst_critical.sh
+    urgency = critical
+
 #[espeak]
 #    summary = "*"
 #    script = dunst_espeak.sh
