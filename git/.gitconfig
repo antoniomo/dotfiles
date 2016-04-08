@@ -6,10 +6,17 @@
 	excludesfile = ~/.gitignore
 [diff]
 	tool = vimdiff
+[difftool]
+	prompt = false
 [merge]
 	tool = vimdiff
+[mergetool]
+	prompt = false
+	conflictstyle = diff3
 [push]
 	default = simple
+[init]
+	templatedir = ~/.git_template
 [alias]
 # Absolutely awesome post: http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
 	co = checkout
@@ -42,7 +49,3 @@
 	llnc = log --pretty=format:'%h%d %s [%cn]' --numstat
 	la = "!git config -l | grep alias | cut -c 7-"
 	ctags = !.git/hooks/ctags
-[init]
-	templatedir = ~/.git_template
-[difftool]
-	prompt = false
