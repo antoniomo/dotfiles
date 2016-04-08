@@ -1,0 +1,3 @@
+#!/bin/sh
+# Not using urxvtc because we don't want to fork
+urxvt -e sh -c "fzf > $(tty)"
