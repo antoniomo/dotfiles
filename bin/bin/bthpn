@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sudo hciconfig hci0 up
+sudo hcitool cc 1C:48:F9:F7:72:3C
