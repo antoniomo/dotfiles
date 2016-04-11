@@ -1,6 +1,5 @@
 #!/bin/sh
 
-sudo hciconfig hci0 up
-sudo hcitool cc 00:1F:20:A9:23:A7
+echo -e 'power on\nconnect 00:1F:20:A9:23:A7\nquit' | bluetoothctl
 sudo k810-conf -d /dev/hidraw1 -f on
 ~/bin/mylayout
