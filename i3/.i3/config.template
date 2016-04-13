@@ -269,6 +269,7 @@ bindsym $mod+Shift+Delete mode "$mode_system"
 assign [class="Firefox"] 1
 assign [class="Spotify"] 10
 assign [class="Skype"] 10
+assign [class="xpad"] 6
 for_window [class="Skype" title="Chat$"] border normal
 for_window [class="xpad"] floating enable
 for_window [instance=scratch] move scratchpad
