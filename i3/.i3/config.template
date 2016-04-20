@@ -290,7 +290,6 @@ exec --no-startup-id xpad
 # Toggle hide/show pads
 bindsym $mod+p exec xpad -t
 
-
 # Set backgrounds
 exec --no-startup-id ~/bin/chbg
 
