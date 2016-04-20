@@ -6,4 +6,4 @@ source ~/bin/set_xrandr_variables
 # Replace the i3 config template variables
 sed -e "s/\$XRANDR_PRIMARY/$XRANDR_PRIMARY/" -e "s/\$XRANDR_SECONDARY/$XRANDR_SECONDARY/" ~/.i3/config.template > ~/.i3/config
 # Set laptop screen to full brightness by default
-xbacklight -set 100
+# xbacklight -set 100
