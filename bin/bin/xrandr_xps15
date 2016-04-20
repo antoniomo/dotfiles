@@ -11,6 +11,7 @@ if [ $? -eq 0 ]; then
         xrandr --output eDP1 --primary --auto --dpi 288 --output HDMI1 --off
         export XRANDR_PRIMARY=eDP1
         export XRANDR_SECONDARY=eDP1
+        source ~/dotfiles/i3/setup_hidpi
     else
         # All good, setup variables and add undetected 1920x1080 resolution to
         # internal monitor
@@ -29,4 +30,5 @@ else
     xrandr --output eDP1 --primary --auto --dpi 288
     export XRANDR_PRIMARY=eDP1
     export XRANDR_SECONDARY=eDP1
+    source ~/dotfiles/i3/setup_hidpi
 fi
