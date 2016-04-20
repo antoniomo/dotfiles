@@ -264,7 +264,7 @@ bindsym $mod+Pause mode "$mode_system"
 # Useful in Macbook laptops:
 bindsym $mod+XF86Eject mode "$mode_system"
 # Useful in laptops without pause:
-bindsym $mod+Shift+Delete mode "$mode_system"
+bindsym $mod+Delete mode "$mode_system"
 
 # Specific app properties
 assign [class="Firefox"] 1
