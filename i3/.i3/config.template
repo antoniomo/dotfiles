@@ -47,7 +47,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # j4-dmenu-desktop is an external replacement for i3-dmenu-desktop
 # bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --term=urxvtc
-bindsym $mod+d exec --no-startup-id ~/bin/j4dmenuexec
+bindsym $mod+d exec --no-startup-id ~/bin/dmenu-run
 
 
 # change focus
