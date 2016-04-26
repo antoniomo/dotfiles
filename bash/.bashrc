@@ -182,6 +182,11 @@ c () {
 # viewlines 13 37 file.txt  # Displays lines 13-37 of file.txt
 viewlines () { sed -n ''$1','$2'p' $3; }
 
+# CLI calculator
+# Quote any complex calculation with spaces or parenthesis
+# $ calc "(3 + 2) * 2"
+calc(){ awk "BEGIN{ print $* }"; }
+
 # Usefult to get repeatable random filebased seeds
 # Sample usage: shuf -n 100 infile --random-source=<(get_seeded_random 42) -o outfile
 get_seeded_random()
