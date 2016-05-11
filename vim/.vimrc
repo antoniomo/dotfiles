@@ -47,8 +47,8 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'chriskempson/base16-vim'
 " ctrl + hjkl to move windows in tmux and vim effortlessly
 Plug 'christoomey/vim-tmux-navigator'
-" YouCompleteMe autocompletion (Remember to run install.sh after upgrade!)
-Plug 'Valloric/YouCompleteMe', {'do': 'python2 install.py --gocode-completer --system-boost --system-libclang --clang-completer'}
+" YouCompleteMe autocompletion (Remember to run install.py after upgrade!)
+Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --gocode-completer'}
 " Fuzzy-finder with fzf
 Plug 'junegunn/fzf', {'do': 'yes \| ./install --all'}
 Plug 'junegunn/fzf.vim'
@@ -82,6 +82,7 @@ Plug 'honza/vim-snippets'
 " Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
 " Go stuff
 Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'nsf/gocode', {'rtp': 'vim', 'for': 'go', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
 " Nim stuff
 " Plug 'zah/nim.vim', {'for': 'nim'}
 " Java Stuff
