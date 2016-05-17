@@ -273,8 +273,10 @@ bindsym $mod+Delete mode "$mode_system"
 assign [class="Firefox"] 1
 assign [class="Spotify"] 10
 assign [class="Skype"] 10
+for_window [title="File Upload"] move workspace current
 for_window [class="Skype" title="Chat$"] border normal
 for_window [class="xpad"] floating enable
+for_window [class=Kodi] border none
 for_window [instance=scratch] move scratchpad
 
 # Urxvt daemon
