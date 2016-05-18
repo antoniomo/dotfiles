@@ -29,6 +29,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mileszs/ack.vim'
 " Surrounds plugin
 Plug 'tpope/vim-surround'
+" Sneak motions
+Plug 'justinmk/vim-sneak'
 " Git changes as signs
 Plug 'airblade/vim-gitgutter'
 " Autoclosing of parenthesis, brackets...
@@ -375,14 +377,6 @@ imap <c-x><c-p> <plug>(fzf-complete-path)
 " Use urxvtd as launcher for fzf in gvim
 let g:fzf_launcher = 'urxvtd -geometry 120x30 -e sh -c %s'
 
-" Pick options
-" nnoremap <Leader>p :call PickFile()<CR>
-" nnoremap <Leader>s :call PickFileSplit()<CR>
-" nnoremap <Leader>v :call PickFileVerticalSplit()<CR>
-" nnoremap <Leader>t :call PickFileTab()<CR>
-" nnoremap <Leader>b :call PickBuffer()<CR>
-" nnoremap <Leader>] :call PickTag()<CR>
-
 " Indent-guides
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=10
@@ -439,6 +433,14 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 let g:ycm_key_list_previous_completion=['<S-TAB>', '<Up>', '<S-Enter>']
 let g:ycm_python_binary_path = '/usr/bin/python3'
+
+" Sneak
+let g:sneak#streak = 1
+hi link SneakPluginTarget ErrorMsg
+hi link SneakPluginScope  Comment
+hi link SneakStreakTarget ErrorMsg
+" hi link SneakStreakMask  Comment
+" hi link SneakStreakStatusLine  Comment
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
