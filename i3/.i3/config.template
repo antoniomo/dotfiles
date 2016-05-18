@@ -275,6 +275,7 @@ assign [class="Spotify"] 10
 assign [class="Skype"] 10
 for_window [class="Firefox" window_role="GtkFileChooserDialog"] move workspace current
 for_window [class="Firefox" instance="Dialog"] move workspace current
+for_window [class="Firefox" title="Print"] move workspace current
 for_window [class="Skype" title="Chat$"] border normal
 for_window [class="xpad"] floating enable
 for_window [class=Kodi] border none
