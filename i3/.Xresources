@@ -78,7 +78,7 @@ URxvt.secondaryScreen: true
 URxvt.secondaryScroll: false
 URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,font-size
+URxvt.perl-ext-common: default,selection_to_clipboard,url-select,keyboard-select,font-size
 URxvt.url-select.launcher: /usr/bin/firefox
 URxvt.url-select.underline: true
 URxvt.url-select.button: 1
