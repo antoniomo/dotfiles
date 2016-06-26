@@ -29,6 +29,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mileszs/ack.vim'
 " Surrounds plugin
 Plug 'tpope/vim-surround'
+" Search visual star (* search for text selection, not just word)
+Plug 'bronson/vim-visual-star-search'
 " Sneak motions
 Plug 'justinmk/vim-sneak'
 " Git changes as signs
