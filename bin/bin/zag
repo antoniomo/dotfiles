@@ -1,0 +1,19 @@
+#!/bin/sh
+# Count lines of gzipped file
+
+if command -v pigz >/dev/null 2>&1; then
+  if command -v pv >/dev/null 2>&1; then
+    unpigz -c "$1" | pv | ag "${@:2}"
+  else
+    echo "Running without progressbar, install pv for that"
+    unpigz -c "$1" | ag "${@:2}"
+  fi
+else
+  if command -v pv >/dev/null 2>&1; then
+    echo "Running with zcat, install pigz for a parallel and faster version"
+    zcat "$1" | pv | ag "${@:2}"
+  else
+    echo "Running without progressbar, install pv for that"
+    zcat "$1" | ag "${@:2}"
+  fi
+fi
