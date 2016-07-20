@@ -119,6 +119,32 @@ alias senable='sudo systemctl enable'
 alias sdisable='sudo systemctl disable'
 alias skill='sudo systemctl kill'
 
+# Compress/decompress in parallel
+function gzip(){
+  pigz $@
+}
+export -f gzip
+
+function gunzip(){
+  unpigz $@
+}
+export -f gunzip
+
+function bzip2(){
+  pbzip2 $@
+}
+export -f bzip2
+
+function bunzip2(){
+  pbunzip2 $@
+}
+export -f bunzip2
+
+function bzcat(){
+  pbzcat $@
+}
+export -f bzcat
+
 # Settings not found here or in dotfiles (having sensitive info)
 if [ -e ~/.localrc ];then
   source ~/.localrc
