@@ -89,6 +89,7 @@ alias time='command time'  # Use time command instead of bash builtin
 alias fhere='find . -iname '
 # alias ps='ps auxf'  # Conflicts with fzf kill
 alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
+alias zag='ag -z'
 alias free='free -mt'
 alias df='df -Th --total'
 alias du='ncdu'
