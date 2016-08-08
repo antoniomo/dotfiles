@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+# Remove duplicate lines on huge files
+import dbm
+import os
+import sys
+import tempfile
+from tqdm import tqdm
+
+tmp = tempfile.mktemp()
+with open(sys.argv[1]) as in_f,\
+     open(sys.argv[1] + '.undup', 'w') as out_f,\
+     dbm.open(tmp, 'c') as db:
+    for line in tqdm(in_f):
+        bl = bytes(line, 'utf8', errors='ignore')
+        if not bl in db:
+            out_f.write(line)
+            db[bl] = '1'
+
+os.remove(tmp)
