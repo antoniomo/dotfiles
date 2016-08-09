@@ -1,0 +1,4 @@
+# Source, not exec
+
+xrdb -merge ~/dotfiles/i3/.Xresources
+source ~/dotfiles/i3/lowdpi_env

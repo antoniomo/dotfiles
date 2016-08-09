@@ -40,6 +40,9 @@
 *.color14:      base0F
 *.color15:      base07
 
+! DPI default
+Xft.dpi: 96
+
 ! Font configs
 Xft.autohint: false
 Xft.lcdfilter: lcddefault

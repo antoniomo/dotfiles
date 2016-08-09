@@ -24,6 +24,7 @@ if [ $? -eq 0 ]; then
         xrandr --output HDMI1 --primary --auto --right-of eDP1
         export XRANDR_PRIMARY=HDMI1
         export XRANDR_SECONDARY=eDP1
+        source ~/dotfiles/i3/setup_lowdpi
     fi
 else
     # Only internal monitor, set DPI to 288 (96*3)
