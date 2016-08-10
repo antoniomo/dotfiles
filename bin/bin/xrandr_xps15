@@ -1,23 +1,20 @@
 #!/bin/bash
 # Taken from http://www.jejik.com/articles/2008/10/setting_up_dual_monitors_system-wide_with_xrandr_on_debian_lenny/
 
-xrandr | grep HDMI1 | grep " connected "
-if [ $? -eq 0 ]; then
+internal=1
+xrandr | grep HDMI1 | grep -q " connected "
+HDMI1=$?
+xrandr | grep DP2 | grep -q " connected "  # USB-c
+DP2=$?
+if [ $HDMI1 -eq 0 ]; then
     # External monitor is connected
-    xrandr --output HDMI1 --primary --auto --right-of eDP1
+    xrandr --output HDMI1 --primary --auto --left-of eDP1
     if [ $? -ne 0 ]; then
-        # Something went wrong. Autoconfigure the internal monitor and disable
-        # the external one. Only internal monitor, set DPI to 288 (96*3)
-        xrandr --output eDP1 --primary --auto --dpi 288 --output HDMI1 --off
-        export XRANDR_PRIMARY=eDP1
-        export XRANDR_SECONDARY=eDP1
-        source ~/dotfiles/i3/setup_hidpi
+        # Something went wrong.
+        internal=1
     else
-        # All good, setup variables and add undetected 1920x1080 resolution to
-        # internal monitor
-        # xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
-        # xrandr --addmode eDP1 1920x1080_60.00
-        # xrandr --output eDP1 --mode 1920x1080_60.00 --scale 2x2
+        internal=0
+        # All good
         # Sad, but if not everything looks too small next to the other screen...
         xrandr --output eDP1 --mode 1368x768
         # Reattach HDMI1 after resolution change (right-of is now closer)
@@ -26,7 +23,26 @@ if [ $? -eq 0 ]; then
         export XRANDR_SECONDARY=eDP1
         source ~/dotfiles/i3/setup_lowdpi
     fi
-else
+fi
+if [ $DP2 -eq 0 ]; then
+    # Second external monitor is connected
+    xrandr --output DP2 --auto --left-of HDMI1
+    if [ $? -ne 0 ]; then
+        # Something went wrong.
+        internal=1
+    else
+        internal=0
+        # All good, disconnect internal screen in this case
+        xrandr --output eDP1 --off
+        # Reattach screens after change
+        xrandr --output HDMI1 --primary --auto
+        xrandr --output DP2 --auto --left-of HDMI1
+        export XRANDR_PRIMARY=HDMI1
+        export XRANDR_SECONDARY=DP2
+        source ~/dotfiles/i3/setup_lowdpi
+    fi
+fi
+if [ $internal -ne 0 ]; then
     # Only internal monitor, set DPI to 288 (96*3)
     xrandr --output eDP1 --primary --auto --dpi 288
     export XRANDR_PRIMARY=eDP1
