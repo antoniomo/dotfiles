@@ -273,12 +273,13 @@ bindsym $mod+Delete mode "$mode_system"
 assign [class="Firefox"] 1
 assign [class="Spotify"] 10
 assign [class="Skype"] 10
+assign [class="gnote"] 6
 for_window [class="Firefox" window_role="GtkFileChooserDialog"] move workspace current
 for_window [class="Firefox" instance="Dialog"] move workspace current
 for_window [class="Firefox" title="Print"] move workspace current
 for_window [class="Firefox" instance="SessionManager"] move workspace current
 for_window [class="Skype" title="Chat$"] border normal
-for_window [class="xpad"] floating enable
+for_window [class="gnote"] floating enable
 for_window [class=Kodi] border none
 for_window [instance=scratch] move scratchpad
 
@@ -294,10 +295,10 @@ exec --no-startup-id parcellite
 # Redshift red ambient
 exec --no-startup-id redshift-gtk
 
-# Xpad sticky notes
-exec --no-startup-id xpad
+# gnote
+exec --no-startup-id gnote
 # Toggle hide/show pads
-bindsym $mod+p exec xpad -t
+# bindsym $mod+p exec xpad -t
 
 # Set backgrounds
 exec --no-startup-id ~/bin/chbg

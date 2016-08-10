@@ -50,8 +50,4 @@ if [ $internal -ne 0 ]; then
     source ~/dotfiles/i3/setup_hidpi
 fi
 
-# Replace the i3 config template variables
-sed -e "s/\$XRANDR_PRIMARY/$XRANDR_PRIMARY/" -e "s/\$XRANDR_SECONDARY/$XRANDR_SECONDARY/" ~/.i3/config.template > ~/.i3/config
-
-# Restart i3 to reload config in case i3 is running
-i3-msg restart
+source ~/bin/i3-reload
