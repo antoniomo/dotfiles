@@ -7,11 +7,11 @@ if [ $# -lt 2 ]; then
 fi
 
 if [ $# -eq 2 ]; then
-  echo "No description, using description=title"
-  at_time="$2"
+  echo "No description, using description='$1'"
+  at_time="${@:2}"
   description="$1"
 else
-  at_time="$3"
+  at_time="${@:3}"
   description="$2"
 fi
 
