@@ -3,8 +3,5 @@
 LG51="04:A3:16:7B:B7:35"
 LG51_SINK=`echo $LG51 | tr : _`
 sudo systemctl start bluetooth
-sudo hciconfig hci0 up
-sudo hciconfig hci0 sspmode 0
-sudo hcitool cc $LG51
-echo -e "connect $LG51\nquit" | bluetoothctl
+echo -e "power on\nconnect $LG51\nquit" | bluetoothctl
 pacmd set-default-sink "bluez_sink.$LG51_SINK"
