@@ -3,18 +3,18 @@
         "firefox": "",
         "urxvt": "",
         "thunar": "",
-	"zathura": "",
+        "zathura": "",
         "vlc": "",
         "kodi": "",
         "plugin-container": "",
         "spotify": "",
         "mangclient": "",
         "brogue": "",
-	"skype": "",
+        "skype": "",
         "chromium": "",
-	"xpad": "",
-	"libreoffice-calc": "",
-	"darktable": ""
+        "gnote": "",
+        "libreoffice-calc": "",
+        "darktable": ""
     },
     "instances": {
     }
