@@ -107,17 +107,32 @@ alias nikola='source ~/opt/antoniomo.github.io/_nikola_bash;unalias nikola;nikol
 # Taken from: http://pastebin.com/pZ0hVDq8
 alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//     '\'')"'
 
-# Systemctl aliases
+# Systemctl aliases/functions
 alias sls='sudo systemctl list-units'
 alias sg='sudo systemctl list-units|grep -iE'
-alias sst='sudo systemctl status -n0'
-alias sstart='sudo systemctl start'
-alias sstop='sudo systemctl stop'
-alias srestart='sudo systemctl restart'
-alias sreload='sudo systemctl reload'
 alias senable='sudo systemctl enable'
 alias sdisable='sudo systemctl disable'
-alias skill='sudo systemctl kill'
+alias sst='sudo systemctl status -n0'
+function sstart(){
+  sudo systemctl start "$@"
+  sudo systemctl status -n0 "$@"
+}
+function sstop(){
+  sudo systemctl stop "$@"
+  sudo systemctl status -n0 "$@"
+}
+function srestart(){
+  sudo systemctl restart "$@"
+  sudo systemctl status -n0 "$@"
+}
+function sreload(){
+  sudo systemctl reload "$@"
+  sudo systemctl status -n0 "$@"
+}
+function skill(){
+  sudo systemctl kill "$@"
+  sudo systemctl status -n0 "$@"
+}
 
 # Compress/decompress in parallel
 function gzip(){
