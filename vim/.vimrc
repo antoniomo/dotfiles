@@ -480,7 +480,7 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound  " ()
 au Syntax * RainbowParenthesesLoadSquare  " []
 au Syntax * RainbowParenthesesLoadBraces  " {}
-au Syntax * RainbowParenthesesLoadChevrons  " <>
+" au Syntax * RainbowParenthesesLoadChevrons  " <>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 " http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
