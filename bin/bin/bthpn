@@ -1,6 +1,6 @@
 #!/bin/sh
 
-JABRAHPN="1C:48:F9:F7:72:3C"
+JABRAHPN="50:1A:A5:3F:07:4F"
 JABRAHPN_SINK=`echo $JABRAHPN | tr : _`
 sudo systemctl start bluetooth
 echo -e "power on\nconnect $JABRAHPN\nquit" | bluetoothctl
