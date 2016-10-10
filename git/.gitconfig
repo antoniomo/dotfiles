@@ -50,3 +50,7 @@
 	llnc = log --pretty=format:'%h%d %s [%cn]' --numstat
 	la = "!git config -l | grep alias | cut -c 7-"
 	ctags = !.git/hooks/ctags
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
