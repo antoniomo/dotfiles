@@ -49,7 +49,6 @@
 	fl = log -u
 	lg = log --oneline --decorate --all --graph
 	ls = log --oneline --decorate
-	lsv = log --pretty=format:'%C(auto)%h %d %s (%cr) <%aN>'
 	lsv = log --pretty=format:'%C(auto)%h %d %s %C(green)(%cr) %C(blue)<%aN>'
 	ll = log --oneline --decorate --stat
 	llv = log --pretty=format:'%C(auto)%h %d %s %C(green)(%cr) %C(blue)<%aN>' --stat
