@@ -39,7 +39,7 @@
 	st = status
 	stv = status -v
 	stvv = status -vv
-	last = log -1 HEAD
+	last = log --oneline --decorate -1 HEAD
 	unstage = reset HEAD --
 	visual = !gitk &
 	u = add -u
