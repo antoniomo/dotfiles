@@ -16,6 +16,10 @@
 	conflictstyle = diff3
 [push]
 	default = simple
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
 [init]
 	templatedir = ~/.git_template
 [alias]
@@ -31,6 +35,7 @@
 	ra = remote add
 	ci = commit
 	civ = commit -v
+	s = status -s
 	st = status
 	stv = status -v
 	stvv = status -vv
@@ -42,15 +47,11 @@
 	a = add
 	filelog = log -u
 	fl = log -u
-	ls = log --pretty=format:'%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]'
-	lsd= log --pretty=format:'%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]' --date=short
-	lsnc = log --pretty=format:'%h%d %s [%cn]'
-	ll = log --pretty=format:'%C(yellow)%h%Cred%d %Creset%s%Cblue [%cn]' --numstat
-	lld = log --pretty=format:'%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]' --numstat --date=short
-	llnc = log --pretty=format:'%h%d %s [%cn]' --numstat
+	lg = log --oneline --decorate --all --graph
+	ls = log --oneline --decorate
+	lsv = log --pretty=format:'%C(auto)%h %d %s (%cr) <%aN>'
+	lsv = log --pretty=format:'%C(auto)%h %d %s %C(green)(%cr) %C(blue)<%aN>'
+	ll = log --oneline --decorate --stat
+	llv = log --pretty=format:'%C(auto)%h %d %s %C(green)(%cr) %C(blue)<%aN>' --stat
 	la = "!git config -l | grep alias | cut -c 7-"
 	ctags = !.git/hooks/ctags
-[pull]
-	rebase = true
-[rerere]
-	enabled = true
