@@ -248,6 +248,7 @@ alias strat='fortune ~/opt/Oblique-Strategies'
 function faketty { 0<&- script -qfc "$(printf "'%s' " "$@")" /dev/null; }
 export LESSOPEN='|/usr/bin/lesspipe.sh %s'
 export LESS='-R -X '
+export PAGER=less
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
