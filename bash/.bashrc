@@ -73,7 +73,8 @@ GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_SHOWUPSTREAM="auto"
-alias g=git
+alias g=hub
+alias git=hub
 source /usr/share/bash-completion/completions/git
 complete -o default -o nospace -F _git g
 
