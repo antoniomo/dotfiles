@@ -296,12 +296,12 @@ exec --no-startup-id parcellite
 exec --no-startup-id redshift-gtk
 
 # gnote
-exec --no-startup-id gnote
+# exec --no-startup-id gnote
 # Toggle hide/show pads
 # bindsym $mod+p exec xpad -t
 
-# Set backgrounds
-exec --no-startup-id ~/bin/chbg
+# Set backgrounds (delay to make sure xrandr autodetects all screens)
+exec --no-startup-id sleep 3 && ~/bin/chbg
 
 # Auto-start firefox on workspace 1
 exec --no-startup-id /usr/bin/firefox
@@ -311,4 +311,4 @@ exec --no-startup-id /usr/bin/firefox
 exec --no-startup-id sleep 5 && urxvtc -name scratch
 
 # Hotbar script (without sleep py3status crashes)
-exec --no-startup-id sleep 5 && ~/bin/hotbar.py
+exec --no-startup-id sleep 10 && ~/bin/hotbar.py
