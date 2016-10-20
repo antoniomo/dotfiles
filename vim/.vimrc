@@ -120,6 +120,11 @@ endif
 " Mouse support
 set mouse=a
 
+" Space as leader
+let mapleader = "\<Space>"
+
+set encoding=utf-8
+
 " Copy to system's selection clipboard (the one midmouse pastes)
 set clipboard=unnamed
 
