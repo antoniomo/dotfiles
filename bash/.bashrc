@@ -80,6 +80,7 @@ complete -o default -o nospace -F _git g
 
 # General aliases
 alias sudo='sudo '  # Enables aliases with sudo
+alias please='sudo $(fc -ln -1)'
 alias grep='grep --color=auto'
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
@@ -103,6 +104,7 @@ alias jsonpp='python -mjson.tool'
 alias unp='unp -U'
 alias o='xdg-open'
 alias v='vim'
+alias :e='vim'
 # Prepare nikola tab completion when first invoked
 alias nikola='source ~/opt/antoniomo.github.io/_nikola_bash;unalias nikola;nikola'
 # Add an "alert" alias for long running commands.  Use like so:
