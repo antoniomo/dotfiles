@@ -250,6 +250,7 @@ alias strat='fortune ~/opt/Oblique-Strategies'
 # http://stackoverflow.com/questions/1401002/trick-an-application-into-thinking-its-stdin-is-interactive-not-a-pipe
 function faketty { 0<&- script -qfc "$(printf "'%s' " "$@")" /dev/null; }
 export LESSOPEN='|/usr/bin/lesspipe.sh %s'
+export LESSCOLORIZER='pygmentize'
 export LESS='-R -X '
 export PAGER=less
 export VISUAL=vim
