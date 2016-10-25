@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sudo systemctl start bluetooth
+echo -e 'power on\nconnect 1C:1A:C0:E7:06:02\nquit' | bluetoothctl
+xset m 0 0  # Disable acceleration
