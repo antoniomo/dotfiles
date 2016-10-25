@@ -304,7 +304,7 @@ exec --no-startup-id redshift-gtk
 exec --no-startup-id sleep 3 && ~/bin/chbg
 
 # Auto-start firefox on workspace 1
-exec --no-startup-id /usr/bin/firefox
+# exec --no-startup-id /usr/bin/firefox
 
 # Auto-start a terminal on the scratchpad (delay to make sure scratchpad is
 # ready)
