@@ -87,6 +87,8 @@ Plug 'honza/vim-snippets'
 " Go stuff
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'nsf/gocode', {'rtp': 'vim', 'for': 'go', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
+" TOML
+Plug 'cespare/vim-toml', {'for': 'toml'}
 " Nim stuff
 " Plug 'zah/nim.vim', {'for': 'nim'}
 " Java Stuff
