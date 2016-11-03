@@ -1,0 +1,3 @@
+#!/bin/sh
+
+urxvtc -e bash -c "$@ && bash"
