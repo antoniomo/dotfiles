@@ -81,7 +81,7 @@ URxvt.secondaryScreen: true
 URxvt.secondaryScroll: false
 URxvt*saveLines: 5000
 URxvt*termName: rxvt-unicode
-URxvt.perl-ext-common: default,selection_to_clipboard,matcher_multiline,keyboard-select,font-size
+URxvt.perl-ext-common: default,selection-to-clipboard,matcher_multiline,keyboard-select,font-size
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher_multiline.button: 1
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
