@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# http://askubuntu.com/questions/789465/generate-white-noise-to-calm-a-baby
+play -n synth brownnoise synth pinknoise mix synth sine amod 0.3 10
