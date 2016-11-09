@@ -497,6 +497,9 @@ cmap w!! w !sudo tee > /dev/null %
 " Enter the explorer if no file was passed
 autocmd VimEnter * if !argc() | Explore | endif
 
+" Delimitmate
+let delimitMate_expand_cr = 1
+
 " Golang stuff
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
