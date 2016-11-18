@@ -1,0 +1,10 @@
+#!/bin/bash
+
+xrandr | grep $XRANDR_PRIMARY | grep -q 0+0
+PRIM_ON_LEFT=$?
+
+if [ $PRIM_ON_LEFT -eq 0 ]; then
+  xrandr --output $XRANDR_PRIMARY --right-of $XRANDR_SECONDARY
+else
+  xrandr --output $XRANDR_PRIMARY --left-of $XRANDR_SECONDARY
+fi
