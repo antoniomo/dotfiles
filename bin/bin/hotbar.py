@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import subprocess
+import sys
 import os
 from time import sleep
 from bisect import bisect
@@ -10,24 +11,22 @@ BAR_HEIGHT = 30  # Bar height in pixels
 BAR_HIDDEN = True
 
 screen = display.Display().screen()
-widths = []
-heights = []
+widhts, heights = None, None
 
 
-def get_resolutions(widths, heights):
-    output = subprocess.Popen('xrandr | grep "\*" | cut -d" " -f4', shell=True,
-                              stdout=subprocess.PIPE).communicate()[0]
+def get_resolutions():
+    output = subprocess.Popen('xrandr | grep " connected" | grep -o -e "[0-9]\+x[0-9]\++[0-9]\+"',
+                              shell=True, stdout=subprocess.PIPE).communicate()[0]
     displays = output.strip().split(b'\n')
 
-    for i, d in enumerate(displays):
-        values = d.split(b'_')[0].split(b'x')
-        # Saving each screens right border
-        if i > 0:
-            widths.append(int(values[0]) + widths[-1])
-        else:  # No screen to the left of the first one
-            widths.append(int(values[0]))
-        # Saving height minus bar
-        heights.append(int(values[1]) - BAR_HEIGHT)
+    # Saving each screen's right border and height
+    displays = [d.split(b'x') for d in displays]
+    displays = [(int(d[0]), d[1].split(b'+')) for d in displays]
+    displays = [(d[0] + int(d[1][1]), int(d[1][0]) - BAR_HEIGHT) for d in displays]
+
+    # Sorting left to right
+    displays.sort()
+    return zip(*displays)
 
 
 def get_mouse_pos():
@@ -56,7 +55,7 @@ def cursor_in_bar(X, Y):
 
 
 if __name__ == '__main__':
-    get_resolutions(widths, heights)
+    widths, heights = get_resolutions()
 
     while True:
         X, Y = get_mouse_pos()
