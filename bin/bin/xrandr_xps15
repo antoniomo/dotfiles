@@ -8,7 +8,7 @@ xrandr | grep DP2 | grep -q " connected "  # USB-c
 DP2=$?
 if [ $HDMI1 -eq 0 ]; then
     # External monitor is connected
-    xrandr --output HDMI1 --primary --auto --left-of eDP1
+    xrandr --output HDMI1 --primary --auto --right-of eDP1
     if [ $? -ne 0 ]; then
         # Something went wrong.
         internal=1
