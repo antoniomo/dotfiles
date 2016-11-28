@@ -44,11 +44,13 @@ Plug 'mbbill/undotree'
 " i3 config syntax highlighting
 Plug 'PotatoesMaster/i3-vim-syntax', {'for': 'i3'}
 " tmux config syntax highlighting
-Plug 'tmux-plugins/vim-tmux'
+" Plug 'tmux-plugins/vim-tmux'
+" Solarized true colors colorscheme!
+Plug 'lifepillar/vim-solarized8'
 " Solarized colorscheme
 " Plug 'altercation/vim-colors-solarized'
 " Base16 colorscheme
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
 " ctrl + hjkl to move windows in tmux and vim effortlessly
 Plug 'christoomey/vim-tmux-navigator'
 " YouCompleteMe autocompletion (Remember to run install.py after upgrade!)
@@ -73,8 +75,8 @@ Plug 'vim-pandoc/vim-pandoc', {'for': 'markdown'}
 Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'markdown'}
 Plug 'shime/vim-livedown', {'for': 'markdown'}  " Has a nodejs component, (npm/repositories)
 " Riv rst notetaking and instant html preview
-Plug 'Rykka/riv.vim', {'for': 'rst'}
-Plug 'Rykka/InstantRst', {'for': 'rst'}  " Has a python component, instant-rst
+" Plug 'Rykka/riv.vim', {'for': 'rst'}
+" Plug 'Rykka/InstantRst', {'for': 'rst'}  " Has a python component, instant-rst
 " Vim extline for titles, headers, comments...
 Plug 'drmikehenry/vim-extline'
 " Snippets
@@ -98,15 +100,26 @@ Plug 'cespare/vim-toml', {'for': 'toml'}
 " Add plugins to &runtimepath
 call plug#end()
 
-filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
+filetype plugin indent on    " required
 
 " Autoreload .vimrc on write
 augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
+
+" Some nice defaults based on nvim
+set ttyfast
+set ttymouse=urxvt
+set ttyscroll=3
+set backspace=indent,eol,start
+set autoread
+set autoindent
+set termguicolors " Finally in Vim!!
+
+set lazyredraw
 
 " Timeout keypress stuff, we want a responsive ESC key
 set timeout
@@ -128,11 +141,13 @@ let mapleader = "\<Space>"
 set encoding=utf-8
 
 " Copy to system's selection clipboard (the one midmouse pastes)
-set clipboard=unnamed
+set clipboard^=unnamed
+set clipboard^=unnamedplus
 
 " Search options
 set ignorecase
 set smartcase
+set incsearch
 set hlsearch
 " Press return to clear search highlighting and any message already displayed.
 nnoremap <silent> <CR> :noh<Bar>:echo<CR>
@@ -160,13 +175,13 @@ silent call system('mkdir -p ' . &backupdir)
 " Toggle dark/light bg
 map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 " Solarized colorscheme
-" colorscheme solarized
+colorscheme solarized8_dark
 
 "Default to the dark bg
-set background=dark
+" set background=dark
 
 " Base16 colorscheme
-colorscheme base16-bright
+" colorscheme base16-bright
 
 " Set search highlight color
 hi IncSearch cterm=NONE ctermfg=0  ctermbg=4
@@ -221,13 +236,13 @@ set statusline+=%l/%L    " cursor line/total lines
 
 " Vim starts in normal mode, put green statusline
 runtime! plugin/sensible.vim
-hi StatusLine term=reverse cterm=reverse ctermfg=2 ctermbg=0
+hi StatusLine term=reverse cterm=reverse ctermfg=green ctermbg=black guifg=green guibg=black
 " Change the status line color based on mode
 if version >= 700
   " use red insert mode
-  au InsertEnter * hi StatusLine term=reverse cterm=reverse ctermfg=1 ctermbg=0
+  au InsertEnter * hi StatusLine term=reverse cterm=reverse ctermfg=red ctermbg=black guifg=red guibg=black
   " use green otherwise
-  au InsertLeave * hi StatusLine term=reverse cterm=reverse ctermfg=2 ctermbg=0
+  au InsertLeave * hi StatusLine term=reverse cterm=reverse ctermfg=green ctermbg=black guifg=green guibg=black
 endif
 
 " Change cursor color according to mode
@@ -465,24 +480,6 @@ let g:livedown_browser = "chromium"
 " Riv (rst)
 let g:riv_disable_folding = 1
 
-" Rainbow parentheses color pairs (terminal/gui)
-let g:rbpt_colorpairs = [
-    \ ['red',         'RoyalBlue3'],
-    \ ['brown',       'SeaGreen3'],
-    \ ['blue',        'DarkOrchid3'],
-    \ ['gray',        'firebrick3'],
-    \ ['magenta',     'SeaGreen3'],
-    \ ['cyan',        'DarkOrchid3'],
-    \ ['darkred',     'firebrick3'],
-    \ ['brown',       'RoyalBlue3'],
-    \ ['darkblue',    'DarkOrchid3'],
-    \ ['gray',        'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkmagenta', 'SeaGreen3'],
-    \ ['darkcyan',    'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-let g:rbpt_max=14
 " Rainbow parentheses always on
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound  " ()
@@ -503,10 +500,13 @@ let delimitMate_expand_cr = 1
 " Golang stuff
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
+let g:go_metalinter_autosave = 1
+let g:go_auto_type_info = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
+let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 

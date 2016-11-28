@@ -2,6 +2,7 @@
     "classes": {
         "firefox": "",
         "urxvt": "",
+        "termite": "",
         "thunar": "",
         "zathura": "",
         "vlc": "",
