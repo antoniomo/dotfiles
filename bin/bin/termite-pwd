@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Based on https://gist.github.com/ctemplin/3c626af969c67e51d805
+# For Thunar remember to execute once:
+# xfconf-query --channel thunar --property /misc-full-path-in-title --create --type bool --set true
+
+id=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
+if [ "$id" == "0x0" ]
+then
+    termite -d $HOME
+    exit
+fi
+class_string=$(xprop -id "$id" | awk '/WM_CLASS\(STRING\)/' | cut -d'=' -f2 | cut -d',' -f1)
+if [ $class_string == '"termite"' ]
+    then
+    cwd=$(xprop -id "$id" | awk '/_NET_WM_NAME/' | cut -d'"' -f2);
+elif [ $class_string == '"thunar"' ]
+    then
+    cwd=$(xprop -id "$id" | awk '/_NET_WM_NAME/' | cut -d'"' -f2 | rev | cut -c 16- | rev);
+else
+    pid=$(xprop -id "$id" | awk '/_NET_WM_PID\(CARDINAL\)/' | cut -d'=' -f2)
+    cwd=$(pwdx $pid | cut -d':' -f2 | cut -c 2-)
+fi
+
+# Expand the ~ to $HOME, and get only dirname in case this points to a file
+cwd="${cwd/#\~/$HOME}"
+if [[ ! -d "$cwd" ]]  # Not valid directory
+then
+    cwd=$(dirname "$cwd")
+fi
+if [[ ! -d "$cwd" ]]  # Still not a valid directory, default to $HOME
+then
+    cwd=$HOME
+fi
+termite -d "`readlink -f "$cwd"`"
