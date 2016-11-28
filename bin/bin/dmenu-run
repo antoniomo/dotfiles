@@ -17,5 +17,5 @@ APP=$(
 	fi
 )
 
-[[ ! `grep -w "$APP" ~/.config/dmenu/urxvt-list` ]] && echo $APP | ${SHELL:-"/bin/sh"}
-[[ `grep -w "$APP" ~/.config/dmenu/urxvt-list` ]] && urxvtc -e bash -c "$APP && bash"
+[[ ! `grep -w "$APP" ~/.config/dmenu/term-list` ]] && echo $APP | ${SHELL:-"/bin/sh"}
+[[ `grep -w "$APP" ~/.config/dmenu/term-list` ]] && termite -e "bash -c '$APP && bash'"
