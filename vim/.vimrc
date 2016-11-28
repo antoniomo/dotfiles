@@ -45,12 +45,11 @@ Plug 'mbbill/undotree'
 Plug 'PotatoesMaster/i3-vim-syntax', {'for': 'i3'}
 " tmux config syntax highlighting
 " Plug 'tmux-plugins/vim-tmux'
+" Molokai colorscheme
+" Plug 'tomasr/molokai'
+Plug 'fatih/molokai' " Version with different line numbers
 " Solarized true colors colorscheme!
-Plug 'lifepillar/vim-solarized8'
-" Solarized colorscheme
-" Plug 'altercation/vim-colors-solarized'
-" Base16 colorscheme
-" Plug 'chriskempson/base16-vim'
+" Plug 'lifepillar/vim-solarized8'
 " ctrl + hjkl to move windows in tmux and vim effortlessly
 Plug 'christoomey/vim-tmux-navigator'
 " YouCompleteMe autocompletion (Remember to run install.py after upgrade!)
@@ -174,18 +173,8 @@ silent call system('mkdir -p ' . &backupdir)
 
 " Toggle dark/light bg
 map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-" Solarized colorscheme
-colorscheme solarized8_dark
-
-"Default to the dark bg
-" set background=dark
-
-" Base16 colorscheme
-" colorscheme base16-bright
-
-" Set search highlight color
-hi IncSearch cterm=NONE ctermfg=0  ctermbg=4
-hi Search cterm=NONE ctermfg=0 ctermbg=3
+" Molokai colorscheme
+colorscheme molokai
 
 " Highlight current cursor line
 set cursorline

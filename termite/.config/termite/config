@@ -23,43 +23,37 @@ pseudo_transparency = false
 cursor_blink = system
 
 # "block", "underline" or "ibeam"
-cursor_shape = block
+cursor_shape = ibeam
 
 # $BROWSER is used by default
-browser = firefox
+browser = chromium
 
 # word characters used for word selection
 # (default if unset: all graphic non-punctuation/space characters)
 #word_chars = -A-Za-z0-9,./?%&#:_=+@~
 
-# Solarized dark color scheme
-
+# Molokai theme
 [colors]
-foreground = #839496
-foreground_bold = #eee8d5
-#foreground_dim = #888888
-background = #002b36
-cursor = #93a1a1
-
-# if unset, will reverse foreground and background
-#highlight = #839496
-
-# colors from color0 to color254 can be set
-color0 = #073642
-color1 = #dc322f
-color2 = #859900
-color3 = #b58900
-color4 = #268bd2
-color5 = #d33682
-color6 = #2aa198
-color7 = #eee8d5
-color8 = #002b36
-color9 = #cb4b16
-color10 = #586e75
-color11 = #657b83
-color12 = #839496
-color13 = #6c71c4
-color14 = #93a1a1
-color15 = #fdf6e3
+background= #101010
+foreground= #d0d0d0
+#foreground= #66ff66
+#highlight = #505050
+cursor = #66ff66
+color0= #101010
+color1= #960050
+color2= #66aa11
+color3= #c47f2c
+color4= #30309b
+color5= #7e40a5
+color6= #3579a8
+color7= #9999aa
+color8= #303030
+color9= #ff0090
+color10= #80ff00
+color11= #ffba68
+color12= #5f5fee
+color13= #bb88dd
+color14= #4eb4fa
+color15= #d0d0d0
 
 # vim: ft=dosini
