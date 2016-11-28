@@ -110,25 +110,26 @@ augroup reload_vimrc " {
 augroup END " }
 
 " Some nice defaults based on nvim
-set ttyfast
-set ttymouse=urxvt
-set ttyscroll=3
-set backspace=indent,eol,start
-set autoread
-set autoindent
-set termguicolors " Finally in Vim!!
+if !has("nvim")
+  set ttyfast
+  set ttymouse=xterm2
+  set ttyscroll=3
+  set backspace=indent,eol,start
+  set autoread
+  set autoindent
+  set termguicolors " Finally in Vim!!
+endif
 
 set lazyredraw
 
 " Timeout keypress stuff, we want a responsive ESC key
 set timeout
 set timeoutlen=750
-set ttimeoutlen=10
+set ttimeoutlen=0
 
 "NeoVim handles ESC keys as alt+key, set this to solve the problem
 if has("nvim")
   set ttimeout
-  set ttimeoutlen=0
 endif
 
 " Mouse support
@@ -236,12 +237,12 @@ endif
 
 " Change cursor color according to mode
 if &term =~ "xterm\\|rxvt"
-  " use a magenta cursor in insert mode
-  let &t_SI = "\<Esc>]12;5\x7"
+  " use a red cursor in insert mode
+  let &t_SI = "\<Esc>]12;Red\x7"
   " use a green cursor otherwise
-  let &t_EI = "\<Esc>]12;2\x7"
+  let &t_EI = "\<Esc>]12;Green\x7"
   " do it here so it's in normal mode at the start too
-  silent !echo -ne "\033]12;2\007"
+  silent !echo -ne "\033]12;Green\007"
   " reset cursor when vim exits
   autocmd VimLeave * silent !echo -ne "\033]12;\#93a1a1\007"
 endif
