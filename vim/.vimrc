@@ -10,6 +10,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
 " Dot (.) repeat for plugin commands
 Plug 'tpope/vim-repeat'
+" Asynchronous for other plugins
+Plug 'tpope/vim-dispatch'
 " Automatic swap file handling
 Plug 'gioele/vim-autoswap'
 " Comment/uncomment plugin
@@ -47,22 +49,24 @@ Plug 'PotatoesMaster/i3-vim-syntax', {'for': 'i3'}
 " Plug 'tmux-plugins/vim-tmux'
 " Molokai colorscheme
 " Plug 'tomasr/molokai'
-Plug 'fatih/molokai' " Version with different line numbers
+" Plug 'fatih/molokai' " Version with different line numbers
+" Gruvbox colorscheme
+Plug 'morhetz/gruvbox'
 " Solarized true colors colorscheme!
 " Plug 'lifepillar/vim-solarized8'
 " ctrl + hjkl to move windows in tmux and vim effortlessly
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
 " YouCompleteMe autocompletion (Remember to run install.py after upgrade!)
 Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --gocode-completer'}
 " Fuzzy-finder with fzf
-Plug 'junegunn/fzf', {'do': 'yes \| ./install --all'}
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', {'do': 'yes \| ./install --all'}
+" Plug 'junegunn/fzf.vim'
 " Nesting indent levels visualizer
 Plug 'nathanaelkane/vim-indent-guides'
 " syntastic multi-language syntax checker and linter
 Plug 'scrooloose/syntastic'
 " ctrlp fuzzy finder
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " Rainbow parenthesis and other symbols
 Plug 'eapache/rainbow_parentheses.vim'
 " Vim show marks and more
@@ -88,6 +92,7 @@ Plug 'honza/vim-snippets'
 " Go stuff
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'nsf/gocode', {'rtp': 'vim', 'for': 'go', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
+Plug 'AndrewRadev/splitjoin.vim'
 " TOML
 Plug 'cespare/vim-toml', {'for': 'toml'}
 " Nim stuff
@@ -120,11 +125,16 @@ if !has("nvim")
   set termguicolors " Finally in Vim!!
 endif
 
+" Other useful miscellanea
 set lazyredraw
+set autowrite " For the :make and :GoBuild and similar commands
+set encoding=utf-8
+set splitbelow
+set splitright
 
 " Timeout keypress stuff, we want a responsive ESC key
 set timeout
-set timeoutlen=750
+set timeoutlen=500
 set ttimeoutlen=0
 
 "NeoVim handles ESC keys as alt+key, set this to solve the problem
@@ -137,8 +147,6 @@ set mouse=a
 
 " Space as leader
 let mapleader = "\<Space>"
-
-set encoding=utf-8
 
 " Copy to system's selection clipboard (the one midmouse pastes)
 set clipboard^=unnamed
@@ -155,12 +163,22 @@ nnoremap <silent> <CR> :noh<Bar>:echo<CR>
 " Allow hidden unsaved buffers
 set hidden
 
+" Window navigation
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
 " Tab navigation
-nmap <silent> tt :tabnew<CR>
+nmap <silent> <leader>t :tabnew<CR>
+nmap <silent> <leader>tc :tabclose<CR>
 nmap <silent> [g :tabprevious<CR>
 nmap <silent> ]g :tabnext<CR>
 nmap <silent> [G :tabrewind<CR>
 nmap <silent> ]G :tablast<CR>
+
+" Quickfix window (unimpaired gives the [q ]q [Q ]Q ones
+nmap <silent> <leader>q :cclose<CR>
 
 " Swap, undo and backup options
 set directory=~/.vim/swap//
@@ -175,7 +193,12 @@ silent call system('mkdir -p ' . &backupdir)
 " Toggle dark/light bg
 map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 " Molokai colorscheme
-colorscheme molokai
+" let g:rehash256 = 1
+" colorscheme molokai
+set background=dark
+let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_light = "hard"
+colorscheme gruvbox
 
 " Highlight current cursor line
 set cursorline
@@ -240,9 +263,9 @@ if &term =~ "xterm\\|rxvt"
   " use a red cursor in insert mode
   let &t_SI = "\<Esc>]12;Red\x7"
   " use a green cursor otherwise
-  let &t_EI = "\<Esc>]12;Green\x7"
+  let &t_EI = "\<Esc>]12;LightGreen\x7"
   " do it here so it's in normal mode at the start too
-  silent !echo -ne "\033]12;Green\007"
+  silent !echo -ne "\033]12;LightGreen\007"
   " reset cursor when vim exits
   autocmd VimLeave * silent !echo -ne "\033]12;\#93a1a1\007"
 endif
@@ -373,23 +396,23 @@ let g:undotree_WindowLayout = 2
 
 " ctrlp options
 " Search in files, buffers, and MRU at the same time
-" let g:ctrlp_cmd='CtrlPMixed'
+let g:ctrlp_cmd='CtrlPMixed'
 " http://dougblack.io/words/a-good-vimrc.html#ctrlp-section
-" let g:ctrlp_match_window = 'bottom,order:ttb'
-" let g:ctrlp_switch_buffer = 0
-" let g:ctrlp_working_path_mode = 0
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
 " let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " fzf options
 " Ideas from https://github.com/junegunn/dotfiles/blob/master/vimrc
-nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ?  "\<c-w>\<c-w>" : '').":GitFiles\<cr>"
-nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
-nnoremap <silent> <Leader><Enter> :Buffers<CR>
-imap <c-x><c-l> <plug>(fzf-complete-line)
-imap <c-x><c-f> <plug>(fzf-complete-file-ag)
-imap <c-x><c-p> <plug>(fzf-complete-path)
+" nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ?  "\<c-w>\<c-w>" : '').":GitFiles\<cr>"
+" nnoremap <silent> <Leader>ag :Ag <C-R><C-W><CR>
+" nnoremap <silent> <Leader><Enter> :Buffers<CR>
+" imap <c-x><c-l> <plug>(fzf-complete-line)
+" imap <c-x><c-f> <plug>(fzf-complete-file-ag)
+" imap <c-x><c-p> <plug>(fzf-complete-path)
 " Use urxvtd as launcher for fzf in gvim
-let g:fzf_launcher = 'urxvtd -geometry 120x30 -e sh -c %s'
+" let g:fzf_launcher = 'urxvtd -geometry 120x30 -e sh -c %s'
 
 " Indent-guides
 let g:indent_guides_auto_colors = 0
@@ -487,11 +510,13 @@ autocmd VimEnter * if !argc() | Explore | endif
 " Delimitmate
 let delimitMate_expand_cr = 1
 
-" Golang stuff
+" Vim-go options
+let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
 let g:go_metalinter_autosave = 1
 let g:go_auto_type_info = 1
+let g:go_auto_sameids = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_fields = 1
@@ -499,6 +524,23 @@ let g:go_highlight_types = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_snippet_case_type = "camelcase"
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#cmd#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
 
 " Vim-nim
 " fun! JumpToDef()

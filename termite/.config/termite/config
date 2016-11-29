@@ -1,5 +1,5 @@
 [options]
-font = Go Mono 10
+font = Fira Mono 10
 resize_grip = false
 scroll_on_output = false
 scroll_on_keystroke = true
@@ -23,37 +23,122 @@ pseudo_transparency = false
 cursor_blink = system
 
 # "block", "underline" or "ibeam"
-cursor_shape = ibeam
+cursor_shape = block
 
 # $BROWSER is used by default
 browser = chromium
+
+
+# Hide links that are no longer valid in url select overlay mode
+filter_unmatched_urls = true
 
 # word characters used for word selection
 # (default if unset: all graphic non-punctuation/space characters)
 #word_chars = -A-Za-z0-9,./?%&#:_=+@~
 
 # Molokai theme
-[colors]
-background= #101010
-foreground= #d0d0d0
-#foreground= #66ff66
-#highlight = #505050
-cursor = #66ff66
-color0= #101010
-color1= #960050
-color2= #66aa11
-color3= #c47f2c
-color4= #30309b
-color5= #7e40a5
-color6= #3579a8
-color7= #9999aa
-color8= #303030
-color9= #ff0090
-color10= #80ff00
-color11= #ffba68
-color12= #5f5fee
-color13= #bb88dd
-color14= #4eb4fa
-color15= #d0d0d0
+# [colors]
+# background= #101010
+# foreground= #d0d0d0
+# #foreground= #66ff66
+# #highlight = #505050
+# cursor = #66ff66
+# color0= #101010
+# color1= #960050
+# color2= #66aa11
+# color3= #c47f2c
+# color4= #30309b
+# color5= #7e40a5
+# color6= #3579a8
+# color7= #9999aa
+# color8= #303030
+# color9= #ff0090
+# color10= #80ff00
+# color11= #ffba68
+# color12= #5f5fee
+# color13= #bb88dd
+# color14= #4eb4fa
+# color15= #d0d0d0
 
-# vim: ft=dosini
+# Grubvox-dark
+[colors]
+# hard contrast: background = #1d2021
+background = #282828
+# soft contrast: background = #32302f
+foreground = #ebdbb2
+foreground_bold = #ebdbb2
+
+# dark0 + gray
+color0 = #282828
+color8 = #928374
+
+# neutral_red + bright_red
+color1 = #cc241d
+color9 = #fb4934
+
+# neutral_green + bright_green
+color2 = #98971a
+color10 = #b8bb26
+
+# neutral_yellow + bright_yellow
+color3 = #d79921
+color11 = #fabd2f
+
+# neutral_blue + bright_blue
+color4 = #458588
+color12 = #83a598
+
+# neutral_purple + bright_purple
+color5 = #b16286
+color13 = #d3869b
+
+# neutral_aqua + faded_aqua
+color6 = #689d6a
+color14 = #8ec07c
+
+# light4 + light1
+color7 = #a89984
+color15 = #ebdbb2
+
+
+# Gruvbox-light
+# [colors]
+# # hard contrast: background = #f9f5d7
+# background = #fbf1c7
+# # soft contrast: background = #f2e5bc
+# foreground = #3c3836
+# foreground_bold = #3c3836
+
+# # light0 + gray
+# color0 = #fbf1c7
+# color8 = #928374
+
+# # neutral_red + faded_red
+# color1 = #cc241d
+# color9 = #9d0006
+
+# # neutral_green + faded_green
+# color2 = #98971a
+# color10 = #79740e
+
+# # neutral_yellow + faded_yellow
+# color3 = #d79921
+# color11 = #b57614
+
+# # neutral_blue + faded_blue
+# color4 = #458588
+# color12 = #076678
+
+# # neutral_purple + faded_purple
+# color5 = #b16286
+# color13 = #8f3f71
+
+# # neutral_aqua + faded_aqua
+# color6 = #689d6a
+# color14 = #427b58
+
+# # dark4 + dark1
+# color7 = #7c6f64
+# color15 = #3c3836
+
+# vim: ft=dosini cms=#%s
