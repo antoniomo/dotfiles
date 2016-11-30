@@ -310,7 +310,7 @@ exec --no-startup-id sleep 3 && ~/bin/chbg
 
 # Auto-start a terminal on the scratchpad (delay to make sure scratchpad is
 # ready)
-exec --no-startup-id sleep 5 && urxvtc -name scratch
+exec --no-startup-id sleep 5 && ~/bin/scratch
 
 # Hotbar script (without sleep py3status crashes)
 exec --no-startup-id sleep 10 && ~/bin/hotbar.py
