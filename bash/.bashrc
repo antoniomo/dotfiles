@@ -266,13 +266,13 @@ source "$fasd_cache"
 unset fasd_cache
 
 # Updates database of locate for use in fzf
-alias updatefzfdb='sudo updatedb; locate ~ > ~/.homefilesdb'
+alias updatefzfdb='sudo updatedb; locate / > ~/.locatedb;\tree -dnif --noreport / > ~/.dirdb'
 
 # FZF stuff (sourced at the end for compatibility with it's install script)
 # export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
-export FZF_DEFAULT_COMMAND='cat ~/.homefilesdb'
-export FZF_CTRL_T_COMMAND='cat ~/.homefilesdb'
-export FZF_ALT_C_COMMAND='\tree -dnif --noreport'
+export FZF_DEFAULT_COMMAND='cat ~/.locatedb'
+export FZF_CTRL_T_COMMAND='cat ~/.locatedb'
+export FZF_ALT_C_COMMAND='cat ~/.dirdb'
 export FZF_COMPLETION_TRIGGER='~~'
 alias oo='xdg-open "$(fzf)"'
 alias vv='vim "$(fzf)"'

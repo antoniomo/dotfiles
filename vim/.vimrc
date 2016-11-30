@@ -59,7 +59,7 @@ Plug 'morhetz/gruvbox'
 " YouCompleteMe autocompletion (Remember to run install.py after upgrade!)
 Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --gocode-completer'}
 " Fuzzy-finder with fzf
-" Plug 'junegunn/fzf', {'do': 'yes \| ./install --all'}
+Plug 'junegunn/fzf', {'do': 'yes \| ./install --all'}
 " Plug 'junegunn/fzf.vim'
 " Nesting indent levels visualizer
 Plug 'nathanaelkane/vim-indent-guides'
