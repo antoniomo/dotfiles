@@ -274,6 +274,10 @@ export FZF_DEFAULT_COMMAND='cat ~/.locatedb'
 export FZF_CTRL_T_COMMAND='cat ~/.locatedb'
 export FZF_ALT_C_COMMAND='cat ~/.dirdb'
 export FZF_COMPLETION_TRIGGER='~~'
+export FZF_TMUX=0  # Disable tmux integration
+# Ctrl-p as a ctrl-t synonim
+bind -x '"\C-p": "fzf-file-widget"'
+bind -m vi-command '"\C-p": "i\C-p"'
 alias oo='xdg-open "$(fzf)"'
 alias vv='vim "$(fzf)"'
 # For bash completion functions
