@@ -256,6 +256,8 @@ export PAGER=less
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+export BROWSER=chromium
+
 # Fasd initialization, with cache (faster)
 fasd_cache="$HOME/.fasd-init-bash"
 if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then

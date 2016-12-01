@@ -27,6 +27,7 @@
 	co = checkout
 	cob = checkout -b
 	cot = checkout --track
+	w = browse  # Requires hub wrapper
 	br = branch
 	brr = branch -r
 	bra = branch -a
