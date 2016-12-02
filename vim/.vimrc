@@ -500,7 +500,7 @@ au Syntax * RainbowParenthesesLoadSquare  " []
 au Syntax * RainbowParenthesesLoadBraces  " {}
 " au Syntax * RainbowParenthesesLoadChevrons  " <>
 
-" Allow saving of files as sudo when I forgot to start vim using sudo.
+" Allow saving of files as sudo when I forget to start vim like that.
 " http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 cmap w!! w !sudo tee > /dev/null %
 
