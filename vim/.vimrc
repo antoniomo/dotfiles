@@ -473,9 +473,9 @@ let g:ycm_python_binary_path = '/usr/bin/python3'
 
 " Sneak
 let g:sneak#streak = 1
-hi link SneakPluginTarget ErrorMsg
-hi link SneakPluginScope  Comment
-hi link SneakStreakTarget ErrorMsg
+" hi link SneakPluginTarget ErrorMsg
+" hi link SneakPluginScope  Comment
+" hi link SneakStreakTarget ErrorMsg
 " hi link SneakStreakMask  Comment
 " hi link SneakStreakStatusLine  Comment
 
