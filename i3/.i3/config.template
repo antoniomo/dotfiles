@@ -283,6 +283,7 @@ for_window [class="Firefox" instance="SessionManager"] move workspace current
 for_window [class="Skype" title="Chat$"] border normal
 for_window [class="gnote"] floating enable
 for_window [class=Kodi] border none
+for_window [class=retroarch] border none
 for_window [instance=scratch] move scratchpad
 
 # Urxvt daemon
