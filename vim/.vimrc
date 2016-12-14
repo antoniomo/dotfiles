@@ -510,7 +510,7 @@ autocmd VimEnter * if !argc() | Explore | endif
 " Delimitmate
 let delimitMate_expand_cr = 1
 
-" Vim-go options
+" Vim-go options, golang
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
@@ -526,6 +526,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_snippet_case_type = "camelcase"
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'interfacer']
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
