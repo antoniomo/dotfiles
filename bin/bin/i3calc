@@ -1,0 +1,14 @@
+#!/bin/sh
+
+CALC=galculator
+
+pgrep $CALC
+RUNNING=$?
+
+if [ $RUNNING -eq 0 ]; then
+  i3-msg [instance=$CALC] scratchpad show
+else
+  i3-msg exec $CALC
+  sleep .1
+  i3-msg [instance=$CALC] scratchpad show
+fi

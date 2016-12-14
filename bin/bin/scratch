@@ -1,3 +1,14 @@
 #!/bin/sh
 
-termite --name scratch
+TERMEMU=termite
+
+pgrep -f "$TERMEMU --name scratch"
+RUNNING=$?
+
+if [ $RUNNING -eq 0 ]; then
+  i3-msg [instance="scratch"] scratchpad show
+else
+  i3-msg exec "$TERMEMU --name scratch"
+  sleep .1
+  i3-msg [instance="scratch"] scratchpad show
+fi

@@ -152,12 +152,9 @@ bindsym $mod+Shift+8 move container to workspace number 8; workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9; workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10; workspace number 10
 
-# Scratchpad in backtick '`'
-bindsym $mod+Shift+grave move scratchpad
-bindsym $mod+grave scratchpad show
-
 # reload the configuration file
-bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c exec ~/bin/i3-reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -282,9 +279,10 @@ for_window [class="Firefox" title="Print"] move workspace current
 for_window [class="Firefox" instance="SessionManager"] move workspace current
 for_window [class="Skype" title="Chat$"] border normal
 for_window [class="gnote"] floating enable
-for_window [class=Kodi] border none
-for_window [class=retroarch] border none
-for_window [instance=scratch] move scratchpad
+for_window [instance="galculator"] floating enable move scratchpad
+for_window [class="Kodi"] border none
+for_window [class="retroarch"] border none
+for_window [instance="scratch"] move scratchpad
 
 # Urxvt daemon
 exec --no-startup-id urxvtd -q -f -o
@@ -309,9 +307,11 @@ exec --no-startup-id sleep 3 && ~/bin/chbg
 # Auto-start firefox on workspace 1
 # exec --no-startup-id /usr/bin/firefox
 
-# Auto-start a terminal on the scratchpad (delay to make sure scratchpad is
-# ready)
-exec --no-startup-id sleep 5 && ~/bin/scratch
+# Scratchpad in backtick '`'
+bindsym $mod+grave exec ~/bin/scratch
+
+# Calculator
+bindsym $mod+c exec ~/bin/i3calc
 
 # Hotbar script (without sleep py3status crashes)
 exec --no-startup-id sleep 10 && ~/bin/hotbar.py
