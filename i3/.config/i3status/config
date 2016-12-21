@@ -20,9 +20,10 @@ order += "disk /home/"
 order += "sysdata c"
 order += "sysdata r"
 order += "volume master"
-order += "tztime local"
-order += "tztime sf"
+order += "tztime calendar"
+# order += "tztime sf"
 order += "tztime helsinki"
+order += "tztime local"
 
 spotify {
         color_paused = "FFFF00"
@@ -49,7 +50,7 @@ battery 0 {
         format_down = ""  # Don't show when there's no battery
 }
 
-tztime local {
+tztime calendar {
         format = " %a %d-%b"
         on_click 1 = "exec firefox calendar.google.com"
 }
@@ -62,6 +63,11 @@ tztime sf {
 tztime helsinki {
         format = "HLK %H:%M"
         timezone = "Europe/Helsinki"
+        # timezone = "Europe/Helsinki"
+}
+
+tztime local {
+        format = "Local %H:%M"
 }
 
 sysdata c{
