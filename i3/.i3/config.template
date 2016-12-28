@@ -284,9 +284,6 @@ for_window [class="Kodi"] border none
 for_window [class="retroarch"] border none
 for_window [instance="scratch"] move scratchpad
 
-# Urxvt daemon
-exec --no-startup-id urxvtd -q -f -o
-
 # Dunst notification daemon
 exec --no-startup-id dunst -config ~/.i3/dunstrc
 
