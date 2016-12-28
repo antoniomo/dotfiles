@@ -234,8 +234,8 @@ bindsym $mod+F8 exec playerctl next
 bindsym $mod+F7 exec playerctl previous
 
 # Brightness bindings
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 # Screenshot bindings
 bindsym --release $mod+Shift+Print exec --no-startup-id import -window root "$HOME/screenshot-$(date +'%Y-%m-%d %T').png"
