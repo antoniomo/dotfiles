@@ -20,7 +20,7 @@ if [ $HDMI1 -eq 0 ]; then
         # Reattach HDMI1 after resolution change (right-of is now closer)
         xrandr --output HDMI1 --primary --auto --right-of eDP1
         # Set laptop screen to 40% brightness by default
-        xbacklight -set 40
+        light -S 40
         export XRANDR_PRIMARY=HDMI1
         export XRANDR_SECONDARY=eDP1
         source ~/dotfiles/i3/setup_lowdpi
@@ -48,7 +48,7 @@ if [ $internal -ne 0 ]; then
     # Only internal monitor, set DPI to 288 (96*3)
     xrandr --output eDP1 --primary --mode 1368x768
     # Set laptop screen to 9% brightness by default
-    xbacklight -set 9
+    light -S 9
     killall redshift-gtk
     export XRANDR_PRIMARY=eDP1
     export XRANDR_SECONDARY=eDP1
