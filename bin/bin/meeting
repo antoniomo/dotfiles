@@ -46,13 +46,12 @@ if [ $DP2 -eq 0 ]; then
 fi
 if [ $internal -ne 0 ]; then
     # Only internal monitor, set DPI to 288 (96*3)
-    xrandr --output eDP1 --primary --auto --dpi 288
+    xrandr --output eDP1 --primary --mode 1368x768
     # Set laptop screen to 9% brightness by default
     xbacklight -set 9
     killall redshift-gtk
     export XRANDR_PRIMARY=eDP1
     export XRANDR_SECONDARY=eDP1
-    source ~/dotfiles/i3/setup_hidpi
 fi
 
 source ~/bin/i3-reload
