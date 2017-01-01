@@ -2,8 +2,8 @@
 # Source this at X init to use hidpi settings
 
 # Scale GTK icons and other UI elements
-export GDK_SCALE=2.5
+export GDK_SCALE=3
 # Un-scale text (setting DPI in .Xresources_dpi)
-export GDK_DPI_SCALE=0.5
+export GDK_DPI_SCALE=0.4
 # QT to use screen DPI
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
