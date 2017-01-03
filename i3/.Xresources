@@ -8,7 +8,3 @@ Xft.hinting: true
 Xft.hintstyle: hintslight
 Xft.antialias: true
 Xft.rgba: rgb
-
-! Cursor config
-Xcursor.theme: Vanilla-DMZ
-Xcursor.size: 32
