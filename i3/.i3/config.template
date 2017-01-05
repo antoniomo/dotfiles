@@ -310,5 +310,5 @@ bindsym $mod+grave exec ~/bin/scratch
 # Calculator
 bindsym $mod+c exec ~/bin/i3calc
 
-# Hotbar script (without sleep py3status crashes)
-exec --no-startup-id sleep 10 && ~/bin/hotbar.py
+# Hotbar script
+exec --no-startup-id $GOPATH/bin/i3-hotbar
