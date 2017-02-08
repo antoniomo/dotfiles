@@ -57,3 +57,5 @@
 	ctags = !.git/hooks/ctags
 [url "git@gitlab.jongla.com:"]
 	insteadOf = https://gitlab.jongla.com/
+[http "https://gopkg.in"]
+	followRedirects = true
