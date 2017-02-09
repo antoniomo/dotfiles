@@ -83,8 +83,8 @@ complete -o default -o nospace -F _git g
 alias sudo='sudo '  # Enables aliases with sudo
 alias please='sudo $(fc -ln -1)'
 alias grep='grep --color=auto'
-alias setclip='xclip -selection c'
-alias getclip='xclip -selection clipboard -o'
+alias clipcopy='xclip -selection c'
+alias clippaste='xclip -selection clipboard -o'
 alias diff=colordiff
 alias rm='rm -I'
 alias ls='ls -F --color=auto'
