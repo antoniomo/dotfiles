@@ -76,11 +76,11 @@ tztime local {
 }
 
 sysdata c{
-        format = "{cpu_usage:.2}%"
+        format = "{cpu_usage:.2f}%"
 }
 
 sysdata r{
-        format = "{mem_used_percent:.2}%"
+        format = "{mem_used_percent:.2f}%"
 }
 
 disk "/home/" {
