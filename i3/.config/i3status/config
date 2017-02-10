@@ -16,7 +16,7 @@ order += "spotify"
 order += "ethernet _first_"
 order += "wireless _first_"
 order += "battery 0"
-order += "disk /home/"
+order += "disk /"
 order += "sysdata c"
 order += "sysdata r"
 order += "volume master"
@@ -83,7 +83,7 @@ sysdata r{
         format = "{mem_used_percent:.2f}%"
 }
 
-disk "/home/" {
+disk "/" {
         format = " %avail"
         on_click 1 = "exec thunar"
 }
