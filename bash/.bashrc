@@ -149,6 +149,8 @@ function skill(){
 }
 
 # Compress/decompress in parallel
+XZ_DEFAULTS="-T 0"
+
 function gzip(){
   pigz $@
 }
