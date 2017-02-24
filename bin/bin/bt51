@@ -8,4 +8,4 @@ sudo hciconfig hci0 up
 sudo hcitool cc $LG51
 echo -e "power on\nconnect $LG51\nquit" | bluetoothctl
 sleep 1
-pacmd set-default-sink "bluez_sink.$LG51_SINK"
+pacmd set-default-sink "bluez_sink.$LG51_SINK.a2dp_sink"
