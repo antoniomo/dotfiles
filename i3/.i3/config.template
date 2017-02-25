@@ -271,13 +271,12 @@ bindsym $mod+Delete mode "$mode_system"
 # Specific app properties
 assign [class="Firefox"] 1
 assign [class="Spotify"] 10
-assign [class="Skype"] 10
+assign [class="skypeforlinux"] 10
 assign [class="gnote"] 6
 for_window [class="Firefox" window_role="GtkFileChooserDialog"] move workspace current
 for_window [class="Firefox" instance="Dialog"] move workspace current
 for_window [class="Firefox" title="Print"] move workspace current
 for_window [class="Firefox" instance="SessionManager"] move workspace current
-for_window [class="Skype" title="Chat$"] border normal
 for_window [class="gnote"] floating enable
 for_window [instance="galculator"] floating enable move scratchpad
 for_window [class="Kodi"] border none
