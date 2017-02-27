@@ -309,7 +309,7 @@ autocmd FileType python setlocal ts=4 sts=4 sw=4 et
 autocmd FileType make setlocal noexpandtab
 
 " Ignore some filetypes
-set wildignore+=*.pyc,*.jpg,*.png,*.gif,*.pdf,*.zip,*.gz,*.bz2,*\\vendor\\**
+set wildignore+=*.pyc,*.jpg,*.png,*.gif,*.pdf,*.zip,*.gz,*.bz2,vendor
 
 " Netrw options
 let g:netrw_preview=1    " Previews are vertical by default
