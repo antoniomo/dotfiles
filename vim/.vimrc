@@ -229,7 +229,7 @@ endfunction
 
 set statusline=          " Clear the statusline when vimrc is loaded
 set statusline+=[%n]\    " buffer number
-set statusline+=%<%.40F\  " file name
+set statusline+=%<%.60F\  " file name
 set statusline+=%{Showbranch()} " Git branch
 set statusline+=%h       " help file flag
 set statusline+=%m       " modified flag
