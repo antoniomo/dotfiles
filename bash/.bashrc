@@ -295,7 +295,7 @@ alias oo='xdg-open "$(fzf)"'
 alias vv='vim "$(fzf)"'
 # For bash completion functions
 _fzf_compgen_path() {
-  ag --hidden -g "" "$1"
+  rg --hidden -g "" --files "$1"
 }
 
 # Prompt stuff
