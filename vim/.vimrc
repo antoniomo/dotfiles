@@ -12,6 +12,8 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-repeat'
 " Asynchronous for other plugins
 Plug 'tpope/vim-dispatch'
+" Word variants plugin (camelCase -> snake_case for example)
+Plug 'tpope/vim-abolish'
 " Automatic swap file handling
 Plug 'gioele/vim-autoswap'
 " Comment/uncomment plugin
