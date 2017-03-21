@@ -87,6 +87,7 @@ alias grep='grep --color=auto'
 alias clipcopy='xclip -selection c'
 alias clippaste='xclip -selection clipboard -o'
 alias diff=colordiff
+alias lsofst="lsof | awk '{ print \$2 \" \" \$1; }' | sort -rn | uniq -c | sort -rn | head -20"
 alias rm='rm -I'
 alias ls='ls -F --color=auto'
 alias ll='ls -lhA'
