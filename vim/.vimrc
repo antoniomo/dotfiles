@@ -29,6 +29,9 @@ Plug 'majutsushi/tagbar'
 " NerdTree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" PlantUML support
+Plug 'aklt/plantuml-syntax'
+" Plug 'scrooloose/vim-slumlord'
 " Ack/Ag plugin
 Plug 'mileszs/ack.vim'
 " Surrounds plugin
