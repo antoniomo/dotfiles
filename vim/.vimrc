@@ -32,6 +32,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " PlantUML support
 Plug 'aklt/plantuml-syntax'
 " Plug 'scrooloose/vim-slumlord'
+" Dot (graphviz) support
+Plug 'wannesm/wmgraphviz.vim'
 " Ack/Ag plugin
 Plug 'mileszs/ack.vim'
 " Surrounds plugin
@@ -368,9 +370,9 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 \ }
 
-" Ack/Ag options, prefer ag if available
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+" Ack/Ag options, prefer ripgrep (rg) if available
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
 endif
 
 " Syntastic options
