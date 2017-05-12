@@ -298,7 +298,8 @@ exec --no-startup-id parcellite
 # bindsym $mod+p exec xpad -t
 
 # Set backgrounds (delay to make sure xrandr autodetects all screens)
-exec --no-startup-id sleep 3 && ~/bin/chbg
+# exec --no-startup-id sleep 3 && ~/bin/chbg
+exec nasa-wallpapers -interval=10m -cmd="feh --bg-scale %s"
 
 # Auto-start firefox on workspace 1
 # exec --no-startup-id /usr/bin/firefox
