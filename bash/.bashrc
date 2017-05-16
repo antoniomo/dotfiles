@@ -89,7 +89,7 @@ alias clippaste='xclip -selection clipboard -o'
 alias diff=colordiff
 alias lsofst="lsof | awk '{ print \$2 \" \" \$1; }' | sort -rn | uniq -c | sort -rn | head -20"
 alias rm='rm -I'
-alias ls='ls -F --color=auto'
+alias ls='ls -F --group-directories-first --color=auto'
 alias ll='ls -lhA'
 alias tree='tree -C'
 alias time='command time'  # Use time command instead of bash builtin
