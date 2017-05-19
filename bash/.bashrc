@@ -299,6 +299,18 @@ _fzf_compgen_path() {
   rg --hidden -g "" --files "$1"
 }
 
+# gshow - git commit browser
+gshow() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --header "Press CTRL-S to toggle sort" \
+      --preview "echo {} | grep -o '[a-f0-9]\{7\}' | head -1 |
+                 xargs -I % sh -c 'git show --color=always % | head -$LINES'" \
+      --bind "enter:execute:echo {} | grep -o '[a-f0-9]\{7\}' | head -1 |
+              xargs -I % sh -c 'vim fugitive://\$(git rev-parse --show-toplevel)/.git//% < /dev/tty'"
+}
+
 # Prompt stuff
 # http://mywiki.wooledge.org/BashFAQ/037
 reset="\[`tput sgr0`\]"          # Text Reset
