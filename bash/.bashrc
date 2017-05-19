@@ -279,14 +279,10 @@ fi
 source "$fasd_cache"
 unset fasd_cache
 
-# Updates database of locate for use in fzf
-alias updatefzfdb='sudo updatedb; locate / > ~/.locatedb;\tree -dnif --noreport / > ~/.dirdb'
-
 # FZF stuff (sourced at the end for compatibility with it's install script)
-# export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
-export FZF_DEFAULT_COMMAND='cat ~/.locatedb'
-export FZF_CTRL_T_COMMAND='cat ~/.locatedb'
-export FZF_ALT_C_COMMAND='cat ~/.dirdb'
+export FZF_DEFAULT_COMMAND='rg --hidden -g "" --files'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND;\tree -dnif --noreport"
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_TMUX=0  # Disable tmux integration
 # Ctrl-p as a ctrl-t synonim
