@@ -418,8 +418,6 @@ let g:ctrlp_working_path_mode = 0
 " imap <c-x><c-l> <plug>(fzf-complete-line)
 " imap <c-x><c-f> <plug>(fzf-complete-file-ag)
 " imap <c-x><c-p> <plug>(fzf-complete-path)
-" Use urxvtd as launcher for fzf in gvim
-" let g:fzf_launcher = 'urxvtd -geometry 120x30 -e sh -c %s'
 
 " Indent-guides
 let g:indent_guides_auto_colors = 0
