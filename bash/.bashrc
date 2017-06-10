@@ -122,6 +122,10 @@ function mapd(){
   ls | parallel "cd {} && $@"
 }
 
+function say(){
+  flite -voice slt -t "'$*'"
+}
+
 # Systemctl aliases/functions
 alias sls='sudo systemctl list-units'
 alias sg='sudo systemctl list-units|grep -iE'
