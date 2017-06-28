@@ -518,6 +518,9 @@ let delimitMate_expand_cr = 1
 " Vim-go options, golang
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
+let g:go_fmt_options = {
+  \ 'gofmt': '-s',
+  \ }
 let g:go_fmt_autosave = 1
 let g:go_metalinter_autosave = 1
 let g:go_auto_type_info = 1
