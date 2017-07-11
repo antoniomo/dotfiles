@@ -110,6 +110,12 @@ alias v='vim'
 alias :e='vim'
 alias nc='ncat'
 alias netcat='ncat'
+# Function so that it can be used by make
+function go(){
+  richgo "$@"
+}
+export -f go
+alias make='make --eval=SHELL=/bin/bash'
 # Add an "alert" alias for long running commands.  Use like so:
 # sleep 10; alert
 # Taken from: http://pastebin.com/pZ0hVDq8
