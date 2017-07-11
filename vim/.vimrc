@@ -70,8 +70,8 @@ Plug 'junegunn/fzf', {'do': 'yes \| ./install --all'}
 " Plug 'junegunn/fzf.vim'
 " Nesting indent levels visualizer
 Plug 'nathanaelkane/vim-indent-guides'
-" syntastic multi-language syntax checker and linter
-Plug 'scrooloose/syntastic'
+" Ale multi language linter
+Plug 'w0rp/ale'
 " ctrlp fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
 " Rainbow parenthesis and other symbols
@@ -243,9 +243,8 @@ set statusline+=%m       " modified flag
 " set statusline+=%r       " read only flag, unneeded with the modified flag
 set statusline+=%w       " preview window flag
 set statusline+=%#warningmsg# " Colortheme's warningmsg color
-set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{LinterStatus()} " Ale linter status
 set statusline+=%*       " Revert color back after warningmsg color
-
 set statusline+=%=       " left/right separator, things after this go to the right
 " set statusline+=[%{&ff}\| " file format (endline type, etc)
 " set statusline+=%{strlen(&fenc)?&fenc:'none'}\|  " file encoding
@@ -375,22 +374,22 @@ if executable('rg')
   let g:ackprg = 'rg --vimgrep'
 endif
 
-" Syntastic options
-" Check on open as well as save (default)
-let g:syntastic_check_on_open=1
-let g:syntastic_aggregate_errors=1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--max-line-length=99'
-let g:syntastic_python_flake8_exec='flake8'
-let g:syntastic_error_symbol = '⨯'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
+" Ale options
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%sW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
 
 " Gundo options
 " nnoremap <F5> :GundoToggle<CR>
