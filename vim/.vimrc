@@ -377,6 +377,7 @@ endif
 " Ale options
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
+let g:ale_linters = {'go': ['go build', 'gofmt', 'go vet', 'golint', 'gosimple', 'staticcheck']}
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
