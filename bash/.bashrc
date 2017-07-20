@@ -23,8 +23,8 @@ stty -ixon
 
 # Big history
 export HISTSIZE=10000
-# History control, ignore duplicates and whitespace
-export HISTCONTROL=ignoreboth
+# History control, ignore duplicates and whitespace, and erase old dups
+export HISTCONTROL=ignoreboth:erasedups
 # When a shell exits, append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -405,6 +405,6 @@ last_cmd_status () {
 }
 
 trap 'timer_start' DEBUG
-PROMPT_COMMAND='set_last_err;timer_stop;history -a;history -n;__git_ps1 "`last_cmd_status``venv``ssh_host`$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func;echo -ne "\033]0;$PWD\007";timer_stop'
+PROMPT_COMMAND='set_last_err;timer_stop;history -n;history -w;history -c; history -r;__git_ps1 "`last_cmd_status``venv``ssh_host`$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func;echo -ne "\033]0;$PWD\007";timer_stop'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
