@@ -112,7 +112,11 @@ alias nc='ncat'
 alias netcat='ncat'
 # Function so that it can be used by make
 function go(){
-  richgo "$@"
+  if [ -x "$(command -v richgo)" ]; then
+    richgo "$@"
+  else
+    command go "$@"
+  fi
 }
 export -f go
 alias make='make --eval=SHELL=/bin/bash'
