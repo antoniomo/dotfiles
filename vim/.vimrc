@@ -138,6 +138,7 @@ set autowrite " For the :make and :GoBuild and similar commands
 set encoding=utf-8
 set splitbelow
 set splitright
+set updatetime=250  " in ms
 
 " Timeout keypress stuff, we want a responsive ESC key
 set timeout
@@ -425,45 +426,12 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=10
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=11
 let g:indent_guides_guide_size=1
 
-" GitGutter stuff
-set updatetime=250  " in ms, also used by YCM and others
-
 " Interop between git gutter and signature
-" Taken from: https://gist.github.com/kshenoy/14f2c4ce7af28b54882b
-" This function returns the highlight group used by git-gutter depending on how
-" the line was edited (added/modified/deleted) It must be placed in the vimrc
-" (or in any file that is sourced by vim)
-function! SignatureGitGutter(lnum)
-  let gg_line_state = filter(copy(gitgutter#diff#process_hunks(gitgutter#hunk#hunks())), 'v:val[0] == a:lnum')
-  "echo gg_line_state
-
-  if len(gg_line_state) == 0
-    return 'Exception'
-  endif
-
-  if gg_line_state[0][1] =~ 'added'
-    return 'GitGutterAdd'
-  elseif gg_line_state[0][1] =~ 'modified'
-    return 'GitGutterChange'
-  elseif gg_line_state[0][1] =~ 'removed'
-    return 'GitGutterDelete'
-  endif
-endfunction
-
-" Next, assign it to g:SignatureMarkTextHL
-let g:SignatureMarkTextHL = 'SignatureGitGutter(a:lnum)'
-" Now everytime Signature wants to place a sign, it calls this function and
-" thus, we can dynamically assign a Highlight group g:SignatureMarkTextHL The
-" advantage of doing it this way is that this decouples Signature from
-" git-gutter. Both can remain unaware of the other.
-
-" Git gutter column color = number color column (LineNr)
-highlight clear SignColumn
-" vim-gitgutter will use Sign Column to set its color, reload it.
-call gitgutter#highlight#define_highlights()
+let g:SignatureMarkTextHLDynamic = 1
+let g:SignatureMarkerTextHLDynamic = 1
 
 " InstantRst options
-let g:instant_rst_localhost_only=1
+" let g:instant_rst_localhost_only=1
 
 " YouCompleteMe
 let g:ycm_allow_changing_updatetime = 0  " We are setting it manually
@@ -496,7 +464,7 @@ let g:livedown_autorun = 1  " Open livedown automatically with markdown files
 let g:livedown_open = 1  " Open browser window upon previewing
 let g:livedown_browser = "chromium"
 " Riv (rst)
-let g:riv_disable_folding = 1
+" let g:riv_disable_folding = 1
 
 " Rainbow parentheses always on
 au VimEnter * RainbowParenthesesToggle
