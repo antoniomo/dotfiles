@@ -121,10 +121,17 @@ augroup reload_vimrc " {
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 
+" Mouse support
+set mouse=a
+if has("mouse_sgr")
+  set ttymouse=sgr " Enables mouse on wide screens
+else
+  set ttymouse=xterm2
+end
+
 " Some nice defaults based on nvim
 if !has("nvim")
   set ttyfast
-  set ttymouse=xterm2
   set ttyscroll=3
   set backspace=indent,eol,start
   set autoread
@@ -149,9 +156,6 @@ set ttimeoutlen=0
 if has("nvim")
   set ttimeout
 endif
-
-" Mouse support
-set mouse=a
 
 " Space as leader
 let mapleader = "\<Space>"
