@@ -6,4 +6,5 @@ for (( i = 0; i < 5; i++ )); do
   sudo systemctl start bluetooth
   echo -e "power on\nconnect $LG51\nquit" | bluetoothctl
   pacmd set-default-sink "bluez_sink.$LG51_SINK.a2dp_sink"
+  sleep .3
 done

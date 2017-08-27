@@ -1,7 +1,10 @@
 #!/bin/sh
 
-JABRAHPN="50:1A:A5:3F:07:4F"
-JABRAHPN_SINK=`echo $JABRAHPN | tr : _`
-sudo systemctl start bluetooth
-echo -e "power on\nconnect $JABRAHPN\nquit" | bluetoothctl
-pacmd set-default-sink "bluez_sink.$JABRAHPN_SINK.a2dp_sink"
+for (( i = 0; i < 5; i++ )); do
+  JABRAHPN="50:1A:A5:3F:07:4F"
+  JABRAHPN_SINK=`echo $JABRAHPN | tr : _`
+  sudo systemctl start bluetooth
+  echo -e "power on\nconnect $JABRAHPN\nquit" | bluetoothctl
+  pacmd set-default-sink "bluez_sink.$JABRAHPN_SINK.a2dp_sink"
+  sleep .3
+done
