@@ -404,6 +404,9 @@ last_cmd_status () {
   fi
 }
 
+# Workaround for qterminal TERM variable setting
+[[ $(< /proc/$PPID/cmdline tr -d \\0) == *qterminal* ]] && export TERM="xterm-256color"
+
 trap 'timer_start' DEBUG
 PROMPT_COMMAND='set_last_err;timer_stop;history -n;history -w;history -c; history -r;__git_ps1 "`last_cmd_status``venv``ssh_host`$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func;echo -ne "\033]0;$PWD\007";timer_stop'
 
