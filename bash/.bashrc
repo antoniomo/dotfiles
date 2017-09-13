@@ -81,7 +81,7 @@ complete -o default -o nospace -F _git g
 
 # General aliases
 alias sudo='sudo '  # Enables aliases with sudo
-alias ssh='TERM=gnome-256color ssh '
+alias ssh='TERM=xterm-256color ssh '
 alias please='sudo $(fc -ln -1)'
 alias grep='grep --color=auto'
 alias clipcopy='xclip -selection c'
