@@ -68,6 +68,7 @@ Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --gocode-completer'}
 " Fuzzy-finder with fzf
 Plug 'junegunn/fzf', {'do': 'yes \| ./install --all'}
 " Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
 " Nesting indent levels visualizer
 Plug 'nathanaelkane/vim-indent-guides'
 " Ale multi language linter
