@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Taken from https://github.com/cockroachdb/cockroach/wiki/Rando-scripts
+
+set -eu
+
+if [ $# -eq 0 ]
+then
+        echo "usage: goescape <filename>"
+        exit 1
+fi
+
+FILEPATH="$1"
+DIR=$(dirname "$FILEPATH")
+FILE=$(basename "$FILEPATH")
+
+pushd "$DIR" > /dev/null
+touch "$FILE"
+
+go build -gcflags='-m' 2>&1 | \
+        grep 'to heap' | \
+        grep "./$FILE"
+
+popd > /dev/null
