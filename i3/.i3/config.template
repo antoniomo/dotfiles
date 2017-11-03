@@ -51,10 +51,14 @@ bindsym $mod+d exec --no-startup-id ~/bin/dmenu-run
 
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+# bindsym $mod+h focus left
+# bindsym $mod+j focus down
+# bindsym $mod+k focus up
+# bindsym $mod+l focus right
+bindsym $mod+h exec "i3-vim-focus left"
+bindsym $mod+j exec "i3-vim-focus down"
+bindsym $mod+k exec "i3-vim-focus up"
+bindsym $mod+l exec "i3-vim-focus right"
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left

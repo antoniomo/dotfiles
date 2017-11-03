@@ -52,6 +52,8 @@ Plug 'Raimondi/delimitMate'
 Plug 'mbbill/undotree'
 " i3 config syntax highlighting
 Plug 'PotatoesMaster/i3-vim-syntax', {'for': 'i3'}
+" i3-vim common navigation
+Plug 'jwilm/i3-vim-focus'
 " tmux config syntax highlighting
 " Plug 'tmux-plugins/vim-tmux'
 " Molokai colorscheme
@@ -177,10 +179,16 @@ nnoremap <silent> <CR> :noh<Bar>:echo<CR>
 set hidden
 
 " Window navigation
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" map <C-j> <C-W>j
+" map <C-k> <C-W>k
+" map <C-h> <C-W>h
+" map <C-l> <C-W>l
+
+" i3 window navigation with i3-vim-focus plugin
+map gwl :call Focus('right', 'l')<CR>
+map gwh :call Focus('left', 'h')<CR>
+map gwk :call Focus('up', 'k')<CR>
+map gwj :call Focus('down', 'j')<CR>
 
 " Tab navigation
 nmap <silent> <leader>t :tabnew<CR>
