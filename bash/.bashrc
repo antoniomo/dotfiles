@@ -110,6 +110,7 @@ alias v='vim'
 alias :e='vim'
 alias nc='ncat'
 alias netcat='ncat'
+
 # Function so that it can be used by make
 function go(){
   if [ -x "$(command -v richgo)" ]; then
@@ -120,6 +121,12 @@ function go(){
 }
 export -f go
 alias make='make --eval=SHELL=/bin/bash'
+
+# List all dependencies
+function godeps(){
+  go list -f '{{ join .Deps "\n" }}'
+}
+
 # Add an "alert" alias for long running commands.  Use like so:
 # sleep 10; alert
 # Taken from: http://pastebin.com/pZ0hVDq8
