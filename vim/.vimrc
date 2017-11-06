@@ -178,6 +178,11 @@ nnoremap <silent> <CR> :noh<Bar>:echo<CR>
 " Allow hidden unsaved buffers
 set hidden
 
+" Set titlestring to full path of the edited file
+set title
+" set titlestring=%F
+set titlestring=VIM
+
 " Window navigation
 " map <C-j> <C-W>j
 " map <C-k> <C-W>k
@@ -185,6 +190,7 @@ set hidden
 " map <C-l> <C-W>l
 
 " i3 window navigation with i3-vim-focus plugin
+" Requires "VIM" as part of the windows name (border string)
 map gwl :call Focus('right', 'l')<CR>
 map gwh :call Focus('left', 'h')<CR>
 map gwk :call Focus('up', 'k')<CR>
@@ -229,9 +235,6 @@ set colorcolumn=+1
 
 " Minimum context lines above/below when scrolling
 set scrolloff=5
-
-" Set titlestring to full path of the edited file
-set titlestring=%F
 
 " Statusline options
 " See `:help statusline` for more built-in flags
