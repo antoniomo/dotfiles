@@ -52,8 +52,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'mbbill/undotree'
 " i3 config syntax highlighting
 Plug 'PotatoesMaster/i3-vim-syntax', {'for': 'i3'}
-" i3-vim common navigation
-Plug 'jwilm/i3-vim-focus'
 " tmux config syntax highlighting
 " Plug 'tmux-plugins/vim-tmux'
 " Molokai colorscheme
@@ -100,7 +98,7 @@ Plug 'honza/vim-snippets'
 " Jinja2 support
 " Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
 " Go stuff
-Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries'}
 Plug 'nsf/gocode', {'rtp': 'vim', 'for': 'go', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
 Plug 'AndrewRadev/splitjoin.vim'
 " TOML
@@ -180,21 +178,13 @@ set hidden
 
 " Set titlestring to full path of the edited file
 set title
-" set titlestring=%F
-set titlestring=VIM
+set titlestring=%F
 
 " Window navigation
-" map <C-j> <C-W>j
-" map <C-k> <C-W>k
-" map <C-h> <C-W>h
-" map <C-l> <C-W>l
-
-" i3 window navigation with i3-vim-focus plugin
-" Requires "VIM" as part of the windows name (border string)
-map gwl :call Focus('right', 'l')<CR>
-map gwh :call Focus('left', 'h')<CR>
-map gwk :call Focus('up', 'k')<CR>
-map gwj :call Focus('down', 'j')<CR>
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 " Tab navigation
 nmap <silent> <leader>t :tabnew<CR>
@@ -270,25 +260,30 @@ set statusline+=%c:     " cursor column
 set statusline+=%l/%L    " cursor line/total lines
 " set statusline+=\ %P     " percent through file
 
-" Vim starts in normal mode, put green statusline
+" Vim starts in normal mode, put red statusline
 runtime! plugin/sensible.vim
-hi StatusLine term=reverse cterm=reverse ctermfg=green ctermbg=black guifg=green guibg=black
+hi StatusLine term=reverse cterm=reverse ctermfg=red ctermbg=black guifg=red guibg=black
 " Change the status line color based on mode
 if version >= 700
-  " use red insert mode
-  au InsertEnter * hi StatusLine term=reverse cterm=reverse ctermfg=red ctermbg=black guifg=red guibg=black
-  " use green otherwise
-  au InsertLeave * hi StatusLine term=reverse cterm=reverse ctermfg=green ctermbg=black guifg=green guibg=black
+  " use green insert mode
+  au InsertEnter * hi StatusLine term=reverse cterm=reverse ctermfg=green ctermbg=black guifg=green guibg=black
+  " use red otherwise
+  au InsertLeave * hi StatusLine term=reverse cterm=reverse ctermfg=red ctermbg=black guifg=red guibg=black
 endif
 
 " Change cursor color according to mode
 if &term =~ "xterm\\|rxvt"
-  " use a red cursor in insert mode
-  let &t_SI = "\<Esc>]12;Red\x7"
-  " use a green cursor otherwise
-  let &t_EI = "\<Esc>]12;LightGreen\x7"
+  " use a green cursor in insert mode
+  let &t_SI = "\<Esc>]12;LightGreen\x7"
+  " blink cursor in insert mode
+  let &t_SI .= "\<Esc>[0 q"
+  " use a red cursor otherwise
+  let &t_EI = "\<Esc>]12;Red\x7"
+  " and solid
+  let &t_EI .= "\<Esc>[2 q"
   " do it here so it's in normal mode at the start too
-  silent !echo -ne "\033]12;LightGreen\007"
+  silent !echo -ne "\033]12;Red\007"
+  silent !echo -ne "\033[2 q"
   " reset cursor when vim exits
   autocmd VimLeave * silent !echo -ne "\033]12;\#93a1a1\007"
 endif
