@@ -279,6 +279,7 @@ for_window [class="Firefox" title="Print"] move workspace current
 for_window [class="Firefox" instance="SessionManager"] move workspace current
 for_window [class="gnote"] floating enable
 for_window [instance="galculator"] floating enable move scratchpad
+for_window [instance="zenity"] floating enable
 for_window [class="Kodi"] border none
 for_window [class="retroarch"] border none
 for_window [instance="scratch"] move scratchpad
