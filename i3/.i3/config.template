@@ -282,6 +282,7 @@ for_window [instance="galculator"] floating enable move scratchpad
 for_window [instance="zenity"] floating enable
 for_window [class="Kodi"] border none
 for_window [class="retroarch"] border none
+for_window [class="DarkPlaces"] border none
 for_window [instance="scratch"] move scratchpad
 
 # Dunst notification daemon
