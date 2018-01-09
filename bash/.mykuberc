@@ -15,7 +15,7 @@ kctx () {
     else
       kubectl config use-context $opt
     fi
-    exit
+    break
   done
 }
 
