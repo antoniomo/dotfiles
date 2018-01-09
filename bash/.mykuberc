@@ -1,3 +1,5 @@
+# vi: ft=sh
+
 # Generic kubernetes stuff
 alias k="kubectl"
 alias kui="kubectl proxy"
