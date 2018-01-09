@@ -24,4 +24,4 @@ kctx () {
 }
 
 # Generic gcloud stuff
-alias gclist="gcloud container clusters list"
+alias gcls="gcloud container clusters list"
