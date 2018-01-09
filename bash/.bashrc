@@ -196,6 +196,11 @@ function bzcat(){
 }
 export -f bzcat
 
+# Kubernetes/gcloud extra aliases
+if [ -e ~/.mykuberc ];then
+  source ~/.mykuberc
+fi
+
 # Settings not found here or in dotfiles (having sensitive info)
 if [ -e ~/.localrc ];then
   source ~/.localrc

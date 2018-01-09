@@ -1,0 +1,23 @@
+# Generic kubernetes stuff
+alias k="kubectl"
+alias kui="kubectl proxy"
+alias kctxl="kubectl config get-contexts"
+
+kctx () {
+  OPTIONS=`kubectl config get-contexts -o name`
+  OPTIONS+=' EXIT'
+
+  echo "Current context: `kubectl config current-context`"
+
+  select opt in $OPTIONS; do
+    if [ "$opt" = "EXIT" ]; then
+      echo "Staying in the current context"
+    else
+      kubectl config use-context $opt
+    fi
+    exit
+  done
+}
+
+# Generic gcloud stuff
+alias gclist="gcloud container clusters list"
