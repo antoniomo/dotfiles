@@ -11,6 +11,8 @@ kctx () {
 
   echo "Current context: `kubectl config current-context`"
 
+  echo "Switch to which context? (or EXIT)"
+
   select opt in $OPTIONS; do
     if [ "$opt" = "EXIT" ]; then
       echo "Staying in the current context"
