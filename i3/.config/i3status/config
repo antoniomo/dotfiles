@@ -21,9 +21,9 @@ order += "sysdata c"
 order += "sysdata r"
 order += "volume master"
 order += "tztime calendar"
-# order += "tztime tenerife"
+order += "tztime tenerife"
 # order += "tztime sf"
-order += "tztime helsinki"
+# order += "tztime helsinki"
 order += "tztime local"
 
 spotify {
