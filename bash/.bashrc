@@ -11,8 +11,8 @@ export GOPATH=~/go
 export CDPATH=.:$HOME:$GOROOT/src:$GOPATH/src:$GOPATH/src/golang.org:$GOPATH/src/github.com:
 
 # Envoy keychain
-envoy
-source <(envoy -p)
+# envoy
+# source <(envoy -p)
 
 # Vi keybindings (inputrc is sourced after this, so some bash stuff prefers this
 # setting)

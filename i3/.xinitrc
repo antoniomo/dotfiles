@@ -24,6 +24,10 @@ source ~/bin/setup_displays
 [ -f /etc/xprofile ] && source /etc/xprofile
 [ -f ~/.xprofile ] && source ~/.xprofile
 
+# gnome-keyring
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+
 # exec gnome-session
 # exec startkde
 # exec startxfce4

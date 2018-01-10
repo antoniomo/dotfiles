@@ -287,6 +287,9 @@ for_window [class="xonotic-sdl"] border none
 for_window [instance="This War of Mine"] border none
 for_window [instance="scratch"] move scratchpad
 
+# NetworkManager applet
+exec --no-startup-id nm-applet
+
 # Dunst notification daemon
 exec --no-startup-id dunst -config ~/.i3/dunstrc
 
