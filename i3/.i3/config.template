@@ -281,6 +281,7 @@ for_window [class="gnote"] floating enable
 for_window [instance="galculator"] floating enable move scratchpad
 for_window [instance="zenity"] floating enable
 for_window [class="Nm-connection-editor"] floating enable
+for_window [class="Blueman-manager"] floating enable
 for_window [class="Kodi"] border none
 for_window [class="Vlc"] border none
 for_window [class="retroarch"] border none
@@ -291,6 +292,8 @@ for_window [instance="scratch"] move scratchpad
 
 # NetworkManager applet
 exec --no-startup-id nm-applet
+# Blueman applet
+exec --no-startup-id blueman-applet
 
 # Dunst notification daemon
 exec --no-startup-id dunst -config ~/.i3/dunstrc
