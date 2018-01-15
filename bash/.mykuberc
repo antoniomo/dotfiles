@@ -25,3 +25,4 @@ kctx () {
 
 # Generic gcloud stuff
 alias gcls="gcloud container clusters list"
+alias glog="gcloud auth login"
