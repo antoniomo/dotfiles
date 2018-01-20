@@ -4,7 +4,7 @@
         "urxvt": "",
         "termite": "",
         "qterminal": "",
-        "Thunar": "",
+        "thunar": "",
         "zathura": "",
         "vlc": "",
         "kodi": "",
@@ -22,7 +22,7 @@
         "gnote": "",
         "libreoffice-calc": "",
         "darktable": "",
-	"Nm-connection-editor": ""
+	"nm-connection-editor": ""
     },
     "instances": {
         "This War of Mine": ""
