@@ -4,6 +4,7 @@
 alias k="kubectl"
 alias kui="kubectl proxy"
 alias kctxl="kubectl config get-contexts"
+alias kdump='k8s-dump --apiserver-host=http://127.0.0.1:8001 --output=/home/antonio/'
 
 kctx () {
   OPTIONS=`kubectl config get-contexts -o name`
