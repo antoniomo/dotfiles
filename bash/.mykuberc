@@ -26,4 +26,4 @@ kctx () {
 
 # Generic gcloud stuff
 alias gcls="gcloud container clusters list"
-alias glog="gcloud auth login"
+alias glog="gcloud auth login --format='flattened' | grep -e '^access_token:'"
