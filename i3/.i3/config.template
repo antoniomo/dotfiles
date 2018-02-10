@@ -88,6 +88,9 @@ bindsym $mod+w layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
+# Focus follows mouse
+focus_follows_mouse no
+
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
@@ -269,7 +272,7 @@ bindsym $mod+XF86Eject mode "$mode_system"
 bindsym $mod+Delete mode "$mode_system"
 
 # Specific app properties
-assign [class="Firefox"] 1
+# assign [class="Firefox"] 1
 assign [class="Spotify"] 10
 assign [class="skypeforlinux"] 10
 assign [class="gnote"] 6
