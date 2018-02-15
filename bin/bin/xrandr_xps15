@@ -50,10 +50,11 @@ if [ $USBC -eq 0 ]; then
     else
         internal=0
         # All good, disconnect internal screen in this case
-        xrandr --output $internaln --off
+        # xrandr --output $internaln --off
         # Reattach screens after change
         xrandr --output $HDMI1n --primary --auto
         xrandr --output $USBCn --auto --left-of $HDMI1n
+        xrandr --output $internaln --mode 1920x1080 --left-of $USBCn
         xrandr --dpi 96
         export XRANDR_PRIMARY=$HDMI1n
         export XRANDR_SECONDARY=$USBCn
