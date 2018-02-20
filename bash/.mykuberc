@@ -27,4 +27,4 @@ kctx () {
 # Generic gcloud stuff
 alias gcls="gcloud container clusters list"
 alias glog="gcloud auth login --format='flattened' | grep -e '^access_token:'"
-alias gtok="cat ~/.kube/config | grep -e 'access-token:'"
+alias gtok="cat ~/.kube/config | grep -o 'access-token:.*' | cut -d' ' -f2 | pbcopy"

@@ -86,6 +86,8 @@ alias please='sudo $(fc -ln -1)'
 alias grep='grep --color=auto'
 alias clipcopy='xclip -selection c'
 alias clippaste='xclip -selection clipboard -o'
+alias pbcopy='xclip -selection c' # OSX script compatibility
+alias pbpaste='xclip -selection clipboard -o' # OSX script compatibility
 alias diff=colordiff
 alias lsofst="lsof | awk '{ print \$2 \" \" \$1; }' | sort -rn | uniq -c | sort -rn | head -20"
 alias rm='rm -I'
