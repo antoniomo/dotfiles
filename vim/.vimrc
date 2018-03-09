@@ -64,7 +64,15 @@ Plug 'morhetz/gruvbox'
 " ctrl + hjkl to move windows in tmux and vim effortlessly
 " Plug 'christoomey/vim-tmux-navigator'
 " YouCompleteMe autocompletion (Remember to run install.py after upgrade!)
-Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --gocode-completer'}
+" Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --gocode-completer'}
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 " Fuzzy-finder with fzf
 Plug 'junegunn/fzf', {'do': 'yes \| ./install --all'}
 " Plug 'junegunn/fzf.vim'
@@ -111,6 +119,9 @@ Plug 'cespare/vim-toml', {'for': 'toml'}
 
 " Add plugins to &runtimepath
 call plug#end()
+
+" Enable deoplete autocompletion
+let g:deoplete#enable_at_startup = 1
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -445,15 +456,15 @@ let g:SignatureMarkerTextHLDynamic = 1
 " let g:instant_rst_localhost_only=1
 
 " YouCompleteMe
-let g:ycm_allow_changing_updatetime = 0  " We are setting it manually
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_strings = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
-let g:ycm_key_list_previous_completion=['<S-TAB>', '<Up>']
-let g:ycm_python_binary_path = '/usr/bin/python3'
+" let g:ycm_allow_changing_updatetime = 0  " We are setting it manually
+" let g:ycm_complete_in_comments = 1
+" let g:ycm_complete_in_strings = 1
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+" let g:ycm_key_list_previous_completion=['<S-TAB>', '<Up>']
+" let g:ycm_python_binary_path = '/usr/bin/python3'
 
 " Sneak
 let g:sneak#streak = 1
