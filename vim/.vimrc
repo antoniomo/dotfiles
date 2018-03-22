@@ -93,6 +93,7 @@ Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'vim-pandoc/vim-pandoc', {'for': 'markdown'}
 Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'markdown'}
 Plug 'shime/vim-livedown', {'for': 'markdown'}  " Has a nodejs component, (npm/repositories)
+Plug 'moorereason/vim-markdownfmt', {'for': 'markdown'}  " Has a golang component
 " Riv rst notetaking and instant html preview
 " Plug 'Rykka/riv.vim', {'for': 'rst'}
 " Plug 'Rykka/InstantRst', {'for': 'rst'}  " Has a python component, instant-rst
@@ -485,6 +486,8 @@ let g:pandoc#modules#disabled = ["folding"]
 let g:livedown_autorun = 1  " Open livedown automatically with markdown files
 let g:livedown_open = 1  " Open browser window upon previewing
 let g:livedown_browser = "chromium"
+" markdownfmt
+let g:markdownfmt_autosave=1
 " Riv (rst)
 " let g:riv_disable_folding = 1
 
