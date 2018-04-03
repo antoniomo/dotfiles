@@ -24,6 +24,28 @@ kctx () {
   done
 }
 
+kns () {
+  OPTIONS=`kubectl get namespaces -o name`
+  OPTIONS+=' EXIT'
+
+  CTX=`kubectl config current-context`
+
+  echo "Current context: $CTX"
+  echo "Current namespace: `kubectl config current-context`"
+
+  echo "Switch to which namespace? (or EXIT)"
+
+  select opt in $OPTIONS; do
+    if [ "$opt" = "EXIT" ]; then
+      echo "Staying in the current namespace"
+    else
+      NS=`echo $opt|sed 's/namespaces\///'`
+      kubectl config set-context $CTX --namespace $NS
+    fi
+    break
+  done
+}
+
 # Generic gcloud stuff
 alias gcls="gcloud container clusters list"
 alias glog="gcloud auth login --format='flattened' | grep -o '^access_token:.*' | tr -s ' ' | cut -d' ' -f2 | pbcopy"
