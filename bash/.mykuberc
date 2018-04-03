@@ -27,6 +27,7 @@ kctx () {
     fi
     break
   done
+  CTX=`kubectl config current-context`
   NS=`kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}"`
   if [[ -z "$NS" ]]; then
     NS="default"
