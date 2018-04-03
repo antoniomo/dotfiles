@@ -10,8 +10,13 @@ kctx () {
   OPTIONS=`kubectl config get-contexts -o name`
   OPTIONS+=' EXIT'
 
-  echo "Current context: `kubectl config current-context`"
+  CTX=`kubectl config current-context`
+  NS=`kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}"`
+  if [[ -z "$NS" ]]; then
+    NS="default"
+  fi
 
+  echo "Current ctx/ns: $CTX/$NS"
   echo "Switch to which context? (or EXIT)"
 
   select opt in $OPTIONS; do
@@ -22,28 +27,39 @@ kctx () {
     fi
     break
   done
+  NS=`kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}"`
+  if [[ -z "$NS" ]]; then
+    NS="default"
+  fi
+  echo "Current ctx/ns: $CTX/$NS"
 }
 
 kns () {
-  OPTIONS=`kubectl get namespaces -o name`
+  OPTIONS=`kubectl get namespaces -o jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}'`
   OPTIONS+=' EXIT'
 
   CTX=`kubectl config current-context`
+  NS=`kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}"`
+  if [[ -z "$NS" ]]; then
+    NS="default"
+  fi
 
-  echo "Current context: $CTX"
-  echo "Current namespace: `kubectl config current-context`"
-
+  echo "Current ctx/ns: $CTX/$NS"
   echo "Switch to which namespace? (or EXIT)"
 
   select opt in $OPTIONS; do
     if [ "$opt" = "EXIT" ]; then
       echo "Staying in the current namespace"
     else
-      NS=`echo $opt|sed 's/namespaces\///'`
-      kubectl config set-context $CTX --namespace $NS
+      kubectl config set-context $CTX --namespace $opt
     fi
     break
   done
+  NS=`kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}"`
+  if [[ -z "$NS" ]]; then
+    NS="default"
+  fi
+  echo "Current ctx/ns: $CTX/$NS"
 }
 
 # Generic gcloud stuff
