@@ -136,7 +136,7 @@ alias alert='notify-send --urgency=critical -i "$([ $? = 0 ] && echo terminal ||
 
 # Executes stuff in parallel for all subdirectories
 function mapd(){
-  ls | parallel "cd {} && $@"
+  ls -d */ | parallel "cd {} && $@"
 }
 
 function say(){
