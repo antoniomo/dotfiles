@@ -229,7 +229,6 @@ c () {
     else
         command cd ~
     fi
-    $ls
 }
 
 # Go up the path by level or partial and safe match, awesome
