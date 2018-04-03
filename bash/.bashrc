@@ -420,7 +420,12 @@ last_cmd_status () {
 # Workaround for qterminal TERM variable setting
 [[ $(< /proc/$PPID/cmdline tr -d \\0) == *qterminal* ]] && export TERM="xterm-256color"
 
+# Kubernetes-aware prompt
+source /home/antonio/opt/kube-ps1/kube-ps1.sh
+# Not show the default namespace
+KUBE_PS1_NS_DEFAULT_ENABLE=false
+
 trap 'timer_start' DEBUG
-PROMPT_COMMAND='set_last_err;timer_stop;history -n;history -w;history -c; history -r;__git_ps1 "`last_cmd_status``venv``ssh_host`$yellow\w$reset" "`root_prompt` ";_fasd_prompt_func;echo -ne "\033]0;$PWD\007";timer_stop'
+PROMPT_COMMAND='set_last_err;timer_stop;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "`last_cmd_status``venv``ssh_host`$yellow\w$reset" "`kube_ps1``root_prompt` ";_fasd_prompt_func;timer_stop'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
