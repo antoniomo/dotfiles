@@ -1,6 +1,8 @@
 [user]
 	email = antonio.macias.ojeda@gmail.com
 	name = Antonio M. Macías Ojeda
+[color]
+	ui = auto
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
@@ -34,8 +36,7 @@
 	r = remote
 	rv = remote -v show
 	ra = remote add
-	ci = commit
-	civ = commit -v
+	ci = commit -v
 	s = status -s
 	st = status
 	stv = status -v
