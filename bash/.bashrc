@@ -112,6 +112,7 @@ alias v='vim'
 alias :e='vim'
 alias nc='ncat'
 alias netcat='ncat'
+alias ungron='gron -u'
 
 # Function so that it can be used by make
 function go(){
