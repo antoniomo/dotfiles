@@ -423,8 +423,10 @@ last_cmd_status () {
 
 # Kubernetes-aware prompt
 source /home/antonio/opt/kube-ps1/kube-ps1.sh
+# Not show kubernetes icon/separator
+KUBE_PS1_SYMBOL_ENABLE=false
 # Not show the default namespace
-KUBE_PS1_NS_DEFAULT_ENABLE=false
+KUBE_PS1_NS_DEFAULT_STRING=""
 
 trap 'timer_start' DEBUG
 PROMPT_COMMAND='set_last_err;timer_stop;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "`last_cmd_status``venv``ssh_host`$yellow\w$reset" "`kube_ps1``root_prompt` ";_fasd_prompt_func;timer_stop'

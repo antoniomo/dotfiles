@@ -487,7 +487,7 @@ let g:livedown_autorun = 1  " Open livedown automatically with markdown files
 let g:livedown_open = 1  " Open browser window upon previewing
 let g:livedown_browser = "chromium"
 " markdownfmt
-let g:markdownfmt_autosave=1
+let g:markdownfmt_autosave=0
 " Riv (rst)
 " let g:riv_disable_folding = 1
 
