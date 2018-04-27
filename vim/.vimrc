@@ -402,6 +402,7 @@ endif
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 let g:ale_linters = {'go': ['gometalinter']}
+let g:ale_go_gometalinter_options = '--fast'
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
