@@ -509,6 +509,13 @@ autocmd VimEnter * if !argc() | Explore | endif
 " Delimitmate
 let delimitMate_expand_cr = 1
 
+" Easy align
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " Vim-go options, golang
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
