@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 # Set PATH with my user bin commands
-PATH=$PATH:~/bin:~/go/bin
+PATH=$PATH:~/bin:~/go/bin:~/npm-global/bin
 export GOPATH=~/go
 export CDPATH=.:$HOME:$GOROOT/src:$GOPATH/src:$GOPATH/src/golang.org:$GOPATH/src/github.com:
 
