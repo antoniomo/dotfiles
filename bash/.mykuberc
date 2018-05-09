@@ -7,11 +7,11 @@ alias kctxl="kubectl config get-contexts"
 alias kdump="k8s-dump --apiserver-host=http://127.0.0.1:8001 --output=$HOME"
 
 kctx () {
-  OPTIONS=`kubectl config get-contexts -o name`
+  local OPTIONS=`kubectl config get-contexts -o name`
   OPTIONS+=' EXIT'
 
-  CTX=`kubectl config current-context`
-  NS=`kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}"`
+  local CTX=`kubectl config current-context`
+  local NS=`kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}"`
   if [[ -z "$NS" ]]; then
     NS="default"
   fi
@@ -36,11 +36,11 @@ kctx () {
 }
 
 kns () {
-  OPTIONS=`kubectl get namespaces -o jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}'`
+  local OPTIONS=`kubectl get namespaces -o jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}'`
   OPTIONS+=' EXIT'
 
-  CTX=`kubectl config current-context`
-  NS=`kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}"`
+  local CTX=`kubectl config current-context`
+  local NS=`kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}"`
   if [[ -z "$NS" ]]; then
     NS="default"
   fi
