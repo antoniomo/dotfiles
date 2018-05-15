@@ -1,7 +1,8 @@
 # vi: ft=sh
 
 # Generic kubernetes stuff
-alias k="kube-prompt"
+# alias k="kube-prompt"
+alias k='gcloud alpha interactive --context="kubectl "'
 alias kui="kubectl proxy"
 alias kctxl="kubectl config get-contexts"
 alias kdump="k8s-dump --apiserver-host=http://127.0.0.1:8001 --output=$HOME"
