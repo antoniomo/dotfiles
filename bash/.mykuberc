@@ -1,7 +1,6 @@
 # vi: ft=sh
 
 # Generic kubernetes stuff
-# alias k="kube-prompt"
 alias k='kubectl'
 # Autocompletion for this alias
 source /usr/share/bash-completion/completions/kubectl
