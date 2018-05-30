@@ -77,7 +77,11 @@ GIT_PS1_SHOWUPSTREAM="auto"
 alias g=hub
 alias git=hub
 source /usr/share/bash-completion/completions/git
-complete -o default -o nospace -F _git g
+if [[ $(type -t compopt) == "builtin" ]]; then
+	complete -o default -F _git g
+else
+	complete -o default -o nospace -F _git g
+fi
 
 # General aliases
 alias sudo='sudo ' # Enables aliases with sudo

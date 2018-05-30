@@ -3,6 +3,14 @@
 # Generic kubernetes stuff
 # alias k="kube-prompt"
 alias k='kubectl'
+# Autocompletion for this alias
+source /usr/share/bash-completion/completions/kubectl
+if [[ $(type -t compopt) == "builtin" ]]; then
+	complete -o default -F __start_kubectl k
+else
+	complete -o default -o nospace -F __start_kubectl k
+fi
+
 alias ki='kube-prompt'
 alias kui="kubectl proxy"
 alias kctxl="kubectl config get-contexts"
