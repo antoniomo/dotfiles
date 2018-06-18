@@ -228,6 +228,9 @@ set background=dark
 let g:gruvbox_contrast_dark = "hard"
 let g:gruvbox_contrast_light = "hard"
 colorscheme gruvbox
+" Spell checking without color, just underline
+hi clear SpellBad
+hi SpellBad cterm=underline
 
 " Highlight current cursor line
 set cursorline
