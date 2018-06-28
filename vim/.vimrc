@@ -405,12 +405,13 @@ if executable('rg')
 endif
 
 " Ale options
-let g:ale_sign_error = '⤫'
+let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
 let g:ale_fix_on_save = 1
-let g:ale_linters = {'go': ['gometalinter'], 'sh': ['shellcheck'], 'bash': ['shellcheck']}
-let g:ale_fixers = {'sh': ['shfmt'], 'bash': ['shfmt']}
+let g:ale_linters = {'go': ['gometalinter', 'gofmt'], 'sh': ['shellcheck'], 'bash': ['shellcheck']}
+let g:ale_fixers = {'go': ['goimports'], 'sh': ['shfmt'], 'bash': ['shfmt']}
 let g:ale_go_gometalinter_options = '--fast'
+let g:ale_go_gofmt_options = '-s'
 let g:ale_sh_shfmt_options = '-s'
 
 function! LinterStatus() abort
@@ -527,12 +528,6 @@ nmap ga <Plug>(EasyAlign)
 
 " Vim-go options, golang
 let g:go_list_type = "quickfix"
-let g:go_fmt_command = "goimports"
-let g:go_fmt_options = {
-  \ 'gofmt': '-s',
-  \ }
-let g:go_fmt_autosave = 1
-let g:go_metalinter_autosave = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
 let g:go_highlight_functions = 1
@@ -544,8 +539,15 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_snippet_case_type = "camelcase"
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'gosimple']
-let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'gosimple']
+" Using ale for this:
+" let g:go_fmt_command = "goimports"
+" let g:go_fmt_options = {
+"   \ 'gofmt': '-s',
+"   \ }
+" let g:go_fmt_autosave = 1
+" let g:go_metalinter_autosave = 1
+" let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'gosimple']
+" let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'gosimple']
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
