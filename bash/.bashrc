@@ -119,11 +119,20 @@ alias ungron='gron -u'
 
 # Function so that it can be used by make
 function go() {
-	if [ -x "$(command -v richgo)" ]; then
-		richgo "$@"
-	else
-		command go "$@"
-	fi
+	case $1 in
+		# I love go get verbose by default
+		get)
+			shift
+			command go get -v "$@"
+			;;
+	*)
+		if [ -x "$(command -v richgo)" ]; then
+			richgo "$@"
+		else
+			command go "$@"
+		fi
+		;;
+	esac
 }
 export -f go
 alias make='make --eval=SHELL=/bin/bash'
