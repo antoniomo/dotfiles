@@ -9,10 +9,6 @@
 PATH=$PATH:~/bin:~/go/bin:~/npm-global/bin
 export GOPATH=~/go
 
-# Envoy keychain
-# envoy
-# source <(envoy -p)
-
 # Vi keybindings (inputrc is sourced after this, so some bash stuff prefers this
 # setting)
 set -o vi
