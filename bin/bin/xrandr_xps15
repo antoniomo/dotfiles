@@ -1,14 +1,19 @@
 #!/bin/bash
 # Taken from http://www.jejik.com/articles/2008/10/setting_up_dual_monitors_system-wide_with_xrandr_on_debian_lenny/
 
-# Screen names, two variatios (ie HDMI-1 or HDMI1)
+# Screen names, three variatios (ie HDMI-1, HDMI-1-1, or HDMI1)
 if xrandr | grep "eDP1"; then
     # First style, no '-'
     internaln="eDP1"
     HDMI1n="HDMI1"
     USBCn="DP2"
+elif xrandr | grep "eDP-1-1"; then
+    # Weird style, with two '-' (nvidia-xrun)
+    internaln="eDP-1-1"
+    HDMI1n="HDMI-1-1"
+    USBCn="DP-1-1"
 else
-    # Second style, with '-'
+    # Other style, with '-'
     internaln="eDP-1"
     HDMI1n="HDMI-1"
     USBCn="DP-2"
@@ -16,9 +21,9 @@ fi
 
 # Not screen names, but the control flags
 internal=1
-xrandr | grep -q "HDMI-\?1 connected"
+xrandr | grep -q "HDMI-\?1-\?1\? connected"
 HDMI1=$?
-xrandr | grep -q "DP-\?2 connected"  # USB-c
+xrandr | grep -q "DP-\?1\?-\?1\?2 connected"  # USB-c
 USBC=$?
 if [ $HDMI1 -eq 0 ]; then
     # External monitor is connected
