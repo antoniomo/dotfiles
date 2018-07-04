@@ -358,10 +358,10 @@ last_err() {
 	fi
 }
 
-venv() {
-	# Outputs active virtualenv, if any
-	echo ${VIRTUAL_ENV:+($green$(basename "$VIRTUAL_ENV")$reset)}
-}
+# venv() {
+# 	# Outputs active virtualenv, if any
+# 	echo ${VIRTUAL_ENV:+($green$(basename "$VIRTUAL_ENV")$reset)}
+# }
 
 ssh_host() {
 	# Hostname only on ssh connections
@@ -420,9 +420,6 @@ last_cmd_status() {
 	fi
 }
 
-# Workaround for qterminal TERM variable setting
-[[ $(tr </proc/$PPID/cmdline -d \\0) == *qterminal* ]] && export TERM="xterm-256color"
-
 # Kubernetes-aware prompt
 source /home/antonio/opt/kube-ps1/kube-ps1.sh
 # Not show kubernetes icon/separator
@@ -430,7 +427,12 @@ KUBE_PS1_SYMBOL_ENABLE=false
 # Not show the default namespace
 KUBE_PS1_NS_DEFAULT_STRING=""
 
+# Set terminal title with the pwd
+set_title() {
+	echo -ne "\e]2;$(pwd)\a"
+}
+
 trap 'timer_start' DEBUG
-PROMPT_COMMAND='set_last_err;timer_stop;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "`last_cmd_status``venv``ssh_host`$yellow\w$reset" "`kube_ps1``root_prompt` ";_fasd_prompt_func;timer_stop'
+PROMPT_COMMAND='set_last_err;timer_stop;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "`last_cmd_status``ssh_host`$yellow\w$reset" "`kube_ps1``root_prompt` ";_fasd_prompt_func;timer_stop'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
