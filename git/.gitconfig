@@ -56,7 +56,5 @@
 	llv = log --pretty=format:'%C(auto)%h %d %s %C(green)(%cr) %C(blue)<%aN>' --stat
 	la = "!git config -l | grep alias | cut -c 7-"
 	ctags = !.git/hooks/ctags
-[url "git@gitlab.jongla.com:"]
-	insteadOf = https://gitlab.jongla.com/
 [http "https://gopkg.in"]
 	followRedirects = true
