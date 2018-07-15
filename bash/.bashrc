@@ -353,8 +353,8 @@ set_last_err() {
 
 last_err() {
 	# Outputs last command error code
-	if [[ $last_st != 0 ]]; then
-		echo "${white}Error:$red $last_st"
+	if [[ ${last_st} != 0 ]]; then
+		echo "${white}Error:${red} ${last_st}"
 	fi
 }
 
@@ -366,16 +366,16 @@ last_err() {
 ssh_host() {
 	# Hostname only on ssh connections
 	if [[ -n $SSH_CLIENT ]]; then
-		echo "$blue\\u@\\h:"
+		echo "${blue}\\u@\\h:"
 	fi
 }
 
 root_prompt() {
 	# Red # or green $ for root/normal user prompt
 	if [[ $EUID == 0 ]]; then
-		echo "$bold$red#$reset"
+		echo "${bold}${red}#${reset}"
 	else
-		echo "$green\$$reset"
+		echo "${green}\$${reset}"
 	fi
 }
 
@@ -394,7 +394,7 @@ timer_stop() {
 timer_show() {
 	# Show time elapsed on last command, for slow commands
 	if [[ $elapsed_time -ge 10 ]]; then
-		printf "${white}Time: $red%02d$white:$red%02d$white:$red%02d" $((elapsed_time / 3600)) $((elapsed_time / 60 % 60)) $((elapsed_time % 60))
+		printf "${white}Time: ${red}%02d${white}:${red}%02d${white}:${red}%02d" $((elapsed_time / 3600)) $((elapsed_time / 60 % 60)) $((elapsed_time % 60))
 	fi
 }
 
@@ -402,7 +402,7 @@ last_cmd_status() {
 	# Print last command status
 	ret1=$(last_err)
 	ret2=$(timer_show)
-	ret="$bold$blue["
+	ret="${bold}${blue}["
 	prnt=false
 	if [[ -n $ret1 ]]; then
 		ret+=$ret1
@@ -410,13 +410,13 @@ last_cmd_status() {
 	fi
 	if [[ -n $ret2 ]]; then
 		if $prnt; then
-			ret+="$blue | "
+			ret+="${blue} | "
 		fi
 		ret+=$ret2
 		prnt=true
 	fi
 	if $prnt; then
-		echo "$ret$blue]$reset\\n"
+		echo "${ret}${blue}]${reset}\\n"
 	fi
 }
 
@@ -433,6 +433,7 @@ set_title() {
 }
 
 trap 'timer_start' DEBUG
-PROMPT_COMMAND='set_last_err;timer_stop;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "`last_cmd_status``ssh_host`$yellow\w$reset" "`kube_ps1``root_prompt` ";_fasd_prompt_func;timer_stop'
+# PROMPT_COMMAND='set_last_err;timer_stop;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "`last_cmd_status``ssh_host`${yellow}\w${reset}" "`kube_ps1``root_prompt` ";_fasd_prompt_func;timer_stop'
+PROMPT_COMMAND='set_last_err;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "$(last_cmd_status)$(ssh_host)${yellow}\w${reset}" "$(kube_ps1)$(root_prompt) ";_fasd_prompt_func;timer_stop'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
