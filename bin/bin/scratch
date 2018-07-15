@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TERMEMU=qterminal
+TERMEMU=kitty
 
 pgrep -f "$TERMEMU --name scratch"
 RUNNING=$?
