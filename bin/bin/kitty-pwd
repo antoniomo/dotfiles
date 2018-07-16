@@ -7,7 +7,7 @@
 id=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
 if [ "$id" == "0x0" ]
 then
-    kitty -d $HOME
+    kitty -1 -d $HOME
     exit
 fi
 class_string=$(xprop -id "$id" | awk '/WM_CLASS\(STRING\)/' | cut -d'=' -f2 | cut -d',' -f1)
@@ -32,4 +32,4 @@ if [[ ! -d "$cwd" ]]  # Still not a valid directory, default to $HOME
 then
     cwd=$HOME
 fi
-kitty -d "`readlink -f "$cwd"`"
+kitty -1 -d "`readlink -f "$cwd"`"
