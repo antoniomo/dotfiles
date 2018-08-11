@@ -30,8 +30,6 @@ export SSH_AUTH_SOCK
 
 # Vulkan support
 export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
-# nvidia fans stuck at 100%
-nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTargetFanSpeed=100"
 
 # exec gnome-session
 # exec startkde
