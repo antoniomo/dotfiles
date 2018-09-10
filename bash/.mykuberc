@@ -10,6 +10,9 @@ else
 	complete -o default -o nospace -F __start_kubectl k
 fi
 
+# Helm stuff
+HELM_TLS_VERIFY=1
+
 alias ki='kube-prompt'
 alias kui="kubectl proxy"
 alias kctxl="kubectl config get-contexts"
