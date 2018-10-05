@@ -53,26 +53,31 @@ kctx() {
 }
 
 kns() {
-	local OPTIONS=$(kubectl get namespaces -o jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}')
-	OPTIONS+=' EXIT'
-
 	local CTX=$(kubectl config current-context)
-	local NS=$(kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}")
-	if [[ -z $NS ]]; then
-		NS="default"
-	fi
+	local NAMESPACE=${1}
+	if [[ -z $NAMESPACE ]]; then
+		local OPTIONS=$(kubectl get namespaces -o jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}')
+		OPTIONS+=' EXIT'
 
-	echo "Current ctx/ns: $CTX/$NS"
-	echo "Switch to which namespace? (or EXIT)"
-
-	select opt in $OPTIONS; do
-		if [ "$opt" = "EXIT" ]; then
-			echo "Staying in the current namespace"
-		else
-			kubectl config set-context "$CTX" --namespace "$opt"
+		local NS=$(kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}")
+		if [[ -z $NS ]]; then
+			NS="default"
 		fi
-		break
-	done
+
+		echo "Current ctx/ns: $CTX/$NS"
+		echo "Switch to which namespace? (or EXIT)"
+
+		select opt in $OPTIONS; do
+			if [ "$opt" = "EXIT" ]; then
+				echo "Staying in the current namespace"
+			else
+				kubectl config set-context "$CTX" --namespace "$opt"
+			fi
+			break
+		done
+	else
+		kubectl config set-context "$CTX" --namespace "$NAMESPACE"
+	fi
 	NS=$(kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}")
 	if [[ -z $NS ]]; then
 		NS="default"
