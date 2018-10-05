@@ -90,6 +90,7 @@ alias gcl='gcloud alpha interactive --context="gcloud "'
 alias gcls="gcloud container clusters list"
 alias glog="gcloud auth login --format='flattened' | grep -o '^access_token:.*' | tr -s ' ' | cut -d' ' -f2 | pbcopy"
 alias gtok="cat ~/.kube/config | grep -o 'access-token:.*' | cut -d' ' -f2 | pbcopy"
+alias gccls="gcloud config configurations list"
 alias gcca="gcloud config configurations activate "
 
 alias kubeadmin='kubectl create clusterrolebinding $(whoami)-admin-binding ' \
