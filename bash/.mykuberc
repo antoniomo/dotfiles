@@ -11,7 +11,7 @@ else
 fi
 
 # Helm stuff
-HELM_TLS_VERIFY=1
+export HELM_TLS_VERIFY=1
 
 alias ki='kube-prompt'
 alias kui="kubectl proxy"
