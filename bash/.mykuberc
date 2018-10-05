@@ -19,26 +19,31 @@ alias kctxl="kubectl config get-contexts"
 alias kdump="k8s-dump --apiserver-host=http://127.0.0.1:8001 --output=$HOME"
 
 kctx() {
-	local OPTIONS=$(kubectl config get-contexts -o name)
-	OPTIONS+=' EXIT'
+	local CLUSTER_NAME=${1}
+	if [[ -z $CLUSTER_NAME ]]; then
+		local OPTIONS=$(kubectl config get-contexts -o name)
+		OPTIONS+=' EXIT'
 
-	local CTX=$(kubectl config current-context)
-	local NS=$(kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}")
-	if [[ -z $NS ]]; then
-		NS="default"
-	fi
-
-	echo "Current ctx/ns: $CTX/$NS"
-	echo "Switch to which context? (or EXIT)"
-
-	select opt in $OPTIONS; do
-		if [ "$opt" = "EXIT" ]; then
-			echo "Staying in the current context"
-		else
-			kubectl config use-context "$opt"
+		local CTX=$(kubectl config current-context)
+		local NS=$(kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}")
+		if [[ -z $NS ]]; then
+			NS="default"
 		fi
-		break
-	done
+
+		echo "Current ctx/ns: $CTX/$NS"
+		echo "Switch to which context? (or EXIT)"
+
+		select opt in $OPTIONS; do
+			if [ "$opt" = "EXIT" ]; then
+				echo "Staying in the current context"
+			else
+				kubectl config use-context "$opt"
+			fi
+			break
+		done
+	else
+		kubectl config use-context "$CLUSTER_NAME"
+	fi
 	CTX=$(kubectl config current-context)
 	NS=$(kubectl config view -o jsonpath="{.contexts[?(@.name=='$CTX')].context.namespace}")
 	if [[ -z $NS ]]; then
@@ -81,3 +86,7 @@ alias gcls="gcloud container clusters list"
 alias glog="gcloud auth login --format='flattened' | grep -o '^access_token:.*' | tr -s ' ' | cut -d' ' -f2 | pbcopy"
 alias gtok="cat ~/.kube/config | grep -o 'access-token:.*' | cut -d' ' -f2 | pbcopy"
 alias gcca="gcloud config configurations activate "
+
+alias kubeadmin='kubectl create clusterrolebinding $(whoami)-admin-binding \
+    --clusterrole=cluster-admin \
+    --user=$(gcloud config get-value core/account)'
