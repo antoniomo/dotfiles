@@ -140,7 +140,7 @@ function godeps() {
 
 # Executes stuff in parallel for all subdirectories
 function mapd() {
-	ls -d */ | parallel "cd {} && $@"
+	find ./* -maxdepth 0 -type d | parallel "cd {} && $*"
 }
 
 function say() {
