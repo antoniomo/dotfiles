@@ -421,11 +421,14 @@ last_cmd_status() {
 }
 
 # Kubernetes-aware prompt
-source /home/antonio/opt/kube-ps1/kube-ps1.sh
+source ~/opt/kube-ps1/kube-ps1.sh
 # Not show kubernetes icon/separator
 KUBE_PS1_SYMBOL_ENABLE=false
 # Not show the default namespace
 KUBE_PS1_NS_DEFAULT_STRING=""
+
+# gcloud-aware prompto
+source ~/opt/gcloud-ps1/gcloud-ps1.sh
 
 # Set terminal title with the pwd
 set_title() {
@@ -434,6 +437,6 @@ set_title() {
 
 trap 'timer_start' DEBUG
 # PROMPT_COMMAND='set_last_err;timer_stop;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "`last_cmd_status``ssh_host`${yellow}\w${reset}" "`kube_ps1``root_prompt` ";_fasd_prompt_func;timer_stop'
-PROMPT_COMMAND='set_last_err;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "$(last_cmd_status)$(ssh_host)${yellow}\w${reset}" "$(kube_ps1)$(root_prompt) ";_fasd_prompt_func;timer_stop'
+PROMPT_COMMAND='set_last_err;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "$(last_cmd_status)$(ssh_host)${yellow}\w${reset}" "$(gcloud_ps1)$(kube_ps1)$(root_prompt) ";_fasd_prompt_func;timer_stop'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
