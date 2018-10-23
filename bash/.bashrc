@@ -116,11 +116,11 @@ alias ungron='gron -u'
 # Function so that it can be used by make
 function go() {
 	case $1 in
-		# I love go get verbose by default
-		get)
-			shift
-			command go get -v "$@"
-			;;
+	# I love go get verbose by default
+	get)
+		shift
+		command go get -v "$@"
+		;;
 	*)
 		if [ -x "$(command -v richgo)" ]; then
 			richgo "$@"
@@ -429,7 +429,7 @@ KUBE_PS1_NS_DEFAULT_STRING=""
 
 # Set terminal title with the pwd
 set_title() {
-	echo -ne "\e]2;$(pwd)\a"
+	echo -ne "\\e]2;$(pwd)\\a"
 }
 
 trap 'timer_start' DEBUG
