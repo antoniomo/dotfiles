@@ -46,14 +46,10 @@ Plug 'justinmk/vim-sneak'
 Plug 'airblade/vim-gitgutter'
 " Autoclosing of parenthesis, brackets...
 Plug 'Raimondi/delimitMate'
-" Gundo, gundo is awesome (vim-mundo is another 'maintained' fork but currently broken)
-" Plug 'dsummersl/gundo.vim'
 " Undotree instead of gundo
 Plug 'mbbill/undotree'
 " i3 config syntax highlighting
 Plug 'PotatoesMaster/i3-vim-syntax', {'for': 'i3'}
-" tmux config syntax highlighting
-" Plug 'tmux-plugins/vim-tmux'
 " Molokai colorscheme
 " Plug 'tomasr/molokai'
 " Plug 'fatih/molokai' " Version with different line numbers
@@ -61,18 +57,8 @@ Plug 'PotatoesMaster/i3-vim-syntax', {'for': 'i3'}
 Plug 'morhetz/gruvbox'
 " Solarized true colors colorscheme!
 " Plug 'lifepillar/vim-solarized8'
-" ctrl + hjkl to move windows in tmux and vim effortlessly
-" Plug 'christoomey/vim-tmux-navigator'
-" YouCompleteMe autocompletion (Remember to run install.py after upgrade!)
-" Plug 'Valloric/YouCompleteMe', {'do': 'python install.py --gocode-completer'}
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'maralla/completor.vim'
+Plug 'ervandew/supertab'
 " Fuzzy-finder with fzf
 Plug 'junegunn/fzf', {'do': 'yes \| ./install --all'}
 " Plug 'junegunn/fzf.vim'
@@ -94,9 +80,6 @@ Plug 'vim-pandoc/vim-pandoc', {'for': 'markdown'}
 Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'markdown'}
 Plug 'shime/vim-livedown', {'for': 'markdown'}  " Has a nodejs component, (npm/repositories)
 Plug 'moorereason/vim-markdownfmt', {'for': 'markdown'}  " Has a golang component
-" Riv rst notetaking and instant html preview
-" Plug 'Rykka/riv.vim', {'for': 'rst'}
-" Plug 'Rykka/InstantRst', {'for': 'rst'}  " Has a python component, instant-rst
 " Vim extline for titles, headers, comments...
 Plug 'drmikehenry/vim-extline'
 " Snippets
@@ -108,12 +91,9 @@ Plug 'honza/vim-snippets'
 " Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
 " Go stuff
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries'}
-Plug 'nsf/gocode', {'rtp': 'vim', 'for': 'go', 'do': '~/.vim/plugged/gocode/vim/symlink.sh'}
 Plug 'AndrewRadev/splitjoin.vim'
 " TOML
 Plug 'cespare/vim-toml', {'for': 'toml'}
-" Nim stuff
-" Plug 'zah/nim.vim', {'for': 'nim'}
 " Java Stuff
 " Gradle support
 " Plug 'tfnico/vim-gradle', {'for': 'java'}
@@ -121,8 +101,11 @@ Plug 'cespare/vim-toml', {'for': 'toml'}
 " Add plugins to &runtimepath
 call plug#end()
 
-" Enable deoplete autocompletion
-let g:deoplete#enable_at_startup = 1
+" Completor
+let g:go_gocode_unimported_packages = 1
+let g:completor_gocode_binary = '~/go/bin/gocode'
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabClosePreviewOnPopupClose = 1
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -487,9 +470,9 @@ let g:sneak#streak = 1
 " hi link SneakStreakStatusLine  Comment
 
 " Ultisnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Pandoc/markdown stuff
 let g:pandoc#modules#disabled = ["folding"]
@@ -563,17 +546,3 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <leader>t <Plug>(go-test)
 autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
-
-" Vim-nim
-" fun! JumpToDef()
-"   if exists("*GotoDefinition_" . &filetype)
-"     call GotoDefinition_{&filetype}()
-"   else
-"     exe "norm! \<C-]>"
-"   endif
-" endf
-
-" Jump to tag
-" nn <M-g> :call JumpToDef()<cr>
-" ino <M-g> <esc>:call JumpToDef()<cr>i
-" End vim-nim
