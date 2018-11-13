@@ -420,8 +420,6 @@ last_cmd_status() {
 	fi
 }
 
-# Buffalo autocompletion
-source ~/opt/buffalo_bash_completion/buffalo_completion.sh
 # Kubernetes-aware prompt
 source ~/opt/kube-ps1/kube-ps1.sh
 # Not show kubernetes icon/separator
