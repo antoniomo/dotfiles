@@ -91,6 +91,8 @@ Plug 'honza/vim-snippets'
 " Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
 " Go stuff
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries'}
+Plug 'godoctor/godoctor.vim', {'for': 'go', 'do': ':GoDoctorInstall'}
+" End go stuff
 Plug 'AndrewRadev/splitjoin.vim'
 " TOML
 Plug 'cespare/vim-toml', {'for': 'toml'}
