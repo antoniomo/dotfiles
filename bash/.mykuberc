@@ -17,6 +17,7 @@ alias ki='kube-prompt'
 alias kui="kubectl proxy"
 alias kctxl="kubectl config get-contexts"
 alias kdump="k8s-dump --apiserver-host=http://127.0.0.1:8001 --output=$HOME"
+alias kube-bash='kubectl run --rm -i --tty $(whoami)-shell --image=tanelmae/k8s-debug-pod --restart=Never'
 
 kctx() {
 	local CLUSTER_NAME=${1}
