@@ -116,7 +116,11 @@ alias cat='bat'
 
 function date2ts() {
 	# Returns "now" by default
-	date --date="$*" +%s
+	dat="$*"
+	if [[ $dat == "" ]]; then
+		dat="now"
+	fi
+	date --date="$dat" +%s
 }
 
 function ts2date() {
