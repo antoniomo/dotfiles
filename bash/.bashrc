@@ -114,6 +114,15 @@ alias netcat='ncat'
 alias ungron='gron -u'
 alias cat='bat'
 
+function date2ts() {
+	# Returns "now" by default
+	date --date="$*" +%s
+}
+
+function ts2date() {
+	date --date="@$1"
+}
+
 # Function so that it can be used by make
 function go() {
 	case $1 in
@@ -132,7 +141,6 @@ function go() {
 	esac
 }
 export -f go
-alias make='make --eval=SHELL=/bin/bash'
 
 # List all dependencies
 function godeps() {
