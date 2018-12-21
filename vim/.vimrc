@@ -93,6 +93,10 @@ Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries'}
 Plug 'godoctor/godoctor.vim', {'for': 'go', 'do': ':GoDoctorInstall'}
 " End go stuff
+" Dart and flutter suff
+Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+Plug 'reisub0/hot-reload.vim', {'for': 'dart'}
+" End dart stuff
 Plug 'AndrewRadev/splitjoin.vim'
 " TOML
 Plug 'cespare/vim-toml', {'for': 'toml'}
@@ -557,3 +561,7 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <leader>t <Plug>(go-test)
 autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+
+" Dart stuff
+let dart_style_guide=2
+let dart_format_on_save=1

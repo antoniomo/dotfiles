@@ -8,6 +8,7 @@
 # Set PATH with my user bin commands
 PATH=$PATH:~/bin:~/go/bin:~/npm-global/bin
 export GOPATH=~/go
+export ANDROID_AVD_HOME=~/.android/avd
 
 # Vi keybindings (inputrc is sourced after this, so some bash stuff prefers this
 # setting)
