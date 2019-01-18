@@ -407,7 +407,7 @@ let g:ale_fixers = {'go': ['goimports'],
                    \'sh': ['shfmt'],
                    \'bash': ['shfmt'],
                    \'javascript': ['eslint'],
-                    \'html': ['tidy', 'eslint']}
+                    \'html': ['prettier']}
 let g:ale_go_gometalinter_options = '--fast'
 let g:ale_go_gofmt_options = '-s'
 let g:ale_sh_shfmt_options = '-s'
