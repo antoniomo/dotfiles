@@ -94,6 +94,4 @@ alias gtok="cat ~/.kube/config | grep -o 'access-token:.*' | cut -d' ' -f2 | pbc
 alias gccls="gcloud config configurations list"
 alias gcca="gcloud config configurations activate "
 
-alias kubeadmin='kubectl create clusterrolebinding $(whoami)-admin-binding ' \
-	'--clusterrole=cluster-admin ' \
-	'--user=$(gcloud config get-value core/account)'
+alias kubeadmin='kubectl create clusterrolebinding $(whoami)-admin-binding --clusterrole=cluster-admin --user=$(gcloud config get-value core/account)'
