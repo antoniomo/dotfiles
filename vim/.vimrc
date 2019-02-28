@@ -100,6 +100,8 @@ Plug 'reisub0/hot-reload.vim', {'for': 'dart'}
 Plug 'AndrewRadev/splitjoin.vim'
 " TOML
 Plug 'cespare/vim-toml', {'for': 'toml'}
+" YAML
+Plug 'stephpy/vim-yaml', {'for': 'yaml'}
 " Java Stuff
 " Gradle support
 " Plug 'tfnico/vim-gradle', {'for': 'java'}
