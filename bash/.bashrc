@@ -131,18 +131,18 @@ function ts2date() {
 # Function so that it can be used by make
 function go() {
 	case $1 in
-	# I love go get verbose by default
-	get)
-		shift
-		command go get -v "$@"
-		;;
-	*)
-		if [ -x "$(command -v richgo)" ]; then
-			richgo "$@"
-		else
-			command go "$@"
-		fi
-		;;
+		# I love go get verbose by default
+		get)
+			shift
+			command go get -v "$@"
+			;;
+		*)
+			if [ -x "$(command -v richgo)" ]; then
+				richgo "$@"
+			else
+				command go "$@"
+			fi
+			;;
 	esac
 }
 export -f go
@@ -292,7 +292,7 @@ calc() { awk "BEGIN{ print $* }"; }
 get_seeded_random() {
 	seed="$1"
 	openssl enc -aes-256-ctr -pass pass:"$seed" -nosalt \
-		</dev/zero 2>/dev/null
+		< /dev/zero 2> /dev/null
 }
 alias shuf='shuf --random-source=<(get_seeded_random 42)'
 
@@ -312,10 +312,19 @@ export EDITOR="$VISUAL"
 
 export BROWSER=chromium
 
+# Tusk autocompletion
+alias t='tusk'
+source "$GOPATH/src/github.com/rliebz/tusk/completion/tusk-completion.bash"
+if [[ $(type -t compopt) == "builtin" ]]; then
+	complete -o filenames -o bashdefault -F _tusk_bash_autocomplete t
+else
+	complete -o nospace -o filenames -o bashdefault -F _tusk_bash_autocomplete t
+fi
+
 # Fasd initialization, with cache (faster)
 fasd_cache="$HOME/.fasd-init-bash"
 if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-	fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >|"$fasd_cache"
+	fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
 fi
 # Sets _fasd_prompt_func in PROMPT_COMMAND, re-add it if redefined
 source "$fasd_cache"
