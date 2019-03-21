@@ -1,4 +1,5 @@
 light -S 0.1
+killall parcellite
 killall i3-hotbar
 killall nasa-wallpapers
 killall nm-applet
