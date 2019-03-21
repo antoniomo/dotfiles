@@ -1,3 +1,4 @@
+sudo nvidia-off
 light -S 0.1
 killall parcellite
 killall py3status  # Should really replace this one
