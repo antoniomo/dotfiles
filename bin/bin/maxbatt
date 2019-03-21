@@ -1,0 +1,8 @@
+light -S 0.1
+killall i3-hotbar
+killall nasa-wallpapers
+killall nm-applet
+killall blueman-applet
+sudo killall NetworkManager
+sudo rfkill block bluetooth
+
