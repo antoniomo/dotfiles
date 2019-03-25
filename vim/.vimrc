@@ -150,6 +150,7 @@ set encoding=utf-8
 set splitbelow
 set splitright
 set updatetime=250  " in ms
+set showcmd
 
 " Timeout keypress stuff, we want a responsive ESC key
 set timeout
@@ -160,9 +161,6 @@ set ttimeoutlen=0
 if has("nvim")
   set ttimeout
 endif
-
-" Space as leader
-let mapleader = "\<Space>"
 
 " Copy to system's selection clipboard (the one midmouse pastes)
 set clipboard^=unnamed
@@ -190,8 +188,9 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Tab navigation
-nmap <silent> <leader>t :tabnew<CR>
-nmap <silent> <leader>tc :tabclose<CR>
+" Using g instead of t since t is used for tests in some plugins
+nmap <silent> <leader>g :tabnew<CR>
+nmap <silent> <leader>gc :tabclose<CR>
 nmap <silent> [g :tabprevious<CR>
 nmap <silent> ]g :tabnext<CR>
 nmap <silent> [G :tabrewind<CR>
