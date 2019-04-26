@@ -399,7 +399,7 @@ let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
 let g:ale_fix_on_save = 1
 let g:ale_linter_aliases = {'html': ['html', 'javascript']}
-let g:ale_linters = {'go': ['gometalinter', 'gofmt'],
+let g:ale_linters = {'go': ['golangci-lint', 'gofmt'],
                     \'sh': ['shellcheck'],
                     \'bash': ['shellcheck'],
                     \'javascript': ['eslint'],
