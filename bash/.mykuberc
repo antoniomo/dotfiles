@@ -18,6 +18,7 @@ alias kui="kubectl proxy"
 alias kctxl="kubectl config get-contexts"
 alias kdump="k8s-dump --apiserver-host=http://127.0.0.1:8001 --output=$HOME"
 alias kube-bash='kubectl run --rm -i --tty $(whoami)-shell --image=tanelmae/k8s-debug-pod --restart=Never'
+alias kube-go='kubectl run --rm -i --tty $(whoami)-shell --image=golang:alpine --restart=Never'
 
 kctx() {
 	local CLUSTER_NAME=${1}
@@ -84,6 +85,62 @@ kns() {
 		NS="default"
 	fi
 	echo "Current ctx/ns: $CTX/$NS"
+}
+
+klogs() {
+	# Resetting OPTIND is necessary if getopts was used previously in the script.
+	# It is a good idea to make OPTIND local if you process options in a function.
+	local OPTIND
+
+	if [ $# -lt 1 ]; then
+		cat << EOF
+Usage: ${0##*/} SVC -c container -H expression -s since [-fj]
+
+    -c	container. If not specified, container=SVC
+    -h	highlight matching expression
+    -s	since (put a time like [#h|#m|#s], defaults to 24h)
+    -f	follow
+    -j	json output
+EOF
+		return 1
+	fi
+
+	local SVC="${1}"
+	shift # Remove SVC from arguments list
+	CONTAINER=$SVC
+	SINCE="24h"
+	FOLLOW="false"
+	JSON=""
+	HIGHLIGHT=""
+
+	while getopts :c:h:s:fj opt; do
+		case $opt in
+			c)
+				CONTAINER=$OPTARG
+				;;
+			h)
+				HIGHLIGHT=$OPTARG
+				;;
+			s)
+				SINCE=$OPTARG
+				;;
+			f)
+				FOLLOW="true"
+				;;
+			j)
+				JSON="--jq '.'"
+				;;
+
+		esac
+	done
+	shift "$((OPTIND - 1))" # Shift off the options and optional --.
+
+	if [ -n "$HIGHLIGHT" ]; then
+		kubetail "$SVC" -k pod -c "$CONTAINER" -s "$SINCE" -f "$FOLLOW" $JSON | rg -i "$HIGHLIGHT|$"
+	else
+		kubetail "$SVC" -k pod -c "$CONTAINER" -s "$SINCE" -f "$FOLLOW" $JSON
+	fi
+
 }
 
 # Generic gcloud stuff
