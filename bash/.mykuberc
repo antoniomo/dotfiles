@@ -143,6 +143,11 @@ EOF
 
 }
 
+deploysvc() {
+	for i in $(cat ~/svclist); do fakefed dev set-deployment $i $1; done
+	fakefed dev set-deployment rtm $1-race
+}
+
 # Generic gcloud stuff
 alias gcl='gcloud alpha interactive --context="gcloud "'
 alias gcls="gcloud container clusters list"
