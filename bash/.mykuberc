@@ -10,6 +10,14 @@ else
 	complete -o default -o nospace -F __start_kubectl k
 fi
 
+# Autocompletion for fakefed as if it was kubectl
+source /usr/share/bash-completion/completions/kubectl
+if [[ $(type -t compopt) == "builtin" ]]; then
+	complete -o default -F __start_kubectl fakefed
+else
+	complete -o default -o nospace -F __start_kubectl fakefed
+fi
+
 # Helm stuff
 export HELM_TLS_VERIFY=1
 
