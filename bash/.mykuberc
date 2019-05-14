@@ -3,18 +3,13 @@
 # Generic kubernetes stuff
 alias k='kubectl'
 # Autocompletion for this alias
-source /usr/share/bash-completion/completions/kubectl
-if [[ $(type -t compopt) == "builtin" ]]; then
-	complete -o default -F __start_kubectl k
-else
-	complete -o default -o nospace -F __start_kubectl k
-fi
-
 # Autocompletion for fakefed as if it was kubectl
 source /usr/share/bash-completion/completions/kubectl
 if [[ $(type -t compopt) == "builtin" ]]; then
+	complete -o default -F __start_kubectl k
 	complete -o default -F __start_kubectl fakefed
 else
+	complete -o default -o nospace -F __start_kubectl k
 	complete -o default -o nospace -F __start_kubectl fakefed
 fi
 
