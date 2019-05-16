@@ -36,6 +36,7 @@
 	r = remote
 	rv = remote -v show
 	ra = remote add
+	pro = remote prune origin
 	ci = commit -v
 	s = status -s
 	st = status
