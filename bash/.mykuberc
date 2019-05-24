@@ -151,6 +151,10 @@ deploysvc() {
 	fakefed dev set-deployment rtm $1-race
 }
 
+watch-services() {
+	watch -g kubectl get pods --namespace=services -o name && notify-send -u critical 'Deploying!!'
+}
+
 # Generic gcloud stuff
 alias gcl='gcloud alpha interactive --context="gcloud "'
 alias gcls="gcloud container clusters list"
