@@ -409,7 +409,7 @@ let g:ale_fixers = {'go': ['goimports'],
                    \'bash': ['shfmt'],
                    \'javascript': ['eslint'],
                     \'html': ['prettier']}
-let g:ale_go_gometalinter_options = '--fast'
+let g:ale_go_golangci_lint_package = 1
 let g:ale_go_gofmt_options = '-s'
 let g:ale_sh_shfmt_options = '-s -sr -i 0 -ci'
 let g:ale_bash_shfmt_options = '-s -sr -i 0 -ci'
