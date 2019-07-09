@@ -152,6 +152,36 @@ function godeps() {
 	go list -f '{{ join .Deps "\n" }}'
 }
 
+# https://stackoverflow.com/a/50069549/189138
+function goclean() {
+	local pkg=$1
+	shift || return 1
+	local ost
+	local cnt
+	local scr
+
+	# Clean removes object files from package source directories (ignore error)
+	go clean -i $pkg &> /dev/null
+
+	# Set local variables
+	[[ "$(uname -m)" == "x86_64" ]] &&
+		ost="$(uname)"
+	ost="${ost,,}_amd64" &&
+		cnt="${pkg//[^\/]/}"
+
+	# Delete the source directory and compiled package directory(ies)
+	if (("${#cnt}" == "2")); then
+		rm -rf "${GOPATH%%:*}/src/${pkg%/*}"
+		rm -rf "${GOPATH%%:*}/pkg/${ost}/${pkg%/*}"
+	elif (("${#cnt}" > "2")); then
+		rm -rf "${GOPATH%%:*}/src/${pkg%/*/*}"
+		rm -rf "${GOPATH%%:*}/pkg/${ost}/${pkg%/*/*}"
+	fi
+
+	# Reload the current shell
+	source ~/.bashrc
+}
+
 # Executes stuff in parallel for all subdirectories
 function mapd() {
 	find ./* -maxdepth 0 -type d | parallel "cd {} && $*"
