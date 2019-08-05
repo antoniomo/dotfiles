@@ -161,7 +161,9 @@ function goclean() {
 	local scr
 
 	# Clean removes object files from package source directories (ignore error)
-	go clean -i $pkg &> /dev/null
+	# go clean -v -i $pkg &> /dev/null
+	# Nah don't ignore, verbose!
+	go clean -i $pkg
 
 	# Set local variables
 	[[ "$(uname -m)" == "x86_64" ]] &&
@@ -171,11 +173,11 @@ function goclean() {
 
 	# Delete the source directory and compiled package directory(ies)
 	if (("${#cnt}" == "2")); then
-		rm -rf "${GOPATH%%:*}/src/${pkg%/*}"
-		rm -rf "${GOPATH%%:*}/pkg/${ost}/${pkg%/*}"
+		rm -rfv "${GOPATH%%:*}/src/${pkg%/*}"
+		rm -rfv "${GOPATH%%:*}/pkg/${ost}/${pkg%/*}"
 	elif (("${#cnt}" > "2")); then
-		rm -rf "${GOPATH%%:*}/src/${pkg%/*/*}"
-		rm -rf "${GOPATH%%:*}/pkg/${ost}/${pkg%/*/*}"
+		rm -rfv "${GOPATH%%:*}/src/${pkg%/*/*}"
+		rm -rfv "${GOPATH%%:*}/pkg/${ost}/${pkg%/*/*}"
 	fi
 
 	# Reload the current shell
