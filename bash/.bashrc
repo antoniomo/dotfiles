@@ -128,6 +128,7 @@ function ts2date() {
 	date --date="@$1"
 }
 
+export GODOCC_STYLE="dracula"
 # Function so that it can be used by make
 function go() {
 	case $1 in
@@ -136,12 +137,24 @@ function go() {
 			shift
 			command go get -v "$@"
 			;;
-		*)
-			if [ -x "$(command -v richgo)" ]; then
-				richgo "$@"
+		doc)
+			shift
+			if [ -x "$(command -v godocc)" ]; then
+				godocc "$@"
 			else
-				command go "$@"
+				command go doc "$@"
 			fi
+			;;
+		test)
+			shift
+			if [ -x "$(command -v richgo)" ]; then
+				richgo test "$@"
+			else
+				command go test "$@"
+			fi
+			;;
+		*)
+			command go "$@"
 			;;
 	esac
 }
