@@ -17,5 +17,11 @@ APP=$(
 	fi
 )
 
-[[ ! `grep -w "$APP" ~/.config/dmenu/term-list` ]] && echo $APP | ${SHELL:-"/bin/sh"}
-[[ `grep -w "$APP" ~/.config/dmenu/term-list` ]] && termite -e "bash -c '$APP && bash'"
+if grep -q "$APP" ~/.config/dmenu/term-list; then
+	kitty "$APP"
+else
+	echo $APP | ${SHELL:-"/bin/sh"}
+fi
+
+# [[ ! `grep -w "$APP" ~/.config/dmenu/term-list` ]] && echo $APP | ${SHELL:-"/bin/sh"}
+# [[ `grep -w "$APP" ~/.config/dmenu/term-list` ]] && kitty "$APP"
