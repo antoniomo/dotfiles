@@ -64,7 +64,11 @@ pyclean() {
 }
 
 # Git stuff
-source /usr/share/git/completion/git-prompt.sh
+if [ -e /usr/share/git/completion/git-prompt.sh ]; then
+	source /usr/share/git/completion/git-prompt.sh
+elif [ -e /etc/bash_completion.d/git-prompt ]; then
+	source /etc/bash_completion.d/git-prompt
+fi
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -358,13 +362,13 @@ export EDITOR="$VISUAL"
 export BROWSER=chromium
 
 # Tusk autocompletion
-alias t='tusk'
-source "$GOPATH/src/github.com/rliebz/tusk/completion/tusk-completion.bash"
-if [[ $(type -t compopt) == "builtin" ]]; then
-	complete -o filenames -o bashdefault -F _tusk_bash_autocomplete t
-else
-	complete -o nospace -o filenames -o bashdefault -F _tusk_bash_autocomplete t
-fi
+# alias t='tusk'
+# source "$GOPATH/src/github.com/rliebz/tusk/completion/tusk-completion.bash"
+# if [[ $(type -t compopt) == "builtin" ]]; then
+# 	complete -o filenames -o bashdefault -F _tusk_bash_autocomplete t
+# else
+# 	complete -o nospace -o filenames -o bashdefault -F _tusk_bash_autocomplete t
+# fi
 
 # Fasd initialization, with cache (faster)
 fasd_cache="$HOME/.fasd-init-bash"
@@ -496,8 +500,8 @@ KUBE_PS1_SYMBOL_ENABLE=false
 KUBE_PS1_NS_DEFAULT_STRING=""
 
 # gcloud-aware prompto
-source ~/opt/gcloud-ps1/gcloud-ps1.sh
-GCLOUD_PS1_ENABLE=false
+# source ~/opt/gcloud-ps1/gcloud-ps1.sh
+# GCLOUD_PS1_ENABLE=false
 
 gkon() {
 	kubeon
@@ -516,6 +520,7 @@ set_title() {
 
 trap 'timer_start' DEBUG
 # PROMPT_COMMAND='set_last_err;timer_stop;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "`last_cmd_status``ssh_host`${yellow}\w${reset}" "`kube_ps1``root_prompt` ";_fasd_prompt_func;timer_stop'
-PROMPT_COMMAND='set_last_err;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "$(last_cmd_status)$(ssh_host)${yellow}\w${reset}" "$(gcloud_ps1)$(kube_ps1)$(root_prompt) ";_fasd_prompt_func;timer_stop'
+# PROMPT_COMMAND='set_last_err;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "$(last_cmd_status)$(ssh_host)${yellow}\w${reset}" "$(gcloud_ps1)$(kube_ps1)$(root_prompt) ";_fasd_prompt_func;timer_stop'
+PROMPT_COMMAND='set_last_err;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "$(last_cmd_status)$(ssh_host)${yellow}\w${reset}" "$(kube_ps1)$(root_prompt) ";_fasd_prompt_func;timer_stop'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

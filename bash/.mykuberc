@@ -4,7 +4,11 @@
 alias k='kubectl'
 # Autocompletion for this alias
 # Autocompletion for fakefed as if it was kubectl
-source /usr/share/bash-completion/completions/kubectl
+if [ -e /usr/share/bash-completion/completions/kubectl ]; then
+	source /usr/share/bash-completion/completions/kubectl
+elif [ -e /etc/bash_completion.d/kubectl ]; then
+	source /etc/bash_completion.d/kubectl
+fi
 if [[ $(type -t compopt) == "builtin" ]]; then
 	complete -o default -F __start_kubectl k
 	complete -o default -F __start_kubectl fakefed
@@ -156,11 +160,11 @@ watch-services() {
 }
 
 # Generic gcloud stuff
-alias gcl='gcloud alpha interactive --context="gcloud "'
-alias gcls="gcloud container clusters list"
-alias glog="gcloud auth login --format='flattened' | grep -o '^access_token:.*' | tr -s ' ' | cut -d' ' -f2 | pbcopy"
-alias gtok="cat ~/.kube/config | grep -o 'access-token:.*' | cut -d' ' -f2 | pbcopy"
-alias gccls="gcloud config configurations list"
-alias gcca="gcloud config configurations activate "
+# alias gcl='gcloud alpha interactive --context="gcloud "'
+# alias gcls="gcloud container clusters list"
+# alias glog="gcloud auth login --format='flattened' | grep -o '^access_token:.*' | tr -s ' ' | cut -d' ' -f2 | pbcopy"
+# alias gtok="cat ~/.kube/config | grep -o 'access-token:.*' | cut -d' ' -f2 | pbcopy"
+# alias gccls="gcloud config configurations list"
+# alias gcca="gcloud config configurations activate "
 
 alias kubeadmin='kubectl create clusterrolebinding $(whoami)-admin-binding --clusterrole=cluster-admin --user=$(gcloud config get-value core/account)'
