@@ -11,10 +11,8 @@ elif [ -e /etc/bash_completion.d/kubectl ]; then
 fi
 if [[ $(type -t compopt) == "builtin" ]]; then
 	complete -o default -F __start_kubectl k
-	complete -o default -F __start_kubectl fakefed
 else
 	complete -o default -o nospace -F __start_kubectl k
-	complete -o default -o nospace -F __start_kubectl fakefed
 fi
 
 # Helm stuff
@@ -148,11 +146,6 @@ EOF
 		kubetail "$SVC" -k pod -c "$CONTAINER" -s "$SINCE" -f "$FOLLOW" $JSON
 	fi
 
-}
-
-deploysvc() {
-	for i in $(cat ~/svclist); do fakefed dev set-deployment $i $1; done
-	fakefed dev set-deployment rtm $1-race
 }
 
 watch-services() {
