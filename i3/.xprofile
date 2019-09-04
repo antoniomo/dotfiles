@@ -3,3 +3,5 @@
 setxkbmap -layout us -variant altgr-intl -option nodeadkeys -option "caps:swapescape"
 # Set laptop screen to 40% brightness by default
 light -S 40
+# Touchpad properties
+~/bin/touchpad
