@@ -493,11 +493,11 @@ last_cmd_status() {
 }
 
 # Kubernetes-aware prompt
-# source ~/opt/kube-ps1/kube-ps1.sh
+source ~/opt/kube-ps1/kube-ps1.sh
 # Not show kubernetes icon/separator
-# KUBE_PS1_SYMBOL_ENABLE=false
+KUBE_PS1_SYMBOL_ENABLE=false
 # Not show the default namespace
-# KUBE_PS1_NS_DEFAULT_STRING=""
+KUBE_PS1_NS_DEFAULT_STRING=""
 
 # gcloud-aware prompto
 # source ~/opt/gcloud-ps1/gcloud-ps1.sh
