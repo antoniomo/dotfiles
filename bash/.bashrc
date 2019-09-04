@@ -28,7 +28,7 @@ shopt -s histappend
 shopt -s autocd
 # Fix minor cd typos
 shopt -s cdspell
-# Fix minor typos when tab-completing directores
+# Fix minor typos when tab-completing directories
 shopt -s dirspell
 # Line wrap on window resize
 shopt -s checkwinsize
