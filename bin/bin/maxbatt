@@ -1,7 +1,7 @@
 sudo nvidia-off
 light -S 0.1
 pulseaudio -k
-killall parcellite
+killall clipit
 killall py3status  # Should really replace this one
 killall i3-hotbar
 killall nasa-wallpapers

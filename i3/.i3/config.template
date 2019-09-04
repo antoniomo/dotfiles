@@ -307,8 +307,8 @@ exec --no-startup-id blueman-applet
 # Dunst notification daemon
 exec --no-startup-id dunst -config ~/.i3/dunstrc
 
-# Parcellite clipboard
-exec --no-startup-id parcellite
+# Clipit clipboard
+exec --no-startup-id clipit
 
 # Redshift red ambient
 # exec --no-startup-id redshift-gtk
