@@ -118,6 +118,11 @@ alias nc='ncat'
 alias netcat='ncat'
 alias ungron='gron -u'
 alias cat='bat'
+alias jenkins-cli='java -jar ~/opt/jenkins-cli/jenkins-cli.jar'
+
+function jenkins-lint() {
+	java -jar ~/opt/jenkins-cli/jenkins-cli.jar declarative-linter < "$1"
+}
 
 function date2ts() {
 	# Returns "now" by default
