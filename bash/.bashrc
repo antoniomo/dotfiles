@@ -88,8 +88,8 @@ alias sudo='sudo ' # Enables aliases with sudo
 alias ssh='TERM=xterm-256color ssh '
 alias please='sudo $(fc -ln -1)'
 alias grep='grep --color=auto'
-alias clipcopy='xclip -selection c'
-alias clippaste='xclip -selection clipboard -o'
+alias xcopy='xclip -selection c'
+alias xpaste='xclip -selection clipboard -o'
 alias pbcopy='xclip -selection c'             # OSX script compatibility
 alias pbpaste='xclip -selection clipboard -o' # OSX script compatibility
 alias diff=colordiff
