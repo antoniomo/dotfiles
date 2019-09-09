@@ -1,5 +1,8 @@
 # vi: ft=sh
 
+# Helm stuff
+export HELM_TLS_VERIFY=1
+
 # Generic kubernetes stuff
 alias k='kubectl'
 # Autocompletion for this alias
@@ -15,15 +18,20 @@ else
 	complete -o default -o nospace -F __start_kubectl k
 fi
 
-# Helm stuff
-export HELM_TLS_VERIFY=1
-
+# Aliases
 alias ki='kube-prompt'
 alias kui="kubectl proxy"
 alias kctxl="kubectl config get-contexts"
 alias kdump="k8s-dump --apiserver-host=http://127.0.0.1:8001 --output=$HOME"
 alias kube-bash='kubectl run --rm -i --tty $(whoami)-shell --image=tanelmae/k8s-debug-pod --restart=Never'
 alias kube-go='kubectl run --rm -i --tty $(whoami)-shell --image=golang:alpine --restart=Never'
+
+alias kubeadmin='kubectl create clusterrolebinding $(whoami)-admin-binding --clusterrole=cluster-admin --user=$(gcloud config get-value core/account)'
+
+k3dconf() {
+    local CLUSTER_NAME=${1}
+    export KUBECONFIG="$(k3d get-kubeconfig --name=${1})"
+}
 
 kctx() {
 	local CLUSTER_NAME=${1}
@@ -159,5 +167,3 @@ watch-services() {
 # alias gtok="cat ~/.kube/config | grep -o 'access-token:.*' | cut -d' ' -f2 | pbcopy"
 # alias gccls="gcloud config configurations list"
 # alias gcca="gcloud config configurations activate "
-
-alias kubeadmin='kubectl create clusterrolebinding $(whoami)-admin-binding --clusterrole=cluster-admin --user=$(gcloud config get-value core/account)'
