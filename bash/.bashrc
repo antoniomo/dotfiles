@@ -62,6 +62,10 @@ pyclean() {
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 }
+# Doit tab completion
+if [ -e ~/opt/doit/bash_completion ]; then
+	source ~/opt/doit/bash_completion
+fi
 
 # Git stuff
 if [ -e /usr/share/git/completion/git-prompt.sh ]; then
