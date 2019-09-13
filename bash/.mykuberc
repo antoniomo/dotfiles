@@ -33,6 +33,14 @@ k3dconf() {
     export KUBECONFIG="$(k3d get-kubeconfig --name=${1})"
 }
 
+# Merge multiple configs
+kconf() {
+    local configs=$(ls -1d ~/.kube/configs/* | tr '\n' ':')
+    export KUBECONFIG="~/.kube/config:$configs"
+}
+# Execute once to set this session
+kconf
+
 kctx() {
 	local CLUSTER_NAME=${1}
 	if [[ -z $CLUSTER_NAME ]]; then
