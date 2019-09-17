@@ -23,7 +23,7 @@ fi
 internal=1
 xrandr | grep -q "HDMI-\?1-\?1\? connected"
 HDMI1=$?
-xrandr | grep -q "DP-\?1\?-\?1\?2 connected"  # USB-c
+xrandr | grep -q "DP-\?1\?-\?1\?2\? connected"  # USB-c
 USBC=$?
 if [ $HDMI1 -eq 0 ]; then
     # External monitor is connected
