@@ -33,6 +33,13 @@ k3dconf() {
     export KUBECONFIG="$(k3d get-kubeconfig --name=${1})"
 }
 
+# Rancher stuff
+alias ranchercls="rancher clusters ls"
+rancherconf() {
+    local CLUSTER_NAME=${1}
+    export KUBECONFIG="$(rancher clusters kubeconfig ${1})"
+}
+
 # Merge multiple configs
 kconf() {
     local configs=$(ls -1d ~/.kube/configs/* | tr '\n' ':')
