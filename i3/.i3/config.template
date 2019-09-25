@@ -34,7 +34,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec ~/bin/kitty-pwd
+bindsym $mod+Return exec ~/bin/kitty-pwd &
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -47,7 +47,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # j4-dmenu-desktop is an external replacement for i3-dmenu-desktop
 # bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --term=urxvtc
-bindsym $mod+d exec --no-startup-id ~/bin/dmenu-run
+bindsym $mod+d exec --no-startup-id ~/bin/dmenu-run &
 
 
 # change focus
@@ -108,7 +108,7 @@ new_window 1pixel
 bindsym $mod+b border toggle
 
 # Workspace renamer
-exec --no-startup-id ~/opt/i3-renameworkspaces/i3-renameworkspaces.pl
+exec --no-startup-id ~/opt/i3-renameworkspaces/i3-renameworkspaces.pl &
 
 # Send workspaces to a particular screen
 # $XRANDR_X variables are set before calling exec i3 in .xinitrc or your DM
@@ -322,16 +322,16 @@ exec --no-startup-id clipit
 
 # Set backgrounds (delay to make sure xrandr autodetects all screens)
 # exec --no-startup-id sleep 3 && ~/bin/chbg
-exec nasa-wallpapers -interval=10m -cmd="feh --bg-scale %s"
+exec nasa-wallpapers -interval=10m -cmd="feh --bg-scale %s" &
 
 # Auto-start firefox on workspace 1
 # exec --no-startup-id /usr/bin/firefox
 
 # Scratchpad in backtick '`'
-bindsym $mod+grave exec ~/bin/scratch
+bindsym $mod+grave exec ~/bin/scratch &
 
 # Calculator
-bindsym $mod+c exec ~/bin/i3calc
+bindsym $mod+c exec ~/bin/i3calc &
 
 # Hotbar script
-exec --no-startup-id $GOPATH/bin/i3-hotbar
+exec --no-startup-id $GOPATH/bin/i3-hotbar &
