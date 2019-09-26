@@ -123,6 +123,7 @@ alias netcat='ncat'
 alias ungron='gron -u'
 alias cat='bat'
 alias jenkins-cli='java -jar ~/opt/jenkins-cli/jenkins-cli.jar'
+alias tf='terraform'
 
 function jenkins-lint() {
 	java -jar ~/opt/jenkins-cli/jenkins-cli.jar declarative-linter < "$1"
