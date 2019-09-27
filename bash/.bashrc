@@ -131,7 +131,7 @@ function jenkins-lint() {
 
 function date2ts() {
 	# Returns "now" by default
-	dat="$*"
+	local dat="$*"
 	if [[ $dat == "" ]]; then
 		dat="now"
 	fi
