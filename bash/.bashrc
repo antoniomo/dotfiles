@@ -129,17 +129,24 @@ function jenkins-lint() {
 	java -jar ~/opt/jenkins-cli/jenkins-cli.jar declarative-linter < "$1"
 }
 
+# function date2ts() {
+# 	# Returns "now" by default
+# 	local dat="$*"
+# 	if [[ $dat == "" ]]; then
+# 		dat="now"
+# 	fi
+# 	date --date="$dat" +%s
+# }
+
+# function ts2date() {
+# 	date --date="@$1"
+# }
 function date2ts() {
-	# Returns "now" by default
-	local dat="$*"
-	if [[ $dat == "" ]]; then
-		dat="now"
-	fi
-	date --date="$dat" +%s
+	dateconv -ts "$1"
 }
 
 function ts2date() {
-	date --date="@$1"
+	dateconv "$1"
 }
 
 export GODOCC_STYLE="dracula"
