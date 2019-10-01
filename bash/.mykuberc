@@ -37,7 +37,7 @@ k3dconf() {
 alias ranchercls="rancher clusters ls"
 rancherconf() {
     local CLUSTER_NAME=${1}
-    rancher clusters kubeconfig ${1} > ~/.kube/configs/${1}
+    rancher clusters kubeconfig ${1} > "~/.kube/configs/${1}"
     kconf
 }
 
