@@ -64,6 +64,7 @@ pyclean() {
 }
 # Doit tab completion
 if [ -e ~/opt/doit/bash_completion ]; then
+	# shellcheck source=/dev/null
 	source ~/opt/doit/bash_completion
 fi
 
@@ -215,6 +216,7 @@ function goclean() {
 	fi
 
 	# Reload the current shell
+	# shellcheck source=/dev/null
 	source ~/.bashrc
 }
 
@@ -375,6 +377,7 @@ function faketty() { script 0<&- -qfc "$(printf "'%s' " "$@")" /dev/null; }
 export PAGER=bat
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 export BROWSER=chromium
 
@@ -393,6 +396,7 @@ if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
 	fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
 fi
 # Sets _fasd_prompt_func in PROMPT_COMMAND, re-add it if redefined
+# shellcheck source=/dev/null
 source "$fasd_cache"
 unset fasd_cache
 
@@ -510,6 +514,7 @@ last_cmd_status() {
 }
 
 # Kubernetes-aware prompt
+# shellcheck source=/dev/null
 source ~/opt/kube-ps1/kube-ps1.sh
 # Not show kubernetes icon/separator
 KUBE_PS1_SYMBOL_ENABLE=false
@@ -540,4 +545,5 @@ trap 'timer_start' DEBUG
 # PROMPT_COMMAND='set_last_err;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "$(last_cmd_status)$(ssh_host)${yellow}\w${reset}" "$(gcloud_ps1)$(kube_ps1)$(root_prompt) ";_fasd_prompt_func;timer_stop'
 PROMPT_COMMAND='set_last_err;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "$(last_cmd_status)$(ssh_host)${yellow}\w${reset}" "$(kube_ps1)$(root_prompt) ";_fasd_prompt_func;timer_stop'
 
+# shellcheck source=/dev/null
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -107,7 +107,7 @@ Plug 'stephpy/vim-yaml', {'for': 'yaml'}
 " Plug 'tfnico/vim-gradle', {'for': 'java'}
 " Hashicorp stuff
 Plug 'hashivim/vim-hashicorp-tools', {'for': 'hcl'}
-Plug 'jvirtanen/vim-hcl', {'for': 'hcl'}
+" Plug 'jvirtanen/vim-hcl', {'for': 'hcl'}
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -405,17 +405,20 @@ let g:ale_linter_aliases = {'html': ['html', 'javascript']}
 let g:ale_linters = {'go': ['golangci-lint', 'gofmt'],
                     \'sh': ['shellcheck'],
                     \'bash': ['shellcheck'],
+                    \'terraform': ['tflint'],
                     \'javascript': ['eslint'],
                     \'html': ['tidy', 'eslint']}
 let g:ale_fixers = {'go': ['goimports'],
                    \'sh': ['shfmt'],
                    \'bash': ['shfmt'],
+                   \'terraform': ['terraform'],
                    \'javascript': ['eslint'],
-                    \'html': ['prettier']}
+                   \'html': ['prettier']}
 let g:ale_go_golangci_lint_package = 1
 let g:ale_go_gofmt_options = '-s'
 let g:ale_sh_shfmt_options = '-s -sr -i 0 -ci'
 let g:ale_bash_shfmt_options = '-s -sr -i 0 -ci'
+let g:ale_terraform_flint_options = '-f json'
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
