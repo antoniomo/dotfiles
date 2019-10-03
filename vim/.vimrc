@@ -106,8 +106,7 @@ Plug 'stephpy/vim-yaml', {'for': 'yaml'}
 " Gradle support
 " Plug 'tfnico/vim-gradle', {'for': 'java'}
 " Hashicorp stuff
-Plug 'hashivim/vim-hashicorp-tools', {'for': 'hcl'}
-" Plug 'jvirtanen/vim-hcl', {'for': 'hcl'}
+Plug 'hashivim/vim-hashicorp-tools', {'for': ['terraform', 'hcl']}
 
 " Add plugins to &runtimepath
 call plug#end()
