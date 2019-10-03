@@ -94,8 +94,8 @@ Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries'}
 Plug 'godoctor/godoctor.vim', {'for': 'go', 'do': ':GoDoctorInstall'}
 " End go stuff
 " Dart and flutter suff
-Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
-Plug 'reisub0/hot-reload.vim', {'for': 'dart'}
+" Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
+" Plug 'reisub0/hot-reload.vim', {'for': 'dart'}
 " End dart stuff
 Plug 'AndrewRadev/splitjoin.vim'
 " TOML
@@ -105,6 +105,9 @@ Plug 'stephpy/vim-yaml', {'for': 'yaml'}
 " Java Stuff
 " Gradle support
 " Plug 'tfnico/vim-gradle', {'for': 'java'}
+" Hashicorp stuff
+Plug 'hashivim/vim-hashicorp-tools', {'for': 'hcl'}
+Plug 'jvirtanen/vim-hcl', {'for': 'hcl'}
 
 " Add plugins to &runtimepath
 call plug#end()
