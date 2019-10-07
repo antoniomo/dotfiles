@@ -88,6 +88,11 @@ else
 	complete -o default -o nospace -F _git g
 fi
 
+# Generic completion
+if [ -f /etc/bash_completion ]; then
+	source /etc/bash_completion
+fi
+
 # General aliases
 alias sudo='sudo ' # Enables aliases with sudo
 alias ssh='TERM=xterm-256color ssh '
