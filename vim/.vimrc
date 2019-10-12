@@ -30,10 +30,10 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " PlantUML support
-Plug 'aklt/plantuml-syntax'
-" Plug 'scrooloose/vim-slumlord'
+Plug 'aklt/plantuml-syntax', {'for': 'uml'}
+" Plug 'scrooloose/vim-slumlord', {'for': 'uml'}
 " Dot (graphviz) support
-Plug 'wannesm/wmgraphviz.vim'
+Plug 'wannesm/wmgraphviz.vim', {'for': 'dot'}
 " Ack/Ag plugin
 Plug 'mileszs/ack.vim'
 " Surrounds plugin
@@ -58,7 +58,7 @@ Plug 'morhetz/gruvbox'
 " Solarized true colors colorscheme!
 " Plug 'lifepillar/vim-solarized8'
 Plug 'maralla/completor.vim'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 " Fuzzy-finder with fzf
 Plug 'junegunn/fzf', {'do': 'yes \| ./install --all'}
 " Plug 'junegunn/fzf.vim'
@@ -107,15 +107,11 @@ Plug 'stephpy/vim-yaml', {'for': 'yaml'}
 " Plug 'tfnico/vim-gradle', {'for': 'java'}
 " Hashicorp stuff
 Plug 'hashivim/vim-hashicorp-tools', {'for': ['terraform', 'hcl']}
+" Elm stuff
+Plug 'elmcast/elm-vim', {'for': 'elm'}
 
 " Add plugins to &runtimepath
 call plug#end()
-
-" Completor
-let g:go_gocode_unimported_packages = 1
-let g:completor_gocode_binary = '~/go/bin/gocode'
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabClosePreviewOnPopupClose = 1
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -247,7 +243,6 @@ function! Showbranch()
   endif
 endfunction
 
-
 set statusline=          " Clear the statusline when vimrc is loaded
 set statusline+=[%n]\    " buffer number
 set statusline+=%<%.60F\  " file name
@@ -344,6 +339,22 @@ let g:netrw_list_hide= netrw_gitignore#Hide()  " Ignore what's on gitignore
 
 " Change window pwd to file pwd
 autocmd BufEnter * silent! lcd %:p:h
+
+" Completor autocompletion
+let g:go_gocode_unimported_packages = 1
+let g:completor_gocode_binary = '~/go/bin/gocode'
+inoremap <expr> <c-j> pumvisible() ? "\<C-n>" : "\<c-j>"
+inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : "\<c-k>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+" let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+" let g:SuperTabClosePreviewOnPopupClose = 1
+
+" Ultisnips
+" Let completor handle this, disabling
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
 
 " NerdTree option
 map <F2> :NERDTreeToggle<CR>
@@ -490,11 +501,6 @@ let g:sneak#streak = 1
 " hi link SneakStreakTarget ErrorMsg
 " hi link SneakStreakMask  Comment
 " hi link SneakStreakStatusLine  Comment
-
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Pandoc/markdown stuff
 let g:pandoc#modules#disabled = ["folding"]
