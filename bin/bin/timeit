@@ -1,22 +1,22 @@
-#!/bin/sh
+#!/bin/bash
 # Based on http://stackoverflow.com/questions/12498304/using-bash-to-display-a-progress-working-indicator
 
 # Prompt stuff
 # http://mywiki.wooledge.org/BashFAQ/037
-if [ -t 1 ]; then  # Stdout is a tty, use colors
-  reset=`tput sgr0`          # Text Reset
-  bold=`tput bold`           # Bold
-  red=`tput setaf 1`         # Red
-  white=`tput setaf 7`       # White
-else  # are we being piped or redirected? Don't colorize output
-  reset=''
-  bold=''
-  red=''
-  white=''
+if [ -t 1 ]; then # Stdout is a tty, use colors
+	reset=$(tput sgr0)    # Text Reset
+	bold=$(tput bold)     # Bold
+	red=$(tput setaf 1)   # Red
+	white=$(tput setaf 7) # White
+else # are we being piped or redirected? Don't colorize output
+	reset=''
+	bold=''
+	red=''
+	white=''
 fi
 
-timer_show () {
-  printf "$bold$red%02d$white:$red%02d$white:$red%02d$reset" $(( $elapsed_time/3600 )) $(( $elapsed_time/60%60 )) $(( $elapsed_time % 60 ))
+timer_show() {
+	printf "$bold$red%02d$white:$red%02d$white:$red%02d$reset" $((elapsed_time / 3600)) $((elapsed_time / 60 % 60)) $((elapsed_time % 60))
 }
 
 spin='-\|/'
@@ -24,18 +24,17 @@ spin='-\|/'
 # Forward ctrl-c signals to background process
 trap 'kill -TERM $pid' TERM INT
 
-"$@" &   # Run arguments in the background
-pid="$!"  # And capture it's PID list
+"$@" &# Run arguments in the background
+pid="$!" # And capture it's PID list
 
 start=$SECONDS
 i=0
-while kill -0 $pid 2>/dev/null
-do
-  i=$(( (i+1) %4 ))
-  elapsed_time=$(( SECONDS - start ))
-  printf "\r${spin:$i:1} `timer_show` "
-  sleep .5
+while kill -0 $pid 2> /dev/null; do
+	i=$(((i + 1) % 4))
+	elapsed_time=$((SECONDS - start))
+	printf "\r${spin:i:1} $(timer_show) "
+	sleep .5
 done
 echo
-wait $pid  # Wait for wrapped to exit
-exit $?  # Same exit status as the wrapped program
+wait $pid # Wait for wrapped to exit
+exit $?   # Same exit status as the wrapped program
