@@ -334,4 +334,4 @@ bindsym $mod+grave exec ~/bin/scratch &
 bindsym $mod+c exec ~/bin/i3calc &
 
 # Hotbar script
-exec --no-startup-id $GOPATH/bin/i3-hotbar &
+exec --no-startup-id i3-hotbar &
