@@ -406,9 +406,11 @@ source "$fasd_cache"
 unset fasd_cache
 
 # FZF stuff (sourced at the end for compatibility with it's install script)
-export FZF_DEFAULT_COMMAND='rg --hidden -g "" --files ~/'
+# export FZF_DEFAULT_COMMAND='rg --hidden -g "" --files ~/'
+export FZF_DEFAULT_COMMAND='fd --type f -H'
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(xdg-open {})'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="rg --hidden -g "" --files --null ~/ | xargs -0 dirname | sort -u"
+export FZF_CTRL_T_OPTS="--preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_TMUX=0 # Disable tmux integration
 # Ctrl-p as a ctrl-t synonim
