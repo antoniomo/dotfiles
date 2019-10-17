@@ -407,21 +407,23 @@ unset fasd_cache
 
 # FZF stuff (sourced at the end for compatibility with it's install script)
 # export FZF_DEFAULT_COMMAND='rg --hidden -g "" --files ~/'
-export FZF_DEFAULT_COMMAND='fd --type f -H'
-export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(xdg-open {})'"
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --color=always --exclude ".git"'
+export FZF_DEFAULT_OPTS="--ansi --bind='ctrl-o:execute(xdg-open {})'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 export FZF_COMPLETION_TRIGGER='~~'
+_fzf_compgen_path() {
+	fd --hidden --follow --exclude ".git" . "$1"
+}
+_fzf_compgen_dir() {
+	fd --type d --hidden --follow --exclude ".git" . "$1"
+}
 export FZF_TMUX=0 # Disable tmux integration
 # Ctrl-p as a ctrl-t synonim
 bind -x '"\C-p": "fzf-file-widget"'
 bind -m vi-command '"\C-p": "i\C-p"'
 alias oo='xdg-open "$(fzf)"'
 alias vv='vim "$(fzf)"'
-# For bash completion functions
-_fzf_compgen_path() {
-	rg --hidden -g "" --files "$1"
-}
 
 # gshow - git commit browser
 gshow() {
