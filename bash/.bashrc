@@ -408,16 +408,18 @@ unset fasd_cache
 
 # FZF stuff (sourced at the end for compatibility with it's install script)
 # export FZF_DEFAULT_COMMAND='rg --hidden -g "" --files ~/'
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --color=always --exclude ".git" . $(git rev-parse --show-toplevel 2>/dev/null||:)'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --color=always --exclude ".git" . "$(git rev-parse --show-toplevel 2>/dev/null||:)"'
 export FZF_DEFAULT_OPTS="--ansi --bind='ctrl-o:execute(xdg-open {})'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview-window 'right:60%' --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude ".git" . "$(git rev-parse --show-toplevel 2> /dev/null || :)"'
+export FZF_ALT_C_OPTS="--preview-window 'right:60%' --preview 'fd --type f --hidden --follow --color=always . {}'"
 export FZF_COMPLETION_TRIGGER='~~'
 _fzf_compgen_path() {
-	(fd --hidden --follow --exclude ".git" . $(git rev-parse --show-toplevel 2> /dev/null || :))
+	fd --hidden --follow --exclude ".git" . "$(git rev-parse --show-toplevel 2> /dev/null || :)"
 }
 _fzf_compgen_dir() {
-	(fd --type d --hidden --follow --exclude ".git" . $(git rev-parse --show-toplevel 2> /dev/null || :))
+	fd --type d --hidden --follow --exclude ".git" . "$(git rev-parse --show-toplevel 2> /dev/null || :)"
 }
 export FZF_TMUX=0 # Disable tmux integration
 # Ctrl-p as a ctrl-t synonim
