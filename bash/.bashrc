@@ -2,11 +2,12 @@
 # ~/.bashrc
 #
 
+# Set PATH with my user bin commands even when not interactively
+PATH=$PATH:~/bin:~/go/bin:~/npm-global/bin
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Set PATH with my user bin commands
-PATH=$PATH:~/bin:~/go/bin:~/npm-global/bin
 export GOPATH=~/go
 export ANDROID_AVD_HOME=~/.android/avd
 
