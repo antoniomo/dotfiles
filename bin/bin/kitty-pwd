@@ -9,10 +9,11 @@ if [ "$id" == "0x0" ]; then
 	kitty -1 -d "$HOME"
 	exit
 fi
-class_string=$(xprop -id "$id" | awk '/WM_CLASS\(STRING\)/' | cut -d'=' -f2 | cut -d',' -f1)
-if [ "$class_string" == '"kitty"' ]; then
+class_string=$(xprop -id "$id" | awk '/WM_CLASS\(STRING\)/' | cut -d'=' -f2 |
+	cut -d',' -f1 | xargs)
+if [ "$class_string" == 'kitty' ]; then
 	cwd=$(xprop -id "$id" | awk '/_NET_WM_NAME/' | cut -d'"' -f2)
-elif [ "$class_string" == '"thunar"' ]; then
+elif [ "$class_string" == 'thunar' ]; then
 	cwd=$(xprop -id "$id" | awk '/_NET_WM_NAME/' | cut -d'"' -f2 | rev | cut -c 16- | rev)
 else
 	pid=$(xprop -id "$id" | awk '/_NET_WM_PID\(CARDINAL\)/' | cut -d'=' -f2)
@@ -27,4 +28,5 @@ fi
 if [[ ! -d $cwd ]]; then # Still not a valid directory, default to $HOME
 	cwd=$HOME
 fi
+
 kitty -1 -d "$(readlink -f "$cwd")"
