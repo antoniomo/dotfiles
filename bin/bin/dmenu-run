@@ -1,5 +1,5 @@
 #!/bin/sh
-# Modified `dmenu_run` script to open on urxvtc apps on a specified list.
+# Modified `dmenu_run` script to open on kitty apps on a specified list.
 # Idea from:
 # https://github.com/beloglazov/arch-xmonad-zsh/blob/master/home/bin/dmenu-run
 cachedir=${XDG_CACHE_HOME:-"$HOME/.cache"}
@@ -20,7 +20,7 @@ APP=$(
 if grep -q "$APP" ~/.config/dmenu/term-list; then
 	kitty "$APP"
 else
-	echo $APP | ${SHELL:-"/bin/sh"}
+	echo "$APP" | ${SHELL:-"/bin/sh"}
 fi
 
 # [[ ! `grep -w "$APP" ~/.config/dmenu/term-list` ]] && echo $APP | ${SHELL:-"/bin/sh"}
