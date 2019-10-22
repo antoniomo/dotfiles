@@ -2,81 +2,81 @@
 # Taken from http://www.jejik.com/articles/2008/10/setting_up_dual_monitors_system-wide_with_xrandr_on_debian_lenny/
 
 # Screen names, three variatios (ie HDMI-1, HDMI-1-1, or HDMI1)
-if xrandr | grep "eDP-1"; then
-    # First style, with '-'
-    internaln="eDP-1"
-    HDMI1n="HDMI-1"
-    USBCn="DP-1"
-elif xrandr | grep "eDP-1-1"; then
-    # Weird style, with two '-' (nvidia-xrun)
-    internaln="eDP-1-1"
-    HDMI1n="HDMI-1-1"
-    USBCn="DP-1-1"
+if xrandr | grep 'eDP-1 '; then
+	# First style, with '-'
+	internaln="eDP-1"
+	HDMI1n="HDMI-1"
+	USBCn="DP-1"
+elif xrandr | grep 'eDP-1-1 '; then
+	# Weird style, with two '-' (nvidia-xrun)
+	internaln="eDP-1-1"
+	HDMI1n="HDMI-1-1"
+	USBCn="DP-1-1"
 else
-    # Other style, no '-'
-    internaln="eDP1"
-    HDMI1n="HDMI1"
-    USBCn="DP1"
+	# Other style, no '-'
+	internaln="eDP1"
+	HDMI1n="HDMI1"
+	USBCn="DP1"
 fi
 
 # Not screen names, but the control flags
 internal=1
-xrandr | grep -q "HDMI-\?1-\?1\? connected"
+xrandr | grep -q 'HDMI-\?1-\?1\? connected'
 HDMI1=$?
-xrandr | grep -q "DP-\?1\?-\?1\?2\? connected"  # USB-c
+xrandr | grep -q 'DP-\?1\?-\?1\?2\? connected' # USB-c
 USBC=$?
 if [ $USBC -eq 0 ]; then
-    # External monitor is connected
-    xrandr --output $USBCn --primary --auto --right-of $internaln
-    if [ $? -ne 0 ]; then
-        # Something went wrong.
-        internal=1
-    else
-        internal=0
-        # All good
-        # Sad, but if not everything looks too small next to the other screen...
-        xrandr --output $internaln --mode 1920x1080
-        # Reattach $HDMI1n after resolution change (right-of is now closer)
-        xrandr --output $USBCn --primary --auto --right-of $internaln
-        xrandr --dpi 96
-        # Set laptop screen to 40% brightness by default
-        light -S 40
-        export XRANDR_PRIMARY=$USBCn
-        export XRANDR_SECONDARY=$internaln
-        source ~/dotfiles/i3/setup_lowdpi
-    fi
+	# External monitor is connected
+	xrandr --output $USBCn --primary --auto --right-of $internaln
+	if [ $? -ne 0 ]; then
+		# Something went wrong.
+		internal=1
+	else
+		internal=0
+		# All good
+		# Sad, but if not everything looks too small next to the other screen...
+		xrandr --output $internaln --mode 1920x1080
+		# Reattach $HDMI1n after resolution change (right-of is now closer)
+		xrandr --output $USBCn --primary --auto --right-of $internaln
+		xrandr --dpi 96
+		# Set laptop screen to 40% brightness by default
+		light -S 40
+		export XRANDR_PRIMARY=$USBCn
+		export XRANDR_SECONDARY=$internaln
+		source ~/dotfiles/i3/setup_lowdpi
+	fi
 fi
 if [ $HDMI1 -eq 0 ]; then
-    # Second external monitor is connected
-    xrandr --output $HDMI1n --auto --left-of $USBCn
-    if [ $? -ne 0 ]; then
-        # Something went wrong.
-        internal=1
-    else
-        internal=0
-        # All good, disconnect internal screen in this case
-        # xrandr --output $internaln --off
-        # Reattach screens after change
-        xrandr --output $USBCn --primary --auto
-        xrandr --output $HDMIn --auto --left-of $USBCn
-        xrandr --output $internaln --mode 1920x1080 --left-of $HDMI1n
-        xrandr --dpi 96
-        export XRANDR_PRIMARY=$USBC
-        export XRANDR_SECONDARY=$HDMIn
-        source ~/dotfiles/i3/setup_lowdpi
-    fi
+	# Second external monitor is connected
+	xrandr --output $HDMI1n --auto --left-of $USBCn
+	if [ $? -ne 0 ]; then
+		# Something went wrong.
+		internal=1
+	else
+		internal=0
+		# All good, disconnect internal screen in this case
+		# xrandr --output $internaln --off
+		# Reattach screens after change
+		xrandr --output $USBCn --primary --auto
+		xrandr --output $HDMI1 --auto --left-of $USBCn
+		xrandr --output $internaln --mode 1920x1080 --left-of $HDMI1n
+		xrandr --dpi 96
+		export XRANDR_PRIMARY=$USBC
+		export XRANDR_SECONDARY=$HDMI1
+		source ~/dotfiles/i3/setup_lowdpi
+	fi
 fi
 if [ $internal -ne 0 ]; then
-    # Only internal monitor, set DPI to 288 (96*3)
-    # xrandr --output $internaln --primary --auto --dpi 288
-    xrandr --output $internaln --primary --mode 1920x1080
-    # Set laptop screen to 9% brightness by default
-    light -S 9
-    export XRANDR_PRIMARY=$internaln
-    export XRANDR_SECONDARY=$internaln
-    # source ~/dotfiles/i3/setup_hidpi
+	# Only internal monitor, set DPI to 288 (96*3)
+	# xrandr --output $internaln --primary --auto --dpi 288
+	xrandr --output $internaln --primary --mode 1920x1080
+	# Set laptop screen to 9% brightness by default
+	light -S 9
+	export XRANDR_PRIMARY=$internaln
+	export XRANDR_SECONDARY=$internaln
+	# source ~/dotfiles/i3/setup_hidpi
 fi
 
-if [ $XDG_CURRENT_DESKTOP == i3 ]; then
-    source ~/bin/i3-reload
+if [ "$XDG_CURRENT_DESKTOP" == i3 ]; then
+	source ~/bin/i3-reload
 fi
