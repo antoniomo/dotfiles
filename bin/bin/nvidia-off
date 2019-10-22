@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 sudo modprobe -r nvidia
 sudo tee /proc/acpi/bbswitch <<< OFF
