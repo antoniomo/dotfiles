@@ -35,7 +35,7 @@ if [ $USBC -eq 0 ]; then
 		internal=0
 		# All good
 		# Sad, but if not everything looks too small next to the other screen...
-		xrandr --output $internaln --mode 1920x1080
+		xrandr --output $internaln --mode 1600x900
 		# Reattach $HDMI1n after resolution change (right-of is now closer)
 		xrandr --output $USBCn --primary --auto --right-of $internaln
 		xrandr --dpi 96
