@@ -13,6 +13,8 @@ source ~/bin/setup_displays
 # gnome-keyring
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
+# polkit agent
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 # Set my layout before starting the WM
 # en_US int sorting without deadkeys and swap caps<->escape
