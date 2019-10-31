@@ -20,8 +20,9 @@ Plug 'gioele/vim-autoswap'
 Plug 'tpope/vim-commentary'
 " Useful extra mappings
 Plug 'tpope/vim-unimpaired'
-" Git plugin
+" Git plugin and GitHub extension
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 " Netrw file manager plugin extension
 Plug 'tpope/vim-vinegar'
 " Tagbar
@@ -479,6 +480,9 @@ let g:indent_guides_guide_size=1
 " Interop between git gutter and signature
 let g:SignatureMarkTextHLDynamic = 1
 let g:SignatureMarkerTextHLDynamic = 1
+
+" Fugitive tags pathing
+set tags^=./.git/tags
 
 " InstantRst options
 " let g:instant_rst_localhost_only=1
