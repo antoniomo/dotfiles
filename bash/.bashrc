@@ -132,6 +132,14 @@ alias cat='bat'
 alias jenkins-cli='java -jar ~/opt/jenkins-cli/jenkins-cli.jar'
 alias tf='terraform'
 
+function procparent() {
+	ps -o ppid= -p "$1"
+}
+
+function procmap() {
+	pmap "$1" | sed -rn 's/total[ \t]*(.*)/\1/p' | tee >(numfmt --from=iec --to=iec-i)
+}
+
 function jenkins-lint() {
 	java -jar ~/opt/jenkins-cli/jenkins-cli.jar declarative-linter < "$1"
 }
