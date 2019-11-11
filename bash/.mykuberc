@@ -29,22 +29,22 @@ alias kube-go='kubectl run --rm -i --tty $(whoami)-shell --image=golang:alpine -
 alias kubeadmin='kubectl create clusterrolebinding $(whoami)-admin-binding --clusterrole=cluster-admin --user=$(gcloud config get-value core/account)'
 
 k3dconf() {
-    local CLUSTER_NAME=${1}
-    export KUBECONFIG="$(k3d get-kubeconfig --name=${1})"
+	local CLUSTER_NAME=${1}
+	export KUBECONFIG="$(k3d get-kubeconfig --name=${1})"
 }
 
 # Rancher stuff
 alias ranchercls="rancher clusters ls"
 rancherconf() {
-    local CLUSTER_NAME=${1}
-    rancher clusters kubeconfig "${1}" > "$HOME/.kube/configs/${1}"
-    kconf
+	local CLUSTER_NAME=${1}
+	rancher clusters kubeconfig "${1}" > "$HOME/.kube/configs/${1}"
+	kconf
 }
 
 # Merge multiple configs
 kconf() {
-    local configs=$(ls -1d ~/.kube/configs/* 2>/dev/null | tr '\n' ':')
-    export KUBECONFIG="~/.kube/config:$configs"
+	local configs=$(ls -1d ~/.kube/configs/* 2> /dev/null | tr '\n' ':')
+	export KUBECONFIG="$HOME/.kube/config:$configs"
 }
 # Execute once to set this session
 kconf
