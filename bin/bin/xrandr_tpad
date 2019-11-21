@@ -58,8 +58,8 @@ if [ $HDMI1 -eq 0 ]; then
 		# xrandr --output $internaln --off
 		# Reattach screens after change
 		xrandr --output $USBCn --primary --auto
-		xrandr --output $HDMI1 --auto --left-of $USBCn
-		xrandr --output $internaln --mode 1920x1080 --left-of $HDMI1n
+		xrandr --output $HDMI1n --auto --left-of $USBCn
+		xrandr --output $internaln --mode 1600x900 --left-of $HDMI1n
 		xrandr --dpi 96
 		export XRANDR_PRIMARY=$USBCn
 		export XRANDR_SECONDARY=$HDMI1n
