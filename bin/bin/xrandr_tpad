@@ -61,8 +61,8 @@ if [ $HDMI1 -eq 0 ]; then
 		xrandr --output $HDMI1 --auto --left-of $USBCn
 		xrandr --output $internaln --mode 1920x1080 --left-of $HDMI1n
 		xrandr --dpi 96
-		export XRANDR_PRIMARY=$USBC
-		export XRANDR_SECONDARY=$HDMI1
+		export XRANDR_PRIMARY=$USBCn
+		export XRANDR_SECONDARY=$HDMI1n
 		source ~/dotfiles/i3/setup_lowdpi
 	fi
 fi
