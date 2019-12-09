@@ -25,6 +25,7 @@ alias kctxl="kubectl config get-contexts"
 alias kdump="k8s-dump --apiserver-host=http://127.0.0.1:8001 --output=$HOME"
 alias kube-bash='kubectl run --rm -i --tty $(whoami)-shell --image=tanelmae/k8s-debug-pod --restart=Never'
 alias kube-go='kubectl run --rm -i --tty $(whoami)-shell --image=golang:alpine --restart=Never'
+alias kclean='kubectl delete pods --all-namespaces --field-selector=status.phase!=Running'
 
 alias kubeadmin='kubectl create clusterrolebinding $(whoami)-admin-binding --clusterrole=cluster-admin --user=$(gcloud config get-value core/account)'
 
