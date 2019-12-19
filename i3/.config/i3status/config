@@ -21,10 +21,9 @@ order += "sysdata c"
 order += "sysdata r"
 order += "volume master"
 order += "tztime calendar"
-order += "tztime mexico"
-order += "tztime tenerife"
+# order += "tztime tenerife"
 # order += "tztime sf"
-# order += "tztime helsinki"
+order += "tztime helsinki"
 order += "tztime local"
 
 spotify {
@@ -60,11 +59,6 @@ tztime calendar {
 # tztime tenerife {
 #         format = "TFE %H:%M"
 #         timezone = "Europe/London"
-# }
-
-# tztime mexico {
-#         format = "MEX %H:%M"
-#         timezone = "America/Mexico_City"
 # }
 
 # tztime sf {
