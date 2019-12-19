@@ -545,15 +545,15 @@ KUBE_PS1_NS_DEFAULT_STRING=""
 # source ~/opt/gcloud-ps1/gcloud-ps1.sh
 # GCLOUD_PS1_ENABLE=false
 
-gkon() {
-	kubeon
-	gcloudon
-}
+# gkon() {
+# 	kubeon
+# 	gcloudon
+# }
 
-gkoff() {
-	kubeoff
-	gcloudoff
-}
+# gkoff() {
+# 	kubeoff
+# 	gcloudoff
+# }
 
 # Set terminal title with the pwd
 set_title() {
