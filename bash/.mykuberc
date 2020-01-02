@@ -18,6 +18,12 @@ else
 	complete -o default -o nospace -F __start_kubectl k
 fi
 
+# Argo autocompletion
+if [ -e ~/opt/doit/bash_completion ]; then
+	# shellcheck source=/dev/null
+	source ~/opt/argo/bash_completion
+fi
+
 # Aliases
 alias ki='kube-prompt'
 alias kui="kubectl proxy"
