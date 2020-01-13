@@ -54,10 +54,15 @@ eval "$(dircolors -b)"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Virtualenvwrapper and other python stuff
-# export WORKON_HOME=~/.Envs
+export WORKON_HOME=~/.Envs
 # We set the venv prompt PROMPT_COMMAND directly
-# export VIRTUAL_ENV_DISABLE_PROMPT=1
-# source /usr/bin/virtualenvwrapper_lazy.sh
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+export VIRTUALENV_PYTHON=/usr/bin/python3
+if [ -e /usr/bin/virtualenvwrapper_lazy.sh ]; then
+	source /usr/bin/virtualenvwrapper_lazy.sh
+elif [ -e /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh ]; then
+	source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
+fi
 
 pyclean() {
 	find . -type f -name "*.py[co]" -delete
@@ -471,10 +476,10 @@ last_err() {
 	fi
 }
 
-# venv() {
-# 	# Outputs active virtualenv, if any
-# 	echo ${VIRTUAL_ENV:+($green$(basename "$VIRTUAL_ENV")$reset)}
-# }
+venv() {
+	# Outputs active virtualenv, if any
+	echo ${VIRTUAL_ENV:+($green$(basename "$VIRTUAL_ENV")$reset)}
+}
 
 ssh_host() {
 	# Hostname only on ssh connections
@@ -563,7 +568,7 @@ set_title() {
 trap 'timer_start' DEBUG
 # PROMPT_COMMAND='set_last_err;timer_stop;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "`last_cmd_status``ssh_host`${yellow}\w${reset}" "`kube_ps1``root_prompt` ";_fasd_prompt_func;timer_stop'
 # PROMPT_COMMAND='set_last_err;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "$(last_cmd_status)$(ssh_host)${yellow}\w${reset}" "$(gcloud_ps1)$(kube_ps1)$(root_prompt) ";_fasd_prompt_func;timer_stop'
-PROMPT_COMMAND='set_last_err;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "$(last_cmd_status)$(ssh_host)${yellow}\w${reset}" "$(kube_ps1)$(root_prompt) ";_fasd_prompt_func;timer_stop'
+PROMPT_COMMAND='set_last_err;set_title;history -n;history -w;history -c; history -r;_kube_ps1_update_cache;__git_ps1 "$(last_cmd_status)$(ssh_host)${yellow}\w${reset}" "$(kube_ps1)$(venv)$(root_prompt) ";_fasd_prompt_func;timer_stop'
 
 # shellcheck source=/dev/null
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
