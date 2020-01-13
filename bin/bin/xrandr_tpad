@@ -6,16 +6,19 @@ if xrandr | grep 'eDP-1 '; then
 	# First style, with '-'
 	internaln="eDP-1"
 	HDMI1n="HDMI-1"
+	HDMI2n="HDMI-2"
 	USBCn="DP-1"
 elif xrandr | grep 'eDP-1-1 '; then
 	# Weird style, with two '-' (nvidia-xrun)
 	internaln="eDP-1-1"
 	HDMI1n="HDMI-1-1"
+	HDMI2n="HDMI-2-2"
 	USBCn="DP-1-1"
 else
 	# Other style, no '-'
 	internaln="eDP1"
 	HDMI1n="HDMI1"
+	HDMI2n="HDMI2"
 	USBCn="DP1"
 fi
 
@@ -23,6 +26,9 @@ fi
 internal=1
 xrandr | grep -q 'HDMI-\?1-\?1\? connected'
 HDMI1=$?
+xrandr | grep -q 'HDMI-\?2-\?2\? connected'
+HDMI1=$?
+HDMI1n=$HDMI2n
 xrandr | grep -q '^DP-\?1\?-\?1\?2\? connected' # USB-c
 USBC=$?
 if [ $USBC -eq 0 ]; then
