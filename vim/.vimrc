@@ -75,7 +75,7 @@ Plug 'eapache/rainbow_parentheses.vim'
 " Vim show marks and more
 Plug 'kshenoy/vim-signature'
 " Python-specific stuff
-Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+" Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 " Markdown and pandoc stuff
 Plug 'vim-pandoc/vim-pandoc', {'for': 'markdown'}
 Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'markdown'}
@@ -511,7 +511,6 @@ let g:pandoc#modules#disabled = ["folding"]
 " livedown
 let g:livedown_autorun = 1  " Open livedown automatically with markdown files
 let g:livedown_open = 1  " Open browser window upon previewing
-let g:livedown_browser = "chromium"
 " markdownfmt
 let g:markdownfmt_autosave=0
 " Riv (rst)
