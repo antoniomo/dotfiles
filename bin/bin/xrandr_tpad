@@ -42,8 +42,8 @@ if [ $USBC -eq 0 ]; then
 		# All good
 		# Sad, but if not everything looks too small next to the other screen...
 		xrandr --output $internaln --mode 1600x900
-		# Reattach $HDMI1n after resolution change (right-of is now closer)
-		xrandr --output $USBCn --primary --auto --right-of $internaln
+		# Reattach $HDMI1n after resolution change (left-of is now closer)
+		xrandr --output $USBCn --primary --auto --left-of $internaln
 		xrandr --dpi 96
 		# Set laptop screen to 40% brightness by default
 		light -S 40
@@ -65,7 +65,7 @@ if [ $HDMI1 -eq 0 ]; then
 		# Reattach screens after change
 		xrandr --output $USBCn --primary --auto
 		xrandr --output $HDMI1n --auto --left-of $USBCn
-		xrandr --output $internaln --mode 1600x900 --left-of $HDMI1n
+		xrandr --output $internaln --mode 1600x900 --right-of $USBCn
 		xrandr --dpi 96
 		export XRANDR_PRIMARY=$USBCn
 		export XRANDR_SECONDARY=$HDMI1n
