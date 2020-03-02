@@ -3,6 +3,9 @@
 # Helm stuff
 export HELM_TLS_VERIFY=1
 
+# Krew stuff
+export PATH=$PATH:~/.krew/bin
+
 # Generic kubernetes stuff
 alias k='kubectl'
 # Autocompletion for this alias
