@@ -9,7 +9,6 @@ export PATH=$PATH:~/.krew/bin
 # Generic kubernetes stuff
 alias k='kubectl'
 # Autocompletion for this alias
-# Autocompletion for fakefed as if it was kubectl
 if [ -e /usr/share/bash-completion/completions/kubectl ]; then
 	source /usr/share/bash-completion/completions/kubectl
 elif [ -e /etc/bash_completion.d/kubectl ]; then
