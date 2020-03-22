@@ -1,11 +1,5 @@
 # vi: ft=sh
 
-# Helm stuff
-export HELM_TLS_VERIFY=1
-
-# Krew stuff
-export PATH=$PATH:~/.krew/bin
-
 # Generic kubernetes stuff
 alias k='kubectl'
 # Autocompletion for this alias
@@ -21,10 +15,30 @@ else
 fi
 
 # Argo autocompletion
-if [ -e ~/opt/doit/bash_completion ]; then
+if [ -e ~/opt/argo/bash_completion ]; then
 	# shellcheck source=/dev/null
 	source ~/opt/argo/bash_completion
 fi
+# Autocompletion for these aliases
+if [[ $(type -t compopt) == "builtin" ]]; then
+	complete -o default -F __start_argo argop
+else
+	complete -o default -o nospace -F __start_argo argop
+fi
+if [[ $(type -t compopt) == "builtin" ]]; then
+	complete -o default -F __start_argo argos
+else
+	complete -o default -o nospace -F __start_argo argos
+fi
+
+# Helm autocompletion
+if [ -e ~/opt/helm/bash_completion ]; then
+	# shellcheck source=/dev/null
+	source ~/opt/helm/bash_completion
+fi
+
+# Krew stuff
+export PATH=$PATH:~/.krew/bin
 
 # Aliases
 alias ki='kube-prompt'
