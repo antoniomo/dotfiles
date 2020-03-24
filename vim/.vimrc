@@ -207,6 +207,7 @@ set undofile  " Persistent undo
 set backupdir=~/.vim/backup//
 set backup
 silent call system('mkdir -p ' . &backupdir)
+au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
 
 " Toggle dark/light bg
 map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
@@ -577,7 +578,3 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <leader>t <Plug>(go-test)
 autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
-
-" Dart stuff
-let dart_style_guide=2
-let dart_format_on_save=1
