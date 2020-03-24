@@ -1,6 +1,7 @@
 [user]
 	email = antonio.macias.ojeda@gmail.com
 	name = Antonio M. Macías Ojeda
+	signingKey = C11821C6
 [color]
 	ui = auto
 [core]
@@ -63,3 +64,5 @@
 	insteadOf = https://github.com/
 [url "git@bitbucket.org:"]
 	insteadOf = https://bitbucket.org/
+[commit]
+	gpgsign = true
