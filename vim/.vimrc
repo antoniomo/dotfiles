@@ -77,10 +77,10 @@ Plug 'kshenoy/vim-signature'
 " Python-specific stuff
 " Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 " Markdown and pandoc stuff
-Plug 'vim-pandoc/vim-pandoc', {'for': 'markdown'}
-Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'markdown'}
+" Plug 'vim-pandoc/vim-pandoc', {'for': 'markdown'}
+" Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'markdown'}
 Plug 'shime/vim-livedown', {'for': 'markdown'}  " Has a nodejs component, (npm/repositories)
-Plug 'moorereason/vim-markdownfmt', {'for': 'markdown'}  " Has a golang component
+Plug 'moorereason/vim-markdownfmt', {'for': 'markdown'}
 " Vim extline for titles, headers, comments...
 Plug 'drmikehenry/vim-extline'
 " Snippets
