@@ -212,7 +212,6 @@ function goclean() {
 	shift || return 1
 	local ost
 	local cnt
-	local scr
 
 	# Clean removes object files from package source directories (ignore error)
 	# go clean -v -i $pkg &> /dev/null
@@ -302,6 +301,22 @@ function bzcat() {
 	pbzcat "$@"
 }
 export -f bzcat
+
+# AWS extra stuff
+
+ecrlogin() {
+	# AWS CLI v2
+	local region
+	local pass
+	local account
+	region=$(aws configure get default.region)
+	pass=$(aws ecr get-login-password)
+	account=$(aws sts get-caller-identity --query 'Account' --output text)
+	docker login \
+		-p "$pass" \
+		--username AWS \
+		"$account.dkr.ecr.$region.amazonaws.com"
+}
 
 # Kubernetes/gcloud extra aliases
 if [ -e ~/.mykuberc ]; then
@@ -577,13 +592,13 @@ PROMPT_COMMAND='set_last_err;set_title;history -n;history -w;history -c; history
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/antonio/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+	eval "$__conda_setup"
 else
-    if [ -f "/home/antonio/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/antonio/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/antonio/miniconda3/bin:$PATH"
-    fi
+	if [ -f "/home/antonio/miniconda3/etc/profile.d/conda.sh" ]; then
+		. "/home/antonio/miniconda3/etc/profile.d/conda.sh"
+	else
+		export PATH="/home/antonio/miniconda3/bin:$PATH"
+	fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
