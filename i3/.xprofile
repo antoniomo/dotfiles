@@ -18,7 +18,7 @@ export SSH_AUTH_SOCK
 
 # Set my layout before starting the WM
 # en_US int sorting without deadkeys and swap caps<->escape
-setxkbmap -layout us -variant altgr-intl -option nodeadkeys -option "caps:swapescape"
+~/bin/mylayout
 
 # Set laptop screen to 40% brightness by default
 light -S 40
