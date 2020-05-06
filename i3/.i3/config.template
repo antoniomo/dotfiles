@@ -300,7 +300,6 @@ for_window [title="This War of Mine"] border none
 for_window [instance="scratch"] move scratchpad
 for_window [title="Welcome to Android Studio"] floating enable
 for_window [class="Vpnui"] floating enable
-for_window [class="zoom"] floating enable
 
 # NetworkManager applet
 exec --no-startup-id nm-applet
