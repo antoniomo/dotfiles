@@ -137,6 +137,11 @@ alias cat='bat'
 alias jenkins-cli='java -jar ~/opt/jenkins-cli/jenkins-cli.jar'
 alias tf='terraform'
 
+sha256base64() {
+	# No Hex to base64, but directly represent the sha256sum in base64
+	sha256sum "$1" | cut -f1 -d\  | xxd -r -p | base64
+}
+
 function procparent() {
 	ps -o ppid= -p "$1"
 }
