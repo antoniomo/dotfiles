@@ -1,4 +1,4 @@
-# vi: ft=sh
+# vi: ft=bash
 
 # Generic kubernetes stuff
 alias k='kubectl'
@@ -51,11 +51,11 @@ alias kube-go='kubectl run --rm -i --tty $(whoami)-shell --image=golang:alpine -
 # alias kubeadmin='kubectl create clusterrolebinding $(whoami)-admin-binding --clusterrole=cluster-admin --user=$(gcloud config get-value core/account)'
 
 kclean() {
-	# Pass a namespace or it will only run on the active one!!
+	# Pass a namespace or it will only run on all of them!!
 	if [[ -z ${1} ]]; then
-		kubectl delete pods --field-selector=status.phase!=Running -n ${1}
-	else
 		kubectl delete pods --field-selector=status.phase!=Running --all-namespaces
+	else
+		kubectl delete pods --field-selector=status.phase!=Running -n "${1}"
 	fi
 }
 
