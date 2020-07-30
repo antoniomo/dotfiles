@@ -58,6 +58,8 @@ Plug 'PotatoesMaster/i3-vim-syntax', {'for': 'i3'}
 Plug 'morhetz/gruvbox'
 " Solarized true colors colorscheme!
 " Plug 'lifepillar/vim-solarized8'
+" Selenized colorscheme
+" Plug 'jan-warchol/selenized', {'rtp': 'editors/vim'}
 Plug 'maralla/completor.vim'
 " Plug 'ervandew/supertab'
 " Fuzzy-finder with fzf
@@ -71,11 +73,9 @@ Plug 'w0rp/ale'
 " ctrlp fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
 " Rainbow parenthesis and other symbols
-Plug 'eapache/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 " Vim show marks and more
 Plug 'kshenoy/vim-signature'
-" Python-specific stuff
-" Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 " Markdown and pandoc stuff
 " Plug 'vim-pandoc/vim-pandoc', {'for': 'markdown'}
 " Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'markdown'}
@@ -94,10 +94,6 @@ Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoUpdateBinaries'}
 Plug 'godoctor/godoctor.vim', {'for': 'go', 'do': ':GoDoctorInstall'}
 " End go stuff
-" Dart and flutter suff
-" Plug 'dart-lang/dart-vim-plugin', {'for': 'dart'}
-" Plug 'reisub0/hot-reload.vim', {'for': 'dart'}
-" End dart stuff
 Plug 'AndrewRadev/splitjoin.vim'
 " TOML
 Plug 'cespare/vim-toml', {'for': 'toml'}
@@ -211,9 +207,6 @@ au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
 
 " Toggle dark/light bg
 map <F3> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-" Molokai colorscheme
-" let g:rehash256 = 1
-" colorscheme molokai
 set background=dark
 let g:gruvbox_contrast_dark = "hard"
 let g:gruvbox_contrast_light = "hard"
@@ -221,6 +214,9 @@ colorscheme gruvbox
 " Spell checking without color, just underline
 hi clear SpellBad
 hi SpellBad cterm=underline
+
+" Rainbow parenthesis
+let g:rainbow_active = 1
 
 " Highlight current cursor line
 set cursorline
@@ -343,20 +339,18 @@ let g:netrw_list_hide= netrw_gitignore#Hide()  " Ignore what's on gitignore
 autocmd BufEnter * silent! lcd %:p:h
 
 " Completor autocompletion
-let g:go_gocode_unimported_packages = 1
-let g:completor_gocode_binary = '~/go/bin/gocode'
-inoremap <expr> <c-j> pumvisible() ? "\<C-n>" : "\<c-j>"
-inoremap <expr> <c-k> pumvisible() ? "\<C-p>" : "\<c-k>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-" let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-" let g:SuperTabClosePreviewOnPopupClose = 1
-
-" Ultisnips
-" Let completor handle this, disabling
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
+let g:completor_debug = 1
+let g:completor_filetype_map = {}
+" Integrate with ale completion:
+let g:completor_filetype_map.javascript = {'ft': 'ale'}
+let g:completor_filetype_map.golang = {'ft': 'ale'}
+let g:completor_filetype_map.python = {'ft': 'ale'}
+" ALE doesn't support this LSP yet
+" https://github.com/dense-analysis/ale/issues/2874
+let g:completor_filetype_map.yaml = {'ft': 'lsp', 'cmd': 'yaml-language-server --stdio'}
+inoremap <expr> <c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
+inoremap <expr> <c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
+inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<cr>"
 
 " NerdTree option
 map <F2> :NERDTreeToggle<CR>
@@ -413,11 +407,13 @@ endif
 let g:ale_sign_error = '✖'
 let g:ale_sign_warning = '⚠'
 let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
 let g:ale_linter_aliases = {'html': ['html', 'javascript']}
-let g:ale_linters = {'go': ['golangci-lint', 'gofmt'],
+let g:ale_linters = {'go': ['gopls', 'golangci-lint', 'gofmt'],
                     \'sh': ['shellcheck'],
                     \'bash': ['shellcheck'],
                     \'terraform': ['tflint'],
+                    \'yaml': ['yamllint'],
                     \'javascript': ['eslint'],
                     \'html': ['tidy', 'eslint']}
 let g:ale_fixers = {'go': ['goimports'],
@@ -428,9 +424,11 @@ let g:ale_fixers = {'go': ['goimports'],
                    \'html': ['prettier']}
 let g:ale_go_golangci_lint_package = 1
 let g:ale_go_gofmt_options = '-s'
+let g:ale_go_gopls_options = '-remote auto'
 let g:ale_sh_shfmt_options = '-s -sr -i 0 -ci'
 let g:ale_bash_shfmt_options = '-s -sr -i 0 -ci'
 let g:ale_terraform_flint_options = '-f json'
+let g:ale_yaml_yamllint_options = '-d "{extends:default, rules: {document-start: disabled}}"'
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
@@ -517,13 +515,6 @@ let g:markdownfmt_autosave=0
 " Riv (rst)
 " let g:riv_disable_folding = 1
 
-" Rainbow parentheses always on
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound  " ()
-au Syntax * RainbowParenthesesLoadSquare  " []
-au Syntax * RainbowParenthesesLoadBraces  " {}
-" au Syntax * RainbowParenthesesLoadChevrons  " <>
-
 " Allow saving of files as sudo when I forget to start vim like that.
 " http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 cmap w!! w !sudo tee > /dev/null %
@@ -554,15 +545,6 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_snippet_case_type = "camelcase"
-" Using ale for this:
-" let g:go_fmt_command = "goimports"
-" let g:go_fmt_options = {
-"   \ 'gofmt': '-s',
-"   \ }
-" let g:go_fmt_autosave = 1
-" let g:go_metalinter_autosave = 1
-" let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'gosimple']
-" let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'gosimple']
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
