@@ -339,7 +339,6 @@ let g:netrw_list_hide= netrw_gitignore#Hide()  " Ignore what's on gitignore
 autocmd BufEnter * silent! lcd %:p:h
 
 " Completor autocompletion
-let g:completor_debug = 1
 let g:completor_filetype_map = {}
 " Integrate with ale completion:
 let g:completor_filetype_map.javascript = {'ft': 'ale'}
@@ -347,7 +346,21 @@ let g:completor_filetype_map.golang = {'ft': 'ale'}
 let g:completor_filetype_map.python = {'ft': 'ale'}
 " ALE doesn't support this LSP yet
 " https://github.com/dense-analysis/ale/issues/2874
-let g:completor_filetype_map.yaml = {'ft': 'lsp', 'cmd': 'yaml-language-server --stdio'}
+let g:completor_filetype_map.yaml = {
+  \ 'ft': 'lsp',
+  \ 'cmd': 'yaml-language-server --stdio',
+  \ 'config': {
+  \   'yaml': {
+  \     'validate': v:true,
+  \     'hover': v:true,
+  \     'completion': v:true,
+  \     'schemas': {
+  \       "Kubernetes": "*"
+  \     },
+  \     'schemaStore': { 'enable': v:true },
+  \   }
+  \ }
+  \ }
 inoremap <expr> <c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
 inoremap <expr> <c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
 inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<cr>"
