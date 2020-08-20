@@ -484,10 +484,11 @@ let g:ctrlp_working_path_mode = 0
 " imap <c-x><c-p> <plug>(fzf-complete-path)
 
 " Indent-guides
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=10
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=11
-let g:indent_guides_guide_size=1
+let g:indent_guides_auto_colors = 1
+nmap <silent> <leader>ig :IndentGuidesToggle<CR>
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=10
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=11
+" let g:indent_guides_guide_size=1
 
 " Interop between git gutter and signature
 let g:SignatureMarkTextHLDynamic = 1
