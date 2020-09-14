@@ -394,6 +394,10 @@ viewlines() { sed -n "\"$1\",\"$2\"p" "$3"; }
 # $ calc "(3 + 2) * 2"
 calc() { awk "BEGIN{ print $* }"; }
 
+ssh2toopenssh() {
+	ssh-keygen -i -f "$1"
+}
+
 # Usefult to get repeatable random filebased seeds
 # Sample usage: shuf -n 100 infile --random-source=<(get_seeded_random 42) -o outfile
 get_seeded_random() {
