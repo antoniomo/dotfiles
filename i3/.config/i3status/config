@@ -21,6 +21,7 @@ order += "sysdata c"
 order += "sysdata r"
 order += "volume master"
 order += "tztime calendar"
+order += "tztime utc"
 order += "tztime tenerife"
 # order += "tztime sf"
 # order += "tztime helsinki"
@@ -54,6 +55,11 @@ battery 0 {
 tztime calendar {
         format = " %a %d-%b"
         on_click 1 = "exec firefox calendar.google.com"
+}
+
+tztime utc {
+        format = "UTC %H:%M"
+        timezone = "UTC"
 }
 
 tztime tenerife {
