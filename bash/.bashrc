@@ -137,6 +137,24 @@ alias cat='bat'
 alias jenkins-cli='java -jar ~/opt/jenkins-cli/jenkins-cli.jar'
 alias tf='terraform'
 
+tfgit() {
+	# Get a nice `tf plan` summary for github PR comments
+	# Stolen from: https://gist.github.com/popsu/aea479d39bea6fe9d543973313e4221d
+	local TF_PLAN
+	TF_PLAN=$(TF_IN_AUTOMATION=1 terraform plan -no-color -refresh=false)
+	local body
+	body=$(
+		cat << END_HEREDOC
+<details><summary> Terraform </summary>
+\`\`\`terraform
+$TF_PLAN
+\`\`\`
+</details/>
+END_HEREDOC
+	)
+	echo "$body" | pbcopy
+}
+
 sha256base64() {
 	# No Hex to base64, but directly represent the sha256sum in base64
 	sha256sum "$1" | cut -f1 -d\  | xxd -r -p | base64
