@@ -327,6 +327,14 @@ export -f bzcat
 
 # AWS extra stuff
 
+awskeyfingerprint() {
+	openssl pkcs8 -in "$1" -nocrypt -topk8 -outform DER | openssl sha1 -c
+}
+
+awspubkeyfingerprint() {
+	ssh-keygen -l -f "$1"
+}
+
 ecrlogin() {
 	# AWS CLI v2
 	local region
