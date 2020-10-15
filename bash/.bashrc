@@ -145,10 +145,12 @@ tfgit() {
 	local body
 	body=$(
 		cat << END_HEREDOC
-<details><summary> Terraform </summary>
+<details><summary>Terraform plan</summary>
+
 \`\`\`terraform
 $TF_PLAN
 \`\`\`
+
 </details/>
 END_HEREDOC
 	)
