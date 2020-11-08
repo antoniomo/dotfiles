@@ -2,13 +2,13 @@
 # Taken from http://www.jejik.com/articles/2008/10/setting_up_dual_monitors_system-wide_with_xrandr_on_debian_lenny/
 
 # Screen names, three variatios (ie HDMI-1, HDMI-1-1, or HDMI1)
-if xrandr | grep 'eDP-1 '; then
+if xrandr | grep -q 'eDP-1 '; then
 	# First style, with '-'
 	internaln="eDP-1"
 	HDMI1n="HDMI-1"
 	HDMI2n="HDMI-2"
 	USBCn="DP-1"
-elif xrandr | grep 'eDP-1-1 '; then
+elif xrandr | grep -q 'eDP-1-1 '; then
 	# Weird style, with two '-' (nvidia-xrun)
 	internaln="eDP-1-1"
 	HDMI1n="HDMI-1-1"
@@ -24,9 +24,9 @@ fi
 
 # Not screen names, but the control flags
 internal=1
-xrandr | grep -q 'HDMI-\?1-\?1\? connected'
+xrandr | grep -q 'HDMI-\?1\?-\?1\? connected'
 HDMI1=$?
-xrandr | grep -q 'HDMI-\?1-\?2\? connected'
+xrandr | grep -q 'HDMI-\?1\?-\?2\? connected'
 HDMI1=$?
 HDMI1n=$HDMI2n
 xrandr | grep -q '^DP-\?1\?-\?1\?2\? connected' # USB-c
