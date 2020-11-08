@@ -26,7 +26,7 @@ fi
 internal=1
 xrandr | grep -q 'HDMI-\?1-\?1\? connected'
 HDMI1=$?
-xrandr | grep -q 'HDMI-\?2-\?2\? connected'
+xrandr | grep -q 'HDMI-\?1-\?2\? connected'
 HDMI1=$?
 HDMI1n=$HDMI2n
 xrandr | grep -q '^DP-\?1\?-\?1\?2\? connected' # USB-c
