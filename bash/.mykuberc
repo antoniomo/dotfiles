@@ -60,7 +60,7 @@ kclean() {
 }
 
 k3dconf() {
-	export KUBECONFIG="$(k3d get-kubeconfig --name=${1})"
+	export KUBECONFIG="$(k3d kubeconfig write ${1})"
 }
 
 # Rancher stuff
