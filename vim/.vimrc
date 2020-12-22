@@ -434,7 +434,8 @@ let g:ale_fixers = {'go': ['goimports'],
                    \'bash': ['shfmt'],
                    \'terraform': ['terraform'],
                    \'javascript': ['eslint'],
-                   \'html': ['prettier']}
+                   \'html': ['prettier'],
+                   \'sql': ['pgformatter']}
 let g:ale_go_golangci_lint_package = 1
 let g:ale_go_gofmt_options = '-s'
 let g:ale_go_gopls_options = '-remote auto'
