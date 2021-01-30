@@ -434,6 +434,7 @@ let g:ale_fixers = {'go': ['goimports'],
                    \'bash': ['shfmt'],
                    \'terraform': ['terraform'],
                    \'javascript': ['eslint'],
+                   \'json': ['fixjson'],
                    \'html': ['prettier'],
                    \'sql': ['pgformatter']}
 let g:ale_go_golangci_lint_package = 1
