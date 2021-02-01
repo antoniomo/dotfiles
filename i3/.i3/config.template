@@ -335,7 +335,7 @@ bindsym $mod+grave exec ~/bin/scratch &
 bindsym $mod+c exec ~/bin/i3calc &
 
 # To-do app
-bindsym $mod+g exec ~/bin/go-for-it &
+bindsym $mod+g exec ~/bin/i3todo &
 
 # Hotbar script
 exec --no-startup-id i3-hotbar &
