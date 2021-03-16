@@ -137,6 +137,12 @@ alias cat='bat'
 alias jenkins-cli='java -jar ~/opt/jenkins-cli/jenkins-cli.jar'
 alias tf='terraform'
 
+pwait() {
+	until pidof -q "$1"; do
+		sleep 1
+	done
+}
+
 tfgit() {
 	# Get a nice `tf plan` summary for github PR comments
 	# Stolen from: https://gist.github.com/popsu/aea479d39bea6fe9d543973313e4221d
