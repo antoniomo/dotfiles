@@ -593,7 +593,7 @@ getjp() {
 	# - https://github.com/nichtich/jq-jsonpointer#install
 	# Usage:
 	# $ getjp "value" "file.json"
-	jq -c '[paths as $path | select(getpath($path) == "'"$1"'") | $path]' "$2" | tr -d '[]"' | tr ',' '/'
+	jq -c '[paths as $path | select(getpath($path) == "'"$1"'") | $path]' "$2" | tr -d '[]"' | tr ',' '/' | sed 's/^/\//'
 }
 
 getfromyamljp() {
@@ -617,7 +617,7 @@ getyamljp() {
 	# - https://github.com/kislyuk/yq#installation
 	# Usage:
 	# $ getyamljp "value" "file.yaml"
-	yq -c '[paths as $path | select(getpath($path) == "'"$1"'") | $path]' "$2" | tr -d '[]"' | tr ',' '/'
+	yq -c '[paths as $path | select(getpath($path) == "'"$1"'") | $path]' "$2" | tr -d '[]"' | tr ',' '/' | sed 's/^/\//'
 }
 
 last_cmd_status() {
