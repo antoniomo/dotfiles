@@ -574,23 +574,50 @@ timer_show() {
 	fi
 }
 
-getjp() {
+getfromjp() {
 	# Get from a json using jsonpointer syntax:
 	# http://jsonpatch.com/#json-pointer
 	# Requires:
 	# - https://stedolan.github.io/jq/download/
 	# - https://github.com/nichtich/jq-jsonpointer#install
+	# Usage:
+	# $ getfromjp "/pointer/path" "file.json"
 	jq 'include "jsonpointer"; pointer("'"$1"'")' "$2"
 }
 
-getyamljp() {
-	# Get from a json using jsonpointer syntax:
+getjp() {
+	# Gets all jsonpointer paths to a value in a json file
+	# http://jsonpatch.com/#json-pointer
+	# Requires:
+	# - https://stedolan.github.io/jq/download/
+	# - https://github.com/nichtich/jq-jsonpointer#install
+	# Usage:
+	# $ getjp "value" "file.json"
+	jq -c '[paths as $path | select(getpath($path) == "'"$1"'") | $path]' "$2" | tr -d '[]"' | tr ',' '/'
+}
+
+getfromyamljp() {
+	# Get from a yaml using jsonpointer syntax:
 	# http://jsonpatch.com/#json-pointer
 	# Requires:
 	# - https://stedolan.github.io/jq/download/
 	# - https://github.com/nichtich/jq-jsonpointer#install
 	# - https://github.com/kislyuk/yq#installation
+	# Usage:
+	# $ getfromyamljp "/pointer/path" "file.yaml"
 	yq 'include "jsonpointer"; pointer("'"$1"'")' "$2"
+}
+
+getyamljp() {
+	# Gets all jsonpointer paths to a value in a yaml file
+	# http://jsonpatch.com/#json-pointer
+	# Requires:
+	# - https://stedolan.github.io/jq/download/
+	# - https://github.com/nichtich/jq-jsonpointer#install
+	# - https://github.com/kislyuk/yq#installation
+	# Usage:
+	# $ getyamljp "value" "file.yaml"
+	yq -c '[paths as $path | select(getpath($path) == "'"$1"'") | $path]' "$2" | tr -d '[]"' | tr ',' '/'
 }
 
 last_cmd_status() {
