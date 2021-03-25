@@ -574,6 +574,25 @@ timer_show() {
 	fi
 }
 
+getjp() {
+	# Get from a json using jsonpointer syntax:
+	# http://jsonpatch.com/#json-pointer
+	# Requires:
+	# - https://stedolan.github.io/jq/download/
+	# - https://github.com/nichtich/jq-jsonpointer#install
+	jq 'include "jsonpointer"; pointer("'"$1"'")' "$2"
+}
+
+getyamljp() {
+	# Get from a json using jsonpointer syntax:
+	# http://jsonpatch.com/#json-pointer
+	# Requires:
+	# - https://stedolan.github.io/jq/download/
+	# - https://github.com/nichtich/jq-jsonpointer#install
+	# - https://github.com/kislyuk/yq#installation
+	yq 'include "jsonpointer"; pointer("'"$1"'")' "$2"
+}
+
 last_cmd_status() {
 	# Print last command status
 	ret1=$(last_err)
