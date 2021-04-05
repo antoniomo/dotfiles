@@ -106,6 +106,8 @@ Plug 'stephpy/vim-yaml', {'for': 'yaml'}
 Plug 'hashivim/vim-hashicorp-tools', {'for': ['terraform', 'hcl']}
 " Elm stuff
 Plug 'elmcast/elm-vim', {'for': 'elm'}
+" Editorconfig support
+Plug 'editorconfig/editorconfig-vim'
 
 " Add plugins to &runtimepath
 call plug#end()
