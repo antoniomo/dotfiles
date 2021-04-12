@@ -1,7 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-# sudo systemctl start bluetooth
-# echo -e 'power on\nconnect 00:1F:20:A9:23:A7\nquit' | bluetoothctl
+echo -e 'connect 00:1F:20:A9:23:A7\nquit' | bluetoothctl
 for i in /sys/class/hidraw/hidraw?; do
 	if grep -q K810 "$i/device/uevent"; then
 		n=$(echo "$i" | grep -o "[0-9]")
