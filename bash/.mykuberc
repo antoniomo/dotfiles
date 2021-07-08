@@ -146,6 +146,28 @@ kns() {
 	echo "Current ctx/ns: $CTX/$NS"
 }
 
+# Print what pods are running in a particular node
+knode() {
+	local NODE=${1}
+	if [[ -z $NODE ]]; then
+		local OPTIONS=$(kubectl get nodes -o jsonpath='{range .items[*].metadata.name}{@}{"\n"}{end}')
+		OPTIONS+=' EXIT'
+
+		echo "See pods on which node? (or EXIT)"
+
+		select opt in $OPTIONS; do
+			if [ "$opt" = "EXIT" ]; then
+				break
+			else
+				kubectl get pods --all-namespaces --field-selector spec.nodeName="$opt"
+			fi
+			break
+		done
+	else
+		kubectl get pods --all-namespaces --field-selector spec.nodeName="$NODE"
+	fi
+}
+
 klogs() {
 	# Resetting OPTIND is necessary if getopts was used previously in the script.
 	# It is a good idea to make OPTIND local if you process options in a function.
