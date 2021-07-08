@@ -29,26 +29,26 @@ order += "tztime local"
 
 spotify {
         color_paused = "FFFF00"
-        format = "{artist}:{title}"
+        format = "♪{artist}:{title}"
         format_down = ""
 }
 
 wireless _first_ {
-        format_up = " %quality %essid"
-        format_down = ""
+        format_up = "直%quality %essid"
+        format_down = "睊"
 }
 
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
-        format_up = " %ip"
-        format_down = ""
+        format_up = "ﯱ %ip"
+        format_down = ""  # Don't show if there's no ethernet
 }
 
 battery 0 {
         format = "%status %percentage %remaining"
-        status_chr = ""
-        status_bat = ""
-        status_full = ""
+        status_chr = ""
+        status_bat = ""
+        status_full = ""
         format_down = ""  # Don't show when there's no battery
 }
 
@@ -58,35 +58,35 @@ tztime calendar {
 }
 
 tztime utc {
-        format = "UTC %H:%M"
+        format = " %H:%MUTC"
         timezone = "UTC"
 }
 
 tztime tenerife {
-        format = "TFE %H:%M"
+        format = " %H:%MTFE"
         timezone = "Europe/London"
 }
 
 # tztime sf {
-#         format = "SF %H:%M"
+#         format = " %H:%MSF"
 #         timezone = "US/Pacific"
 # }
 
 tztime helsinki {
-        format = "HLK %H:%M"
+        format = " %H:%MHLK"
         timezone = "Europe/Helsinki"
 }
 
 tztime local {
-        format = "Local %H:%M"
+        format = " %H:%M"
 }
 
 sysdata c{
-        format = "{cpu_usage:.2f}%"
+        format = "益{cpu_usage:.2f}%"
 }
 
 sysdata r{
-        format = "{mem_used_percent:.2f}%"
+        format = "𥳐{mem_used_percent:.2f}%"
 }
 
 disk "/" {

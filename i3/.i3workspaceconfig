@@ -1,35 +1,24 @@
 {
     "classes": {
         "Firefox": "",
+        "Chromium": "",
         "urxvt": "",
         "termite": "",
         "kitty": "",
         "qterminal": "",
         "thunar": "",
-        "zathura": "",
+        "Org.gnome.Nautilus": "",
+        "zathura": "",
         "vlc": "",
         "kodi": "",
-        "retroarch": "",
-        "battle.net.exe": "",
-        "sc2.exe": "",
-        "DarkPlaces": "",
-        "xonotic-sdl": "",
         "plugin-container": "",
+        "retroarch": "調",
         "spotify": "",
-        "mangclient": "",
-        "brogue": "",
-        "crawl": "",
         "skypeforlinux": "",
-        "zoom": "Z",
-        "chromium": "",
-        "Chromium": "",
-        "chromium-browser": "",
-        "gnote": "",
-        "libreoffice-calc": "",
-        "darktable": "",
-        "nm-connection-editor": ""
+        "zoom": "",
+        "nm-connection-editor": "ﯳ"
     },
     "instances": {
-        "This War of Mine": ""
+        "This War of Mine": "調"
     }
 }
