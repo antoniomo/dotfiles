@@ -136,6 +136,7 @@ alias ungron='gron -u'
 alias cat='bat'
 alias jenkins-cli='java -jar ~/opt/jenkins-cli/jenkins-cli.jar'
 alias tf='terraform'
+alias watch='watch ' # support for aliases in watch
 
 pwait() {
 	until pidof -q "$1"; do
