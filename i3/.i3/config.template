@@ -244,8 +244,8 @@ bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 # Screenshot bindings
-bindsym --release $mod+Shift+Print exec --no-startup-id import -window root "$HOME/screenshot-$(date +'%Y-%m-%d %T').png"
-bindsym --release $mod+Print exec --no-startup-id import "$HOME/screenshot-$(date +'%Y-%m-%d %T').png"
+bindsym --release $mod+Shift+Print exec --no-startup-id flameshot screen -p ~/captures
+bindsym --release $mod+Print exec --no-startup-id flameshot gui -p ~/captures
 
 # Set locker (~/.lastbg.png captured later)
 exec --no-startup-id xss-lock -- i3lock -n -i ~/.lastbg.png &
