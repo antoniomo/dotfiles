@@ -137,6 +137,8 @@ alias cat='bat'
 alias jenkins-cli='java -jar ~/opt/jenkins-cli/jenkins-cli.jar'
 alias tf='terraform'
 alias watch='watch ' # support for aliases in watch
+alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
 
 pwait() {
 	until pidof -q "$1"; do
@@ -342,6 +344,13 @@ awskeyfingerprint() {
 
 awspubkeyfingerprint() {
 	ssh-keygen -l -f "$1"
+}
+
+# Pass output file on $1 and repo on $2, as shown on:
+# https://github.com/webfactory/ssh-agent#creating-ssh-keys
+# https://github.com/webfactory/ssh-agent#support-for-github-deploy-keys
+createghdeploykey() {
+	ssh-keygen -t ed25519 -a 100 -f "$1" -C "$2"
 }
 
 ecrlogin() {
