@@ -2,6 +2,8 @@
 
 # Generic kubernetes stuff
 alias k='kubectl'
+export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
+
 # Autocompletion for this alias
 if [ -e /usr/share/bash-completion/completions/kubectl ]; then
 	source /usr/share/bash-completion/completions/kubectl
