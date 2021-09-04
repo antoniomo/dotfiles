@@ -338,6 +338,7 @@ function bzcat() {
 export -f bzcat
 
 # AWS extra stuff
+complete -C "$(command -v aws_completer)" aws
 
 awskeyfingerprint() {
 	openssl pkcs8 -in "$1" -nocrypt -topk8 -outform DER | openssl sha1 -c
