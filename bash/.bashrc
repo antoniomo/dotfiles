@@ -355,6 +355,14 @@ createghdeploykey() {
 	ssh-keygen -t ed25519 -a 100 -f "$1" -C "$2"
 }
 
+ecraddtag() {
+	local manifest
+	manifest=$(aws ecr batch-get-image --repository-name "$1" --image-ids imageTag="$2" --query 'images[].imageManifest' --output text)
+	aws ecr put-image --repository-name "$1" --image-tag "$3" --image-manifest "$manifest"
+	echo "Added tag $3 to image $1:$2"
+	aws ecr describe-images --repository-name "$1"
+}
+
 ecrlogin() {
 	# AWS CLI v2
 	local region
