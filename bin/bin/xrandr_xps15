@@ -79,6 +79,4 @@ if [ $internal -ne 0 ]; then
 	# source ~/dotfiles/i3/setup_hidpi
 fi
 
-if [ "$XDG_CURRENT_DESKTOP" == i3 ]; then
-	source ~/bin/i3-reload
-fi
+source ~/bin/i3-reload

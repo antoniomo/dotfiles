@@ -1,7 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
 # Replace the i3 config template variables
 sed -e "s/\$XRANDR_PRIMARY/$XRANDR_PRIMARY/" -e "s/\$XRANDR_SECONDARY/$XRANDR_SECONDARY/" ~/.i3/config.template > ~/.i3/config
 
 # Restart i3 to reload config in case i3 is running
-i3-msg restart
+if [ "$XDG_CURRENT_DESKTOP" == i3 ] && [ -n "$I3SOCK" ]; then
+	i3-msg restart
+fi
