@@ -351,6 +351,7 @@ awspubkeyfingerprint() {
 # Pass output file on $1 and repo on $2, as shown on:
 # https://github.com/webfactory/ssh-agent#creating-ssh-keys
 # https://github.com/webfactory/ssh-agent#support-for-github-deploy-keys
+# Repo in a format like "git@github.com:owner/repo.git"
 createghdeploykey() {
 	ssh-keygen -t ed25519 -a 100 -f "$1" -C "$2"
 }
