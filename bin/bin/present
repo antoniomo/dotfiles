@@ -1,3 +1,3 @@
 #!/bin/bash
 
-xrandr --output $XRANDR_SECONDARY --auto --same-as $XRANDR_PRIMARY
+xrandr --output "$XRANDR_SECONDARY" --auto --same-as "$XRANDR_PRIMARY"
