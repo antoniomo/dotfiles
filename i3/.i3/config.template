@@ -301,6 +301,9 @@ for_window [instance="scratch"] move scratchpad
 for_window [title="Welcome to Android Studio"] floating enable
 for_window [class="Vpnui"] floating enable
 for_window [class="Go-for-it"] floating enable
+for_window [class="zoom" instance="zoom" title="^Zoom"] floating disable
+for_window [class="zoom" instance="zoom" title="^zoom$"] floating enable
+no_focus   [class="zoom" instance="zoom" title="^zoom$"]
 
 # NetworkManager applet
 exec --no-startup-id nm-applet
