@@ -446,7 +446,7 @@ let g:ale_go_gopls_options = '-remote auto'
 let g:ale_sh_shfmt_options = '-s -sr -i 0 -ci'
 let g:ale_bash_shfmt_options = '-s -sr -i 0 -ci'
 let g:ale_terraform_flint_options = '-f json'
-let g:ale_yaml_yamllint_options = '-d "{extends:default, rules: {min-spaces-from-content: 1}}"'
+let g:ale_yaml_yamllint_options = '-d "{extends: default, rules: {comments: {min-spaces-from-content: 1}}}"'
 
 function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
