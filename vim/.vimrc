@@ -430,7 +430,9 @@ let g:ale_linters = {'go': ['gopls', 'golangci-lint', 'gofmt'],
                     \'terraform': ['tflint'],
                     \'yaml': ['yamllint'],
                     \'javascript': ['eslint'],
-                    \'html': ['tidy', 'eslint']}
+                    \'html': ['tidy', 'eslint'],
+                    \'markdown': ['vale'],
+                    \'text': ['vale']}
 let g:ale_fixers = {'go': ['goimports'],
                    \'sh': ['shfmt'],
                    \'bash': ['shfmt'],
