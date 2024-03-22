@@ -21,7 +21,7 @@ Plug 'tpope/vim-commentary'
 " Useful extra mappings
 Plug 'tpope/vim-unimpaired'
 " Git plugin and GitHub extension
-Plug 'tpope/vim-fugitive'
+"plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 " Netrw file manager plugin extension
 Plug 'tpope/vim-vinegar'
@@ -235,7 +235,8 @@ set scrolloff=5
 " http://got-ravings.blogspot.fi/2008/08/vim-pr0n-making-statuslines-that-own.html
 " http://got-ravings.blogspot.fi/search/label/statuslines
 function! Showbranch()
-  let branchname=fugitive#head()
+  "let branchname=fugitive#head()
+  let branchname=""
   if branchname == ""
     return ""
   else
