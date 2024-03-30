@@ -2,3 +2,4 @@
 	path = kitty/.config/kitty/kitty-themes
 	url = https://github.com/dexpota/kitty-themes
 	shallow = true
+	ignore = dirty

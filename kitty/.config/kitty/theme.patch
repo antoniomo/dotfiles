@@ -1,0 +1,25 @@
+--- theme.conf	2024-03-23 11:30:35.855777887 +1300
++++ theme.conf2	2024-03-30 20:44:49.634217582 +1300
+@@ -5,3 +5,4 @@
+ foreground #979eab
+-background #282c34
++# Darker than the original #282c34
++background #1e222a
+ cursor #cccccc
+@@ -12,3 +13,4 @@
+ color4 #61afef
+-color5 #be5046
++# Fix to the original instead of #be5046
++color5 #c678dd
+ color6 #56b6c2
+@@ -20,6 +22,8 @@
+ color12 #61afef
+-color13 #be5046
++# Fix to the original instead of #be5046
++color13 #c678dd
+ color14 #56b6c2
+ color15 #abb2bf
+-selection_foreground #282c34
++# Darker than the original #282c34
++selection_foreground #1e222a
+ selection_background #979eab

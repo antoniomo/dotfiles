@@ -5,7 +5,7 @@
 [color]
 	ui = auto
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitignore
 	autocrlf = input
 [diff]

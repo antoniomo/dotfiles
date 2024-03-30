@@ -4,19 +4,19 @@ require("nvchad.mappings")
 
 local map = vim.keymap.set
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
+local imap = function(keys, func, desc)
+	map("i", keys, func, { desc = desc })
+end
 
-map("n", "<leader>fm", function()
-	require("conform").format({
-		async = true,
-		lsp_fallback = true,
-	})
-end, { desc = "File Format with conform" })
+local nmap = function(keys, func, desc)
+	map("n", keys, func, { desc = desc })
+end
 
-map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
+nmap(";", ":", "CMD enter command mode")
+imap("jk", "<ESC>", "Escape insert mode")
 
-map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", { desc = "window left" })
-map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>", { desc = "window down" })
-map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>", { desc = "window up" })
-map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { desc = "window right" })
-map("n", "<C-\\>", "<cmd>TmuxNavigatePrevious<cr>", { desc = "window previous" })
+nmap("<C-h>", "<cmd>TmuxNavigateLeft<cr>", "window left")
+nmap("<C-j>", "<cmd>TmuxNavigateDown<cr>", "window down")
+nmap("<C-k>", "<cmd>TmuxNavigateUp<cr>", "window up")
+nmap("<C-l>", "<cmd>TmuxNavigateRight<cr>", "window right")
+nmap("<C-\\>", "<cmd>TmuxNavigatePrevious<cr>", "window previous")
